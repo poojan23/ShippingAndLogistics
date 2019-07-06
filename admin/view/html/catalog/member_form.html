@@ -1,0 +1,256 @@
+<?php echo $header; ?>
+<?php echo $nav; ?>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1><?php echo $heading_title; ?></h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <?php for($i = 0; $i < count($breadcrumbs); $i++) : ?>
+                        <?php if($i != (count($breadcrumbs) - 1)) : ?>
+                        <?php if($i == 0) : ?>
+                        <li class="breadcrumb-item">
+                            <i class="nav-icon fa fa-home"></i>
+                            <a href="<?php echo $breadcrumbs[$i]['href']; ?>">
+                                <?php echo $breadcrumbs[$i]['text']; ?>
+                            </a>
+                        </li>
+                        <?php else : ?>
+                        <li class="breadcrumb-item">
+                            <a href="<?php echo $breadcrumbs[$i]['href']; ?>">
+                                <?php echo $breadcrumbs[$i]['text']; ?>
+                            </a>
+                        </li>
+                        <?php endif; ?>
+                        <?php else : ?>
+                        <li class="breadcrumb-item active"><?php echo $breadcrumbs[$i]['text']; ?></li>
+                        <?php endif; ?>
+                        <?php endfor; ?>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <?php if ($warning_err) : ?>
+                <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i>
+                    <?php echo $warning_err; ?>
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                </div>
+                <?php endif; ?>
+
+                <div class="clearfix">
+                    <div class="float-right tableTools-container">
+                        <button type="submit" form="form-team" data-toggle="tooltip"
+                                title="<?php echo $button_save; ?>" class="btn btn-primary btn-bold"><i
+                                class="fa fa-save"></i></button>
+                        <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>"
+                           class="btn btn-default btn-bold"><i class="fa fa-reply"></i></a>
+
+                    </div>
+                </div>
+            </div>
+            <!-- right column -->
+            <div class="col-12">
+                <!-- Horizontal Form -->
+                <div class="card card-info card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fa fa-pencil-alt"></i>
+                            <?php echo $text_form; ?>
+                        </h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <div class="row">
+                        <div class="col-6">
+                            <form class="form-horizontal">
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label for="input-member-induct" class="col-sm-2 col-form-label">Month
+                                        </label>
+                                        <div class="col-sm-4">
+
+                                            <input type="number" class="form-control"
+                                                   value="<?php echo $month; ?>" readonly="">
+                                        </div>
+                                        <label for="input-member-induct" class="col-sm-2 col-form-label">Year
+                                        </label>
+                                        <div class="col-sm-4">
+                                            <input type=" number" class="form-control" 
+                                                   value="<?php echo $year; ?>" readonly="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row required">
+                                        <label for="input-member-induct" class="col-sm-2 col-form-label">
+                                            <?php echo $entry_member_inducted; ?></label>
+
+                                        <div class="col-sm-10">
+                                            <input type="number" value="<?php echo $member_induct; ?>"
+                                                   placeholder="<?php echo $entry_member_inducted; ?>" class="form-control"
+                                                   readonly=""/>
+                                            <?php if($member_inducted_err) : ?>
+                                            <span class="invalid-tooltip">
+                                                <?php echo $member_inducted_err; ?></span>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row required">
+                                        <label for="input-member-unlist" class="col-sm-2 col-form-label">
+                                            <?php echo $entry_member_unlist; ?></label>
+
+                                        <div class="col-sm-10">
+                                            <input type="number" value="<?php echo $member_unlist; ?>"
+                                                   placeholder="<?php echo $entry_member_unlist; ?>" class="form-control"
+                                                   readonly=""/>
+                                            <?php if($member_unlist_err) : ?>
+                                            <span class="invalid-tooltip">
+                                                <?php echo $member_unlist_err; ?></span>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row required">
+                                        <label for="input-member-net-growth" class="col-sm-2 col-form-label">
+                                            <?php echo $entry_net_growth; ?></label>
+
+                                        <div class="col-sm-10">
+                                            <input type="number" value="<?php echo $net_growth; ?>"
+                                                   class="form-control"
+                                                   readonly=""/>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- /.box-body -->
+                            </form>
+                        </div>
+                        <div class="col-6">
+                            <form action="<?php echo $action; ?>" method="POST" enctype="multipart/form-data"
+                                  id="form-team" class="form-horizontal">
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label for="input-member-induct" class="col-sm-2 col-form-label">Month
+                                        </label>
+                                        <div class="col-sm-4">
+
+                                            <input type="number" class="form-control" name="month" id="month"
+                                                   value="<?php echo $month; ?>" readonly="">
+                                        </div>
+                                        <label for="input-member-induct" class="col-sm-2 col-form-label">Year
+                                        </label>
+                                        <div class="col-sm-4">
+                                            <input type=" number" class="form-control" name="month" id="month"
+                                                   value="<?php echo $year; ?>" readonly="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="input-member-induct" class="col-sm-2 col-form-label">
+                                        </label>
+
+                                        <div class="col-sm-10">
+                                            <input type="number" name="member_induct" value="<?php echo $member_induct; ?>"
+                                                   placeholder="<?php echo $entry_member_inducted; ?>" class="form-control"
+                                                   id="member_induct" />
+                                            <?php if($member_inducted_err) : ?>
+                                            <span class="invalid-tooltip">
+                                                <?php echo $member_inducted_err; ?></span>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="input-member-unlist" class="col-sm-2 col-form-label">
+                                        </label>
+
+                                        <div class="col-sm-10">
+                                            <input type="number" name="member_unlist" value="<?php echo $member_unlist; ?>"
+                                                   placeholder="<?php echo $entry_member_unlist; ?>" class="form-control"
+                                                   id="member_unlist" />
+                                            <?php if($member_unlist_err) : ?>
+                                            <span class="invalid-tooltip">
+                                                <?php echo $member_unlist_err; ?></span>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="input-member-net-growth" class="col-sm-2 col-form-label">
+                                        </label>
+
+                                        <div class="col-sm-10">
+                                            <input type="number" name="net_growth" value="<?php echo $net_growth; ?>"
+                                                   class="form-control"
+                                                   id="net_growth" readonly=""/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="input-member-induct" class="col-sm-2 col-form-label"><?php echo $entry_notes; ?>
+                                        </label>
+                                        <div class="col-sm-4">
+
+                                            <textarea name="notes"
+                                                      placeholder="<?php echo $entry_notes; ?>"
+                                                      class="form-control"
+                                                      id="input-description"
+                                                      data-toggle="ckeditor" data-lang="<?php echo $ckeditor; ?>"></textarea>
+                                        </div>
+                                        <label for="input-member-induct" class="col-sm-2 col-form-label"><?php echo $entry_approve; ?>
+                                        </label>
+                                        <div class="col-sm-4">
+                                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                                <?php if(($review)) : ?>
+                                                <label class="btn btn-outline-secondary active"><input type="radio"
+                                                                                                       name="review" value="1" checked="checked" />
+                                                    <?php echo $text_yes; ?></label>
+                                                <label class="btn btn-outline-secondary"><input type="radio"
+                                                                                                name="review" value="0" />
+                                                    <?php echo $text_no; ?></label>
+                                                <?php else : ?>
+                                                <label class="btn btn-outline-secondary"><input type="radio"
+                                                                                                name="review" value="1" />
+                                                    <?php echo $text_yes; ?></label>
+                                                <label class="btn btn-outline-secondary active"><input type="radio"
+                                                                                                       name="review" value="0" checked="checked" />
+                                                    <?php echo $text_no; ?></label>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box -->
+            </div>
+            <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<?php echo $footer; ?>
+<script>
+    $(function () {
+        $("#member_induct, #member_unlist").on("keydown keyup", sum);
+        function sum() {
+            $("#net_growth").val(Number($("#member_induct").val()) - Number($("#member_unlist").val()));
+        }
+    });
+</script>

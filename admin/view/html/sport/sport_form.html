@@ -1,0 +1,326 @@
+<?php echo $header; ?>
+<?php echo $nav; ?>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1><?php echo $heading_title; ?></h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <?php for($i = 0; $i < count($breadcrumbs); $i++) : ?>
+                        <?php if($i != (count($breadcrumbs) - 1)) : ?>
+                        <?php if($i == 0) : ?>
+                        <li class="breadcrumb-item">
+                            <i class="nav-icon fa fa-home"></i>
+                            <a href="<?php echo $breadcrumbs[$i]['href']; ?>">
+                                <?php echo $breadcrumbs[$i]['text']; ?>
+                            </a>
+                        </li>
+                        <?php else : ?>
+                        <li class="breadcrumb-item">
+                            <a href="<?php echo $breadcrumbs[$i]['href']; ?>">
+                                <?php echo $breadcrumbs[$i]['text']; ?>
+                            </a>
+                        </li>
+                        <?php endif; ?>
+                        <?php else : ?>
+                        <li class="breadcrumb-item active"><?php echo $breadcrumbs[$i]['text']; ?></li>
+                        <?php endif; ?>
+                        <?php endfor; ?>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <?php if ($warning_err) : ?>
+                <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i>
+                    <?php echo $warning_err; ?>
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                </div>
+                <?php endif; ?>
+
+                <div class="clearfix">
+                    <div class="float-right tableTools-container">
+                        <button type="submit" form="form-team" data-toggle="tooltip"
+                                title="<?php echo $button_save; ?>" class="btn btn-primary btn-bold"><i
+                                class="fa fa-save"></i></button>
+                        <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>"
+                           class="btn btn-default btn-bold"><i class="fa fa-reply"></i></a>
+
+                    </div>
+                </div>
+            </div>
+            <!-- right column -->
+            <div class="col-12">
+                <!-- Horizontal Form -->
+                <div class="card card-info card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fa fa-pencil"></i>
+                            <?php echo $text_form; ?>
+                        </h3>
+                    </div>
+
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <div class="card-body">
+                        <form action="<?php echo $action; ?>" method="POST" enctype="multipart/form-data"
+                              id="form-category" class="form-horizontal">
+                            <fieldset>
+                                <div class="form-group row">
+                                    <label for="input-sport-group" class="col-sm-2 col-form-label">
+                                        <?php echo $entry_type; ?></label>
+
+                                    <div class="col-sm-10">
+                                        <select name="sport_group_id" class="form-control" id="input-sport-group">
+                                            <?php foreach($sport_groups as $sport_group) : ?>
+                                            <?php if($sport_group['sport_group_id'] == $sport_group_id) : ?>
+                                            <option value="<?php echo $sport_group['sport_group_id']; ?>" selected="selected">
+                                                <?php echo $sport_group['name']; ?>
+                                            </option>
+                                            <?php else : ?>
+                                            <option value="<?php echo $sport_group['sport_group_id']; ?>">
+                                                <?php echo $sport_group['name']; ?>
+                                            </option>
+                                            <?php endif; ?>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr >
+                                <div class="form-group row">
+                                    <label for="input-member-group" class="col-sm-2 col-form-label">
+                                        <?php echo $entry_member_type; ?></label>
+
+                                    <div class="col-sm-10">
+                                        <select name="member_group_id" class="form-control" id="input-member-group">
+                                            <option value="1" selected="selected">Member</option>
+                                            <option value="0">Member Guest</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr >
+
+                                <div class="form-group row required">
+                                    <label for="input-status" class="col-sm-2 col-form-label"><?php echo $entry_status; ?></label>
+
+                                    <div class="col-sm-10">
+                                        <select name="status" id="input-status" class="form-control">
+                                            <?php if($status) :?>
+                                            <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+                                            <option value="0"><?php echo $text_disabled; ?></option>
+                                            <?php else : ?>
+                                            <option value="1"><?php echo $text_enabled; ?></option>
+                                            <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                                            <?php endif; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr>
+                            </fieldset>
+                            <ul class="nav nav-tabs mb-3">
+                                <li class="nav-item"><a href="#tab-fees" data-toggle="tab"
+                                                        class="nav-link active"><?php echo $tab_fees; ?></a>
+                                </li>
+                                <li class="nav-item"><a href="#tab-coaching" data-toggle="tab"
+                                                        class="nav-link"><?php echo $tab_coaching; ?></a></li>
+
+                                <!--                                <li class="nav-item"><a href="#tab-seo" data-toggle="tab"
+                                                                                        class="nav-link"><?php echo $tab_seo; ?></a></li>-->
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab-fees">
+                                    <div class="tab-content">
+                                        <?php $fee_row = 0; ?>
+
+                                        <div class="tab-pane active" id="">
+                                            <div class="table-responsive">
+                                                <table id="fee" class="table table-striped table-bordered table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <td class="text-left"><?php echo $entry_period; ?></td>
+                                                            <td class="text-left"><?php echo $entry_time; ?></td>
+                                                            <td class="text-left"><?php echo $entry_fees; ?></td>
+                                                            <td class="text-right"><?php echo $entry_sort_order; ?></td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php $fee_row = 0; ?>
+                                                        <?php foreach($sport_fees as $sport_fee) : ?>
+                                                        <tr id="fee-row<?php echo $fee_row; ?>">
+                                                            <!--                                                    <td>
+                                                                                                                    <div class="card image">
+                                                                                                                      <img src="<?php echo $sport_fee['thumb']; ?>" alt="" title="" id="thumb-image<?php echo $fee_row; ?>" data-placeholder="<?php echo $placeholder; ?>" class="card-img-top"/> <input type="hidden" name="sport_fee[<?php echo $fee_row; ?>][image]" value="<?php echo $sport_fee['image']; ?>" id="input-image<?php echo $fee_row; ?>"/>
+                                                                                                                    </div>
+                                                                                                                  </td>-->
+                                                            <td class="text-left">
+                                                                <input type="text" name="sport_fee[<?php echo $fee_row; ?>][period]" value="<?php echo $sport_fee['period']; ?>" placeholder="<?php echo entry_period; ?>" class="form-control">
+                                                            </td>
+                                                            <td class="text-left">
+                                                                <input type="text" name="sport_fee[<?php echo $fee_row; ?>][time]" value="<?php echo $sport_fee['time']; ?>" placeholder="<?php echo entry_time; ?>" class="form-control">
+                                                            </td>
+                                                            <td class="text-left">
+                                                                <input type="text" name="sport_fee[<?php echo $fee_row; ?>][fees]" value="<?php echo $sport_fee['fees']; ?>" placeholder="<?php echo entry_fees; ?>" class="form-control">
+                                                            </td>
+                                                            <td class="text-left">
+                                                                <input type="text" name="sport_fee[<?php echo $fee_row; ?>][sort_order]" value="<?php echo $sport_fee['sort_order']; ?>" placeholder="<?php echo entry_sort_order; ?>" class="form-control">
+                                                            </td>
+                                                            <td class="text-left">
+                                                                <button type="button" onclick="$('#fee-row<?php echo $fee_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                        <?php $fee_row = $fee_row + 1; ?>
+                                                        <?php endforeach; ?>
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <td colspan="4"></td>
+                                                            <td class="text-right">
+                                                                <button type="button" onclick="addFees();" data-toggle="tooltip" title="<?php echo $button_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab-coaching">
+
+                                    <div class="tab-content">
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label"></label>
+                                            <div class="col-sm-10">
+                                                    <label class="form-check">
+                                                         <input type="checkbox" name="isActive" value="1" class="form-check-input">Check 
+                                                    </label>
+                                            </div>
+                                        </div>
+
+                                        <?php $coaching_row = 0; ?>
+
+                                        <div class="tab-pane active" id="">
+                                            <div class="table-responsive">
+                                                <table id="coach" class="table table-striped table-bordered table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <td class="text-left"><?php echo $entry_coaching_type; ?></td>
+                                                            <td class="text-left"><?php echo $entry_coach_name; ?></td>
+                                                            <td class="text-left"><?php echo $entry_days; ?></td>
+                                                            <td class="text-left"><?php echo $entry_time; ?></td>
+                                                            <td class="text-left"><?php echo $entry_fees; ?></td>
+                                                            <td class="text-right"><?php echo $entry_sort_order; ?></td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php $coaching_row = 0; ?>
+                                                        <?php foreach($coachings as $coaching) : ?>
+                                                        <tr id="coaching-row<?php echo $coaching_row; ?>">
+                                                            <td class="text-left">
+                                                                <input type="text" name="coaching[<?php echo $coaching_row; ?>][coaching_type]" value="<?php echo $coaching['coaching_type']; ?>" placeholder="<?php echo entry_coaching_type; ?>" class="form-control">
+                                                            </td>
+                                                            <td class="text-left">
+                                                                <input type="text" name="coaching[<?php echo $coaching_row; ?>][coach_name]" value="<?php echo $coaching['coach_name']; ?>" placeholder="<?php echo entry_coach_name; ?>" class="form-control">
+                                                            </td>
+                                                            <td class="text-left">
+                                                                <input type="text" name="coaching[<?php echo $coaching_row; ?>][days]" value="<?php echo $coaching['days']; ?>" placeholder="<?php echo entry_days; ?>" class="form-control">
+                                                            </td>
+                                                            <td class="text-left">
+                                                                <input type="text" name="coaching[<?php echo $coaching_row; ?>][time]" value="<?php echo $coaching['time']; ?>" placeholder="<?php echo entry_time; ?>" class="form-control">
+                                                            </td>
+                                                            <td class="text-left">
+                                                                <input type="text" name="coaching[<?php echo $coaching_row; ?>][fees]" value="<?php echo $coaching['fees']; ?>" placeholder="<?php echo entry_fees; ?>" class="form-control">
+                                                            </td>
+                                                            <td class="text-left">
+                                                                <input type="text" name="coaching[<?php echo $coaching_row; ?>][sort_order]" value="<?php echo $coaching['sort_order']; ?>" placeholder="<?php echo entry_sort_order; ?>" class="form-control">
+                                                            </td>
+                                                            <td class="text-left">
+                                                                <button type="button" onclick="$('#coaching-row<?php echo $coaching_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                        <?php $coaching_row = $coaching_row + 1; ?>
+                                                        <?php endforeach; ?>
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <td colspan="6"></td>
+                                                            <td class="text-right">
+                                                                <button type="button" onclick="addCoach();" data-toggle="tooltip" title="<?php echo $button_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.card-body -->
+                    <!-- /.card-header -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<?php echo $footer; ?>
+<script type="text/javascript">
+    var fee_row = '<?php echo $fee_row; ?>';
+
+    function addFees() {
+        html = '<tr id="fee-row' + fee_row + '">';
+        html += '<td class="text-left"><input type="text" name="sport_fee[' + fee_row + '][period]" value="" placeholder="<?php echo $entry_period; ?>" class="form-control" /></td>';
+        html += '<td class="text-left"><input type="text" name="sport_fee[' + fee_row + '][time]" value="" placeholder="<?php echo $entry_time; ?>" class="form-control" /></td>';
+        html += '<td class="text-left"><input type="text" name="sport_fee[' + fee_row + '][fees]" value="" placeholder="<?php echo $entry_fees; ?>" class="form-control" /></td>';
+        html += '<td class="text-left"><input type="text" name="sport_fee[' + fee_row + '][sort_order]" value="0" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>';
+        html += '<td class="text-right"><button type="button" onclick="$(\'#fee-row' + fee_row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
+        html += '</tr>';
+
+        $('#fee tbody').append(html);
+
+        fee_row++;
+    }
+</script>
+<script type="text/javascript">
+    var coaching_row = '<?php echo $coaching_row; ?>';
+
+    function addCoach() {
+        html = '<tr id="coaching-row' + coaching_row + '">';
+        html += '<td class="text-left"><input type="text" name="coaching[' + coaching_row + '][coaching_type]" value="" placeholder="<?php echo $entry_coaching_type; ?>" class="form-control" /></td>';
+        html += '<td class="text-left"><input type="text" name="coaching[' + coaching_row + '][coach_name]" value="" placeholder="<?php echo $entry_coach_name; ?>" class="form-control" /></td>';
+        html += '<td class="text-left"><input type="text" name="coaching[' + coaching_row + '][days]" value="" placeholder="<?php echo $entry_days; ?>" class="form-control" /></td>';
+        html += '<td class="text-left"><input type="text" name="coaching[' + coaching_row + '][time]" value="" placeholder="<?php echo $entry_time; ?>" class="form-control" /></td>';
+        html += '<td class="text-left"><input type="text" name="coaching[' + coaching_row + '][fees]" value="" placeholder="<?php echo $entry_fees; ?>" class="form-control" /></td>';
+        html += '<td class="text-left"><input type="text" name="coaching[' + coaching_row + '][sort_order]" value="0" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>';
+        html += '<td class="text-right"><button type="button" onclick="$(\'#coaching-row' + coaching_row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
+        html += '</tr>';
+
+        $('#coach tbody').append(html);
+
+        coaching_row++;
+    }
+</script>
+<script type="text/javascript">
+    $('#language a:first').tab('show');
+</script>

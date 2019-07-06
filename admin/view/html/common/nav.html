@@ -1,0 +1,189 @@
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="<?php echo $home; ?>" class="brand-link">
+        <img src="../image/no-image.png" alt="Popaya™" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Popaya™</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="<?php echo $image; ?>" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a href="<?php echo $profile; ?>" class="d-block"><?php echo $username; ?></a>
+            </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul id="menu" class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                data-accordion="false">
+                <li class="nav-header">
+                    <?php echo strtoupper($text_main_nav); ?>
+                </li>
+                <?php foreach($menus as $menu) : ?>
+                <li id="<?php echo $menu['id']; ?>"
+                    class="nav-item <?php echo ($menu['href']) ? '' : 'has-treeview'; ?>">
+                    <?php if($menu['href']) : ?>
+                    <a href="<?php echo $menu['href']; ?>" class="nav-link">
+                        <i class="nav-icon fa <?php echo $menu['icon']; ?>"></i>
+                        <p>
+                            <?php echo $menu['name']; ?>
+                        </p>
+                    </a>
+                    <?php else : ?>
+                    <a href="<?php echo $menu['href']; ?>" class="nav-link">
+                        <i class="nav-icon fa <?php echo $menu['icon']; ?>"></i>
+                        <p>
+                            <?php echo $menu['name']; ?>
+                            <i class="right fa fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <?php endif; ?>
+                    <?php if($menu['children']) : ?>
+                    <ul class="nav nav-treeview">
+                        <?php foreach($menu['children'] as $child1) : ?>
+                        <li class="nav-item <?php echo ($menu['href']) ? '' : 'has-treeview'; ?>">
+                            <?php if($child1['href']) : ?>
+                            <a href="<?php echo $child1['href']; ?>" class="nav-link">
+                                <i class="nav-icon far fa-circle"></i>
+                                <p><?php echo $child1['name']; ?></p>
+                            </a>
+                            <?php else : ?>
+                            <a href="<?php echo $child1['href']; ?>" class="nav-link">
+                                <i class="nav-icon far fa-circle"></i>
+                                <p>
+                                    <?php echo $child1['name']; ?>
+                                    <i class="right fa fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <?php endif; ?>
+                            <?php if($child1['children']) : ?>
+                            <ul class="nav nav-treeview">
+                                <?php foreach($child1['children'] as $child2) : ?>
+                                <li class="nav-item <?php echo ($menu['href']) ? '' : 'has-treeview'; ?>">
+                                    <?php if($child2['href']) : ?>
+                                    <a href="<?php echo $child2['href']; ?>" class="nav-link">
+                                        <i class="nav-icon far fa-circle"></i>
+                                        <p><?php echo $child2['name']; ?></p>
+                                    </a>
+                                    <?php else : ?>
+                                    <a href="<?php echo $child2['link']; ?>" class="nav-link">
+                                        <i class="nav-icon far fa-circle>"></i>
+                                        <p>
+                                            <?php echo $child2['name']; ?>
+                                            <i class="right fa fa-angle-left"></i>
+                                        </p>
+                                    </a>
+                                    <?php endif; ?>
+                                    <?php if($child2['children']) : ?>
+                                    <ul class="nav nav-treeview">
+                                        <?php foreach($child2['children'] as $child3) : ?>
+                                        <li class="nav-icon">
+                                            <a href="<?php echo $child3['href']; ?>" class="nav-link">
+                                                <i class="nav-icon far fa-circle"></i>
+                                                <p><?php echo $child3['name']; ?></p>
+                                            </a>
+                                        </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                    <?php endif; ?>
+                                </li>
+                                <?php endforeach; ?>
+                            </ul>
+                            <?php endif; ?>
+                        </li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <?php endif; ?>
+                </li>
+                <?php endforeach; ?>
+                <li class="nav-header">
+                    <?php echo strtoupper($text_setting); ?>
+                </li>
+                <?php foreach($settings as $menu) : ?>
+                <li id="<?php echo $menu['id']; ?>"
+                    class="nav-item <?php echo ($menu['href']) ? '' : 'has-treeview'; ?>">
+                    <?php if($menu['href']) : ?>
+                    <a href="<?php echo $menu['href']; ?>" class="nav-link">
+                        <i class="nav-icon fa <?php echo $menu['icon']; ?>"></i>
+                        <p>
+                            <?php echo $menu['name']; ?>
+                        </p>
+                    </a>
+                    <?php else : ?>
+                    <a href="<?php echo $menu['href']; ?>" class="nav-link">
+                        <i class="nav-icon fa <?php echo $menu['icon']; ?>"></i>
+                        <p>
+                            <?php echo $menu['name']; ?>
+                            <i class="right fa fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <?php endif; ?>
+                    <?php if($menu['children']) : ?>
+                    <ul class="nav nav-treeview">
+                        <?php foreach($menu['children'] as $child1) : ?>
+                        <li class="nav-item <?php echo ($menu['href']) ? '' : 'has-treeview'; ?>">
+                            <?php if($child1['href']) : ?>
+                            <a href="<?php echo $child1['href']; ?>" class="nav-link">
+                                <i class="nav-icon far fa-circle"></i>
+                                <p><?php echo $child1['name']; ?></p>
+                            </a>
+                            <?php else : ?>
+                            <a href="<?php echo $child1['href']; ?>" class="nav-link">
+                                <i class="nav-icon far fa-circle"></i>
+                                <p>
+                                    <?php echo $child1['name']; ?>
+                                    <i class="right fa fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <?php endif; ?>
+                            <?php if($child1['children']) : ?>
+                            <ul class="nav nav-treeview">
+                                <?php foreach($child1['children'] as $child2) : ?>
+                                <li class="nav-item <?php echo ($menu['href']) ? '' : 'has-treeview'; ?>">
+                                    <?php if($child2['href']) : ?>
+                                    <a href="<?php echo $child2['href']; ?>" class="nav-link">
+                                        <i class="nav-icon far fa-circle"></i>
+                                        <p><?php echo $child2['name']; ?></p>
+                                    </a>
+                                    <?php else : ?>
+                                    <a href="<?php echo $child2['link']; ?>" class="nav-link">
+                                        <i class="nav-icon far fa-circle"></i>
+                                        <p><?php echo $child2['name']; ?>
+                                            <i class="right fa fa-angle-left"></i>
+                                        </p>
+                                    </a>
+                                    <?php endif; ?>
+                                    <?php if($child2['children']) : ?>
+                                    <ul class="nav nav-treeview">
+                                        <?php foreach($child2['children'] as $child3) : ?>
+                                        <li class="nav-item">
+                                            <a href="<?php echo $child3['href']; ?>" class="nav-link">
+                                                <i class="nav-icon far fa-circle"></i>
+                                                <p><?php echo $child3['name']; ?></p>
+                                            </a>
+                                        </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                    <?php endif; ?>
+                                </li>
+                                <?php endforeach; ?>
+                            </ul>
+                            <?php endif; ?>
+                        </li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <?php endif; ?>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>

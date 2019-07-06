@@ -1,0 +1,19 @@
+<ul class="pagination pagination-sm m-0 float-right">
+  <?php if($prev) : ?>
+  <li class="page-item"><a class="page-link" href="<?php echo $prev; ?>">&laquo;</a></li>
+  <?php else : ?>
+  <li class="page-item disabled"><span class="page-link" tabindex="-1" aria-disabled="true">&laquo;</span></li>
+  <?php endif; ?>
+  <?php foreach($links as $link) : ?>
+  <?php if($link['page'] == $page) : ?>
+  <li class="page-item active"><span class="page-link"><?php echo $link['page']; ?></span></li>
+  <?php else : ?>
+  <li class="page-item"><a class="page-link" href="<?php echo $link['href']; ?>"><?php echo $link['page']; ?></a></li>
+  <?php endif; ?>
+  <?php endforeach; ?>
+  <?php if($next) : ?>
+  <li class="page-item"><a class="page-link" href="<?php echo $next; ?>">&raquo;</a></li>
+  <?php else : ?>
+  <li class="page-item disabled"><span class="page-link" tabindex="-1" aria-disabled="true">&raquo;</span></li>
+  <?php endif; ?>
+</ul>

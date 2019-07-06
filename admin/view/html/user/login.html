@@ -1,0 +1,84 @@
+<?php echo $header; ?>
+
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <?php echo $text_heading; ?>
+        </div>
+        <?php if($success) : ?>
+        <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i>
+            <?php echo $success; ?>
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+        <?php endif; ?>
+
+        <?php if($warning_err) : ?>
+        <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i>
+            <?php echo $warning_err; ?>
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+        <?php endif; ?>
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">
+                    <?php echo $text_login; ?>
+                </p>
+
+                <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
+                    <div class="form-group has-feedback <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
+                        <input type="email" class="form-control" name="email" placeholder="<?php echo $entry_email; ?>"
+                            value="<?php echo $email; ?>">
+                        <!-- <span class="fa fa-envelope form-control-feedback"></span> -->
+                    </div>
+                    <div class="form-group has-feedback <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                        <input type="password" class="form-control" name="password"
+                            placeholder="<?php echo $entry_password; ?>">
+                        <!-- <span class="fa fa-lock form-control-feedback"></span> -->
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="checkbox icheck">
+                                <label>
+                                    <input type="checkbox">
+                                    <?php echo $entry_remember; ?>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">
+                                <?php echo $button_login; ?></button>
+                        </div>
+                        <!-- /.col -->
+                        <?php if($redirect) : ?>
+                        <input type="hidden" name="redirect" value="<?php echo $redirect; ?>">
+                        <?php endif; ?>
+                    </div>
+                </form>
+                <?php if($forgotten) : ?>
+                <p class="mb-1">
+                    <a href="<?php echo $forgotten; ?>">
+                        <?php echo $text_forgotten; ?></a>
+                </p>
+                <?php endif; ?>
+            </div>
+            <!-- /.login-card-body -->
+        </div>
+        <!-- /.login-box -->
+    </div>
+    <!-- /.login-box -->
+    <?php echo $footer; ?>
+    <!-- iCheck -->
+    <link rel="stylesheet" href="<?php echo HTTP_SERVER; ?>/view/dist/plugins/iCheck/square/blue.css">
+    <!-- iCheck -->
+    <script src="<?php echo HTTP_SERVER; ?>/view/dist/plugins/iCheck/icheck.min.js"></script>
+    <script>
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+        });
+    </script>
