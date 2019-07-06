@@ -1,0 +1,396 @@
+html,
+body {
+    display: block;
+    /* overflow: auto; */
+}
+
+body {
+    font-family: 'proxima-nova';
+    font-size: 1rem;
+    background-color: #FFF;
+    color: #777;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Comfortaa', cursive;
+    font-weight: 700;
+}
+
+h1 small,
+h2 small,
+h3 small {
+    font-size: 65%;
+}
+
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small {
+    font-weight: normal;
+    line-height: 1;
+    color: #999;
+}
+
+a,
+a:focus {
+    color: #5D6D7E;
+    /*background-color: #5D6D7E;
+    border-color: #52606f;*/
+    text-decoration: none;
+    -webkit-transition: all 0.2s ease-out 0s;
+    transition: all 0.2s ease-out 0s;
+}
+
+a:hover {
+    color: #475461;
+    /*background-color: #475461;
+    border-color: #1c2126;*/
+    text-decoration: none;
+}
+
+p,
+th,
+td,
+input,
+textarea,
+select,
+option {
+    color: #777;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+ul {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.list-group-item {
+    background: transparent;
+    border: none;
+    border-radius: 0 !important;
+}
+
+.btn {
+    padding: 10px 25px;
+    text-transform: uppercase;
+    font-weight: bold;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    color: #FFF;
+}
+
+.btn:focus {
+    box-shadow: none;
+}
+
+.btn-primary:visited,
+.btn-primary {
+    color: #FFF;
+    background: #5D6D7E;
+    border-color: #52606F;
+}
+
+.btn-primary:not(:disabled):not(:disabled):active,
+.btn-primary:hover {
+    color: #FFF;
+    background: #475461;
+    border-color: #38424C;
+}
+
+.btn-primary:focus {
+    color: #FFF;
+    background: #475461;
+    border-color: #1c2126;
+}
+
+.btn-default:visited,
+.btn-default {
+    color: #777;
+    border: none;
+    background: #ddd;
+}
+
+.btn-default:hover {
+    background: #CCC;
+    color: #777;
+}
+
+.header-top {
+    width: 100%;
+    display: block;
+    padding: 20px 0;
+    /* background-color: #495057; */
+    background-color: #FFF;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+#logo {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul.dropdown-menu.show {
+    min-width: 225px;
+}
+
+.install-menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+}
+
+.install-steps ul {
+    flex-direction: row;
+    justify-content: space-evenly;
+    position: relative;
+}
+
+.install-steps ul li {
+    display: block;
+    position: relative;
+    padding: 0 25px !important;
+    /* font-size: 13px; */
+    z-index: 1;
+}
+
+.install-steps ul li.active {
+    background: transparent;
+    border-color: transparent;
+}
+
+.install-steps ul::after {
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 50%;
+    left: 0%;
+}
+
+.install-steps ul li .steps {
+    text-align: center;
+    width: 120px;
+    height: 120px;
+    border: 1px solid #E6E6E6;
+    padding: 2rem 1rem;
+    background-color: #FFF;
+}
+
+.install-steps ul li .steps i {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.install-steps ul li .steps span {
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.install-steps ul li.active .steps span {
+    font-weight: 700;
+}
+
+.install-steps ul li.active .steps {
+    background-color: #5D6D7E;
+    border: 1px solid #5D6D7E;
+}
+
+.install-steps ul li .steps .step-progress {
+    background: #FFF;
+    border: 1px solid #DBDBDB;
+    padding: 6px 18px;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+form.language {
+    height: 100%;
+    position: relative;
+}
+
+/*form.language ul {
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}*/
+
+form.language ul li {
+    padding: 0;
+}
+
+form.language ul li .btn {
+    background: transparent;
+    padding: 0;
+}
+
+header {
+    padding: 50px;
+}
+
+header h1 {
+    margin: 0 25px 0 0;
+    font-size: 48px;
+}
+
+header h3 {
+    font-size: 24px;
+}
+
+form fieldset {
+    border: 1px solid #DBDBDB;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+form.form-horizontal label {
+    text-align: right;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.form-control:focus {
+    border-color: #495057;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+        0 0 8px rgba(73, 80, 87, 0.6);
+}
+
+select,
+input[type="text"],
+input[type="password"],
+textarea {
+    background: #FFF;
+    border: 1px solid #DBDBDB;
+    color: #000;
+    font-size: 14px;
+    font-family: 'Comfortaa', cursive;
+}
+
+div.required .col-form-label::after {
+    content: ' *';
+    color: #F00;
+    font-weight: 700;
+}
+
+.buttons {
+    border: 1px solid #DBDBDB;
+    padding: 6px;
+    margin-bottom: 20px;
+    overflow: auto;
+}
+
+.language-wrapper {
+    border: 1px solid #DBDBDB;
+    background: #FFF;
+}
+
+.terms {
+    display: block;
+    width: 100%;
+    height: 300px;
+    overflow: auto;
+    margin-bottom: 20px;
+    border: 1px solid #DBDBDB;
+    padding: 20px;
+}
+
+.visit {
+    padding: 50px 0;
+    color: #FFF;
+    background: #495057;
+}
+
+.popaya {
+    padding: 50px;
+}
+
+.support {
+    padding: 0 100px 50px;
+    background: #343a40;
+    color: #FFF;
+}
+
+.visit p {
+    color: #FFF;
+    margin-bottom: 20px;
+}
+
+.btn-secondary {
+    color: #FFF;
+    background: transparent;
+    border: 2px solid #FFF;
+    font-size: 14px;
+}
+
+.support a.icon {
+    margin: 50px auto 0px auto;
+    width: 100px;
+    height: 100px;
+    display: block;
+    border: 3px solid #FFF;
+    border-radius: 50px;
+    color: #FFF;
+}
+
+.support a.icon i {
+    line-height: 95px;
+}
+
+.support h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.support p {
+    color: #FFF;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+}
+
+.support a {
+    color: #5D6D7E;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.support a:hover {
+    color: #475461;
+    text-decoration: underline;
+}
+
+footer {
+    width: 100%;
+    padding: 10px;
+    background-color: #FFF;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 25px 0;
+}
+
+footer small {
+    width: 100%;
+}
+
+footer small a,
+footer small a:focus {
+    text-decoration: underline;
+}
+
+footer small a:hover {
+    text-decoration: none;
+}

@@ -1,0 +1,21 @@
+<?php echo $header; ?>
+<?php echo $nav; ?>
+<div class="container">
+    <header>
+        <div class="row">
+            <div class="col-12">
+                <h1 class="float-left">5<small>/5</small></h1>
+                <h3>
+                    <?php echo $heading_title; ?><br /><small>
+                        <?php echo $text_step_5; ?></small>
+                </h3>
+            </div>
+        </div>
+    </header>
+    <?php if($success) : ?>
+    <div class="alert alert-success alert-dismissible">
+        <?php echo $success; ?>
+    </div>
+    <?php endif; ?>
+</div>
+<?php echo $footer; ?>

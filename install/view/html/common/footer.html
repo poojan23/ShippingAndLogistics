@@ -1,0 +1,50 @@
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <form action="<?php echo $action; ?>" method="POST" enctype="multipart/form-data" id="language" class="language">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="dropdown">
+                                <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                                    <?php echo $text_language; ?> <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <?php foreach($languages as $language) : ?>
+                                    <li class="text-center">
+                                        <a href="<?php echo $language['value']; ?>">
+                                            <img src="language/<?php echo $language['value']; ?>/<?php echo $language['value']; ?>.png"
+                                                alt="" />
+                                            <?php echo $language['text']; ?>
+                                        </a>
+                                    </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <input type="hidden" name="code" value="" />
+                    <input type="hidden" name="redirect" value="<?php echo $redirect; ?>" />
+                </form>
+            </div>
+            <div class="col-sm-6 text-right">
+                <small class="">
+                    <?php echo $text_footer; ?>
+                </small>
+            </div>
+        </div>
+    </div>
+</footer>
+<script type="text/javascript">
+    // Language
+    $('#language a').on('click', function (e) {
+        e.preventDefault();
+
+        $('#language input[name=\'code\']').val($(this).attr('href'));
+
+        $('#language').submit();
+    });
+</script>
+</body>
+
+</html>

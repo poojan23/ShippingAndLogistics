@@ -1,0 +1,208 @@
+<div class="container">
+    <div class="header-top">
+        <div class="row">
+            <div class="col-12 col-sm-12">
+                <div class="logo text-center">
+                    <img src="../image/popaya-logo.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-9">
+            <div class="install-steps">
+                <ul class="list-group">
+                    <?php if(utf8_substr($url, 0, 8) != 'upgrade/') : ?>
+                    <?php if($url == 'install/step_1') : ?>
+                    <li class="list-group-item active">
+                        <div class="steps step-1 rounded-circle">
+                            <b>
+                                <i class="fas fa-file-contract"></i>
+                                <span class="d-block">
+                                    <?php echo $text_license; ?>
+                                </span>
+                            </b>
+                        </div>
+                    </li>
+                    <?php else : ?>
+                    <li class="list-group-item">
+                        <div class="steps step-1 rounded-circle">
+                            <i class="fas fa-file-contract"></i>
+                            <span class="d-block">
+                                <?php echo $text_license; ?>
+                            </span>
+                        </div>
+                    </li>
+                    <?php endif; ?>
+                    <?php if($url == 'install/step_2') : ?>
+                    <li class="list-group-item active">
+                        <div class="steps step-2 rounded-circle">
+                            <b>
+                                <i class="fas fa-tasks"></i>
+                                <span class="d-block">
+                                    <?php echo $text_installation; ?>
+                                </span>
+                            </b>
+                        </div>
+                    </li>
+                    <?php else : ?>
+                    <li class="list-group-item">
+                        <div class="steps step-2 rounded-circle">
+                            <i class="fas fa-tasks"></i>
+                            <span class="d-block">
+                                <?php echo $text_installation; ?>
+                            </span>
+                        </div>
+                    </li>
+                    <?php endif; ?>
+                    <?php if($url == 'install/step_3') : ?>
+                    <li class="list-group-item active">
+                        <div class="steps step-3 rounded-circle">
+                            <b>
+                                <i class="fas fa-lock"></i>
+                                <span class="d-block">
+                                    <?php echo $text_authentication; ?>
+                                </span>
+                            </b>
+                        </div>
+                    </li>
+                    <?php else : ?>
+                    <li class="list-group-item">
+                        <div class="steps step-3 rounded-circle">
+                            <i class="fas fa-lock"></i>
+                            <span class="d-block">
+                                <?php echo $text_authentication; ?>
+                            </span>
+                        </div>
+                    </li>
+                    <?php endif; ?>
+                    <?php if($url == 'install/step_4') : ?>
+                    <li class="list-group-item active">
+                        <div class="steps step-4 rounded-circle">
+                            <b>
+                                <i class="fas fa-cogs"></i>
+                                <span class="d-block">
+                                    <?php echo $text_configuration; ?>
+                                </span>
+                            </b>
+                        </div>
+                    </li>
+                    <?php else : ?>
+                    <li class="list-group-item">
+                        <div class="steps step-4 rounded-circle">
+                            <i class="fas fa-cogs"></i>
+                            <span class="d-block">
+                                <?php echo $text_configuration; ?>
+                            </span>
+                        </div>
+                    </li>
+                    <?php endif; ?>
+                    <?php if($url == 'install/step_5') : ?>
+                    <li class="list-group-item active">
+                        <div class="steps step-4 rounded-circle">
+                            <b>
+                                <i class="fas fa-check-circle"></i>
+                                <span class="d-block">
+                                    <?php echo $text_finished; ?>
+                                </span>
+                            </b>
+                        </div>
+                    </li>
+                    <?php else : ?>
+                    <li class="list-group-item">
+                        <div class="steps step-4 rounded-circle">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="d-block">
+                                <?php echo $text_finished; ?>
+                            </span>
+                        </div>
+                    </li>
+                    <?php endif; ?>
+                    <?php else : ?>
+                    <?php if($url == 'upgrade/upgrade') : ?>
+                    <li class="list-group-item active">
+                        <div class="steps step-4 rounded-circle">
+                            <b>
+                                <i class="fas fa-cogs"></i>
+                                <span class="d-block">
+                                    <?php echo $text_upgrade; ?>
+                                </span>
+                            </b>
+                        </div>
+                    </li>
+                    <?php else : ?>
+                    <li class="list-group-item">
+                        <div class="steps step-4 rounded-circle">
+                            <i class="fas fa-cogs"></i>
+                            <span class="d-block">
+                                <?php echo $text_upgrade; ?>
+                            </span>
+                        </div>
+                    </li>
+                    <?php endif; ?>
+                    <?php if($url == 'upgrage/upgrade/success') : ?>
+                    <li class="list-group-item active">
+                        <div class="steps step-4 rounded-circle">
+                            <b>
+                                <i class="fas fa-cogs"></i>
+                                <span class="d-block">
+                                    <?php echo $text_finished; ?>
+                                </span>
+                            </b>
+                        </div>
+                    </li>
+                    <?php else : ?>
+                    <li class="list-group-item">
+                        <div class="steps step-4 rounded-circle">
+                            <i class="fas fa-cogs"></i>
+                            <span class="d-block">
+                                <?php echo $text_finished; ?>
+                            </span>
+                        </div>
+                    </li>
+                    <?php endif; ?>
+                    <?php endif; ?>
+                </ul>
+            </div>
+        </div>
+        <div class="col-3">
+            <form action="<?php echo $action; ?>" method="POST" enctype="multipart/form-data" id="language" class="language">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="dropdown">
+                            <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                                <?php echo $text_language; ?> <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <?php foreach($languages as $language) : ?>
+                                <li class="text-center">
+                                    <a href="<?php echo $language['value']; ?>">
+                                        <img src="language/<?php echo $language['value']; ?>/<?php echo $language['value']; ?>.png"
+                                            alt="" />
+                                        <?php echo $language['text']; ?>
+                                    </a>
+                                </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <input type="hidden" name="code" value="" />
+                <input type="hidden" name="redirect" value="<?php echo $redirect; ?>" />
+            </form>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    // Language
+    $('#language a').on('click', function (e) {
+        e.preventDefault();
+
+        $('#language input[name=\'code\']').val($(this).attr('href'));
+
+        $('#language').submit();
+    });
+</script>

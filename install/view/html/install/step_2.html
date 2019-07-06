@@ -1,0 +1,413 @@
+<?php echo $header; ?>
+<?php echo $nav; ?>
+<div class="container">
+    <header>
+        <div class="row">
+            <div class="col-12">
+                <h1 class="float-left">2<small>/4</small></h1>
+                <h3>
+                    <?php echo $heading_title; ?><br /><small>
+                        <?php echo $text_step_2; ?></small>
+                </h3>
+            </div>
+        </div>
+    </header>
+
+    <?php if($warning_err) : ?>
+    <div class="alert alert-danger alert-dismissible">
+        <i class="fas fa-exclamation-circle"></i>
+        <?php echo $warning_err; ?>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    <?php endif; ?>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <form action="<?php echo $action; ?>" method="POST" enctype="multipart/form-data">
+                <p>
+                    <?php echo $text_install_php; ?>
+                </p>
+                <fieldset>
+                    <table class="table table-striped">
+                        <thead>
+                            <td width="35%">
+                                <?php echo $text_setting; ?>
+                            </td>
+                            <td width="25%">
+                                <?php echo $text_current; ?>
+                            </td>
+                            <td width="25%">
+                                <?php echo $text_required; ?>
+                            </td>
+                            <td width="15%" class="text-center">
+                                <b>
+                                    <?php echo $text_status; ?>
+                                </b>
+                            </td>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <?php echo $text_version; ?>
+                                </td>
+                                <td>
+                                    <?php echo $php_version; ?>
+                                </td>
+                                <td>7.0+</td>
+                                <td class="text-center">
+                                    <?php if($version) : ?>
+                                    <span class="text-success"><i class="fas fa-check-circle"></i></span>
+                                    <?php else : ?>
+                                    <span class="text-danger"><i class="fas fa-minus-circle"></i></span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <?php echo $text_global; ?>
+                                </td>
+                                <td>
+                                    <?php if($register_globals) : ?>
+                                    <?php echo $text_on; ?>
+                                    <?php else : ?>
+                                    <?php echo $text_off; ?>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php echo $text_off; ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php if(!$register_globals) : ?>
+                                    <span class="text-success"><i class="fas fa-check-circle"></i></span>
+                                    <?php else : ?>
+                                    <span class="text-danger"><i class="fas fa-minus-circle"></i></span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <?php echo $text_magic; ?>
+                                </td>
+                                <td>
+                                    <?php if($magic_quotes_gpc) : ?>
+                                    <?php echo $text_on; ?>
+                                    <?php else : ?>
+                                    <?php echo $text_off; ?>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php echo $text_off; ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php if(!isset($magic_quotes_gpc_err)) : ?>
+                                    <span class="text-success"><i class="fas fa-check-circle"></i></span>
+                                    <?php else : ?>
+                                    <span class="text-danger"><i class="fas fa-minus-circle"></i></span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <?php echo $text_file_upload; ?>
+                                </td>
+                                <td>
+                                    <?php if($file_uploads) : ?>
+                                    <?php echo $text_on; ?>
+                                    <?php else : ?>
+                                    <?php echo $text_off; ?>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php echo $text_on; ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php if($file_uploads) : ?>
+                                    <span class="text-success"><i class="fas fa-check-circle"></i></span>
+                                    <?php else : ?>
+                                    <span class="text-danger"><i class="fas fa-minus-circle"></i></span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <?php echo $text_session; ?>
+                                </td>
+                                <td>
+                                    <?php if($session_auto_start) : ?>
+                                    <?php echo $text_on; ?>
+                                    <?php else : ?>
+                                    <?php echo $text_off; ?>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php echo $text_off; ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php if(!$session_auto_start) : ?>
+                                    <span class="text-success"><i class="fas fa-check-circle"></i></span>
+                                    <?php else : ?>
+                                    <span class="text-danger"><i class="fas fa-minus-circle"></i></span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+                <p>
+                    <?php echo $text_install_extension; ?>
+                </p>
+                <fieldset>
+                    <table class="table table-striped">
+                        <thead>
+                            <td width="35%">
+                                <?php echo $text_extension; ?>
+                            </td>
+                            <td width="25%">
+                                <?php echo $text_current; ?>
+                            </td>
+                            <td width="25%">
+                                <?php echo $text_required; ?>
+                            </td>
+                            <td width="15%" class="text-center">
+                                <b>
+                                    <?php echo $text_status; ?>
+                                </b>
+                            </td>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <?php echo $text_db; ?>
+                                </td>
+                                <td>
+                                    <?php if($db) : ?>
+                                    <?php echo $text_on; ?>
+                                    <?php else : ?>
+                                    <?php echo $text_off; ?>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php echo $text_on; ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php if($db) : ?>
+                                    <span class="text-success"><i class="fas fa-check-circle"></i></span>
+                                    <?php else : ?>
+                                    <span class="text-danger"><i class="fas fa-minus-circle"></i></span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <?php echo $text_gd; ?>
+                                </td>
+                                <td>
+                                    <?php if($gd) : ?>
+                                    <?php echo $text_on; ?>
+                                    <?php else : ?>
+                                    <?php echo $text_off; ?>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php echo $text_on; ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php if($gd) : ?>
+                                    <span class="text-success"><i class="fas fa-check-circle"></i></span>
+                                    <?php else : ?>
+                                    <span class="text-danger"><i class="fas fa-minus-circle"></i></span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <?php echo $text_curl; ?>
+                                </td>
+                                <td>
+                                    <?php if($curl) : ?>
+                                    <?php echo $text_on; ?>
+                                    <?php else : ?>
+                                    <?php echo $text_off; ?>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php echo $text_on; ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php if($curl) : ?>
+                                    <span class="text-success"><i class="fas fa-check-circle"></i></span>
+                                    <?php else : ?>
+                                    <span class="text-danger"><i class="fas fa-minus-circle"></i></span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <?php echo $text_openssl; ?>
+                                </td>
+                                <td>
+                                    <?php if($openssl) : ?>
+                                    <?php echo $text_on; ?>
+                                    <?php else : ?>
+                                    <?php echo $text_off; ?>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php echo $text_on; ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php if($openssl) : ?>
+                                    <span class="text-success"><i class="fas fa-check-circle"></i></span>
+                                    <?php else : ?>
+                                    <span class="text-danger"><i class="fas fa-minus-circle"></i></span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <?php echo $text_zlib; ?>
+                                </td>
+                                <td>
+                                    <?php if($zlib) : ?>
+                                    <?php echo $text_on; ?>
+                                    <?php else : ?>
+                                    <?php echo $text_off; ?>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php echo $text_on; ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php if($zlib) : ?>
+                                    <span class="text-success"><i class="fas fa-check-circle"></i></span>
+                                    <?php else : ?>
+                                    <span class="text-danger"><i class="fas fa-minus-circle"></i></span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <?php echo $text_zip; ?>
+                                </td>
+                                <td>
+                                    <?php if($zip) : ?>
+                                    <?php echo $text_on; ?>
+                                    <?php else : ?>
+                                    <?php echo $text_off; ?>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php echo $text_on; ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php if($zip) : ?>
+                                    <span class="text-success"><i class="fas fa-check-circle"></i></span>
+                                    <?php else : ?>
+                                    <span class="text-danger"><i class="fas fa-minus-circle"></i></span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                            <?php if(!$iconv) : ?>
+                            <tr>
+                                <td>
+                                    <?php echo $text_mbstring; ?>
+                                </td>
+                                <td>
+                                    <?php if($mbstring) : ?>
+                                    <?php echo $text_on; ?>
+                                    <?php else : ?>
+                                    <?php echo $text_off; ?>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php echo $text_on; ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php if($mbstring) : ?>
+                                    <span class="text-success"><i class="fas fa-check-circle"></i></span>
+                                    <?php else : ?>
+                                    <span class="text-danger"><i class="fas fa-minus-circle"></i></span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                </fieldset>
+                <p>
+                    <?php echo $text_install_file; ?>
+                </p>
+                <fieldset>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <td>
+                                    <b>
+                                        <?php echo $text_file; ?></b>
+                                </td>
+                                <td>
+                                    <b>
+                                        <?php echo $text_status; ?></b>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <?php echo $template_config; ?>
+                                </td>
+                                <td>
+                                    <?php if(!$template_config_err) : ?>
+                                    <span class="text-success">
+                                        <?php echo $text_writable; ?></span>
+                                    <?php else : ?>
+                                    <span class="text-danger">
+                                        <?php echo $template_config_err; ?></span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <?php echo $admin_config; ?>
+                                </td>
+                                <td>
+                                    <?php if(!$admin_config_err) : ?>
+                                    <span class="text-success">
+                                        <?php echo $text_writable; ?></span>
+                                    <?php else : ?>
+                                    <span class="text-danger">
+                                        <?php echo $admin_config_err; ?></span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <?php echo $sadmin_config; ?>
+                                </td>
+                                <td>
+                                    <?php if(!$sadmin_config_err) : ?>
+                                    <span class="text-success">
+                                        <?php echo $text_writable; ?></span>
+                                    <?php else : ?>
+                                    <span class="text-danger">
+                                        <?php echo $sadmin_config_err; ?></span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+                <div class="buttons">
+                    <div class="float-left">
+                        <a href="<?php echo $back; ?>" class="btn btn-default btn-sm">
+                            <?php echo $button_back; ?></a>
+                    </div>
+                    <div class="float-right">
+                        <input type="submit" value="<?php echo $button_continue; ?>" class="btn btn-primary btn-sm" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<?php echo $footer; ?>

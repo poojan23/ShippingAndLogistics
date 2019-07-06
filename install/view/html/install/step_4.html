@@ -1,0 +1,200 @@
+<?php echo $header; ?>
+<?php echo $nav; ?>
+<div class="container">
+    <header>
+        <div class="row">
+            <div class="col-12">
+                <h1 class="float-left">4<small>/5</small></h1>
+                <h3>
+                    <?php echo $heading_title; ?><br /><small>
+                        <?php echo $text_step_4; ?></small>
+                </h3>
+            </div>
+        </div>
+    </header>
+
+    <?php if($warning_err) : ?>
+    <div class="alert alert-danger alert-dismissible">
+        <i class="fas fa-exclamation-circle"></i>
+        <?php echo $warning_err; ?>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    <?php endif; ?>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <form action="<?php echo $action; ?>" method="POST" enctype="multipart/form-data" class="form-horizontal">
+                <p>
+                    <?php echo $text_db_connection; ?>
+                </p>
+                <fieldset>
+                    <div class="form-group form-row">
+                        <label for="input-db-driver" class="col-sm-2 col-form-label">
+                            <?php echo $entry_db_driver; ?></label>
+
+                        <div class="col-sm-10">
+                            <select name="db_driver" id="input-db-driver" class="form-control">
+                                <?php foreach($drivers as $driver) : ?>
+                                <?php if($db_driver == $driver['value']) : ?>
+                                <option value="<?php echo $driver['value']; ?>" selected="selected">
+                                    <?php echo $driver['text']; ?>
+                                </option>
+                                <?php else : ?>
+                                <option value="<?php echo $driver['value']; ?>">
+                                    <?php echo $driver['text']; ?>
+                                </option>
+                                <?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group form-row required">
+                        <label for="input-db-hostname" class="col-sm-2 col-form-label">
+                            <?php echo $entry_db_hostname; ?></label>
+
+                        <div class="col-sm-10">
+                            <input type="text" name="db_hostname" placeholder="<?php echo $entry_db_hostname; ?>" value="<?php echo $db_hostname; ?>"
+                                id="input-db-hostname" class="form-control">
+                            <?php if($db_hostname_err) : ?>
+                            <div class="text-danger">
+                                <?php echo $db_hostname_err; ?>
+                            </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="form-group form-row required">
+                        <label for="input-db-username" class="col-sm-2 col-form-label">
+                            <?php echo $entry_db_username; ?></label>
+
+                        <div class="col-sm-10">
+                            <input type="text" name="db_username" placeholder="<?php echo $entry_db_username; ?>" value="<?php echo $db_username; ?>"
+                                id="input-db-username" class="form-control">
+                            <?php if($db_username_err) : ?>
+                            <div class="text-danger">
+                                <?php echo $db_username_err; ?>
+                            </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <label for="input-db-password" class="col-sm-2 col-form-label">
+                            <?php echo $entry_db_password; ?></label>
+
+                        <div class="col-sm-10">
+                            <input type="text" name="db_password" placeholder="<?php echo $entry_db_password; ?>" value="<?php echo $db_password; ?>"
+                                id="input-db-password" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group form-row required">
+                        <label for="input-db-database" class="col-sm-2 col-form-label">
+                            <?php echo $entry_db_database; ?></label>
+
+                        <div class="col-sm-10">
+                            <input type="text" name="db_database" placeholder="<?php echo $entry_db_database; ?>" value="<?php echo $db_database; ?>"
+                                id="input-db-database" class="form-control">
+                            <?php if($db_database_err) : ?>
+                            <div class="text-danger">
+                                <?php echo $db_database_err; ?>
+                            </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="form-group form-row required">
+                        <label for="input-db-port" class="col-sm-2 col-form-label">
+                            <?php echo $entry_db_port; ?></label>
+
+                        <div class="col-sm-10">
+                            <input type="text" name="db_port" placeholder="<?php echo $entry_db_port; ?>" value="<?php echo $db_port; ?>"
+                                id="input-db-port" class="form-control">
+                            <?php if($db_port_err) : ?>
+                            <div class="text-danger">
+                                <?php echo $db_port_err; ?>
+                            </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <label for="input-db-prefix" class="col-sm-2 col-form-label">
+                            <?php echo $entry_db_prefix; ?></label>
+
+                        <div class="col-sm-10">
+                            <input type="text" name="db_prefix" placeholder="<?php echo $entry_db_prefix; ?>" value="<?php echo $db_prefix; ?>"
+                                id="input-db-prefix" class="form-control">
+                        </div>
+                    </div>
+                </fieldset>
+                <p>
+                    <?php echo $text_db_administration; ?>
+                </p>
+                <fieldset>
+                    <div class="form-group form-row required">
+                        <label for="input-firstname" class="col-sm-2 col-form-label">
+                            <?php echo $entry_firstname; ?></label>
+
+                        <div class="col-sm-10">
+                            <input type="text" name="firstname" placeholder="<?php echo $entry_firstname; ?>" value="<?php echo $firstname; ?>"
+                                id="input-firstname" class="form-control">
+                            <?php if($firstname_err) : ?>
+                            <div class="text-danger">
+                                <?php echo $firstname_err; ?>
+                            </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="form-group form-row required">
+                        <label for="input-lastname" class="col-sm-2 col-form-label">
+                            <?php echo $entry_lastname; ?></label>
+
+                        <div class="col-sm-10">
+                            <input type="text" name="lastname" placeholder="<?php echo $entry_lastname; ?>" value="<?php echo $lastname; ?>"
+                                id="input-lastname" class="form-control">
+                            <?php if($lastname_err) : ?>
+                            <div class="text-danger">
+                                <?php echo $lastname_err; ?>
+                            </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="form-group form-row required">
+                        <label for="input-email" class="col-sm-2 col-form-label">
+                            <?php echo $entry_email; ?></label>
+
+                        <div class="col-sm-10">
+                            <input type="text" name="email" placeholder="<?php echo $entry_email; ?>" value="<?php echo $email; ?>"
+                                id="input-email" class="form-control">
+                            <?php if($email_err) : ?>
+                            <div class="text-danger">
+                                <?php echo $email_err; ?>
+                            </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="form-group form-row required">
+                        <label for="input-password" class="col-sm-2 col-form-label">
+                            <?php echo $entry_password; ?></label>
+
+                        <div class="col-sm-10">
+                            <input type="text" name="password" placeholder="<?php echo $entry_password; ?>" value="<?php echo $password; ?>"
+                                id="input-password" class="form-control">
+                            <?php if($password_err) : ?>
+                            <div class="text-danger">
+                                <?php echo $password_err; ?>
+                            </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="buttons">
+                    <div class="float-left">
+                        <a href="<?php echo $back; ?>" class="btn btn-default btn-sm">
+                            <?php echo $button_back; ?></a>
+                    </div>
+                    <div class="float-right">
+                        <input type="submit" value="<?php echo $button_continue; ?>" class="btn btn-primary btn-sm" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<?php echo $footer; ?>

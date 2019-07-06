@@ -1,0 +1,31 @@
+<?php echo $header; ?>
+<?php echo $nav; ?>
+<div class="container">
+    <header>
+        <div class="row">
+            <div class="col-12">
+                <h1 class="float-left">1<small>/4</small></h1>
+                <h3>
+                    <?php echo $heading_title; ?><br /><small>
+                        <?php echo $text_step_1; ?></small>
+                </h3>
+            </div>
+        </div>
+    </header>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="terms">
+                <?php echo $text_terms; ?>
+            </div>
+            <form action="<?php echo $action; ?>" method="POST" enctype="multipart/form-data">
+                <div class="buttons">
+                    <div class="float-right">
+                        <input type="submit" value="<?php echo $button_continue; ?>" class="btn btn-primary btn-sm" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<?php echo $footer; ?>

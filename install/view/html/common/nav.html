@@ -1,0 +1,101 @@
+<div class="header-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-9">
+                <div class="install-steps">
+                    <ul class="list-group">
+                        <?php if($url == 'launch/step_1') : ?>
+                        <li class="list-group-item active">
+                            <div class="steps step-1 rounded-circle">
+                                <b>
+                                    <i class="far fa-handshake"></i>
+                                    <span class="d-block">
+                                        <?php echo $text_welcome; ?>
+                                    </span>
+                                </b>
+                            </div>
+                        </li>
+                        <?php else : ?>
+                        <li class="list-group-item">
+                            <div class="steps step-1 rounded-circle">
+                                <i class="far fa-handshake"></i>
+                                <span class="d-block">
+                                    <?php echo $text_welcome; ?>
+                                </span>
+                            </div>
+                        </li>
+                        <?php endif; ?>
+                        <?php if($url == 'launch/step_2') : ?>
+                        <li class="list-group-item active">
+                            <div class="steps step-2 rounded-circle">
+                                <b>
+                                    <i class="fas fa-lock"></i>
+                                    <span class="d-block">
+                                        <?php echo $text_authentication; ?>
+                                    </span>
+                                </b>
+                            </div>
+                        </li>
+                        <?php else : ?>
+                        <li class="list-group-item">
+                            <div class="steps step-2 rounded-circle">
+                                <i class="fas fa-lock"></i>
+                                <span class="d-block">
+                                    <?php echo $text_authentication; ?>
+                                </span>
+                            </div>
+                        </li>
+                        <?php endif; ?>
+                        <?php if($url == 'launch/step_3') : ?>
+                        <li class="list-group-item active">
+                            <div class="steps step-3 rounded-circle">
+                                <b>
+                                    <i class="fas fa-user"></i>
+                                    <span class="d-block">
+                                        <?php echo $text_profile; ?>
+                                    </span>
+                                </b>
+                            </div>
+                        </li>
+                        <?php else : ?>
+                        <li class="list-group-item">
+                            <div class="steps step-3 rounded-circle">
+                                <i class="fas fa-user"></i>
+                                <span class="d-block">
+                                    <?php echo $text_profile; ?>
+                                </span>
+                            </div>
+                        </li>
+                        <?php endif; ?>
+                        <?php if($url == 'launch/step_4') : ?>
+                        <li class="list-group-item active">
+                            <div class="steps step-4 rounded-circle">
+                                <b>
+                                    <i class="fas fa-check-circle"></i>
+                                    <span class="d-block">
+                                        <?php echo $text_success; ?>
+                                    </span>
+                                </b>
+                            </div>
+                        </li>
+                        <?php else : ?>
+                        <li class="list-group-item">
+                            <div class="steps step-4 rounded-circle">
+                                <i class="fas fa-check-circle"></i>
+                                <span class="d-block">
+                                    <?php echo $text_success; ?>
+                                </span>
+                            </div>
+                        </li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-3">
+                <div id="logo">
+                    <img src="../image/popaya-logo.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
