@@ -1,14 +1,14 @@
 <?php
 # HTTP
-define('HTTP_SERVER', 'http://localhost/jolly/');
+define('HTTP_SERVER', 'http://localhost/ShippingAndLogistics/');
 
 # HTTPS
-define('HTTPS_SERVER', 'http://localhost/jolly/');
+define('HTTPS_SERVER', 'http://localhost/ShippingAndLogistics/');
 
 # DIR
-define('DIR_APPLICATION', 'C:/ATDI/LMS/htdocs/jolly/template/');
-define('DIR_SYSTEM', 'C:/ATDI/LMS/htdocs/jolly/system/');
-define('DIR_IMAGE', 'C:/ATDI/LMS/htdocs/jolly/image/');
+define('DIR_APPLICATION', 'C:/ATDI/LMS/htdocs/ShippingAndLogistics/template/');
+define('DIR_SYSTEM', 'C:/ATDI/LMS/htdocs/ShippingAndLogistics/system/');
+define('DIR_IMAGE', 'C:/ATDI/LMS/htdocs/ShippingAndLogistics/image/');
 define('DIR_STORAGE', DIR_SYSTEM . 'storage/');
 define('DIR_LANGUAGE', DIR_APPLICATION . 'language/');
 define('DIR_TEMPLATE', DIR_APPLICATION . 'view/html/');
@@ -25,6 +25,6 @@ define('DB_DRIVER', 'pdo');
 define('DB_HOSTNAME', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', 'root');
-define('DB_DATABASE', 'jolly');
+define('DB_DATABASE', 'logistics');
 define('DB_PORT', '3306');
 define('DB_PREFIX', 'pt_');
