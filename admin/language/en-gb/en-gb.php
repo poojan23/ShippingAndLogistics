@@ -163,6 +163,7 @@ $_['tab_coaching']                  = 'Coaching';
 $_['tab_tax']                       = 'Tax';
 $_['tab_info']                      = 'Info';
 $_['tab_time']                      = 'Timining';
+$_['tab_area']                      = 'Area';
 
 /* When doing translations only include the matching language code */
 

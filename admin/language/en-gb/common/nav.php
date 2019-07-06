@@ -77,4 +77,5 @@ $_['text_venue_group']          = 'Venue Group';
 $_['text_activity']             = 'Activity';
 $_['text_activity_group']       = 'Activity Group';
 $_['text_store']                = 'Store';
+$_['text_area']                 = 'Area';
 

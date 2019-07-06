@@ -46,10 +46,10 @@ class ControllerCommonNav extends PT_Controller
                 );
             }
             
-            if ($this->user->hasPermission('access', 'catalog/notice')) {
+            if ($this->user->hasPermission('access', 'catalog/area')) {
                 $catalog[] = array(
-                    'name'      => $this->language->get('text_notice'),
-                    'href'      => $this->url->link('catalog/notice', 'user_token=' . $this->session->data['user_token']),
+                    'name'      => $this->language->get('text_area'),
+                    'href'      => $this->url->link('catalog/area', 'user_token=' . $this->session->data['user_token']),
                     'children'  => array()
                 );
             }
@@ -65,148 +65,148 @@ class ControllerCommonNav extends PT_Controller
             }
 
             # Activity
-            $activity = array();
+            $customer = array();
             
-            if ($this->user->hasPermission('access', 'activity/activity')) {
-                $activity[] = array(
-                    'name'      => $this->language->get('text_activity'),
-                    'href'      => $this->url->link('activity/activity', 'user_token=' . $this->session->data['user_token']),
+            if ($this->user->hasPermission('access', 'customer/customer')) {
+                $customer[] = array(
+                    'name'      => $this->language->get('text_customer'),
+                    'href'      => $this->url->link('customer/customer', 'user_token=' . $this->session->data['user_token']),
                     'children'  => array()
                 );
             }
             
-            if ($this->user->hasPermission('access', 'activity/activity_group')) {
-                $activity[] = array(
-                    'name'      => $this->language->get('text_activity_group'),
-                    'href'      => $this->url->link('activity/activity_group', 'user_token=' . $this->session->data['user_token']),
-                    'children'  => array()
-                );
-            }
-   
-            if ($activity) {
-                $data['menus'][] = array(
-                    'id'        => 'menu-design',
-                    'icon'      => 'fa-desktop',
-                    'name'      => $this->language->get('text_activity'),
-                    'href'      => '',
-                    'children'  => $activity
-                );
-            }
-            
-            # Event
-            $event = array();
-            
-            if ($this->user->hasPermission('access', 'catalog/event')) {
-                $event[] = array(
-                    'name'      => $this->language->get('text_event'),
-                    'href'      => $this->url->link('catalog/event', 'user_token=' . $this->session->data['user_token']),
-                    'children'  => array()
-                );
-            }
-            if ($this->user->hasPermission('access', 'catalog/event_group')) {
-                $event[] = array(
-                    'name'      => $this->language->get('text_event_group'),
-                    'href'      => $this->url->link('catalog/event_group', 'user_token=' . $this->session->data['user_token']),
+            if ($this->user->hasPermission('access', 'customer/customer_group')) {
+                $customer[] = array(
+                    'name'      => $this->language->get('text_customer_group'),
+                    'href'      => $this->url->link('customer/customer_group', 'user_token=' . $this->session->data['user_token']),
                     'children'  => array()
                 );
             }
    
-            if ($event) {
+            if ($customer) {
                 $data['menus'][] = array(
                     'id'        => 'menu-design',
                     'icon'      => 'fa-desktop',
-                    'name'      => $this->language->get('text_event'),
+                    'name'      => $this->language->get('text_customer'),
                     'href'      => '',
-                    'children'  => $event
+                    'children'  => $customer
                 );
             }
             
-            # Gallery
-            $gallery = array();
-            
-            if ($this->user->hasPermission('access', 'gallery/gallery')) {
-                $gallery[] = array(
-                    'name'      => $this->language->get('text_gallery'),
-                    'href'      => $this->url->link('gallery/gallery', 'user_token=' . $this->session->data['user_token']),
-                    'children'  => array()
-                );
-            }
-            
-            if ($this->user->hasPermission('access', 'gallery/gallery_group')) {
-                $gallery[] = array(
-                    'name'      => $this->language->get('text_gallery_group'),
-                    'href'      => $this->url->link('gallery/gallery_group', 'user_token=' . $this->session->data['user_token']),
-                    'children'  => array()
-                );
-            }
-            
-             if ($gallery) {
-                $data['menus'][] = array(
-                    'id'        => 'menu-design',
-                    'icon'      => 'fa-desktop',
-                    'name'      => $this->language->get('text_gallery'),
-                    'href'      => '',
-                    'children'  => $gallery
-                );
-            }
-            
-            # Sport
-            $sport = array();
-            
-            if ($this->user->hasPermission('access', 'sport/sport')) {
-                $sport[] = array(
-                    'name'      => $this->language->get('text_sport'),
-                    'href'      => $this->url->link('sport/sport', 'user_token=' . $this->session->data['user_token']),
-                    'children'  => array()
-                );
-            }
-            
-            if ($this->user->hasPermission('access', 'sport/sport_group')) {
-                $sport[] = array(
-                    'name'      => $this->language->get('text_sport_group'),
-                    'href'      => $this->url->link('sport/sport_group', 'user_token=' . $this->session->data['user_token']),
-                    'children'  => array()
-                );
-            }
-   
-            if ($sport) {
-                $data['menus'][] = array(
-                    'id'        => 'menu-design',
-                    'icon'      => 'fa-desktop',
-                    'name'      => $this->language->get('text_sport'),
-                    'href'      => '',
-                    'children'  => $sport
-                );
-            }
-
-            # Venue
-            $venue = array();
-            
-            if ($this->user->hasPermission('access', 'venue/venue')) {
-                $venue[] = array(
-                    'name'      => $this->language->get('text_venue'),
-                    'href'      => $this->url->link('venue/venue', 'user_token=' . $this->session->data['user_token']),
-                    'children'  => array()
-                );
-            }
-            
-            if ($this->user->hasPermission('access', 'venue/venue_group')) {
-                $venue[] = array(
-                    'name'      => $this->language->get('text_venue_group'),
-                    'href'      => $this->url->link('venue/venue_group', 'user_token=' . $this->session->data['user_token']),
-                    'children'  => array()
-                );
-            }
-   
-            if ($venue) {
-                $data['menus'][] = array(
-                    'id'        => 'menu-design',
-                    'icon'      => 'fa-desktop',
-                    'name'      => $this->language->get('text_venue'),
-                    'href'      => '',
-                    'children'  => $venue
-                );
-            }
+//            # Event
+//            $event = array();
+//            
+//            if ($this->user->hasPermission('access', 'catalog/event')) {
+//                $event[] = array(
+//                    'name'      => $this->language->get('text_event'),
+//                    'href'      => $this->url->link('catalog/event', 'user_token=' . $this->session->data['user_token']),
+//                    'children'  => array()
+//                );
+//            }
+//            if ($this->user->hasPermission('access', 'catalog/event_group')) {
+//                $event[] = array(
+//                    'name'      => $this->language->get('text_event_group'),
+//                    'href'      => $this->url->link('catalog/event_group', 'user_token=' . $this->session->data['user_token']),
+//                    'children'  => array()
+//                );
+//            }
+//   
+//            if ($event) {
+//                $data['menus'][] = array(
+//                    'id'        => 'menu-design',
+//                    'icon'      => 'fa-desktop',
+//                    'name'      => $this->language->get('text_event'),
+//                    'href'      => '',
+//                    'children'  => $event
+//                );
+//            }
+//            
+//            # Gallery
+//            $gallery = array();
+//            
+//            if ($this->user->hasPermission('access', 'gallery/gallery')) {
+//                $gallery[] = array(
+//                    'name'      => $this->language->get('text_gallery'),
+//                    'href'      => $this->url->link('gallery/gallery', 'user_token=' . $this->session->data['user_token']),
+//                    'children'  => array()
+//                );
+//            }
+//            
+//            if ($this->user->hasPermission('access', 'gallery/gallery_group')) {
+//                $gallery[] = array(
+//                    'name'      => $this->language->get('text_gallery_group'),
+//                    'href'      => $this->url->link('gallery/gallery_group', 'user_token=' . $this->session->data['user_token']),
+//                    'children'  => array()
+//                );
+//            }
+//            
+//             if ($gallery) {
+//                $data['menus'][] = array(
+//                    'id'        => 'menu-design',
+//                    'icon'      => 'fa-desktop',
+//                    'name'      => $this->language->get('text_gallery'),
+//                    'href'      => '',
+//                    'children'  => $gallery
+//                );
+//            }
+//            
+//            # Sport
+//            $sport = array();
+//            
+//            if ($this->user->hasPermission('access', 'sport/sport')) {
+//                $sport[] = array(
+//                    'name'      => $this->language->get('text_sport'),
+//                    'href'      => $this->url->link('sport/sport', 'user_token=' . $this->session->data['user_token']),
+//                    'children'  => array()
+//                );
+//            }
+//            
+//            if ($this->user->hasPermission('access', 'sport/sport_group')) {
+//                $sport[] = array(
+//                    'name'      => $this->language->get('text_sport_group'),
+//                    'href'      => $this->url->link('sport/sport_group', 'user_token=' . $this->session->data['user_token']),
+//                    'children'  => array()
+//                );
+//            }
+//   
+//            if ($sport) {
+//                $data['menus'][] = array(
+//                    'id'        => 'menu-design',
+//                    'icon'      => 'fa-desktop',
+//                    'name'      => $this->language->get('text_sport'),
+//                    'href'      => '',
+//                    'children'  => $sport
+//                );
+//            }
+//
+//            # Venue
+//            $venue = array();
+//            
+//            if ($this->user->hasPermission('access', 'venue/venue')) {
+//                $venue[] = array(
+//                    'name'      => $this->language->get('text_venue'),
+//                    'href'      => $this->url->link('venue/venue', 'user_token=' . $this->session->data['user_token']),
+//                    'children'  => array()
+//                );
+//            }
+//            
+//            if ($this->user->hasPermission('access', 'venue/venue_group')) {
+//                $venue[] = array(
+//                    'name'      => $this->language->get('text_venue_group'),
+//                    'href'      => $this->url->link('venue/venue_group', 'user_token=' . $this->session->data['user_token']),
+//                    'children'  => array()
+//                );
+//            }
+//   
+//            if ($venue) {
+//                $data['menus'][] = array(
+//                    'id'        => 'menu-design',
+//                    'icon'      => 'fa-desktop',
+//                    'name'      => $this->language->get('text_venue'),
+//                    'href'      => '',
+//                    'children'  => $venue
+//                );
+//            }
             
             # Design
             $design = array();

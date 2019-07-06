@@ -1,71 +1,71 @@
 <?php
 
-class ControllerCatalogEventGroup extends PT_Controller {
+class ControllerCustomerCustomerGroup extends PT_Controller {
 
     private $error = array();
 
     public function index() {
-        $this->load->language('catalog/event_group');
+        $this->load->language('customer/customer_group');
 
         $this->document->setTitle($this->language->get('heading_title'));
 
-        $this->load->model('catalog/event_group');
+        $this->load->model('customer/customer_group');
 
         $this->getList();
     }
 
     public function add() {
-        $this->load->language('catalog/event_group');
+        $this->load->language('customer/customer_group');
 
         $this->document->setTitle($this->language->get('heading_title'));
 
-        $this->load->model('catalog/event_group');
+        $this->load->model('customer/customer_group');
 
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-            $this->model_catalog_event_group->addEventGroup($this->request->post);
+//            print_r($this->request->post);exit;
+            $this->model_customer_customer_group->addCustomerGroup($this->request->post);
 
             $this->session->data['success'] = $this->language->get('text_success');
 
-            $this->response->redirect($this->url->link('catalog/event_group', 'user_token=' . $this->session->data['user_token']));
+            $this->response->redirect($this->url->link('customer/customer_group', 'user_token=' . $this->session->data['user_token']));
         }
 
         $this->getForm();
     }
 
     public function edit() {
-        $this->load->language('catalog/event_group');
+        $this->load->language('customer/customer_group');
 
         $this->document->setTitle($this->language->get('heading_title'));
 
-        $this->load->model('catalog/event_group');
+        $this->load->model('customer/customer_group');
 
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-            
-            $this->model_catalog_event_group->editEventGroup($this->request->get['event_group_id'], $this->request->post);
+            $this->model_customer_customer_group->editCustomerGroup($this->request->get['customer_group_id'], $this->request->post);
 
             $this->session->data['success'] = $this->language->get('text_success');
 
-            $this->response->redirect($this->url->link('catalog/event_group', 'user_token=' . $this->session->data['user_token']));
+            $this->response->redirect($this->url->link('customer/customer_group', 'user_token=' . $this->session->data['user_token']));
         }
 
         $this->getForm();
     }
 
     public function delete() {
-        $this->load->language('catalog/event_group');
+        $this->load->language('customer/customer_group');
 
         $this->document->setTitle($this->language->get('heading_title'));
 
-        $this->load->model('catalog/event_group');
+        $this->load->model('customer/customer_group');
        
         if (isset($this->request->post['selected'])) {
-            foreach ($this->request->post['selected'] as $event_group_id) {
-                $this->model_catalog_event_group->deleteEventGroup($event_group_id);
+            foreach ($this->request->post['selected'] as $customer_group_id) {
+                $this->model_customer_customer_group->deleteCustomerGroup($customer_group_id);
             }
 
             $this->session->data['success'] = $this->language->get('text_success');
 
-            $this->response->redirect($this->url->link('catalog/event_group', 'user_token=' . $this->session->data['user_token']));
+            $this->response->redirect($this->url->link('customer/customer_group', 'user_token=' . $this->session->data['user_token']));
         }
 
         $this->getList();
@@ -100,23 +100,24 @@ class ControllerCatalogEventGroup extends PT_Controller {
 
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('heading_title'),
-            'href' => $this->url->link('catalog/event_group', 'user_token=' . $this->session->data['user_token'])
+            'href' => $this->url->link('customer/customer_group', 'user_token=' . $this->session->data['user_token'])
         );
 
-        $data['add'] = $this->url->link('catalog/event_group/add', 'user_token=' . $this->session->data['user_token']);
-        $data['delete'] = $this->url->link('catalog/event_group/delete', 'user_token=' . $this->session->data['user_token']);
+        $data['add'] = $this->url->link('customer/customer_group/add', 'user_token=' . $this->session->data['user_token']);
+        $data['delete'] = $this->url->link('customer/customer_group/delete', 'user_token=' . $this->session->data['user_token']);
 
-        $data['event_groups'] = array();
+        $data['customer_groups'] = array();
 
-        $results = $this->model_catalog_event_group->getEventGroups();
+        $results = $this->model_customer_customer_group->getCustomerGroups();
 
         foreach ($results as $result) {
-            $data['event_groups'][] = array(
-                'event_group_id' => $result['event_group_id'],
-                'name' => $result['name'],
+            $data['customer_groups'][] = array(
+                'customer_group_id' => $result['customer_group_id'],
+                'customer_name' => $result['name'],
+                'short_form' => $result['short_form'],
                 'sort_order' => $result['sort_order'],
-                'edit' => $this->url->link('catalog/event_group/edit', 'user_token=' . $this->session->data['user_token'] . '&event_group_id=' . $result['event_group_id']),
-                'delete' => $this->url->link('catalog/event_group/delete', 'user_token=' . $this->session->data['user_token'] . '&event_group_id=' . $result['event_group_id'])
+                'edit' => $this->url->link('customer/customer_group/edit', 'user_token=' . $this->session->data['user_token'] . '&customer_group_id=' . $result['customer_group_id']),
+                'delete' => $this->url->link('customer/customer_group/delete', 'user_token=' . $this->session->data['user_token'] . '&customer_group_id=' . $result['customer_group_id'])
             );
         }
 
@@ -144,7 +145,7 @@ class ControllerCatalogEventGroup extends PT_Controller {
         $data['nav'] = $this->load->controller('common/nav');
         $data['footer'] = $this->load->controller('common/footer');
 
-        $this->response->setOutput($this->load->view('catalog/event_group_list', $data));
+        $this->response->setOutput($this->load->view('customer/customer_group_list', $data));
     }
 
     protected function getForm() {
@@ -153,7 +154,7 @@ class ControllerCatalogEventGroup extends PT_Controller {
         $this->document->addScript("view/dist/plugins/ckeditor/adapters/jquery.js");
         $this->document->addScript("view/dist/plugins/iCheck/icheck.min.js");
 
-        $data['text_form'] = !isset($this->request->get['event_group_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
+        $data['text_form'] = !isset($this->request->get['customer_group_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
 
         if (isset($this->error['warning'])) {
             $data['warning_err'] = $this->error['warning'];
@@ -161,10 +162,16 @@ class ControllerCatalogEventGroup extends PT_Controller {
             $data['warning_err'] = '';
         }
 
-        if (isset($this->error['name'])) {
-            $data['name_err'] = $this->error['name'];
+        if (isset($this->error['customer_name'])) {
+            $data['customer_name_err'] = $this->error['customer_name'];
         } else {
-            $data['name_err'] = array();
+            $data['customer_name_err'] = array();
+        }
+
+        if (isset($this->error['short_form'])) {
+            $data['short_form_err'] = $this->error['short_form'];
+        } else {
+            $data['short_form_err'] = array();
         }
 
         if (isset($this->error['url'])) {
@@ -182,72 +189,80 @@ class ControllerCatalogEventGroup extends PT_Controller {
 
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('heading_title'),
-            'href' => $this->url->link('catalog/event_group', 'user_token=' . $this->session->data['user_token'])
+            'href' => $this->url->link('customer/customer_group', 'user_token=' . $this->session->data['user_token'])
         );
 
-        if (!isset($this->request->get['event_group_id'])) {
-            $data['action'] = $this->url->link('catalog/event_group/add', 'user_token=' . $this->session->data['user_token']);
+        if (!isset($this->request->get['customer_group_id'])) {
+            $data['action'] = $this->url->link('customer/customer_group/add', 'user_token=' . $this->session->data['user_token']);
             $data['breadcrumbs'][] = array(
                 'text' => $this->language->get('text_add'),
-                'href' => $this->url->link('catalog/event_group/add', 'user_token=' . $this->session->data['user_token'])
+                'href' => $this->url->link('customer/customer_group/add', 'user_token=' . $this->session->data['user_token'])
             );
         } else {
-            $data['action'] = $this->url->link('catalog/event_group/edit', 'user_token=' . $this->session->data['user_token'] . '&event_group_id=' . $this->request->get['event_group_id']);
+            $data['action'] = $this->url->link('customer/customer_group/edit', 'user_token=' . $this->session->data['user_token'] . '&customer_group_id=' . $this->request->get['customer_group_id']);
             $data['breadcrumbs'][] = array(
                 'text' => $this->language->get('text_edit'),
-                'href' => $this->url->link('catalog/event_group/edit', 'user_token=' . $this->session->data['user_token'] . '&event_group_id=' . $this->request->get['event_group_id'])
+                'href' => $this->url->link('customer/customer_group/edit', 'user_token=' . $this->session->data['user_token'] . '&customer_group_id=' . $this->request->get['customer_group_id'])
             );
         }
 
-        $data['cancel'] = $this->url->link('catalog/event_group', 'user_token=' . $this->session->data['user_token']);
+        $data['cancel'] = $this->url->link('customer/customer_group', 'user_token=' . $this->session->data['user_token']);
 
-        if (isset($this->request->get['event_group_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
-            $event_group_info = $this->model_catalog_event_group->getEventGroup($this->request->get['event_group_id']);
+        if (isset($this->request->get['customer_group_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+            $customer_group_info = $this->model_customer_customer_group->getCustomerGroup($this->request->get['customer_group_id']);
         }
-      
+       
         $data['user_token'] = $this->session->data['user_token'];
 
         $this->load->model('localisation/language');
 
-        if (isset($this->request->post['name'])) {
-            $data['name'] = $this->request->post['name'];
-        } elseif (!empty($event_group_info)) {
-            $data['name'] = $event_group_info['name'];
+        if (isset($this->request->post['customer_name'])) {
+            $data['customer_name'] = $this->request->post['customer_name'];
+        } elseif (!empty($customer_group_info)) {
+            $data['customer_name'] = $customer_group_info['name'];
         } else {
-            $data['name'] = '';
+            $data['customer_name'] = '';
         }
 
-        if (isset($this->request->post['event_group_id'])) {
-            $data['event_group_id'] = $this->request->post['event_group_id'];
-        } elseif (!empty($event_group_info)) {
-            $data['event_group_id'] = $event_group_info['event_group_id'];
+        if (isset($this->request->post['short_form'])) {
+            $data['short_forms'] = $this->request->post['short_form'];
+        } elseif (!empty($customer_group_info)) {
+            $data['short_forms'] = $customer_group_info['short_form'];
         } else {
-            $data['event_group_id'] = '';
+            $data['short_forms'] = '';
+        }
+        
+        if (isset($this->request->post['customer_group_id'])) {
+            $data['customer_group_id'] = $this->request->post['customer_group_id'];
+        } elseif (!empty($customer_group_info)) {
+            $data['customer_group_id'] = $customer_group_info['customer_group_id'];
+        } else {
+            $data['customer_group_id'] = '';
         }
 
         if (isset($this->request->post['sort_order'])) {
             $data['sort_order'] = $this->request->post['sort_order'];
-        } elseif (!empty($event_group_info)) {
-            $data['sort_order'] = $event_group_info['sort_order'];
+        } elseif (!empty($customer_group_info)) {
+            $data['sort_order'] = $customer_group_info['sort_order'];
         } else {
             $data['sort_order'] = 0;
         }
-         if (isset($this->request->get['event_group_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
-            $event_seo = $this->model_catalog_event_group->getEventGroupSeoUrls($this->request->get['event_group_id']);
+         if (isset($this->request->get['customer_group_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+            $information_seo = $this->model_customer_customer_group->getCustomerGroupSeoUrls($this->request->get['customer_group_id']);
         }
        
-        if (isset($this->request->post['event_seo_url'])) {
-            $data['event_seo_url'] = $this->request->post['event_seo_url'];
-        } elseif (!empty($event_seo)) {
-            $data['event_seo_url'] = $event_seo['keyword'];
+        if (isset($this->request->post['short_form'])) {
+            $data['short_form'] = $this->request->post['short_form'];
+        } elseif (!empty($information_seo)) {
+            $data['short_form'] = $information_seo['keyword'];
         } else {
-            $data['event_seo_url'] = '';
+            $data['short_form'] = '';
         }
 
         if (isset($this->request->post['status'])) {
             $data['status'] = $this->request->post['status'];
-        } elseif (!empty($event_group_info)) {
-            $data['status'] = $event_group_info['status'];
+        } elseif (!empty($customer_group_info)) {
+            $data['status'] = $customer_group_info['status'];
         } else {
             $data['status'] = true;
         }
@@ -256,16 +271,20 @@ class ControllerCatalogEventGroup extends PT_Controller {
         $data['nav'] = $this->load->controller('common/nav');
         $data['footer'] = $this->load->controller('common/footer');
 
-        $this->response->setOutput($this->load->view('catalog/event_group_form', $data));
+        $this->response->setOutput($this->load->view('customer/customer_group_form', $data));
     }
 
     protected function validateForm() {
-        if (!$this->user->hasPermission('modify', 'catalog/event_group')) {
+        if (!$this->user->hasPermission('modify', 'customer/customer_group')) {
             $this->error['warning'] = $this->language->get('error_permission');
         }
         
-        if ((utf8_strlen(trim($this->request->post['name'])) < 1) || (utf8_strlen(trim($this->request->post['name'])) > 32)) {
-            $this->error['name'] = $this->language->get('error_name');
+        if ((utf8_strlen(trim($this->request->post['customer_name'])) < 1) || (utf8_strlen(trim($this->request->post['customer_name'])) > 32)) {
+            $this->error['customer_name'] = $this->language->get('error_customer_name');
+        }
+        
+        if ((utf8_strlen(trim($this->request->post['short_form'])) < 1) || (utf8_strlen(trim($this->request->post['short_form'])) > 10)) {
+            $this->error['short_form'] = $this->language->get('error_short_form');
         }
 
         if ($this->error && !isset($this->error['warning'])) {
@@ -276,18 +295,52 @@ class ControllerCatalogEventGroup extends PT_Controller {
     }
 
     protected function validateDelete() {
-        if (!$this->user->hasPermission('delete', 'catalog/event_group')) {
+        if (!$this->user->hasPermission('delete', 'customer/customer_group')) {
             $this->error['warning'] = $this->language->get('error_permission');
         }
 
         return !$this->error;
     }
-    
+
+    public function icons() {
+        $json = array();
+
+        if (!$json) {
+            $pattern = '/\.(fa-(?:\w+(?:-)?)+):before\s+{\s*content:\s*"(.+)";\s+}/';
+            $subject = file_get_contents('view/dist/plugins/font-awesome/css/font-awesome.css');
+
+            preg_match_all($pattern, $subject, $matches, PREG_SET_ORDER);
+
+            foreach ($matches as $match) {
+                $json[] = array(
+                    'icon' => $match[1],
+                    'css' => implode(array(str_replace('\\', '&#x', $match[2]), ';'))
+                );
+            }
+
+            // $json = var_export($json, TRUE);
+            // $json = stripslashes($json);
+        }
+
+        $sort_order = array();
+
+        foreach ($json as $key => $value) {
+            $sort_order[$key] = $value;
+        }
+
+        array_multisort($sort_order, SORT_ASC, $json);
+
+        //print_r($json);
+
+        $this->response->addHeader('Content-Type: application/json');
+        $this->response->setOutput(json_encode($json));
+    }
+
     public function autocomplete() {
         $json = array();
 
         if (isset($this->request->get['filter_name'])) {
-            $this->load->model('catalog/event_group');
+            $this->load->model('customer/customer_group');
 
             $filter_data = array(
                 'filter_name' => $this->request->get['filter_name'],
@@ -297,11 +350,11 @@ class ControllerCatalogEventGroup extends PT_Controller {
                 'limit' => 5
             );
 
-            $results = $this->model_catalog_event_group->getEvents($filter_data);
+            $results = $this->model_customer_customer_group->getInformations($filter_data);
 
             foreach ($results as $result) {
                 $json[] = array(
-                    'event_group_id' => $result['event_group_id'],
+                    'customer_group_id' => $result['customer_group_id'],
                     'title' => strip_tags(html_entity_decode($result['title'], ENT_QUOTES, 'UTF-8'))
                 );
             }

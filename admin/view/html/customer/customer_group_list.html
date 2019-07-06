@@ -58,7 +58,7 @@
                     <a href="<?php echo $add; ?>" data-toggle="tooltip" title="<?php echo $button_add; ?>"
                         class="btn btn-primary btn-bold"><i class="fa fa-plus"></i></a>
                     <button type="button" data-toggle="tooltip" title="<?php echo $button_delete; ?>"
-                        class="btn btn-danger btn-bold" onclick="confirm('<?php echo $text_confirm; ?>') ? $('#form-event-group').submit() :
+                        class="btn btn-danger btn-bold" onclick="confirm('<?php echo $text_confirm; ?>') ? $('#form-information-group').submit() :
                         false;"><i class="fa fa-trash-alt"></i></button>
                     <div class="float-right tableTools-container"></div>
                 </div>
@@ -74,15 +74,18 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <form action="<?php echo $delete; ?>" method="POST" enctype="multipart/form-data"
-                            id="form-event-group">
+                            id="form-information-group">
                             <div class="table-responsive">
-                                <table id="table_event" class="table table-bordered table-hover">
+                                <table id="table_customer_group" class="table table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th style="width: 1px;" class="text-center no-sort"><input type="checkbox"
                                                     onclick="$('input[name*=\'selected\']').trigger('click');" /></th>
                                             <th>
-                                                <?php echo $column_title; ?>
+                                                <?php echo $column_customer_name; ?>
+                                            </th>
+                                            <th>
+                                                <?php echo $column_customer_short_form; ?>
                                             </th>
                                             <th>
                                                 <?php echo $column_sort_order; ?>
@@ -93,26 +96,29 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php if($events) : ?>
-                                        <?php foreach($events as $event) : ?>
+                                        <?php if($customer_groups) : ?>
+                                        <?php foreach($customer_groups as $customer_group) : ?>
                                         <tr>
                                             <td class="text-center">
-                                                <?php if(in_array($event['event_id'], $selected)) : ?>
+                                                <?php if(in_array($customer_group['customer_group_id'], $selected)) : ?>
                                                 <input type="checkbox" name="selected[]"
-                                                    value="<?php echo $event['event_id']; ?>"
+                                                    value="<?php echo $customer_group['customer_group_id']; ?>"
                                                     checked="checked" />
                                                 <?php else : ?>
                                                 <input type="checkbox" name="selected[]"
-                                                    value="<?php echo $event['event_id']; ?>" />
+                                                    value="<?php echo $customer_group['customer_group_id']; ?>" />
                                                 <?php endif; ?>
                                             </td>
                                             <td class="text-left">
-                                                <?php echo $event['name']; ?>
+                                                <?php echo $customer_group['customer_name']; ?>
                                             </td>
                                             <td class="text-left">
-                                                <?php echo $event['sort_order']; ?>
+                                                <?php echo $customer_group['short_form']; ?>
                                             </td>
-                                            <td class="text-left"><a href="<?php echo $event['edit']; ?>"
+                                            <td class="text-left">
+                                                <?php echo $customer_group['sort_order']; ?>
+                                            </td>
+                                            <td class="text-left"><a href="<?php echo $customer_group['edit']; ?>"
                                                     data-toggle="tooltip" title="<?php echo $button_edit; ?>"
                                                     class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a></td>
                                         </tr>
@@ -143,7 +149,7 @@
 <?php echo $footer; ?>
 <script type="text/javascript">
     $(function () {
-        var table = $('#table_event').DataTable({
+        var table = $('#table_customer_group').DataTable({
             "order": [
                 [1, 'asc']
             ],
@@ -248,7 +254,7 @@
             });
         }, 500);
 
-        $(document).on('click', '#table_event .dropdown-toggle', function (e) {
+        $(document).on('click', '#table_customer_group .dropdown-toggle', function (e) {
             e.stopImmediatePropagation();
             e.stopPropagation();
             e.preventDefault();
