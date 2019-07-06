@@ -1,0 +1,686 @@
+<?php echo $header; ?>
+<style>
+    /* .image-upload {
+        width: 101px !important;
+        margin-right: 14px;
+    } */
+
+    .btn-sav {
+        border: 1px solid #17468f !important;
+        background-color: #17468f;
+        color: #fff;
+        float: none !important;
+        transition: all 0.2s ease-in-out;
+        margin-top: 24px;
+        margin-bottom: 0;
+    }
+
+    .btn-sav:hover,
+    .btn-sav:focus,
+    .btn-sav:active,
+    .btn-sav:visited {
+        border: 1px solid #17468f !important;
+        background-color: #17468f;
+        color: #fff;
+    }
+
+    .points-box {
+        box-shadow: 1px 1px 1px 1px #eee;
+        padding: 14px;
+        font-weight: 700;
+        color: #f7a81b;
+    }
+
+
+
+    /* 
+    .image-upload img {
+        border: 1px solid #eee;
+        width: 90px;
+        height: 90px;
+    } */
+</style>
+<?php echo $nav; ?>
+
+<div id="page-content-wrapper">
+    <div class="page-content">
+        <div class="container">
+            <div class="banner-img-08 banner-img-size"></div>
+            <div class="page-breadcum" id="content">
+                <?php for($i = 0; $i < count($breadcrumbs); $i++) : ?>
+                <?php if($i != (count($breadcrumbs) - 1)) : ?>
+                <?php if($i == 0) : ?>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php else : ?>
+                <i class="fa fa-chevron-right"></i>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php endif; ?>
+                <?php else : ?>
+                <i class="fa fa-chevron-right"></i>
+                <?php echo $breadcrumbs[$i]['text']; ?>
+                <?php endif; ?>
+                <?php endfor; ?>
+            </div>
+            <div class="about-desc-section">
+                <div class="about-desc-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3 mt-20">
+                                <?php echo  $navpage; ?>
+                            </div>
+                            <div class="col-md-9 mt-20">
+                                <div class="about-page-content">
+                                    <div class="page-title">
+                                        <?php echo $heading_title; ?>
+                                        <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title=""
+                                            class="btn btn-login btn-sm btn-bold btn-table" data-original-title="Back"
+                                            style="float: right !important;"><i class="fa fa-reply"></i></a>
+                                    </div>
+                                    <div class="club-page-content">
+                                        <!-- <?php echo $total_point_members + $total_point_trfs + $total_point_projects; ?> -->
+                                        <ul class="nav nav-pills">
+                                            <li class="active"><a data-toggle="pill" href="#member">Add New Members</a>
+                                            </li>
+                                            <li><a data-toggle="pill" href="#trf">Add TRF Contribution</a></li>
+                                            <li><a data-toggle="pill" href="#project">Add Projects</a></li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div id="member" class="tab-pane fade in active">
+                                                <div class="club-page-content">
+                                                    <div class="club-pill-form">
+                                                        <div class="alert alert-success alert-dismissible" id="success"
+                                                            style="display:none;">
+                                                            <a href="#" class="close" data-dismiss="alert"
+                                                                aria-label="close">×</a>
+                                                        </div>
+                                                        <div id="#memberunique_id">
+
+                                                        </div>
+                                                        <form action="" method="post" enctype="multipart/form-data"
+                                                            id="form-member">
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-3">
+                                                                    <label for="month">Month : </label>
+                                                                    <?php
+                                                                    $timestamp = time();
+                                                                    $selected_month = date('n', $timestamp);
+                                                                    $selected_day = date('j', $timestamp);
+                                                                    $selected_year = date('Y', $timestamp);
+                                                                    $month_html = '<select name="month" id="month" class="form-control">';
+                                                                    for ($x = 1; $x < 13; $x++) {
+                                                                        $month_html.= '<option value='.$x.($selected_month == $x ? ' selected=true' : '').'>'.date("F", mktime(0, 0, 0, $x, 1, $selected_year)).'</option>';
+                                                                    }
+                                                                    $month_html.= '</select>';
+                                                                    print $month_html;
+                                                                    ?>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <label for="year">Year : </label>
+                                                                    <?php
+                                                                    $year_html = '<select name="year" id="year" class="form-control">';
+                                                                    $previ_year = date("Y",strtotime("-1 year"));    
+                                                                    $start_year = date('Y', time());
+                                                                    $max_year = $start_year + 1;
+                                                                    for ($x = $previ_year; $x < $max_year; $x++) {
+                                                                        $year_html.= '<option value='.$x.($selected_year == $x ? ' selected=true' : '').'>'.$x.'</option>';
+                                                                    }
+                                                                    $year_html.= '</select>';
+                                                                    print $year_html;
+                                                                    ?>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="points-box">
+                                                                        <p>Total Members Points -
+                                                                            <?php if($total_point_members){ echo $total_point_members; }else{ echo '0'; } ?>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <hr class="featurette-divider">
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-3">
+                                                                    <label for="inputmember_induct">Members Inducted
+                                                                        :</label>
+                                                                    <input type="number" class="form-control"
+                                                                        name="member_induct" id="member_induct"
+                                                                        required="">
+                                                                </div>
+                                                                <div class=" col-sm-3">
+                                                                    <label for="inputmember_unlist"">Members Unlisted :</label>
+                                                                    <input type=" number" class="form-control"
+                                                                        name="member_unlist" id="member_unlist"
+                                                                        required="">
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <label for="inputnet_growth">Net
+                                                                        Growth
+                                                                        :</label>
+                                                                    <input type="number" class="form-control"
+                                                                        name="net_growth" id="net_growth" required=""
+                                                                        readonly>
+                                                                </div>
+                                                            </div>
+                                                            <hr class="featurette-divider">
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-8">
+                                                                    <input type="hidden" name="club_id" id="club_id"
+                                                                        value="<?php echo $club_id; ?>">
+                                                                    <!-- <input type="hidden" name="project_id"
+                                                                        id="project_id" value=""> -->
+                                                                    <button type="button" class="btn btn-sav mb-2"
+                                                                        onclick="addMember()" id='member'>Save</button>
+                                                                </div>
+                                                            </div>
+                                                            <hr class="featurette-divider">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="trf" class="tab-pane fade">
+                                                <div class="club-page-content">
+                                                    <div class="club-pill-form">
+                                                        <div class="alert alert-success alert-dismissible"
+                                                            id="success_trf" style="display:none;">
+                                                            <a href="#" class="close" data-dismiss="alert"
+                                                                aria-label="close">×</a>
+                                                        </div>
+                                                        <!-- <form action="" method="post" enctype="multipart/form-data"
+                                                            id="form-trf"> -->
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-3">
+                                                                <label for="month">Month
+                                                                    :</label>
+                                                                <?php
+                                                                $timestamp = time();
+                                                                $selected_month = date('n', $timestamp);
+                                                                $selected_day = date('j', $timestamp);
+                                                                $selected_year = date('Y', $timestamp);
+                                                                $month_html = '<select name="month" id="month" class="form-control">';
+                                                                for ($x = 1; $x < 13; $x++) {
+                                                                    $month_html.= '<option value='.$x.($selected_month == $x ? ' selected=true' : '').'>'.date("F", mktime(0, 0, 0, $x, 1, $selected_year)).'</option>';
+                                                                }
+                                                                $month_html.= '</select>';
+                                                                print $month_html;
+                                                                ?>
+                                                            </div>
+
+                                                            <div class="col-sm-3">
+                                                                <label for="year">Year
+                                                                    :</label>
+                                                                <?php
+                                                                $year_html = '<select name="year" id="year" class="form-control">';
+                                                                $previ_year = date("Y",strtotime("-1 year"));    
+                                                                $start_year = date('Y', time());
+                                                                $max_year = $start_year + 1;
+                                                                for ($x = $previ_year; $x < $max_year; $x++) {
+                                                                    $year_html.= '<option value='.$x.($selected_year == $x ? ' selected=true' : '').'>'.$x.'</option>';
+                                                                }
+                                                                $year_html.= '</select>';
+                                                                print $year_html;
+                                                                ?>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="points-box">
+                                                                    <p>Total Trf Points -
+                                                                        <?php if($total_point_trfs){ echo $total_point_trfs; }else{ echo '0'; } ?>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <hr class="featurette-divider">
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-3">
+                                                                <label for="inputamount_inr">Amount
+                                                                    in INR :</label>
+                                                                <input type="number" class="form-control"
+                                                                    name="amount_inr" id="amount_inr" required="">
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <label for="inputexchange_rate">Exchange
+                                                                    Rate :</label>
+                                                                <input type="number" class="form-control"
+                                                                    name="exchange_rate" id="exchange_rate"
+                                                                    value="<?php echo round($exchange_rate,2); ?>"
+                                                                    required="" readonly>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <label for="inputamount_usd">Amount in
+                                                                    USD
+                                                                    :</label>
+                                                                <input type="number" class="form-control"
+                                                                    name="amount_usd" id="amount_usd" required=""
+                                                                    readonly>
+                                                            </div>
+                                                        </div>
+                                                        <hr class="featurette-divider">
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-8">
+                                                                <input type="hidden" name="club_id" id="club_id"
+                                                                    value="<?php echo $club_id; ?>">
+                                                                <div class="col-sm-12">
+                                                                    <button type="submit" class="btn btn-sav mb-2"
+                                                                        id="trf" onclick="addTrf()">Save</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <hr class="featurette-divider">
+                                                        <!-- </form> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="project" class="tab-pane fade">
+                                                <div class="club-page-content">
+                                                    <div class="club-pill-form">
+                                                        <div class="alert alert-success alert-dismissible"
+                                                            id="success_project" style="display:none;">
+                                                            <a href="#" class="close" data-dismiss="alert"
+                                                                aria-label="close">×</a>
+                                                        </div>
+                                                        <form id="form-project">
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-3">
+                                                                    <label for="month">Month
+                                                                        :</label>
+                                                                    <?php
+                                                                $timestamp = time();
+                                                                $selected_month = date('n', $timestamp);
+                                                                $selected_day = date('j', $timestamp);
+                                                                $selected_year = date('Y', $timestamp);
+                                                                $month_html = '<select name="month" id="month" class="form-control">';
+                                                                for ($x = 1; $x < 13; $x++) {
+                                                                    $month_html.= '<option value='.$x.($selected_month == $x ? ' selected=true' : '').'>'.date("F", mktime(0, 0, 0, $x, 1, $selected_year)).'</option>';
+                                                                }
+                                                                $month_html.= '</select>';
+                                                                print $month_html;
+                                                                ?>
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <label for="year">Year
+                                                                        :</label>
+                                                                    <?php
+                                                                $year_html = '<select name="year" id="year" class="form-control">';
+                                                                $previ_year = date("Y",strtotime("-1 year"));    
+                                                                $start_year = date('Y', time());
+                                                                $max_year = $start_year + 1;
+                                                                for ($x = $previ_year; $x < $max_year; $x++) {
+                                                                    $year_html.= '<option value='.$x.($selected_year == $x ? ' selected=true' : '').'>'.$x.'</option>';
+                                                                }
+                                                                $year_html.= '</select>';
+                                                                // output
+                                                                print $year_html;
+                                                                ?>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="points-box">
+                                                                        <p>Total Projects Points -
+                                                                            <?php if($total_point_projects){ echo $total_point_projects; }else{ echo '0'; } ?>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <hr class="featurette-divider">
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-4">
+                                                                    <label for="title">Projects Title:</label>
+                                                                    <input type="text" class="form-control" name="title"
+                                                                        id="title">
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <label for="amount">Project
+                                                                        Cost
+                                                                        (&#8377;)
+                                                                        :</label>
+                                                                    <input type="number" class="form-control"
+                                                                        name="amount" id="amount">
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <label for="no_of_beneficiary">Number of
+                                                                        beneficiaries
+                                                                        :</label>
+                                                                    <input type="number" class="form-control"
+                                                                        name="no_of_beneficiary" id="no_of_beneficiary">
+                                                                </div>
+                                                            </div>
+                                                            <hr class="featurette-divider">
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-5">
+                                                                    <label for="image">Image:</label>
+                                                                    <div class="img-section">
+                                                                        <div class="image-upload">
+                                                                            <a class="img-thumbnail" id="thumb-img1">
+                                                                                <img id="preview1"
+                                                                                    src="<?php echo $thumb; ?>">
+                                                                            </a>
+                                                                            <input type="hidden" id="input_img1"
+                                                                                name="image[]" class="image" value="" />
+                                                                        </div>
+                                                                        <div class="image-upload">
+                                                                            <a class="img-thumbnail" id="thumb-img2"
+                                                                                data-toggle="modal"
+                                                                                data-target="#uploadModal2">
+                                                                                <img id="preview2"
+                                                                                    src="<?php echo $thumb; ?>">
+                                                                            </a>
+                                                                            <input type="hidden" id="input_img2"
+                                                                                name="image[]" class="image" value="" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <small class="text-muted">Need high resolution
+                                                                        images,
+                                                                        maximum two
+                                                                        allowed</small>
+                                                                </div>
+                                                                <div class="col-sm-7">
+                                                                    <label for="description">Description
+                                                                        :</label>
+                                                                    <textarea name="description" id="description"
+                                                                        class="form-control" rows="4"></textarea>
+                                                                    <small class="text-muted">Need to have only simple
+                                                                        text
+                                                                        input</small>
+                                                                </div>
+                                                            </div>
+                                                            <hr class="featurette-divider">
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-12">
+                                                                    <label for="category">Category
+                                                                        :</label>
+                                                                    <div class="row">
+                                                                        <?php foreach($categoires as $category): ?>
+                                                                        <div class="col-sm-4">
+                                                                            <div class="checkbox checkbox-primary">
+                                                                                <input id="category" name="category[]"
+                                                                                    value="<?php echo $category['category_id']; ?>"
+                                                                                    type="checkbox" class="category">
+                                                                                <label for="category[]">
+                                                                                    <?php echo $category['name']; ?>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <?php endforeach; ?>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <hr class="featurette-divider">
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-4">
+                                                                    <label for="points">Citation
+                                                                        points
+                                                                        accrued :</label>
+                                                                    <input type="number" class="form-control"
+                                                                        name="point_project" id="point_project">
+                                                                </div>
+                                                                <div class="col-sm-8">
+                                                                    <input type="hidden" name="club_id" id="club_id"
+                                                                        value="<?php echo $club_id; ?>">
+                                                                    <button class="btn btn-sav mb-2" id="project"
+                                                                        onclick="addProject()">Save</button>
+                                                                </div>
+                                                            </div>
+                                                            <hr class="featurette-divider">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php echo $footer; ?>
+            <div id="uploadModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">File upload form</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form method='post' action='' enctype="multipart/form-data" id="form-upload">
+                                Select file : <input type="file" name="file[]" value="" /><br>
+                                <button type='button' class='btn btn-login' id='upload'
+                                    style="float: right !important;">Save</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <script>
+                $('.img-thumbnail').on('click', function () {
+                    var element = $(this),
+                        id = element.attr('id');
+
+                    $('#uploadModal').modal('show');
+
+                    $('#uploadModal').on('click', '#upload', function () {
+                        if (typeof timer != 'undefined') {
+                            clearInterval(timer);
+                        }
+
+                        timer = setInterval(function () {
+                            if ($('#form-upload input[name=\'file\']').val != '') {
+                                clearInterval(timer);
+
+                                $.ajax({
+                                    url: 'index.php?url=club/upload',
+                                    type: 'POST',
+                                    dataType: 'json',
+                                    data: new FormData($('#form-upload')[0]),
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    success: function (json) {
+                                        if (json['error']) {
+                                            alert(json['error']);
+                                        }
+
+                                        if (json['success']) {
+                                            alert(json['success']);
+
+                                            $('#' + id).find('img').attr('src', json['thumb']);
+                                            $('#' + id).next('input').val(json['target']);
+
+                                            $('#uploadModal').modal('hide');
+                                        }
+                                    }
+                                });
+                            }
+                        }, 500);
+                    });
+                });
+
+            </script>
+            <script>
+                $(function () {
+                    $("#member_induct, #member_unlist").on("keydown keyup", sum);
+                    function sum() {
+                        $("#net_growth").val(Number($("#member_induct").val()) - Number($("#member_unlist").val()));
+                    }
+                });
+            </script>
+            <script>
+                $(function () {
+
+                    $("#amount_inr, #exchange_rate").on("keydown keyup", sum);
+
+                    function sum() {
+                        var amt = $("#amount_inr").val() / $("#exchange_rate").val();
+                        $("#amount_usd").val(amt.toFixed(2));
+                    }
+                });
+            </script>
+            <script>
+                function addMember() {
+                    var month = $('#month').val();
+                    var year = $('#year').val();
+                    var club_id = $('#club_id').val();
+                    // var project_id = $('#project_id').val();
+                    var member_induct = $('#member_induct').val();
+                    var member_unlist = $('#member_unlist').val();
+                    var net_growth = $('#net_growth').val();
+                    if (month != "" && year != "" && member_induct != "" && member_unlist != "" && net_growth != "") {
+                        $.ajax({
+                            url: "index.php?url=club/add_data/member",
+                            type: "POST",
+                            dataType: 'json',
+                            data: {
+                                month: month,
+                                year: year,
+                                club_id: club_id,
+                                prefix: 'M',
+                                project_id: '',
+                                member_induct: member_induct,
+                                member_unlist: member_unlist,
+                                net_growth: net_growth
+                            },
+                            cache: false,
+                            success: function (json) {
+                                var id = json;
+
+                                if (json) {
+                                    $("#form-member")[0].reset();
+
+                                    $.ajax({
+                                        url: 'index.php?url=club/add_data/getMemberProjectId',
+                                        type: 'POST',
+                                        dataType: 'json',
+                                        data: 'project_id=' + id,
+                                        success: function (data) {
+                                            $("#success").show();
+                                            var prefix = 'Success: Member has been added successfully. Please note the project id - <b>' + data + '</b> and claim your <a href="index.php?url=club/add_citation">Citation Points here</a>';
+                                            $('#success').html(prefix);
+                                        }
+                                    });
+                                }
+                                else {
+                                    alert("Error occured !");
+                                }
+
+
+                            }
+                        });
+                    }
+                    else {
+                        alert('Please fill all the field !');
+                    }
+                }
+
+                function addTrf() {
+                    var month = $('#month').val();
+                    var year = $('#year').val();
+                    var club_id = $('#club_id').val();
+                    var amount_inr = $('#amount_inr').val();
+                    var exchange_rate = $('#exchange_rate').val();
+                    var amount_usd = $('#amount_usd').val();
+                    if (month != "" && year != "" && amount_inr != "" && exchange_rate != "" && amount_usd != "") {
+                        $.ajax({
+                            url: "index.php?url=club/add_data/trf",
+                            type: "POST",
+                            dataType: 'json',
+                            data: {
+                                month: month,
+                                year: year,
+                                club_id: club_id,
+                                prefix: 'T',
+                                project_id: '',
+                                amount_inr: amount_inr,
+                                exchange_rate: exchange_rate,
+                                amount_usd: amount_usd
+                            },
+                            cache: false,
+                            success: function (json) {
+                                alert(json);
+                                var id = json;
+
+                                if (json) {
+                                    // $("#form-trf")[0].reset();
+                                    $.ajax({
+                                        url: 'index.php?url=club/add_data/getTrfProjectId',
+                                        type: 'POST',
+                                        dataType: 'json',
+                                        data: 'project_id=' + id,
+                                        success: function (data) {
+                                            alert(data);
+                                            $("#success_trf").show();
+                                            var prefix_trf = 'Success: Trf Contribution has been added successfully. Please note the project id - <b>' + data + '</b> and claim your <a href="index.php?url=club/add_citation">Citation Points here</a>';
+                                            $('#success_trf').html(prefix_trf);
+                                        }
+                                    });
+                                }
+                                else {
+                                    alert("Error occured !");
+                                }
+
+
+                            }
+                        });
+                    }
+                    else {
+                        alert('Please fill all the field !');
+                    }
+                }
+
+                function addProject() {
+
+                    var month = $('#month').val();
+                    var year = $('#year').val();
+                    var club_id = $('#club_id').val();
+                    var title = $('#title').val();
+                    var amount = $('#amount').val();
+                    var no_of_beneficiary = $('#no_of_beneficiary').val();
+                    var description = $('#description').val();
+                    var points = $('#point_project').val();
+
+                    var image = [];
+                    $.each($("input[name='image[]']"), function () {
+                        image.push($(this).val());
+
+                    });
+
+                    var category = [];
+                    $('.category:checked').each(function (i, e) {
+                        category.push($(this).val());
+                    });
+
+                    if (month != "" && year != "" && club_id != "" && title != "" && amount != "" && no_of_beneficiary != "" && points != "" && category != "") {
+                        $.ajax({
+                            url: "index.php?url=club/add_data/project",
+                            type: "POST",
+                            dataType: 'json',
+                            data: {
+                                month: month,
+                                year: year,
+                                club_id: club_id,
+                                title: title,
+                                amount: amount,
+                                no_of_beneficiary: no_of_beneficiary,
+                                description: description,
+                                image: image,
+                                category: category,
+                                points: points
+                            },
+                            cache: false,
+                            success: function (json) {
+                                if (json) {
+                                    $("#form-project")[0].reset();
+                                    $("#success_project").show();
+
+                                    $('#success_project').html('Project added successfully !');
+                                }
+                                else if (!json) {
+                                    alert("Error occured !");
+                                }
+
+                            }
+
+                        });
+                    }
+                    else {
+                        alert('Please fill all the field !');
+                    }
+                }
+            </script>

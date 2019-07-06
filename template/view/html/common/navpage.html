@@ -1,0 +1,66 @@
+<style>
+    .highlight-text {
+        color: #f7a81b !important;
+    }
+</style>
+<div class="club-login-details">
+    <p class="image-sep"><img src="<?php echo $thumb_club; ?>"></p>
+    <hr class="featurette-divider">
+    <div class="page-title">Club Details</div>
+    <hr class="featurette-divider">
+    <p class="seprate-p">Rotary Club of
+        <b><?php echo $club_name; ?></b></p>
+
+    <p class="combine-p"><span><i class="fa fa-calendar-o"></i>
+            <?php echo $date; ?></span><span class="pull-right"><a href="javascript:;" class="highlight-text"
+                data-toggle="tooltip" title="" data-original-title="Club Total Points"><i class="fa fa-trophy"></i>
+                <?php echo $total_point_members + $total_point_trfs + $total_point_projects; ?></a></span></p>
+    <p class="combine-p"><span><i class="fa fa-phone"></i> <a href="tel:<?php echo $mobile; ?>">
+                <?php echo $mobile; ?></a></span></p>
+    <p class="combine-p"><span><i class="fa fa-envelope-o"></i><a href="mailto:<?php echo $email; ?>">
+                <?php echo $email; ?></a></span>
+    </p>
+    <hr class="featurette-divider">
+    <p class="seprate-p"><b>President</b> - <?php echo $president; ?></p>
+    <p class="seprate-p"><b>Ass. Governor</b> - <?php echo $assistant_governor; ?></p>
+    <p class="seprate-p"><b>Dist. Secretary</b> - <?php echo $district_secretary; ?></p>
+</div>
+<div id="mobile-menu">
+    <a href="javascript:;" class="bars"><i class="fa fa-bars mobile-bars"></i></a>
+    <div class="mobile-drop">
+        <ul id="page-menu">
+            <li>
+                <a href="<?php echo $dashboard; ?>" class="active-menu"><?php echo $text_dashboard; ?></a>
+            </li>
+            <li>
+                <a href="<?php echo $add_data; ?>"><?php echo $text_add_data; ?></a>
+            </li>
+            <li>
+                <a href="<?php echo $add_citation; ?>"><?php echo $text_citation; ?></a>
+            </li>
+            <!-- <li><a href="<?php echo $member; ?>"><?php echo $text_member; ?></a></li>
+            <li><a href="<?php echo $trf; ?>"><?php echo $text_trf; ?></a></li>
+            <li><a href="<?php echo $project; ?>"><?php echo $text_project; ?></a></li> -->
+            <li><a href="<?php echo $profile; ?>"><?php echo $text_profile; ?></a></li>
+            <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
+        </ul>
+    </div>
+</div>
+<div class="desktop-drop">
+    <ul id="page-menu">
+        <li>
+            <a href="<?php echo $dashboard; ?>" class="active-menu"><?php echo $text_dashboard; ?></a>
+        </li>
+        <li>
+            <a href="<?php echo $add_data; ?>"><?php echo $text_add_data; ?></a>
+        </li>
+        <li>
+            <a href="<?php echo $add_citation; ?>"><?php echo $text_citation; ?></a>
+        </li>
+        <!-- <li><a href="<?php echo $member; ?>"><?php echo $text_member; ?></a></li>
+        <li><a href="<?php echo $trf; ?>"><?php echo $text_trf; ?></a></li>
+        <li><a href="<?php echo $project; ?>"><?php echo $text_project; ?></a></li> -->
+        <li><a href="<?php echo $profile; ?>"><?php echo $text_profile; ?></a></li>
+        <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
+    </ul>
+</div>

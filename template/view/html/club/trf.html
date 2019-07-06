@@ -1,0 +1,80 @@
+<?php echo $header; ?>
+<?php echo $nav; ?>
+<div id="page-content-wrapper">
+    <div class="page-content">
+        <div class="container">
+            <div class="banner-img-08 banner-img-size"></div>
+            <div class="page-breadcum" id="content">
+                <?php for($i = 0; $i < count($breadcrumbs); $i++) : ?>
+                <?php if($i != (count($breadcrumbs) - 1)) : ?>
+                <?php if($i == 0) : ?>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php else : ?>
+                <i class="fa fa-chevron-right"></i>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php endif; ?>
+                <?php else : ?>
+                <i class="fa fa-chevron-right"></i>
+                <?php echo $breadcrumbs[$i]['text']; ?>
+                <?php endif; ?>
+                <?php endfor; ?>
+            </div>
+            <div class="about-desc-section">
+                <div class="about-desc-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3 mt-20">
+                                <?php echo  $navpage; ?>
+                            </div>
+                            <div class="col-md-9 mt-20">
+                                <div class="about-page-content">
+                                    <div class="page-title">
+                                        TRF Contribution List
+                                        <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title=""
+                                            class="btn btn-login btn-sm btn-bold btn-table" data-original-title="Back"
+                                            style="float: right !important;"><i class="fa fa-reply"></i></a>
+                                    </div>
+                                    <div class="club-page-content">
+                                        <div class="form-title">
+                                            <!-- <a href="<?php echo $add_trf; ?>" data-toggle="tooltip" title=""
+                                                class="btn btn-login btn-sm btn-bold"
+                                                data-original-title="Add TRF Contribution"><i class="fa fa-plus"></i>
+                                                Add TRF Contribution</a> -->
+                                        </div>
+                                        <div class="table-design-row">
+                                            <table id="example1" class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sr</th>
+                                                        <th>Month</th>
+                                                        <th>TRF Contribution</th>
+                                                        <th>Points</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php $n=1; ?>
+                                                    <?php foreach($trfs as $trf): ?>
+                                                    <tr>
+                                                        <td><?php echo $n++; ?></td>
+                                                        <td><?php echo $trf['date']; ?></td>
+                                                        <td><?php echo $trf['amount_usd']; ?></td>
+                                                        <td><?php echo $trf['points']; ?></td>
+                                                        <td><a href="<?php echo $trf['view']; ?>" data-toggle="tooltip"
+                                                                title="View TRf Contribution"
+                                                                class=" btn btn-login btn-xs btn-bold"
+                                                                data-original-title="View TRf Contribution"><i
+                                                                    class="fa fa-eye"></i></a></td>
+                                                    </tr>
+                                                    <?php endforeach; ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php echo $footer; ?>

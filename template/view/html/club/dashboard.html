@@ -1,0 +1,296 @@
+<?php echo $header; ?>
+<?php echo $nav; ?>
+<div id="page-content-wrapper">
+    <div class="page-content">
+        <div class="container">
+            <div class="banner-img-08 banner-img-size"></div>
+            <div class="page-breadcum" id="content">
+                <?php for($i = 0; $i < count($breadcrumbs); $i++) : ?>
+                <?php if($i != (count($breadcrumbs) - 1)) : ?>
+                <?php if($i == 0) : ?>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php else : ?>
+                <i class="fa fa-chevron-right"></i>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php endif; ?>
+                <?php else : ?>
+                <i class="fa fa-chevron-right"></i>
+                <?php echo $breadcrumbs[$i]['text']; ?>
+                <?php endif; ?>
+                <?php endfor; ?>
+            </div>
+            <div class="about-desc-section">
+                <div class="about-desc-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3 mt-20">
+                                <?php echo  $navpage; ?>
+                            </div>
+                            <div class="col-md-9 mt-20">
+                                <div class="about-page-content">
+                                    <div class="page-title">
+                                        <?php echo $heading_title; ?>
+                                    </div>
+                                    <div class="club-page-content">
+                                        <div class="row dashboard-stats">
+                                            <div class="col-md-3 col-sm-3">
+                                                <section class="panel panel-box">
+                                                    <div class="panel-left panel-icon bg-success">
+                                                        <i class="fa fa-dollar text-large stat-icon success-text"></i>
+                                                    </div>
+                                                    <div class="panel-right panel-icon bg-reverse">
+                                                        <p class="size-h1 no-margin countdown_first">
+                                                            <?php echo round($trfs,2); ?>
+                                                        </p>
+                                                        <p class="text-muted no-margin text"><span>Total TRF</span></p>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                            <div class="col-md-3 col-sm-3">
+                                                <section class="panel panel-box">
+                                                    <div class="panel-left panel-icon bg-danger">
+                                                        <i
+                                                            class="fa fa-shopping-cart text-large stat-icon danger-text"></i>
+                                                    </div>
+                                                    <div class="panel-right panel-icon bg-reverse">
+                                                        <p class="size-h1 no-margin countdown_second">
+                                                            <?php echo $projects; ?></p>
+                                                        <p class="text-muted no-margin text"><span> Total
+                                                                Projects</span></p>
+                                                    </div>
+                                                </section>
+
+                                            </div>
+                                            <div class="col-md-3 col-sm-3">
+                                                <section class="panel panel-box">
+                                                    <div class="panel-left panel-icon bg-info">
+                                                        <i class="fa fa-users text-large stat-icon info-text"></i>
+                                                    </div>
+                                                    <div class="panel-right panel-icon bg-reverse">
+                                                        <p class="size-h1 no-margin countdown_fourth">
+                                                            <?php echo $members; ?></p>
+                                                        <p class="text-muted no-margin text"><span> Total Members</span>
+                                                        </p>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                            <div class="col-md-3 col-sm-3">
+                                                <section class="panel panel-box">
+                                                    <div class="panel-left panel-icon bg-danger">
+                                                        <i
+                                                            class="fa fa-building-o text-large stat-icon danger-text"></i>
+                                                    </div>
+                                                    <div class="panel-right panel-icon bg-reverse">
+                                                        <p class="size-h1 no-margin countdown_third">
+                                                            <?php echo $clubs; ?></p>
+                                                        <p class="text-muted no-margin text"><span> Total Club</span>
+                                                        </p>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12">
+                                        <a href="<?php echo $add_data; ?>" data-toggle="tooltip" title=""
+                                            class="btn btn-login btn-lg" data-original-title="Add New Data"><i
+                                                class="fa fa-plus"></i> Add New
+                                            Data</a>
+                                    </div>
+                                    <div class="club-page-content">
+                                        <div class="page-title">
+                                            <?php echo $text_latest_member; ?>
+                                            <a href="<?php echo $member; ?>" data-toggle="tooltip" title=""
+                                                class="btn btn-login btn-sm btn-bold btn-table"
+                                                data-original-title="View all members"
+                                                style="float: right !important;">View Members</a>
+                                        </div>
+                                        <div class="table-design-row">
+                                            <table id="exampleclub" class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sr</th>
+                                                        <th>Month</th>
+                                                        <th>Members Inducted </th>
+                                                        <th>Members Unlisted </th>
+                                                        <th>Net Growth </th>
+                                                        <th>Points</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php $n=1; ?>
+                                                    <?php foreach($TableMembers as $member){ ?>
+                                                    <tr>
+                                                        <td><?php echo $n++; ?></td>
+                                                        <td><?php echo $member['date']; ?></td>
+                                                        <td><?php echo $member['induction']; ?></td>
+                                                        <td><?php echo $member['unlist']; ?></td>
+                                                        <td><?php echo $member['net']; ?></td>
+                                                        <td><?php echo $member['points']; ?></td>
+                                                        <td><a href="<?php echo $member['view']; ?>"
+                                                                data-toggle="tooltip" title=""
+                                                                class="btn btn-login btn-xs btn-bold"
+                                                                data-original-title="View Members"><i
+                                                                    class="fa fa-eye"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <?php } ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="club-page-content">
+                                        <div class="page-title">
+                                            <?php echo $text_latest_trf; ?>
+                                            <a href="<?php echo $trf; ?>" data-toggle="tooltip" title=""
+                                                class="btn btn-login btn-sm btn-bold btn-table"
+                                                data-original-title="View all TRF contribution"
+                                                style="float: right !important;">View TRF Contribution</a>
+                                        </div>
+                                        <div class="table-design-row">
+                                            <table id="exampleclub2" class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sr</th>
+                                                        <th>Month</th>
+                                                        <th>TRF Contribution</th>
+                                                        <th>Points</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php $n=1; ?>
+                                                    <?php foreach($TableTrf as $trf){ ?>
+                                                    <tr>
+                                                        <td><?php echo $n++; ?></td>
+                                                        <td><?php echo $trf['date']; ?></td>
+                                                        <td><?php echo round($trf['amount_usd'],2); ?></td>
+                                                        <td><?php echo $trf['points']; ?></td>
+                                                        <td><a href="<?php echo $trf['view']; ?>" data-toggle="tooltip"
+                                                                title="" class="btn btn-login btn-xs btn-bold"
+                                                                data-original-title="View TRF Contribution"><i
+                                                                    class="fa fa-eye"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <?php } ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="club-page-content">
+                                        <div class="page-title">
+                                            <?php echo $text_latest_project; ?>
+                                            <?php echo $text_latest_trf; ?>
+                                            <a href="<?php echo $project; ?>" data-toggle="tooltip" title=""
+                                                class="btn btn-login btn-sm btn-bold btn-table"
+                                                data-original-title="View all Projects"
+                                                style="float: right !important;">View Projects</a>
+                                        </div>
+                                        <div class="table-design-row">
+                                            <table id="exampleclub3" class="table table-bordered table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sr</th>
+                                                        <th>Month</th>
+                                                        <th>Projects Title</th>
+                                                        <th>Projects Cost</th>
+                                                        <th>Category</th>
+                                                        <th>Points</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php $n=1; ?>
+                                                    <?php foreach($TableProjects as $project){ ?>
+                                                    <tr>
+                                                        <td><?php echo $n++; ?></td>
+                                                        <td><?php echo $project['date']; ?></td>
+                                                        <td><?php echo $project['title']; ?></td>
+                                                        <td><?php echo round($project['amount'],2); ?></td>
+                                                        <td><?php echo $project['no_of_beneficiary']; ?></td>
+                                                        <td><?php echo $project['points']; ?></td>
+                                                        <td><a href="<?php echo $project['view']; ?>"
+                                                                data-toggle="tooltip" title=""
+                                                                class="btn btn-login btn-xs btn-bold"
+                                                                data-original-title="View Projects"><i
+                                                                    class="fa fa-eye"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                    <?php } ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php echo $footer; ?>
+            <script>
+                $(function () {
+
+
+                    function countUp(count) {
+                        var div_by = 100,
+                            speed = Math.round(count / div_by),
+                            $display = $('.countdown_first'),
+                            run_count = 1,
+                            int_speed = 24;
+                        var int = setInterval(function () {
+                            if (run_count < div_by) {
+                                $display.text(speed * run_count);
+                                run_count++;
+                            } else if (parseInt($display.text()) < count) {
+                                var curr_count = parseInt($display.text()) + 1;
+                                $display.text(curr_count);
+                            } else {
+                                clearInterval(int);
+                            }
+                        }, int_speed);
+                    }
+                    countUp('<?php echo round($trfs,2); ?>');
+
+                    function countUp2(count) {
+                        var div_by = 100,
+                            speed = Math.round(count / div_by),
+                            $display = $('.countdown_second'),
+                            run_count = 1,
+                            int_speed = 24;
+                        var int = setInterval(function () {
+                            if (run_count < div_by) {
+                                $display.text(speed * run_count);
+                                run_count++;
+                            } else if (parseInt($display.text()) < count) {
+                                var curr_count = parseInt($display.text()) + 1;
+                                $display.text(curr_count);
+                            } else {
+                                clearInterval(int);
+                            }
+                        }, int_speed);
+                    }
+                    countUp2('<?php echo round($projects,2); ?>');
+
+                    function countUp3(count) {
+                        var div_by = 100,
+                            speed = Math.round(count / div_by),
+                            $display = $('.countdown_fourth'),
+                            run_count = 1,
+                            int_speed = 24;
+                        var int = setInterval(function () {
+                            if (run_count < div_by) {
+                                $display.text(speed * run_count);
+                                run_count++;
+                            } else if (parseInt($display.text()) < count) {
+                                var curr_count = parseInt($display.text()) + 1;
+                                $display.text(curr_count);
+                            } else {
+                                clearInterval(int);
+                            }
+                        }, int_speed);
+                    }
+                    countUp3('<?php echo round($members,2); ?>');
+
+                });
+            </script>

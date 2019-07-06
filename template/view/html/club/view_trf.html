@@ -1,0 +1,101 @@
+<?php echo $header; ?>
+<?php echo $nav; ?>
+<div id="page-content-wrapper">
+    <div class="page-content">
+        <div class="container">
+            <div class="banner-img-08 banner-img-size"></div>
+            <div class="page-breadcum" id="content">
+                <?php for($i = 0; $i < count($breadcrumbs); $i++) : ?>
+                <?php if($i != (count($breadcrumbs) - 1)) : ?>
+                <?php if($i == 0) : ?>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php else : ?>
+                <i class="fa fa-chevron-right"></i>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php endif; ?>
+                <?php else : ?>
+                <i class="fa fa-chevron-right"></i>
+                <?php echo $breadcrumbs[$i]['text']; ?>
+                <?php endif; ?>
+                <?php endfor; ?>
+            </div>
+            <div class="about-desc-section">
+                <div class="about-desc-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3 mt-20">
+                                <?php echo  $navpage; ?>
+                            </div>
+                            <div class="col-md-9 mt-20">
+                                <div class="about-page-content">
+                                    <div class="page-title">
+                                        View TRF Contribution
+                                        <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title=""
+                                            class="btn btn-login btn-sm btn-bold btn-table" data-original-title="Back"
+                                            style="float: right !important;"><i class="fa fa-reply"></i></a>
+                                    </div>
+                                    <div class="club-page-content">
+                                        <form action="<?php echo $action; ?>" method="post"
+                                            enctype="multipart/form-data">
+                                            <div class="form-group row">
+                                                <div class="col-sm-4">
+                                                    <label for="month">Month :</label>
+                                                    <input type="number" class="form-control" name="month" id="month"
+                                                        value="<?php echo $month; ?>" readonly="">
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label for="year">Year :</label>
+                                                    <input type="number" class="form-control" name="year" id="year"
+                                                        value="<?php echo $year; ?>" readonly="">
+                                                </div>
+                                            </div>
+                                            <hr class="featurette-divider">
+                                            <div class="form-group row">
+                                                <div class="col-sm-3">
+                                                    <label for="inputamount_inr">Amount
+                                                        in INR :</label>
+                                                    <input type="number" class="form-control" name="amount_inr"
+                                                        id="amount_inr" value="<?php echo $amount_inr; ?>" readonly="">
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label for="inputexchange_rate">Exchange
+                                                        Rate :</label>
+                                                    <input type="number" class="form-control" name="exchange_rate"
+                                                        id="exchange_rate" value="<?php echo $exchange_rate; ?>"
+                                                        readonly="">
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label for="inputamount_usd">Amount in
+                                                        USD
+                                                        :</label>
+                                                    <input type="number" class="form-control" name="amount_usd"
+                                                        id="amount_usd" value="<?php echo $amount_usd; ?>" readonly="">
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label for="inputpoints">Citation
+                                                        Points Accrued :</label>
+                                                    <input type="number" class="form-control" name="points" id="points"
+                                                        value="<?php echo $points; ?>" readonly="">
+                                                </div>
+                                            </div>
+                                            <hr class="featurette-divider">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php echo $footer; ?>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+            <script>
+                $(function () {
+
+                    $("#amount_inr, #exchange_rate").on("keydown keyup", sum);
+
+                    function sum() {
+                        $("#amount_usd").val(Number($("#amount_inr").val()) / Number($("#exchange_rate").val()));
+                    }
+                });
+            </script>

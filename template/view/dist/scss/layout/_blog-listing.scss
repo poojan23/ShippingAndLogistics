@@ -1,0 +1,155 @@
+/* ============================= */
+/*          Blog Listing         */
+/* ============================= */
+
+#blog_single_main_sec {
+    padding: 100px 0;
+    background-color:#fff;
+    position:relative;
+    li {
+        &:before {
+            display: none;
+        }
+    }
+    .pagination {
+        margin-bottom: 0;
+        margin-top: 0;
+        @media only screen and (max-width: 991px) {
+            margin-bottom: 68px;
+            margin-top: 30px;
+        }
+        li {
+            padding-left: 0;
+            padding-bottom: 0;
+            &:before {
+                display: none;
+            }
+            a {
+                border-color: #bfbfbf;
+                border-radius: 50px;
+                color: #777777;
+                font-size: 12px;
+                margin-bottom: 10px;
+                margin-right: 10px;
+                padding: 10px 16px;
+                &:hover,
+                &:focus {
+                    background-color: #F5F5F5;
+                    color:#777777;
+                    border-color:#bfbfbf;
+                }
+            }
+        }
+        li.active a {
+            background: $basic;
+            background: $linear;
+            filter: $filter;
+            border-color: $white;
+            color: $white;
+        }
+    }
+}
+
+.summer-fashion-wrap{
+    float: left;
+    width: 100%;
+    margin-bottom: 50px;
+}
+.summer-fashion {
+    background: #212121;
+    display: block;
+    text-align: center;
+}
+.fashion-description{
+    margin-top: 20px;
+}
+.icons-details {
+    ul{
+        padding: 0;
+        margin: 0 auto;
+        list-style: none;
+        display: block;
+        li {
+            margin: 0 auto;
+            padding-left: 0;
+            text-align: center;
+            width: 74%;
+            i {
+                font-size: 20px;
+            }
+        }
+    }
+    span {
+        font-size: 16px;
+    }
+}
+
+.fall-trends {
+    float: left;
+    width: 100%;
+    h3 {
+        color: #000000;
+        margin-top: 0;
+        font-weight: 600;
+        @media only screen and (max-width: 480px) {
+            font-size: 18px;
+            line-height: 30px;
+        }
+    }
+    p {
+        color: #656565;
+        line-height: 25px;
+    }
+}
+.fashion-date {
+    text-align: center;
+    padding-right: 10px;
+    padding-left: 0;
+    h3 {
+        line-height: 35px;
+        margin-bottom: 0;
+    }
+    p {
+        font-size: 14px;
+    }
+}
+.recent-posts{
+    float: left;
+    width: 100%;
+    p{
+        font-size: 16px;
+        margin-bottom: 0;
+    }
+    h4{
+        margin-top:0;
+    }
+    .recent-posts-block {
+        float: left;
+        width: 100%;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        span {
+            font-size: 12px;
+            color: #cdcdcd;
+        }
+    }
+}
+.blog-sidebar {
+    .sidebar-box{
+        background: inherit;
+        padding: 0;
+    }
+}
+
+.pagination-box {
+    float: left;
+    width: 100%;
+    text-align: center;
+    display: block;
+    margin-top: 30px;
+}
+
+/* ================================== */
+/*          End Blog Listing          */
+/* ================================== */

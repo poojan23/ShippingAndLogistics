@@ -1,0 +1,144 @@
+/* ====================== */
+/*      Testimonials      */
+/* ====================== */
+
+#rt_testimonial {
+	padding: 120px 0;
+	background: $Alabaster;
+	@media only screen and (max-width: 640px) {
+		padding: 60px 0;
+	}
+	h2 {
+		@media only screen and (max-width: 640px) {
+			margin-bottom: 30px;
+		}
+	}
+	.owl-carousel {
+		clear:both;
+	}
+	.owl-dots {
+		text-align: center;
+		margin-top: 30px;
+		@media only screen and (max-width: 640px) {
+			margin-top: 10px;
+		}
+		.owl-dot.active {
+			background: $basic;
+			background: $linear;
+			filter: $filter;
+			border-radius: 5px;
+			height: 5px;
+			transition: all 0.5s ease 0s;
+			width: 20px;
+		}
+		.owl-dot {
+			border: 1px solid $matisse;
+			border-radius: 5px;
+			display: inline-block;
+			height: 5px;
+			margin-right: 12px;
+			width: 20px;
+		}
+	}
+	.testimonial_main {
+		background: $white;
+		border-radius: 8px;
+		float: left;
+		margin: 0 0 8px;
+		padding: 65px 25px 25px;
+		width: 100%;
+		-webkit-box-shadow: 3px 4px 9px -6px #cccccc;
+		-moz-box-shadow: 3px 4px 9px -6px #cccccc;
+		box-shadow: 3px 4px 9px -6px #cccccc;
+		@media only screen and (max-width: 991px) {
+			margin: 65px 0 8px;
+		}
+		@media only screen and (max-width: 640px) {
+			text-align: center;
+			margin: 0 0 8px;
+		}
+		.mt_testimonial_img {
+			float: left;
+			text-align: left;
+			width: 15%;
+			@media only screen and (max-width: 480px) {
+				width: 35%;
+			}
+			img {
+				border-radius: 50%;
+				box-shadow: 4px 8px 18px 0 #cccccc;
+				display: block;
+				margin: 15px auto 0;
+				width: 100%;
+			}
+		}
+
+		p {
+			margin-bottom: 6px !important;
+			position: relative;
+			&:before {
+				content: "\f10d";
+				font-family: fontawesome;
+				font-size: 50px;
+				left: -30px;
+				opacity: 0.1;
+				position: absolute;
+				top: -30px;
+			}
+			@media only screen and (max-width: 640px) {
+				font-size: 14px;
+				line-height: 22px;
+			}
+		}
+		.client_name {
+			float: left;
+			margin-left: 15px;
+			margin-top: 22px;
+			width: 80%;
+			text-align: left;
+			@media only screen and (max-width: 480px) {
+				width: 50%;
+			}
+			em {
+				font-size: 16px;
+				font-weight: bold;
+				letter-spacing: 1px;
+			}
+			span {
+				display: block;
+				font-size: 12px;
+				margin-top: -4px;
+			}
+		}
+	}
+	.darker {
+		.testimonial_main {
+			background: $mine-shaft;
+			em,
+			span {
+				color: $mercury;
+			}
+			.mt_testimonial_img {
+				img {
+					box-shadow: 3px 3px 14px 0 $black;
+					-ms-box-shadow: 3px 3px 14px 0 $black;
+					-webkit-box-shadow: 3px 3px 14px 0 $black;
+					-moz-box-shadow: 3px 3px 14px 0 $black;
+					-o-box-shadow: 3px 3px 14px 0 $black;
+				}
+			}
+		}
+		.owl-dot.active {
+			background: $mercury;
+			&:before {
+				border-color: $mercury;
+			}
+		}
+		.owl-dot {
+			border-color: $mercury;
+		}
+	}
+}
+/* =========================== */
+/*      End Testimonials       */
+/* =========================== */

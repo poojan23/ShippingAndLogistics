@@ -1,0 +1,204 @@
+.page-scroll-btn {
+    position: absolute;
+    display: block;
+    float: left;
+    width: 100%;
+    z-index: 11;
+    text-align: center;
+    padding: 0;
+    top: 39%;
+    bottom: 0px;
+    right: 0;
+    left: 0;
+}
+.page-scroll-btn span{
+    background: #ffa51e;
+    width: 50px;
+    position: absolute;
+    height: 50px;
+    padding: 11px;
+    border-radius: 50%;
+}
+.page-scroll-btn a{
+    color: #fff;
+    font-size: 20px;
+}
+
+.page-scroll-btn i{
+    color: #fff;
+    font-size: 20px;
+}
+
+.morris-hover{position:absolute;z-index:1000;}.morris-hover.morris-default-style{border-radius:10px;padding:6px;color:#666;background:rgba(255, 255, 255, 0.8);border:solid 2px rgba(230, 230, 230, 0.8);font-family:sans-serif;font-size:12px;text-align:center;}.morris-hover.morris-default-style .morris-hover-row-label{font-weight:bold;margin:0.25em 0;}
+.morris-hover.morris-default-style .morris-hover-point{white-space:nowrap;margin:0.1em 0;}
+
+#area-chart,
+#line-chart,
+#bar-chart,
+#stacked,
+#pie-chart{
+  min-height: 250px;
+}
+
+.chart-title {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: #53182f;
+    color: #fff;
+    padding: 10px;
+    border-radius: 19px;
+}
+.chart-box {
+    display: block;
+    position: relative;
+    float: left;
+    width: 100%;
+    background-color: #fff;
+    padding: 10px;
+    color: #000;
+    border-radius: 19px;
+    border: 1px solid #0068c7;
+    box-shadow: 1px 1px 1px 1px #0068c7;
+    margin-bottom: 29px;
+}
+.chart-title1 {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: #ffa51e;
+    color: #fff;
+    padding: 10px;
+    border-radius: 19px;
+}
+.chart-box1 {
+    display: block;
+    position: relative;
+    float: left;
+    width: 100%;
+    background-color: #fff;
+    padding: 10px;
+    color: #000;
+    border-radius: 19px;
+    border: 1px solid #ffa220;
+    box-shadow: 1px 1px 1px 1px #ffa220;
+    margin-bottom: 29px;
+}
+.chart-title2 {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: #FFC107;
+    color: #fff;
+    padding: 10px;
+    border-radius: 19px;
+}
+.chart-box2 {
+    display: block;
+    position: relative;
+    float: left;
+    width: 100%;
+    background-color: #fff;
+    padding: 10px;
+    color: #000;
+    border-radius: 19px;
+    border: 1px solid #FFC107;
+    box-shadow: 1px 1px 1px 1px #FFC107;
+    margin-bottom: 29px;
+}
+
+.chart-title3 {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: #ff7322;
+    color: #fff;
+    padding: 10px;
+    border-radius: 19px;
+}
+
+.chart-box3 {
+    display: block;
+    position: relative;
+    float: left;
+    width: 100%;
+    background-color: #fff;
+    padding: 10px;
+    color: #000;
+    border-radius: 19px;
+    border: 1px solid #ff7322;
+    box-shadow: 1px 1px 1px 1px #ff7322;
+    margin-bottom: 29px;
+}
+
+.chart-title4 {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: #0071c9;
+    color: #fff;
+    padding: 10px;
+    border-radius: 19px;
+}
+.chart-box4 {
+    display: block;
+    position: relative;
+    float: left;
+    width: 100%;
+    background-color: #fff;
+    padding: 10px;
+    color: #000;
+    border-radius: 19px;
+    border: 1px solid #0071c9;
+    box-shadow: 1px 1px 1px 1px #0071c9;
+    margin-bottom: 29px;
+}
+.chart-title5 {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color:#4CAF50;
+    color: #fff;
+    padding: 10px;
+    border-radius: 19px;
+}
+.chart-box5 {
+    display: block;
+    position: relative;
+    float: left;
+    width: 100%;
+    background-color: #fff;
+    padding: 10px;
+    color: #000;
+    border-radius: 19px;
+    border: 1px solid #4CAF50;
+    box-shadow: 1px 1px 1px 1px #4CAF50;
+    margin-bottom: 29px;
+}
+.chart-title6 {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: #ff0000;
+    color: #fff;
+    padding: 10px;
+    border-radius: 19px;
+}
+.chart-box6 {
+    display: block;
+    position: relative;
+    float: left;
+    width: 100%;
+    background-color: #fff;
+    padding: 10px;
+    color: #000;
+    border-radius: 19px;
+    border: 1px solid #ff0000;
+    box-shadow: 1px 1px 1px 1px #ff0000;
+    margin-bottom: 29px;
+}
+
+.chart-body {
+    display: block;
+    width: 100%;
+}

@@ -1,0 +1,154 @@
+<body>
+    <!---------------------->
+    <!--desktop menu-->
+    <header id="header" class="desktop-view">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo-ir">
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <a href="https://www.rotary.org" target="_blank">
+                            <?php if(isset($logo)) : ?>
+                            <img class="img-responsive logo-img" src="<?php echo $logo; ?>" alt="<?php echo $name; ?>">
+                            <?php else : ?>
+                            <?php echo $name; ?>
+                            <?php endif; ?>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="header-logo-district">
+                            <a>
+                                <?php if(isset($district_logo)) : ?>
+                                <img class="img-responsive star-img" src="<?php echo $district_logo; ?>"
+                                    alt="<?php echo $name; ?>">
+                                <?php else : ?>
+                                <?php echo $name; ?>
+                                <?php endif; ?>
+                            </a>
+                            <a>
+                                <?php if(isset($governor_logo)) : ?>
+                                <img class="img-responsive user-img" src="<?php echo $governor_logo; ?>"
+                                    alt="<?php echo $name; ?>">
+                                <?php else : ?>
+                                <?php echo $name; ?>
+                                <?php endif; ?>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="header-bottom">
+                <div class="menu-desk">
+                    <ul id="list-menu">
+                        <li>
+                            <a href="<?php echo $home; ?>"><?php echo $text_home; ?></a>
+                        </li>
+                        <?php foreach($information as $info) : ?>
+                        <li class="sub-menu-parent">
+                            <a href="<?php echo $info['href']; ?>"><?php echo $info['name']; ?></a>
+                            <?php if($info['children']) : ?>
+                            <ul class="sub-menu drop1">
+                                <?php foreach($info['children'] as $child): ?>
+                                <li><a href="<?php echo $child['href']; ?>"><?php echo $child['title']; ?></a></li>
+                                <?php endforeach; ?>
+                            </ul>
+                            <?php endif; ?>
+                        </li>
+                        <?php endforeach; ?>
+                        <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
+                        <li class="sub-menu-parent">
+                            <a href="javascript:;"><?php echo $text_login; ?></a>
+                            <ul class="sub-menu drop8">
+                                <li><a href="<?php echo $admin; ?>"><i
+                                            class="fa fa-user-circle header-fa"></i>&nbsp;<?php echo $text_admin; ?></a>
+                                </li>
+                                <li><a href="<?php echo $club; ?>"><i
+                                            class="fa fa-user-circle header-fa"></i>&nbsp;<?php echo $text_club; ?></a>
+                                </li>
+                                <!-- <li><a href="https://my.rotary.org/en/user/login?destination=user/profile/edit"
+                                        target="_blank"><i
+                                            class="fa fa-user-circle header-fa"></i>&nbsp;<?php echo $text_member; ?></a>
+                                </li> -->
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="search" id="search">
+                                <a href="javascript:;" class="top" title="" data-placement="bottom"
+                                    data-toggle="tooltip" data-original-title="Search">
+                                    <i class="fa fa-search header-fa" data-toggle="modal" data-target="#myModal"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- mobile menu -->
+    <header id="header" class="mobile-view">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo-ir">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <a href="https://www.rotary.org" target="_blank">
+                            <?php if(isset($logo)) : ?>
+                            <img class="img-responsive logo-img" src="<?php echo $logo; ?>" alt="<?php echo $name; ?>">
+                            <?php else : ?>
+                            <?php echo $name; ?>
+                            <?php endif; ?>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="header-logo-district">
+                            <a>
+                                <?php if(isset($district_logo)) : ?>
+                                <img class="img-responsive star-img" src="<?php echo $district_logo; ?>"
+                                    alt="<?php echo $name; ?>">
+                                <?php else : ?>
+                                <?php echo $name; ?>
+                                <?php endif; ?>
+                            </a>
+                            <a>
+                                <?php if(isset($governor_logo)) : ?>
+                                <img class="img-responsive user-img" src="<?php echo $governor_logo; ?>"
+                                    alt="<?php echo $name; ?>">
+                                <?php else : ?>
+                                <?php echo $name; ?>
+                                <?php endif; ?>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="header-bottom">
+                <div class="menu-icon">
+                    <i class="fa fa-bars"></i>
+                    Menu
+                </div>
+                <ul>
+                    <li>
+                        <div class="search" id="search">
+                            <a href="javascript:;" class="top" data-placement="bottom" data-toggle="tooltip"
+                                data-original-title="Search">
+                                <i class="fa fa-search header-fa" data-toggle="modal" data-target="#myModal"></i>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <nav class="nav open">
+            <ul>
+                <li><a href="<?php echo $home; ?>"><?php echo $text_home; ?></a></li>
+                <?php foreach($information as $info) : ?>
+                <li><a href="<?php echo $info['href']; ?>"><?php echo $info['name']; ?></a></li>
+                <?php endforeach; ?>
+                <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
+                <li><a href="<?php echo $admin; ?>"><?php echo $text_admin; ?></a></li>
+                <li><a href="<?php echo $club; ?>"><?php echo $text_club; ?></a></li>
+            </ul>
+        </nav>
+    </header>

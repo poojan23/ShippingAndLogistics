@@ -1,0 +1,113 @@
+<?php echo $header; ?>
+<?php echo $nav; ?>
+<div id="page-content-wrapper">
+    <div class="page-content">
+        <div class="container">
+            <div class="banner-img-08 banner-img-size"></div>
+            <div class="page-breadcum" id="content">
+                <?php for($i = 0; $i < count($breadcrumbs); $i++) : ?>
+                <?php if($i != (count($breadcrumbs) - 1)) : ?>
+                <?php if($i == 0) : ?>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php else : ?>
+                <i class="fa fa-chevron-right"></i>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php endif; ?>
+                <?php else : ?>
+                <i class="fa fa-chevron-right"></i>
+                <?php echo $breadcrumbs[$i]['text']; ?>
+                <?php endif; ?>
+                <?php endfor; ?>
+            </div>
+            <div class="about-desc-section">
+                <div class="about-desc-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3 mt-20">
+                                <?php echo  $navpage; ?>
+                            </div>
+                            <div class="col-md-9 mt-20">
+                                <div class="about-page-content">
+                                    <div class="page-title">
+                                        Edit Profile Infomation
+                                    </div>
+                                    <div class="club-page-content">
+                                        <!-- <?php if($success) : ?>
+                                        <div class="alert alert-success alert-dismissible"><i
+                                                class="fa fa-check-circle"></i>
+                                            <?php echo $success; ?>
+                                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        </div>
+                                        <?php endif; ?>
+                                        <?php if($warning_err) : ?>
+                                        <div class="alert alert-danger alert-dismissible"><i
+                                                class="fa fa-exclamation-circle"></i>
+                                            <?php echo $warning_err; ?>
+                                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        </div>
+                                        <?php endif; ?> -->
+
+                                        <form action="<?php echo $action; ?>" method="post"
+                                            enctype="multipart/form-data">
+                                            <div class="form-group row">
+                                                <div class="col-sm-4">
+                                                    <label for="inputwebsite">Website
+                                                        :</label>
+                                                    <input type="text" class="form-control" id="website" name="website"
+                                                        value="<?php echo $website; ?>">
+                                                    <?php if($website_err) : ?>
+                                                    <span class="invalid-tooltip">
+                                                        <?php echo $website_err; ?></span>
+                                                    <?php endif; ?>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label for="inputmobile">Mobile
+                                                        :</label>
+                                                    <input type="tel" class="form-control" id="mobile" name="mobile"
+                                                        value="<?php echo $mobile; ?>">
+                                                    <?php if($mobile_err) : ?>
+                                                    <span class="invalid-tooltip">
+                                                        <?php echo $mobile_err; ?></span>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+                                            <hr class="featurette-divider">
+                                            <div class="form-group row">
+                                                <div class="col-sm-4">
+                                                    <label for="inputpassword"">Password
+                                                        :</label>
+                                                    <input type=" password" class="form-control" id="password"
+                                                        name="password" value="" placeholder="">
+                                                        <?php if($password_err) : ?>
+                                                        <span class="invalid-tooltip">
+                                                            <?php echo $password_err; ?></span>
+                                                        <?php endif; ?>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label for="inputconfirm">Confirm
+                                                        Password
+                                                        :</label>
+                                                    <input type="password" class="form-control" id="confirm"
+                                                        name="confirm" value="" placeholder="">
+                                                    <?php if($confirm_err) : ?>
+                                                    <span class="invalid-tooltip">
+                                                        <?php echo $confirm_err; ?></span>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+                                            <hr class="featurette-divider">
+                                            <div class="form-group row">
+                                                <div class="col-sm-12">
+                                                    <button type="submit" class="btn btn-sav mb-2">Save</button>
+                                                </div>
+                                            </div>
+                                            <hr class="featurette-divider">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php echo $footer; ?>

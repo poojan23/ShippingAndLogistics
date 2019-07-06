@@ -1,0 +1,149 @@
+<?php echo $header; ?>
+<?php echo $nav; ?>
+<div id="page-content-wrapper">
+    <div class="page-content">
+        <div class="container">
+            <div class="banner-img-08 banner-img-size"></div>
+            <div class="page-breadcum" id="content">
+                <?php for($i = 0; $i < count($breadcrumbs); $i++) : ?>
+                <?php if($i != (count($breadcrumbs) - 1)) : ?>
+                <?php if($i == 0) : ?>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php else : ?>
+                <i class="fa fa-chevron-right"></i>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php endif; ?>
+                <?php else : ?>
+                <i class="fa fa-chevron-right"></i>
+                <?php echo $breadcrumbs[$i]['text']; ?>
+                <?php endif; ?>
+                <?php endfor; ?>
+            </div>
+            <div class="about-desc-section">
+                <div class="about-desc-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3 mt-20">
+                                <?php echo  $navpage; ?>
+                            </div>
+                            <div class="col-md-9 mt-20">
+                                <div class="about-page-content">
+                                    <div class="page-title">
+                                        View Projects
+                                        <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title=""
+                                            class="btn btn-login btn-sm btn-bold btn-table" data-original-title="Back"
+                                            style="float: right !important;"><i class="fa fa-reply"></i></a>
+                                    </div>
+                                    <div class="club-page-content">
+                                        <?php foreach($projects as $project){ ?>
+                                        <form action="" method="post" enctype="multipart/form-data">
+                                            <?php 
+                                            $date =  $project['date']; 
+                                            $date = explode('-', $date);
+
+                                            $year = $date[0];
+                                            $month= $date[1];
+                                            ?>
+                                            <div class="form-group row">
+                                                <div class="col-sm-3">
+                                                    <label for="month">Month :</label>
+                                                    <input type="text" class="form-control" name="month" id="month"
+                                                        value="<?php echo $month; ?>" readonly>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label for="year">Year :</label>
+                                                    <input type="text" class="form-control" name="year" id="year"
+                                                        value="<?php echo $year; ?>" readonly>
+                                                </div>
+                                            </div>
+                                            <hr class="featurette-divider">
+                                            <div class="form-group row">
+                                                <div class="col-sm-3">
+                                                    <label for="title">Projects
+                                                        Title:</label>
+                                                    <input type="text" class="form-control" name="title" id="title"
+                                                        value="<?php echo  $project['title']; ?>" readonly>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label for="amount">Project Cost
+                                                        (&#8377;)
+                                                        :</label>
+                                                    <input type="number" class="form-control" name="amount" id="amount"
+                                                        value="<?php echo $project['amount']; ?>" readonly>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label for="no_of_beneficiary">Number of
+                                                        beneficiaries
+                                                        :</label>
+                                                    <input type="number" class="form-control" name="no_of_beneficiary"
+                                                        id="no_of_beneficiary"
+                                                        value="<?php echo $project['no_of_beneficiary']; ?>" readonly>
+                                                </div>
+                                            </div>
+                                            <hr class="featurette-divider">
+                                            <div class="form-group row">
+                                                <div class="col-sm-4">
+                                                    <label for="image">Image:</label>
+                                                    <div class="img-section">
+                                                        <?php $n=1; ?>
+                                                        <?php foreach($images as $image): ?>
+                                                        <div class="image-upload">
+                                                            <a class="img-thumbnail" id="thumb-img<?php echo $n++; ?>">
+                                                                <img id="preview<?php echo $n++; ?>"
+                                                                    src="<?php echo $image['thumb2']; ?>">
+                                                            </a>
+                                                            <input type="hidden" id="input_img<?php echo $n++; ?>"
+                                                                name="image[]" value="" />
+                                                        </div>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <label for="description">Description
+                                                        :</label>
+                                                    <textarea name="description" id="description" class="form-control"
+                                                        rows="5"
+                                                        readonly><?php echo $project['description']; ?></textarea>
+                                                </div>
+                                            </div>
+                                            <hr class="featurette-divider">
+                                            <div class="form-group row">
+                                                <div class="col-sm-12">
+                                                    <label for="category[]">Category
+                                                        :</label>
+                                                    <div class="row">
+                                                        <?php foreach($categoires as $category): ?>
+                                                        <div class="col-sm-4">
+                                                            <div class="checkbox checkbox-primary">
+                                                                <input id="category" name="category[]"
+                                                                    value="<?php echo $category['category_id']; ?>"
+                                                                    type="checkbox" checked>
+                                                                <label for="category[]">
+                                                                    <?php echo $category['name']; ?>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr class="featurette-divider">
+                                            <div class="form-group row">
+                                                <div class="col-sm-3">
+                                                    <label for="points">Citation points
+                                                        accrued
+                                                        :</label>
+                                                    <input type="number" class="form-control" id="points" name="points"
+                                                        value="<?php echo $project['points']; ?>" readonly>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <?php } ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php echo $footer; ?>

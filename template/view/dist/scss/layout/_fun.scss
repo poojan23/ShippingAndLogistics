@@ -1,0 +1,91 @@
+/* ============================= */
+/*          Fun And Fact         */
+/* ============================= */
+
+#mt_fun {
+    background: $basic;
+    background: $linear;
+    filter: $filter;
+    padding: 120px 0;
+    .mt_heading {
+        h2,p {
+            color: $white;
+        }
+    }
+    .facts_row {
+        padding-left: 40px;
+        padding-right: 40px;
+        .fun-facts_item {
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box;
+            width: 95px;
+            height: 95px;
+            margin: 0 auto;
+            margin-bottom: 28px;
+            position: relative;
+            -o-text-overflow: clip;
+            text-overflow: clip;
+            background-color: transparent;
+            -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+
+        }
+    }
+    .fun-facts_contain {
+        width: 95px;
+        height: 95px;
+        margin: 0 auto;
+        p {
+            position: absolute;
+            width: 95px;
+            text-align: center;
+            padding-top: 12px;
+            font-size: 50px;
+            z-index: 1;
+             -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+            -webkit-transition-property: border-color, color, background-color;
+            transition-property: border-color, color, background-color;
+        }
+        i {
+            color: #fff;
+            font-size: 72px;
+        }
+    }
+    .fun-facts_figure {
+        font-family: 'Montserrat Alternates', sans-serif;
+        font-weight: 600;
+        font-size: 55px;
+        text-align: center;
+        color: #fff;
+        margin-top: 38px;
+        margin-bottom: 0px;
+    }
+    .fun-facts_title {
+        font-size: 18px;
+        color: #fff;
+        text-align: center;
+        text-transform: uppercase;
+        margin-top: 10px;
+        font-weight: bold;
+        &:before {
+            content: "";
+            display: block;
+            height: 2px;
+            width: 40px;
+            margin: 0 auto;
+            margin-bottom: 8px;
+        }
+    }
+    .fun-facts_wrapper:hover .fun-facts_contain p {
+        color: #fafafa;
+    }
+}
+
+/* ================================== */
+/*          End Fun And Fact          */
+/* ================================== */

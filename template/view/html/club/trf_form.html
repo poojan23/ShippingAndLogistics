@@ -1,0 +1,137 @@
+<?php echo $header; ?>
+<?php echo $nav; ?>
+<div id="page-content-wrapper">
+    <div class="page-content">
+        <div class="container">
+            <div class="banner-img-08 banner-img-size"></div>
+            <div class="page-breadcum" id="content">
+                <?php for($i = 0; $i < count($breadcrumbs); $i++) : ?>
+                <?php if($i != (count($breadcrumbs) - 1)) : ?>
+                <?php if($i == 0) : ?>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php else : ?>
+                <i class="fa fa-chevron-right"></i>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php endif; ?>
+                <?php else : ?>
+                <i class="fa fa-chevron-right"></i>
+                <?php echo $breadcrumbs[$i]['text']; ?>
+                <?php endif; ?>
+                <?php endfor; ?>
+            </div>
+            <div class="about-desc-section">
+                <div class="about-desc-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3 mt-20">
+                                <?php echo  $navpage; ?>
+                            </div>
+                            <div class="col-md-9 mt-20">
+                                <div class="about-page-content">
+                                    <div class="page-title">
+                                        Add TRF Contribution
+                                        <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title=""
+                                            class="btn btn-login btn-sm btn-bold btn-table" data-original-title="Back"
+                                            style="float: right !important;"><i class="fa fa-reply"></i></a>
+                                    </div>
+                                    <div class="club-page-content">
+                                        <form action="<?php echo $action; ?>" method="post"
+                                            enctype="multipart/form-data">
+                                            <div class="form-group row">
+                                                <div class="col-sm-3">
+                                                    <label for="month">Month </label>
+                                                    <?php
+                                                        $timestamp = time();
+
+                                                    // determine the selected month, day, and year
+                                                    $selected_month = date('n', $timestamp);
+                                                    $selected_day = date('j', $timestamp);
+                                                    $selected_year = date('Y', $timestamp);
+
+                                                    // now, create the drop-down for months
+                                                    $month_html = '<select name="month" id="month" class="form-control">';
+                                                    for ($x = 1; $x < 13; $x++) {
+                                                        $month_html.= '<option value='.$x.($selected_month == $x ? ' selected=true' : '').'>'.date("F", mktime(0, 0, 0, $x, 1, $selected_year)).'</option>';
+                                                    }
+                                                    $month_html.= '</select>';
+                                                    // output
+                                                    print $month_html;
+                                                    ?>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label for="year">Year </label>
+                                                    <?php
+                                                    $year_html = '<select name="year" id="year" class="form-control">';
+                                                    $previ_year = date("Y",strtotime("-1 year"));    
+                                                    $start_year = date('Y', time());
+                                                    $max_year = $start_year + 1;
+                                                    for ($x = $previ_year; $x < $max_year; $x++) {
+                                                        $year_html.= '<option value='.$x.($selected_year == $x ? ' selected=true' : '').'>'.$x.'</option>';
+                                                    }
+                                                    $year_html.= '</select>';
+                                                    // output
+                                                    print $year_html;
+                                                    ?>
+                                                </div>
+                                            </div>
+                                            <hr class="featurette-divider">
+                                            <div class="form-group row">
+                                                <div class="col-sm-3">
+                                                    <label for="inputamount_inr">Amount
+                                                        in INR </label>
+                                                    <input type="number" class="form-control" name="amount_inr"
+                                                        id="amount_inr" required="">
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label for="inputexchange_rate">Exchange
+                                                        Rate </label>
+                                                    <input type="number" class="form-control" name="exchange_rate"
+                                                        id="exchange_rate" required="">
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label for="inputamount_usd">Amount in
+                                                        USD
+                                                    </label>
+                                                    <input type="number" class="form-control" name="amount_usd"
+                                                        id="amount_usd" required="" readonly>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label for="inputpoints">Citation
+                                                        Points Accrued </label>
+                                                    <input type="number" class="form-control" name="points" id="points"
+                                                        required="">
+                                                </div>
+                                            </div>
+                                            <hr class="featurette-divider">
+                                            <div class="form-group row">
+                                                <div class="col-sm-12">
+                                                    <input type="hidden" name="club_id" id="club_id"
+                                                        value="<?php echo $club_id; ?>">
+                                                    <label for="" class="col-sm-6">
+                                                        Total TRF
+                                                        Contribution(Doller) : <?php echo round($total_trf); ?>
+                                                    </label>
+                                                    <button type="submit" class="btn btn-sav mb-2">Save</button>
+                                                </div>
+                                            </div>
+                                            <hr class="featurette-divider">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php echo $footer; ?>
+            <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> -->
+            <script>
+                $(function () {
+
+                    $("#amount_inr, #exchange_rate").on("keydown keyup", sum);
+
+                    function sum() {
+                        $("#amount_usd").val(Number($("#amount_inr").val()) / Number($("#exchange_rate").val()));
+                    }
+                });
+            </script>

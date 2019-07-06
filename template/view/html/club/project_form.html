@@ -1,0 +1,236 @@
+<?php echo $header; ?>
+<?php echo $nav; ?>
+<div id="page-content-wrapper">
+    <div class="page-content">
+        <div class="container">
+            <div class="banner-img-08 banner-img-size"></div>
+            <div class="page-breadcum" id="content">
+                <?php for($i = 0; $i < count($breadcrumbs); $i++) : ?>
+                <?php if($i != (count($breadcrumbs) - 1)) : ?>
+                <?php if($i == 0) : ?>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php else : ?>
+                <i class="fa fa-chevron-right"></i>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php endif; ?>
+                <?php else : ?>
+                <i class="fa fa-chevron-right"></i>
+                <?php echo $breadcrumbs[$i]['text']; ?>
+                <?php endif; ?>
+                <?php endfor; ?>
+            </div>
+            <div class="about-desc-section">
+                <div class="about-desc-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3 mt-20">
+                                <?php echo  $navpage; ?>
+                            </div>
+                            <div class="col-md-9 mt-20">
+                                <div class="about-page-content">
+                                    <div class="page-title">
+                                        Add TRF Contribution
+                                        <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title=""
+                                            class="btn btn-login btn-sm btn-bold btn-table" data-original-title="Back"
+                                            style="float: right !important;"><i class="fa fa-reply"></i></a>
+                                    </div>
+                                    <div class="club-page-content">
+                                        <form action="<?php echo $action; ?>" method="post"
+                                            enctype="multipart/form-data">
+                                            <div class="form-group row">
+                                                <div class="col-sm-3">
+                                                    <label for="month">Month </label>
+                                                    <?php
+                                                    $timestamp = time();
+                                                    $selected_month = date('n', $timestamp);
+                                                    $selected_day = date('j', $timestamp);
+                                                    $selected_year = date('Y', $timestamp);
+                                                    $month_html = '<select name="month" id="month" class="form-control">';
+                                                    for ($x = 1; $x < 13; $x++) {
+                                                        $month_html.= '<option value='.$x.($selected_month == $x ? ' selected=true' : '').'>'.date("F", mktime(0, 0, 0, $x, 1, $selected_year)).'</option>';
+                                                    }
+                                                    $month_html.= '</select>';
+                                                    print $month_html;
+                                                    ?>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label for="year">Year </label>
+                                                    <?php
+                                                    $year_html = '<select name="year" id="year" class="form-control">';
+                                                    $previ_year = date("Y",strtotime("-1 year"));    
+                                                    $start_year = date('Y', time());
+                                                    $max_year = $start_year + 1;
+                                                    for ($x = $previ_year; $x < $max_year; $x++) {
+                                                        $year_html.= '<option value='.$x.($selected_year == $x ? ' selected=true' : '').'>'.$x.'</option>';
+                                                    }
+                                                    $year_html.= '</select>';
+                                                    print $year_html;
+                                                    ?>
+                                                </div>
+                                            </div>
+                                            <hr class="featurette-divider">
+                                            <div class="form-group row">
+                                                <div class="col-sm-3">
+                                                    <label for="title">Projects
+                                                        Title</label>
+                                                    <input type="text" class="form-control" name="title" id="title">
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label for="amount">Project Cost
+                                                        (&#8377;)
+                                                    </label>
+                                                    <input type="number" class="form-control" name="amount" id="amount">
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label for="no_of_beneficiary">Number of
+                                                        beneficiaries
+                                                    </label>
+                                                    <input type="number" class="form-control" name="no_of_beneficiary"
+                                                        id="no_of_beneficiary">
+                                                </div>
+                                            </div>
+                                            <hr class="featurette-divider">
+                                            <div class="form-group row">
+                                                <div class="col-sm-6">
+                                                    <label for="image">Image</label>
+                                                    <div class="img-section">
+                                                        <div class="image-upload">
+                                                            <a class="img-thumbnail" id="thumb-img1">
+                                                                <img id="preview1" src="<?php echo $thumb; ?>">
+                                                            </a>
+                                                            <input type="hidden" id="input_img1" name="image[]"
+                                                                value="" />
+                                                        </div>
+                                                        <div class="image-upload">
+                                                            <a class="img-thumbnail" id="thumb-img2" data-toggle="modal"
+                                                                data-target="#uploadModal2">
+                                                                <img id="preview2" src="<?php echo $thumb; ?>">
+                                                            </a>
+                                                            <input type="hidden" id="input_img2" name="image[]"
+                                                                value="" />
+                                                        </div>
+                                                    </div>
+                                                    <small class="text-muted">Need high resolution images, maximum two
+                                                        allowed</small>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <label for="description">Description
+                                                    </label>
+                                                    <textarea name="description" id="description" class="form-control"
+                                                        rows="5"></textarea>
+                                                    <small class="text-muted">Need to have only simple text
+                                                        input</small>
+                                                </div>
+                                            </div>
+                                            <hr class="featurette-divider">
+                                            <div class="form-group row">
+                                                <div class="col-sm-12">
+                                                    <label for="category">Category</label>
+                                                    <div class="row">
+                                                        <?php foreach($categoires as $category): ?>
+                                                        <div class="col-sm-4">
+                                                            <div class="checkbox checkbox-primary">
+                                                                <input id="category" name="category[]"
+                                                                    value="<?php echo $category['category_id']; ?>"
+                                                                    type="checkbox">
+                                                                <label for="category[]">
+                                                                    <?php echo $category['name']; ?>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr class="featurette-divider">
+                                            <div class="form-group row">
+                                                <div class="col-sm-4">
+                                                    <label for="points">Citation points
+                                                        accrued
+                                                    </label>
+                                                    <input type="number" class="form-control" id="points" name="points">
+                                                </div>
+                                            </div>
+                                            <hr class="featurette-divider">
+                                            <div class="form-group row">
+                                                <div class="col-sm-12">
+                                                    <input type="hidden" name="club_id" id="club_id"
+                                                        value="<?php echo $club_id; ?>">
+                                                    <label for="" class="col-sm-6">
+                                                        <!-- Total Projects : <?php echo round($total_project); ?> -->
+                                                    </label>
+                                                    <button type="submit" class="btn btn-sav mb-2">Save</button>
+                                                </div>
+                                            </div>
+                                            <hr class="featurette-divider">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php echo $footer; ?>
+            <div id="uploadModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">File upload form</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form method='post' action='' enctype="multipart/form-data" id="form-upload">
+                                Select file : <input type="file" name="file[]" value="" /><br>
+                                <button type='button' class='btn btn-login' id='upload'
+                                    style="float: right !important;">Save</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <script>
+                $('.img-thumbnail').on('click', function () {
+                    var element = $(this),
+                        id = element.attr('id');
+
+                    $('#uploadModal').modal('show');
+
+                    $('#uploadModal').on('click', '#upload', function () {
+                        if (typeof timer != 'undefined') {
+                            clearInterval(timer);
+                        }
+
+                        timer = setInterval(function () {
+                            if ($('#form-upload input[name=\'file\']').val != '') {
+                                clearInterval(timer);
+
+                                $.ajax({
+                                    url: 'index.php?url=club/upload',
+                                    type: 'POST',
+                                    dataType: 'json',
+                                    data: new FormData($('#form-upload')[0]),
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    success: function (json) {
+                                        if (json['error']) {
+                                            alert(json['error']);
+                                        }
+
+                                        if (json['success']) {
+                                            alert(json['success']);
+
+                                            $('#' + id).find('img').attr('src', json['thumb']);
+                                            $('#' + id).next('input').val(json['target']);
+
+                                            $('#uploadModal').modal('hide');
+                                        }
+                                    }
+                                });
+                            }
+                        }, 500);
+                    });
+                });
+            </script>

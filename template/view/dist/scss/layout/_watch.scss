@@ -1,0 +1,62 @@
+/* ============================= */
+/*          Fun And Fact         */
+/* ============================= */
+
+#rt_watch {
+    padding: 120px 0;
+    position: relative;
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: $basic;
+        background: $linear;
+        filter: $filter;
+        opacity: 0.8;
+    }
+    .watch_content {
+        position: relative;
+        h1 {
+            font-size: 40px;
+            font-weight: 400;
+            text-align: center;
+            color: $white;
+            font-family: 'WonderUnitSans-Extrabold';
+            @media only screen and (max-width: 767px) {
+                font-size: 40px;
+            }
+            @media only screen and (max-width: 640px) {
+                font-size: 30px;
+                margin-bottom: 15px;
+            }
+        }
+        p {
+            color: #fff;
+            width: 70%;
+            display: block;
+            margin: 0 auto;
+            @media only screen and (max-width: 767px) {
+                width: 95%;
+            }
+        }
+        a {
+            width: 90px;
+            display: block;
+            margin: 0 auto;
+            img {
+                display: block;
+                width: 100%;
+                margin-bottom: 45px;
+                @media only screen and (max-width: 480px) {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+/* ================================== */
+/*          End Fun And Fact          */
+/* ================================== */

@@ -1,0 +1,80 @@
+<?php echo $header; ?>
+<?php echo $nav; ?>
+<div id="page-content-wrapper">
+    <div class="page-content">
+        <div class="container">
+            <div class="banner-img-08 banner-img-size"></div>
+            <div class="page-breadcum" id="content">
+                <?php for($i = 0; $i < count($breadcrumbs); $i++) : ?>
+                <?php if($i != (count($breadcrumbs) - 1)) : ?>
+                <?php if($i == 0) : ?>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php else : ?>
+                <i class="fa fa-chevron-right"></i>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php endif; ?>
+                <?php else : ?>
+                <i class="fa fa-chevron-right"></i>
+                <?php echo $breadcrumbs[$i]['text']; ?>
+                <?php endif; ?>
+                <?php endfor; ?>
+            </div>
+            <div class="about-desc-section">
+                <div class="about-desc-content">
+                    <div class="row">
+                        <div class="col-md-4 mt-20">
+                        </div>
+                        <div class="col-md-4 mt-20">
+                            <div class="about-page-content">
+                                <!-- <?php if($success) : ?>
+                                <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i>
+                                    <?php echo $success; ?>
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                </div>
+                                <?php endif; ?> -->
+                                <!-- <?php if($warning_err) : ?>
+                                <div class="alert alert-danger alert-dismissible"><i
+                                        class="fa fa-exclamation-circle"></i>
+                                    <?php echo $warning_err; ?>
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                </div>
+                                <?php endif; ?> -->
+                                <div class="club-page-content login">
+                                    <div class="login-title">Club Login</div>
+                                    <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
+                                        <div
+                                            class="form-group has-feedback <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
+                                            <label for="email">Email:</label>
+                                            <input type="email" name="email" class="form-control" id="email"
+                                                placeholder="<?php echo $entry_email; ?>" value="<?php echo $email; ?>">
+                                        </div>
+                                        <div
+                                            class="form-group has-feedback <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                                            <label for="pwd">Password:</label>
+                                            <input type="password" name="password" class="form-control" id="pwd"
+                                                placeholder="<?php echo $entry_password; ?>">
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox"><?php echo $entry_remember; ?></label>
+                                        </div>
+                                        <button type="submit"
+                                            class="btn btn-login"><?php echo $button_login; ?></button>
+                                        <!-- <?php if($redirect) : ?>
+                                        <input type="hidden" name="redirect" value="<?php echo $redirect; ?>">
+                                        <?php endif; ?> -->
+                                    </form>
+                                    <!-- <?php if($forgotten) : ?>
+                                    <p class="mb-1">
+                                        <a href="<?php echo $forgotten; ?>">
+                                            <?php echo $text_forgotten; ?></a>
+                                    </p>
+                                    <?php endif; ?> -->
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php echo $footer; ?>

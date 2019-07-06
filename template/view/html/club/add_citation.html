@@ -1,0 +1,1771 @@
+<?php echo $header; ?>
+<style>
+    /* .image-upload {
+        width: 101px !important;
+        margin-right: 14px;
+    } */
+
+    .btn-sav {
+        border: 1px solid #17468f !important;
+        background-color: #17468f;
+        color: #fff;
+        float: none !important;
+        transition: all 0.2s ease-in-out;
+        margin-top: 24px;
+        margin-bottom: 0;
+    }
+
+    .btn-sav:hover,
+    .btn-sav:focus,
+    .btn-sav:active,
+    .btn-sav:visited {
+        border: 1px solid #17468f !important;
+        background-color: #17468f;
+        color: #fff;
+    }
+
+    .points-box {
+        box-shadow: 1px 1px 1px 1px #eee;
+        padding: 14px;
+        font-weight: 700;
+        color: #f7a81b;
+    }
+
+
+
+    /* 
+    .image-upload img {
+        border: 1px solid #eee;
+        width: 90px;
+        height: 90px;
+    } */
+</style>
+<?php echo $nav; ?>
+
+<div id="page-content-wrapper">
+    <div class="page-content">
+        <div class="container">
+            <div class="banner-img-08 banner-img-size"></div>
+            <div class="page-breadcum" id="content">
+                <?php for($i = 0; $i < count($breadcrumbs); $i++) : ?>
+                <?php if($i != (count($breadcrumbs) - 1)) : ?>
+                <?php if($i == 0) : ?>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php else : ?>
+                <i class="fa fa-chevron-right"></i>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php endif; ?>
+                <?php else : ?>
+                <i class="fa fa-chevron-right"></i>
+                <?php echo $breadcrumbs[$i]['text']; ?>
+                <?php endif; ?>
+                <?php endfor; ?>
+            </div>
+            <div class="about-desc-section">
+                <div class="about-desc-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3 mt-20">
+                                <?php echo  $navpage; ?>
+                            </div>
+                            <div class="col-md-9 mt-20">
+                                <div class="about-page-content">
+                                    <div class="page-title">
+                                        <?php echo $heading_title; ?>
+                                        <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title=""
+                                            class="btn btn-login btn-sm btn-bold btn-table" data-original-title="Back"
+                                            style="float: right !important;"><i class="fa fa-reply"></i></a>
+                                    </div>
+                                    <div class="club-page-content">
+                                        <p>THE CRITERIA FOR DG CITATION POINTS CALCULATION WILL BE BASED UPON THIS TABLE
+                                        </p>
+                                        <p>DIST 3141 2019-20 SMART YEAR DG HARJIT SINGH TALWAR</p>
+                                        <p>The Citations will be awarded subject to the completion of minimum number of
+                                            activities as mentioned under each
+                                            assessment area</p>
+                                        <hr class="featurette-divider">
+                                        <p>CATEGORIES</p>
+                                        <div class="box">
+                                            <!-- /.box-header -->
+                                            <div class="box-body">
+                                                <table class="table table-bordered">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>A)</td>
+                                                            <td>PLATINUM</td>
+                                                            <td>CLUB ACHIEVING 90% and above percentile points</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>B)</td>
+                                                            <td>DIAMOND</td>
+                                                            <td>CLUB ACHIEVING 75% TO 89% percentile points</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>C)</td>
+                                                            <td>GOLD</td>
+                                                            <td>CLUBS ACHIEVING 60% TO 75% percentile points</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>D)</td>
+                                                            <td>SILVER</td>
+                                                            <td>CLUBS ACHIEVING 50% TO 59% percentile points</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>E)</td>
+                                                            <td>BRONZE</td>
+                                                            <td>CLUBS ACHIEVING 40% TO 49% percentile points</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <p>CLUBS WILL NEED TO APPLY FOR DGs CITATION IN THE PRESCRIBED FORMAT WHICH WILL
+                                            BE AVAILABLE IN DUE COURSE
+                                            All citations will be awarded subject to the approval of the District
+                                            Scrutiny Team appointed by the DG
+                                            The decision of the team will be final
+                                        </p>
+                                        <hr class="featurette-divider">
+                                        <div class="box">
+                                            <form action="" method="POST">
+                                                <!-- /.box-header -->
+                                                <div class="box-body">
+                                                    <table class="table table-bordered">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th></th>
+                                                                <th>Particular</th>
+                                                                <th>Points</th>
+                                                                <th>Claim</th>
+                                                                <th>Project Id</th>
+                                                                <th>Remark</th>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td colspan="6">
+                                                                    <b><?php echo $citations[0]['level1']; ?></b></td>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td rowspan="15">
+                                                                    <b><?php echo $citations[0]['level2']; ?></b></td>
+                                                                <td colspan="5">
+                                                                    <b><?php echo $citations[0]['level3']; ?></b> </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[0]['level4']; ?></td>
+                                                                <td><?php echo $citations[0]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[0]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[1]['level4']; ?></td>
+                                                                <td><?php echo $citations[1]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[1]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[2]['level4']; ?></td>
+                                                                <td><?php echo $citations[2]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[2]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="5">
+                                                                    <b><?php echo $citations[3]['level3']; ?></b> </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[3]['level4']; ?></td>
+                                                                <td><?php echo $citations[3]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[3]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[4]['level4']; ?></td>
+                                                                <td><?php echo $citations[4]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[4]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[5]['level4']; ?></td>
+                                                                <td><?php echo $citations[5]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[5]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="5">
+                                                                    <b><?php echo $citations[6]['level2']; ?></b> </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[6]['level4']; ?></td>
+                                                                <td><?php echo $citations[6]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[6]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[7]['level4']; ?></td>
+                                                                <td><?php echo $citations[7]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[7]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[8]['level4']; ?></td>
+                                                                <td><?php echo $citations[8]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[8]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="5">
+                                                                    <b><?php echo $citations[9]['level2']; ?></b> </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[9]['level4']; ?></td>
+                                                                <td><?php echo $citations[9]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[9]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[10]['level4']; ?></td>
+                                                                <td><?php echo $citations[10]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[10]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="6">
+                                                                    <b><?php echo $citations[11]['level1']; ?></b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td rowspan="19"></td>
+                                                                <td colspan="5">
+                                                                    <b><?php echo $citations[11]['level3']; ?></b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[11]['level4']; ?></td>
+                                                                <td><?php echo $citations[11]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[11]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[12]['level4']; ?></td>
+                                                                <td><?php echo $citations[12]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[12]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[13]['level4']; ?></td>
+                                                                <td><?php echo $citations[13]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[13]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="5">
+                                                                    <b><?php echo $citations[14]['level3']; ?></b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[14]['level4']; ?></td>
+                                                                <td><?php echo $citations[14]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[14]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[15]['level4']; ?></td>
+                                                                <td><?php echo $citations[15]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[15]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[16]['level4']; ?></td>
+                                                                <td><?php echo $citations[16]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[16]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="5">
+                                                                    <b><?php echo $citations[17]['level3']; ?></b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[17]['level4']; ?></td>
+                                                                <td><?php echo $citations[17]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[17]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[18]['level4']; ?></td>
+                                                                <td><?php echo $citations[18]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[18]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="5">
+                                                                    <b><?php echo $citations[19]['level3']; ?></b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[19]['level4']; ?></td>
+                                                                <td><?php echo $citations[19]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[19]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[20]['level4']; ?></td>
+                                                                <td><?php echo $citations[20]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[20]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[21]['level4']; ?></td>
+                                                                <td><?php echo $citations[21]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[21]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[22]['level4']; ?></td>
+                                                                <td><?php echo $citations[22]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[22]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="5">
+                                                                    <b><?php echo $citations[23]['level3']; ?></b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[23]['level4']; ?></td>
+                                                                <td><?php echo $citations[23]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[23]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[24]['level4']; ?></td>
+                                                                <td><?php echo $citations[24]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[24]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="6">
+                                                                    <b><?php echo $citations[25]['level1']; ?></b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td rowspan="5"></td>
+                                                                <td colspan="5">
+                                                                    <b><?php echo $citations[25]['level3']; ?></b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[25]['level4']; ?></td>
+                                                                <td><?php echo $citations[25]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[25]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[26]['level4']; ?></td>
+                                                                <td><?php echo $citations[26]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[26]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[27]['level4']; ?></td>
+                                                                <td><?php echo $citations[27]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[27]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[28]['level4']; ?></td>
+                                                                <td><?php echo $citations[28]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[28]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="6">
+                                                                    <b><?php echo $citations[29]['level1']; ?></b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td rowspan="4"></td>
+                                                                <td><?php echo $citations[29]['level4']; ?></td>
+                                                                <td><?php echo $citations[29]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[29]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[30]['level4']; ?></td>
+                                                                <td><?php echo $citations[30]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[30]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[31]['level4']; ?></td>
+                                                                <td><?php echo $citations[31]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[31]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><?php echo $citations[32]['level4']; ?></td>
+                                                                <td><?php echo $citations[32]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[32]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="6">
+                                                                    <b><?php echo $citations[33]['level1']; ?></b>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[33]['level4']; ?></td>
+                                                                <td><?php echo $citations[33]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[33]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[34]['level4']; ?></td>
+                                                                <td><?php echo $citations[34]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[34]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td colspan="5">
+                                                                    <b><?php echo $citations[35]['level2']; ?></b>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td colspan="5">
+                                                                    <b><?php echo $citations[35]['level3']; ?></b>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[35]['level4']; ?></td>
+                                                                <td><?php echo $citations[35]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[35]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[36]['level4']; ?></td>
+                                                                <td><?php echo $citations[36]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[36]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td colspan="5">
+                                                                    <b><?php echo $citations[37]['level3']; ?></b>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[37]['level4']; ?></td>
+                                                                <td><?php echo $citations[37]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[37]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td colspan="5">
+                                                                    <b><?php echo $citations[38]['level3']; ?></b>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[38]['level4']; ?></td>
+                                                                <td><?php echo $citations[38]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[38]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[39]['level4']; ?></td>
+                                                                <td><?php echo $citations[39]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[39]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td colspan="5">
+                                                                    <b><?php echo $citations[40]['level3']; ?></b>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[40]['level4']; ?></td>
+                                                                <td><?php echo $citations[40]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[40]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td colspan="5">
+                                                                    <b><?php echo $citations[41]['level3']; ?></b>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[41]['level4']; ?></td>
+                                                                <td><?php echo $citations[41]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[41]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[42]['level4']; ?></td>
+                                                                <td><?php echo $citations[42]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[42]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[43]['level4']; ?></td>
+                                                                <td><?php echo $citations[43]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[43]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[44]['level4']; ?></td>
+                                                                <td><?php echo $citations[44]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[44]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[45]['level4']; ?></td>
+                                                                <td><?php echo $citations[45]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[45]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[46]['level4']; ?></td>
+                                                                <td><?php echo $citations[46]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[46]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[47]['level4']; ?></td>
+                                                                <td><?php echo $citations[47]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[47]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[48]['level4']; ?></td>
+                                                                <td><?php echo $citations[48]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[48]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[49]['level4']; ?></td>
+                                                                <td><?php echo $citations[49]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[49]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[50]['level4']; ?></td>
+                                                                <td><?php echo $citations[50]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[50]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="6">
+                                                                    <b><?php echo $citations[51]['level1']; ?></b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td colspan="5">
+                                                                    <b><?php echo $citations[51]['level2']; ?></b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[51]['level4']; ?></td>
+                                                                <td><?php echo $citations[51]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[51]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[52]['level4']; ?></td>
+                                                                <td><?php echo $citations[52]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[52]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[53]['level4']; ?></td>
+                                                                <td><?php echo $citations[53]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[53]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[54]['level4']; ?></td>
+                                                                <td><?php echo $citations[54]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[54]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td colspan="5">
+                                                                    <b><?php echo $citations[55]['level2']; ?></b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[55]['level4']; ?></td>
+                                                                <td><?php echo $citations[55]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[55]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[56]['level4']; ?></td>
+                                                                <td><?php echo $citations[56]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[56]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[57]['level4']; ?></td>
+                                                                <td><?php echo $citations[57]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[57]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[58]['level4']; ?></td>
+                                                                <td><?php echo $citations[58]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[58]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[59]['level4']; ?></td>
+                                                                <td><?php echo $citations[59]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[59]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[60]['level4']; ?></td>
+                                                                <td><?php echo $citations[60]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[60]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[61]['level4']; ?></td>
+                                                                <td><?php echo $citations[61]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[61]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td colspan="5">
+                                                                    <b><?php echo $citations[62]['level2']; ?></b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[62]['level4']; ?></td>
+                                                                <td><?php echo $citations[62]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[62]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[63]['level4']; ?></td>
+                                                                <td><?php echo $citations[63]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[63]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[64]['level4']; ?></td>
+                                                                <td><?php echo $citations[64]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[64]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[65]['level4']; ?></td>
+                                                                <td><?php echo $citations[65]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[65]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td colspan="5">
+                                                                    <b><?php echo $citations[66]['level2']; ?></b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[66]['level4']; ?></td>
+                                                                <td><?php echo $citations[66]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[66]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[67]['level4']; ?></td>
+                                                                <td><?php echo $citations[67]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[67]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[68]['level4']; ?></td>
+                                                                <td><?php echo $citations[68]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[68]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[69]['level4']; ?></td>
+                                                                <td><?php echo $citations[69]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[69]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><?php echo $citations[70]['level4']; ?></td>
+                                                                <td><?php echo $citations[70]['level5']; ?></td>
+                                                                <td><input type="checkbox" name="" />
+                                                                </td>
+                                                                <td><input type="number" name="project_id"><input
+                                                                        type="hidden" name="dg_id"
+                                                                        value="<?php echo $citations[70]['dg_id']; ?>" />
+                                                                </td>
+                                                                <td><textarea name="" rows="1"></textarea></td>
+                                                            </tr>
+
+
+                                                            <!--   <tr>
+                                                                <td><b>MEMBERSHIP</b></td>
+                                                                <td colspan="5"><b>Development,Retention & Extension</b>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td rowspan="8"><b>NET MEMBERSHIP GROWTH</b></td>
+                                                                <td colspan="5"><b>For CLUBS WITH < 50 MEMBERS</b> </td>
+                                                                            </tr> <tr>
+                                                                <td>OF 10%</td>
+                                                                <td>10</td>
+                                                                <td><input type="checkbox" /></td>
+                                                                <td></td>
+                                                                <td><textarea name="" rows="2"></textarea></td>
+                                                            </tr>
+                                                           <tr>
+                                                            <td>OF 20%</td>
+                                                            <td>25</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>FOR EVERY ADDITIONAL MEMBER OVER 20%</td>
+                                                            <td>3</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5"><b>FOR CLUBS WITH >50 MEMBERS</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>MIN 05 MEMBERS</td>
+                                                            <td>10</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>MIN 10 MEMBERS</td>
+                                                            <td>25</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>FOR EVERY ADDITIONAL MEMBER ABOVE 10</td>
+                                                            <td>3</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td rowspan="4"><b>FORMATION OF A NEWCLUB</b></td>
+                                                            <td colspan="5">&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>For CLUBS WITH < 50 MEMBERS</td> <td>20</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>FOR CLUBS WITH >50 AND <75 MEMBERS</td> <td>25</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>FOR > 75 MEMBERS</td>
+                                                            <td>30</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td rowspan="3"><b>ADDITIONALLY</b></td>
+                                                            <td colspan="5">&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>INDUCTION OF A NEW LADY OR YOUNG MEMBER < 40 YEARS OF
+                                                                    AGE - PER MEMBER (MAX 20)</td> <td>5</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>INDUCTION OF A ROTARCATORIN THE ROTARY CLUB - PER MEMBER
+                                                                (MAX 20)</td>
+                                                            <td>5</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td rowspan="20"><b>DISTRICT EVENTS</b></td>
+                                                            <td colspan="5"><b>HOSTING AND PARTICIPATION</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5"><b>HOSTING OF EVENTS</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>DISCON</td>
+                                                            <td>40</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>DISTRICT TRAINING ASSEMBLY</td>
+                                                            <td>25</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PETS/DTTS/DISTRICT PICNIC</td>
+                                                            <td>20</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5"><b>LEAD HOSTING OF EVENTS (PER EVENT)</b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>SEMINARS : TRF/MEMBERSHIP/GMS/PI PR/ LITERACY/SHUKRIYA
+                                                            </td>
+                                                            <td>15</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>DGEs WELCOME BACK/RI DIGNITARIES VISIT</td>
+                                                            <td>15</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>INTER CITY FORUM / ZONAL SEMINARS / FESTIVALS / ANY
+                                                                SPECIAL EVENT</td>
+                                                            <td>10</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5"><b>CO HOSTING OF EVENTS (PER EVENT)</b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>DISTRICT
+                                                            </td>
+                                                            <td>5</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>HOSTING AND PARTICIPATION IN PATHSHALA</td>
+                                                            <td>10</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5"><b>DISCON PARTICIPATION</b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>MORE THAN 8 MEMBERS ATTNDING DISCON (FOR EVERY
+                                                                ADDITIONAL MEMBER- 2 Pts PERMEMBER) -- MAX 20 PTS
+                                                            </td>
+                                                            <td>20</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>HIGHEST REGISTRATION EXCEPT FOR HOST CLUB</td>
+                                                            <td>20</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2ND HIGHEST REGISTRATION EXCEPT FOR HOST CLUB</td>
+                                                            <td>15</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>3RD HIGHEST REGISTRATION EXCEPT FOR HOST CLUB</td>
+                                                            <td>10</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5"><b>DISTRICT TRAINING ASSEMBLY
+                                                                    PARTCIPATION</b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>MORE THAN 8 MEMBERS ATENDING DTA (FOR EVERY
+                                                                ADDITIONALMEMBER- 01 POINT PER MEMER - MAX 15 PTS
+                                                            </td>
+                                                            <td>10</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>HIGHEST REGSTRTION - EXCEPT HOST CLUB</td>
+                                                            <td>15</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td rowspan="5"><b>SERVICE EVENTS PER PROJECT</td>
+                                                            <td colspan="5"><b>SMART PROJECTS PARTICIPATION IN THE
+                                                            DISTRICT THRUST AREA, SPECIAL EMPHASIS AREA,RI
+                                                            EMHASIS AREA PROJECTS (AS IN DISTRICT DIRECTORY)</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>AS LEAD CLUB</td>
+                                                            <td>10</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>AS CO HOST CLUB (MAX 70 POINTS)</td>
+                                                            <td>5</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PARTICIPATION IN RSA PROJECTS AS LEAD CLUB</td>
+                                                            <td>10</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>AS COHOST CLUB (MAX 30 POINTS)</td>
+                                                            <td>5</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td rowspan="5"><b>OTHER PROJECTS</b>
+                                                            </td>
+                                                            <td colspan="5">&nbsp
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PARTICIPATE IN POLIO ERADICATION (ALL NIDs)</td>
+                                                            <td>10</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PARTICIPATE IN A PROJECT AS PLANNED BY DISTRICT AVENUES
+                                                                -- PER PROJECT (MAX 10 PTS)</td>
+                                                            <td>5</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>CLUB HAS GOT ATLEAST 2 ONGOING SERVICE PROJECTS SINC
+                                                                LAST 3 YEARS</td>
+                                                            <td>10</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>CONDUCT A PROJECT THROUGH CSR SUPPORT (EXCLUDING CSR -
+                                                                TRF PROJECTS) -- PER PROJECT MAX 10 PTS</td>
+                                                            <td>5</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td rowspan="25"><b>CLUB GOVERNANCE ANY TWO
+                                                            </td>
+                                                            <td colspan="5">&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>GET 100% MEMBERS TO REGISTER ON My Rotary</td>
+                                                            <td>20</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>SEND IN-TIME MONTHY REPORTS(BY 7TH OF NEXT MONTH) - MIN
+                                                                8 REPORTS (MAX 40 POINTS)</td>
+                                                            <td>4</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5"><b>PERFORMANCE IN AVENUES OF SERVICE ANY
+                                                                    FOUR
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5"><b>CLUB SERVICE
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PUBLICATION OF ROSTER</td>
+                                                            <td>5</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>REGULAR WEEKLY/FORTNIGHTLY/MONTHLY PUBLICATION OF CLUB
+                                                                BULLETIN/E-BULETIN PER ISSUE (MAX 30 POINTS)</td>
+                                                            <td>2</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5"><b>VOCATIONAL SERVICE
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>ORGANISES VOCATIONAL EXCELLENCE AWARDS AS LEAD CLUB</td>
+                                                            <td>5</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5"><b>INTERNATIONAL SERVICE
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>MAKE ATLEAST ONE MEMBER PARTICIPATE IN ROTARY FRIENDSHIP
+                                                                EXCHANGE (ADDITIONAL 2 POINTS PER MEMBER - MA 15 PTS.)
+                                                            </td>
+                                                            <td>5</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>MAKE ATLEAST 01 MMBER REGISTER FOR INTERNATIONAL
+                                                                CONVENTION (ADDITIONAL 2 POINTS PER MEMBER MAX 15 PTS)
+                                                            </td>
+                                                            <td>5</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5"><b>YOUTH SERVICE
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>HOST / SEND ATLEAST 01 RYE STUDENT
+                                                            </td>
+                                                            <td>10</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5"><b>PARTNERS IN SERVICE
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>FORM A NEW ROTARACT CLUB / RCC
+                                                            </td>
+                                                            <td>25</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>FORM A NEW INTERACT CLUB
+                                                            </td>
+                                                            <td>15</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>CONDUCT ATLEAST TWO JOINT PROJECTS WITH ROTARACT /
+                                                                INTERACT CLUBS
+                                                            </td>
+                                                            <td>10</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>HOST A ROTARACT / INTERACT CONFERENCE OR INTERACT
+                                                                ASSEMBLY
+                                                            </td>
+                                                            <td>20</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>HOST ATLEAST 1 RYLA/RYPEN/MIPS/MUNA/PUBLIC IMAGE/PUBLIC
+                                                                RELATIONS
+                                                            </td>
+                                                            <td>10</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>CLUB HAS AN ACTIVE FACEBOOK ACCOUNT
+                                                            </td>
+                                                            <td>5</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>CLUB HAS AN ACTIVE WEBSITE
+                                                            </td>
+                                                            <td>5</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>CLUB HAS GOT IST PROJECTS PUBLISHED IN ELECTRONIC/PRINT
+                                                                MEDIA(MIN 03 )
+                                                            </td>
+                                                            <td>15</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>CLUB HAS DONE OUTDOOR PUBICITY OF ITS PROJECTS (PUT UP
+                                                                HOARDINGS)
+                                                            </td>
+                                                            <td>15</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>CLUB HAS POSTED SERVICE PROJECT VIDEO ON YOU TUBE/CLUB
+                                                                OR DISTRICT FACEBOOK PAGE
+                                                            </td>
+                                                            <td>5</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td rowspan="29"><b>THE ROTARY FOUNDATION</b></td>
+                                                            <td colspan="5"><b> SUPPORT & PROGRAMS</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5"><b>ANNUAL FUND CONTRIBUTIONS</b></td>
+                                                        </tr>
+                                                            <td colspan="5"><b>FOR < 50 MEMBERS CLUB</b> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>> USD 100 PERCAPITA
+                                                            </td>
+                                                            <td>15</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>> USD 200 PERCAPITA
+                                                            </td>
+                                                            <td>30</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5"><b>FOR > 50 MEMBERS CLUB</b> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>> USD 100 PER CAPITA
+                                                            </td>
+                                                            <td>20</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>> USD 200 PER CAPITA
+                                                            </td>
+                                                            <td>50</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5"><b>ADDITIONALLY</b> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5"><b>FOR < 50 MEMBERS CLUB</b> </td> 
+                                                        </tr>
+                                                        <tr>
+                                                            <td>CLUB CONTRIBUTING USD 10000 TO 20000
+                                                            </td>
+                                                            <td>20</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>CLUB CONTRIBUTING USD 20000 TO 50000
+                                                            </td>
+                                                            <td>40</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>CLUB CONTRIBUTING USD 50000 AND ABOVE
+                                                            </td>
+                                                            <td>100</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5"><b>FOR > 50 MEMBERS CLUB</b> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>CLUB CONTRIBUTING USD 10000 TO 25000
+                                                            </td>
+                                                            <td>15</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>CLUB CONTRIBUTING USD 25000 TO 50000
+                                                            </td>
+                                                            <td>30</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>CLUB CONTRIBUTING USD 50000 TO 100000
+                                                            </td>
+                                                            <td>75</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>EVERY MEMBER IN THE CLUB CONTRIBUTING TO TRF
+                                                            </td>
+                                                            <td>25</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5"><b>NEW RECOGNITION</b> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PAUL HARRIS SOCIETY MEMBER/BENEFACTOR - PER MEMBER
+                                                            </td>
+                                                            <td>7</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>100% PHF CLUB / EREY - FOR CLUB
+                                                            </td>
+                                                            <td>25</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>MAJOR DONOR /BEQUEST SOCIETY MEMBER - PER MEMBER
+                                                            </td>
+                                                            <td>15</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>ARCH KLUMP SOCIETY MEMBER - PER MEMBER
+                                                            </td>
+                                                            <td>100</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5"><b>GLOBAL GRANTS PER PROJECT</b> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>EXECUTION OF A DIRECTED GIFT / CSR FUNDED GLOBAL GRANT -
+                                                                PER GRANT (MAX 100 PTS)
+                                                            </td>
+                                                            <td>25</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PARTICIPATION IN A GLOBAL GRANT
+                                                            </td>
+                                                            <td>15</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PARTICIPATION IN A DISTRICT GRANT
+                                                            </td>
+                                                            <td>7</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PARTICIPATION IN A VTT PROGRAMME
+                                                            </td>
+                                                            <td>10</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>SPONSORING A MEMBER FOR PEACE SCHOLARSHIP
+                                                            </td>
+                                                            <td>10</td>
+                                                            <td><input type="checkbox" /></td>
+                                                            <td></td>
+                                                            <td><textarea name="" rows="2"></textarea></td>
+                                                        </tr> -->
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+                                                <div class="box-footer clearfix">
+                                                    <button type="submit" name="save" class="btn btn-sav"
+                                                        style="float: right !important;">Save</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php echo $footer; ?>
