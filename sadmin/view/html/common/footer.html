@@ -1,0 +1,46 @@
+<?php if($logged) : ?>
+<footer class="main-footer">
+  <?php echo $text_footer; ?>
+  <div class="float-right d-none d-sm-inline-block">
+    <?php echo $text_version; ?>
+  </div>
+</footer>
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+<?php endif; ?>
+<!-- jQuery -->
+<script src="view/dist/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="view/dist/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<?php foreach($scripts as $script) : ?>
+<script src="<?php echo $script; ?>"></script>
+<?php endforeach; ?>
+<!-- Slimscroll -->
+<script src="view/dist/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="view/dist/plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="view/dist/js/adminlte.js"></script>
+<script src="<?php echo HTTP_SERVER; ?>view/dist/js/main.js"></script>
+<!-- <?php if($logged) : ?> -->
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<!-- <script src="<?php echo HTTP_SERVER; ?>view/dist/js/pages/dashboard.js"></script> -->
+<!-- <?php endif; ?> -->
+<!-- AdminLTE for demo purposes -->
+<script src="view/dist/js/demo.js"></script>
+</body>
+
+</html>

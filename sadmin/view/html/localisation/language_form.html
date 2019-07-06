@@ -1,0 +1,171 @@
+<?php echo $header; ?>
+<?php echo $nav; ?>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1><?php echo $heading_title; ?></h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <?php for($i = 0; $i < count($breadcrumbs); $i++) : ?>
+                        <?php if($i != (count($breadcrumbs) - 1)) : ?>
+                        <?php if($i == 0) : ?>
+                        <li class="breadcrumb-item">
+                            <i class="nav-icon fa fa-home"></i>
+                            <a href="<?php echo $breadcrumbs[$i]['href']; ?>">
+                                <?php echo $breadcrumbs[$i]['text']; ?>
+                            </a>
+                        </li>
+                        <?php else : ?>
+                        <li class="breadcrumb-item">
+                            <a href="<?php echo $breadcrumbs[$i]['href']; ?>">
+                                <?php echo $breadcrumbs[$i]['text']; ?>
+                            </a>
+                        </li>
+                        <?php endif; ?>
+                        <?php else : ?>
+                        <li class="breadcrumb-item active"><?php echo $breadcrumbs[$i]['text']; ?></li>
+                        <?php endif; ?>
+                        <?php endfor; ?>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <?php if ($warning_err) : ?>
+                <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i>
+                    <?php echo $warning_err; ?>
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                </div>
+                <?php endif; ?>
+
+                <div class="clearfix">
+                    <div class="float-right tableTools-container">
+                        <button type="submit" form="form-team" data-toggle="tooltip"
+                                title="<?php echo $button_save; ?>" class="btn btn-primary btn-bold"><i
+                                class="fa fa-save"></i></button>
+                        <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>"
+                           class="btn btn-default btn-bold"><i class="fa fa-reply"></i></a>
+
+                    </div>
+                </div>
+            </div>
+            <!-- right column -->
+            <div class="col-12">
+                <!-- Horizontal Form -->
+                <div class="card card-info card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fa fa-pencil"></i>
+                            <?php echo $text_form; ?>
+                        </h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form action="<?php echo $action; ?>" method="POST" enctype="multipart/form-data"
+                          id="form-team" class="form-horizontal">
+                        <div class="card-body">
+                            <div class="form-group row required">
+                                <label for="input-query" class="col-sm-2 col-form-label">
+                                    <?php echo $entry_name; ?></label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" name="name" value="<?php echo $name; ?>"
+                                           placeholder="<?php echo $entry_name; ?>" class="form-control"
+                                           id="input-query" />
+                                    <?php if($error_name) : ?>
+                                    <span class="help-block">
+                                        <?php echo $error_name; ?></span>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+
+                            <div class="form-group row required">
+                                <label for="input-code" class="col-sm-2 col-form-label">
+                                    <?php echo $entry_code; ?></label>
+
+                                <div class="col-sm-10">
+                                    <select name="code" class="form-control" id="input-code">
+                                        <?php foreach($languages as $language) : ?>
+                                        <?php if($language == $code) : ?>
+                                        <option value="<?php echo $language; ?>" selected="selected">
+                                            <?php echo $language; ?>
+                                        </option>
+                                        <?php else : ?>
+                                        <option value="<?php echo $language; ?>">
+                                            <?php echo $language; ?>
+                                        </option>
+                                        <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <?php if($error_code) : ?>
+                                    <span class="help-block">
+                                        <?php echo $error_code; ?></span>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+
+                            <div class="form-group row required">
+                                <label for="input-locale" class="col-sm-2 col-form-label">
+                                    <?php echo $entry_locale; ?></label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" name="locale" value="<?php echo $locale; ?>"
+                                           placeholder="<?php echo $entry_locale; ?>" class="form-control"
+                                           id="input-locale" />
+                                    <?php if($error_locale) : ?>
+                                    <span class="help-block">
+                                        <?php echo $error_locale; ?></span>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="input-status" class="col-sm-2 col-form-label"><?php echo $entry_status; ?></label>
+
+                                <div class="col-sm-10">
+                                    <select name="status" id="input-status" class="form-control">
+                                        <?php if($status) :?>
+                                        <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+                                        <option value="0"><?php echo $text_disabled; ?></option>
+                                        <?php else : ?>
+                                        <option value="1"><?php echo $text_enabled; ?></option>
+                                        <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                                        <?php endif; ?>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="input-sort-order"
+                                       class="col-sm-2 col-form-label"><?php echo $entry_sort_order; ?></label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" name="sort_order" value="<?php echo $sort_order; ?>"
+                                           placeholder="<?php echo $entry_sort_order; ?>" class="form-control"
+                                           id="input-sort-order" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </form>
+                </div>
+                <!-- /.box -->
+            </div>
+            <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<?php echo $footer; ?>

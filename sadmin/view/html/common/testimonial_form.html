@@ -1,0 +1,191 @@
+<?php echo $header; ?>
+<?php echo $nav; ?>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1><?php echo $heading_title; ?></h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <?php for($i = 0; $i < count($breadcrumbs); $i++) : ?>
+                        <?php if($i != (count($breadcrumbs) - 1)) : ?>
+                        <?php if($i == 0) : ?>
+                        <li class="breadcrumb-item">
+                            <i class="nav-icon fa fa-home"></i>
+                            <a href="<?php echo $breadcrumbs[$i]['href']; ?>">
+                                <?php echo $breadcrumbs[$i]['text']; ?>
+                            </a>
+                        </li>
+                        <?php else : ?>
+                        <li class="breadcrumb-item">
+                            <a href="<?php echo $breadcrumbs[$i]['href']; ?>">
+                                <?php echo $breadcrumbs[$i]['text']; ?>
+                            </a>
+                        </li>
+                        <?php endif; ?>
+                        <?php else : ?>
+                        <li class="breadcrumb-item active"><?php echo $breadcrumbs[$i]['text']; ?></li>
+                        <?php endif; ?>
+                        <?php endfor; ?>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <?php if ($warning_err) : ?>
+                <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i>
+                    <?php echo $warning_err; ?>
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                </div>
+                <?php endif; ?>
+
+                <div class="clearfix">
+                    <div class="float-right tableTools-container">
+                        <button type="submit" form="form-team" data-toggle="tooltip"
+                                title="<?php echo $button_save; ?>" class="btn btn-primary btn-bold"><i
+                                class="fa fa-save"></i></button>
+                        <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>"
+                           class="btn btn-default btn-bold"><i class="fa fa-reply"></i></a>
+
+                    </div>
+                </div>
+            </div>
+            <!-- right column -->
+            <div class="col-12">
+                <!-- Horizontal Form -->
+                <div class="card card-info card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fa fa-pencil"></i>
+                            <?php echo $text_form; ?>
+                        </h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form action="<?php echo $action; ?>" method="POST" enctype="multipart/form-data"
+                          id="form-team" class="form-horizontal">
+                        <div class="card-body">
+                            <div class="form-group row required">
+                                <label for="input-name" class="col-sm-2 col-form-label">
+                                    <?php echo $entry_name; ?></label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" name="name" value="<?php echo $name; ?>"
+                                           placeholder="<?php echo $entry_name; ?>" class="form-control"
+                                           id="input-name" />
+                                    <?php if($name_err) : ?>
+                                    <span class="help-block">
+                                        <?php echo $name_err; ?></span>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <div class="form-group row required">
+                                <label for="input-description<?php echo $language['language_id']; ?>"
+                                       class="col-sm-2 col-form-label"><?php echo $entry_description; ?></label>
+
+                                <div class="col-sm-10">
+                                    <textarea
+                                        name="description"
+                                        placeholder="<?php echo $entry_description; ?>"
+                                        class="form-control"
+                                        id="description"
+                                        data-toggle="ckeditor" data-lang="<?php echo $ckeditor; ?>"><?php echo $description; ?></textarea>
+                                    <?php if(isset($title_footer_err)) : ?>
+                                    <div class="invalid-tooltip">
+                                        <?php echo $title_footer_err; ?></div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <div class="form-group row required">
+                                <label for="input-designation" class="col-sm-2 col-form-label">
+                                    <?php echo $entry_designation; ?></label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" name="designation" value="<?php echo $designation; ?>"
+                                           placeholder="<?php echo $entry_designation; ?>" class="form-control"
+                                           id="input-designation" />
+                                    <?php if($designation_err) : ?>
+                                    <span class="help-block">
+                                        <?php echo $designation_err; ?></span>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="input-image" class="col-sm-2 col-form-label">
+                                    <?php echo $entry_image; ?></label>
+
+                                <div class="col-sm-10">
+                                    <div class="card image">
+                                        <a href="" id="thumb-image" data-toggle="image">
+                                            <img src="<?php echo $thumb; ?>" alt="" title="" id="thumb-image"
+                                                 data-placeholder="<?php echo $placeholder; ?>" class="card-img-top" />
+                                        </a>
+                                        <input type="hidden" name="image" value="<?php echo $image; ?>"
+                                               id="input-image" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="input-sort-order"
+                                       class="col-sm-2 col-form-label"><?php echo $entry_sort_order; ?></label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" name="sort_order" value="<?php echo $sort_order; ?>"
+                                           placeholder="<?php echo $entry_sort_order; ?>" class="form-control"
+                                           id="input-sort-order" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="input-status" class="col-sm-2 col-form-label">
+                                    <?php echo $entry_status; ?></label>
+
+                                <div class="col-sm-10">
+                                    <select name="status" class="form-control" id="input-status">
+                                        <?php if($status) : ?>
+                                        <option value="0">
+                                            <?php echo $text_disabled; ?>
+                                        </option>
+                                        <option value="1" selected="selected">
+                                            <?php echo $text_enabled; ?>
+                                        </option>
+                                        <?php else : ?>
+                                        <option value="0" selected="selected">
+                                            <?php echo $text_disabled; ?>
+                                        </option>
+                                        <option value="1">
+                                            <?php echo $text_enabled; ?>
+                                        </option>
+                                        <?php endif; ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </form>
+                </div>
+                <!-- /.box -->
+            </div>
+            <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<?php echo $footer; ?>
+<script type="text/javascript">
+    $('textarea[data-toggle=\'ckeditor\']').ckeditor();
+
+    $('input[name=\'icon\']').iCheck({
+        radioClass: 'iradio_square-blue'
+    });
+</script>

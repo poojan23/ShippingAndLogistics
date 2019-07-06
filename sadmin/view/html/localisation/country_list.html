@@ -1,0 +1,263 @@
+<?php echo $header; ?>
+<?php echo $nav; ?>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1><?php echo $heading_title; ?></h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <?php for($i = 0; $i < count($breadcrumbs); $i++) : ?>
+                        <?php if($i != (count($breadcrumbs) - 1)) : ?>
+                        <?php if($i == 0) : ?>
+                        <li class="breadcrumb-item">
+                            <i class="nav-icon fa fa-home"></i>
+                            <a href="<?php echo $breadcrumbs[$i]['href']; ?>">
+                                <?php echo $breadcrumbs[$i]['text']; ?>
+                            </a>
+                        </li>
+                        <?php else : ?>
+                        <li class="breadcrumb-item">
+                            <a href="<?php echo $breadcrumbs[$i]['href']; ?>">
+                                <?php echo $breadcrumbs[$i]['text']; ?>
+                            </a>
+                        </li>
+                        <?php endif; ?>
+                        <?php else : ?>
+                        <li class="breadcrumb-item active"><?php echo $breadcrumbs[$i]['text']; ?></li>
+                        <?php endif; ?>
+                        <?php endfor; ?>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <?php if ($warning_err) : ?>
+                <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i>
+                    <?php echo $warning_err; ?>
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                </div>
+                <?php endif; ?>
+                <?php if ($success) : ?>
+                <div class="alert alert-success alert-dismissible"><i class="fa fa-exclamation-circle"></i>
+                    <?php echo $success; ?>
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                </div>
+                <?php endif; ?>
+
+                <div class="clearfix">
+<!--                    <a href="<?php echo $add; ?>" data-toggle="tooltip" title="<?php echo $button_add; ?>"
+                        class="btn btn-primary btn-bold"><i class="fa fa-plus"></i></a>
+                    <button type="button" data-toggle="tooltip" title="<?php echo $button_delete; ?>"
+                        class="btn btn-danger btn-bold" onclick="confirm('<?php echo $text_confirm; ?>') ? $('#form-testimonial-group').submit() :
+                        false;"><i class="fa fa-trash-alt"></i></button>-->
+                    <div class="float-right tableTools-container"></div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fa fa-list-ul"></i>
+                            <?php echo $text_title; ?>
+                        </h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <form action="<?php echo $delete; ?>" method="POST" enctype="multipart/form-data"
+                            id="form-testimonial-group">
+                            <div class="table-responsive">
+                                <table id="table_testimonial" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+<!--                                            <th style="width: 1px;" class="text-center no-sort"><input type="checkbox"
+                                                    onclick="$('input[name*=\'selected\']').trigger('click');" /></th>-->
+                                            <th>
+                                                <?php echo $column_name; ?>
+                                            </th>
+                                            <th>
+                                                <?php echo $column_iso_code_2; ?>
+                                            </th>
+                                            <th>
+                                                <?php echo $column_iso_code_3; ?>
+                                            </th>
+<!--                                            <th class="no-sort">
+                                                <?php echo $column_action; ?>
+                                            </th>-->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php if($countries) : ?>
+                                        <?php foreach($countries as $country) : ?>
+                                        <tr>
+<!--                                            <td class="text-center">
+                                                <?php if(in_array($testimonial['testimonial_id'], $selected)) : ?>
+                                                <input type="checkbox" name="selected[]"
+                                                    value="<?php echo $testimonial['testimonial_id']; ?>"
+                                                    checked="checked" />
+                                                <?php else : ?>
+                                                <input type="checkbox" name="selected[]"
+                                                    value="<?php echo $testimonial['testimonial_id']; ?>" />
+                                                <?php endif; ?>
+                                            </td>-->
+                                            <td class="text-left">
+                                                <?php echo $country['name']; ?>
+                                            </td>
+                                            <td class="text-left">
+                                                <?php echo $country['iso_code_2']; ?>
+                                            </td>
+                                            <td class="text-left">
+                                                <?php echo $country['iso_code_3']; ?>
+                                            </td>
+<!--                                            <td class="text-left"><a href="<?php echo $testimonial['edit']; ?>"
+                                                    data-toggle="tooltip" title="<?php echo $button_edit; ?>"
+                                                    class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a></td>-->
+                                        </tr>
+                                        <?php endforeach; ?>
+                                        <?php else : ?>
+                                        <tr>
+                                            <td class="text-center" colspan="5">
+                                                <?php echo $text_no_results; ?>
+                                            </td>
+                                        </tr>
+                                        <?php endif; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<?php echo $footer; ?>
+<script type="text/javascript">
+    $(function () {
+        var table = $('#table_testimonial').DataTable({
+            "order": [
+                [1, 'asc']
+            ],
+            "language": {
+                "paginate": {
+                    'previous': '«',
+                    'next': '»'
+                }
+            },
+            "columnDefs": [{
+                "targets": "no-sort",
+                "orderable": false,
+            }],
+        });
+
+        $.fn.dataTable.Buttons.defaults.dom.container.className =
+            'dt-buttons btn-overlap btn-group btn-overlap';
+
+        new $.fn.dataTable.Buttons(table, {
+            buttons: [{
+                "extend": "colvis",
+                "text": "<i class='fa fa-search'></i> <span hidden><?php echo $text_dt_column; ?></span>",
+                "className": "dt-button btn-primary",
+                "init": function (api, node, config) {
+                    $(node).removeClass('btn-default');
+                },
+                columns: ':not(:first):not(:last)'
+            },
+            {
+                "extend": "copy",
+                "text": "<i class='fa fa-copy'></i> <span hidden><?php echo $text_dt_copy; ?></span>",
+                "className": "dt-button btn-info",
+                "init": function (api, node, config) {
+                    $(node).removeClass('btn-default');
+                },
+            },
+            {
+                "extend": "collection",
+                "text": "<i class='fa fa-download'></i> <span hidden><?php echo $text_dt_file_export; ?></span>",
+                "className": "dt-button btn-success",
+                "init": function (api, node, config) {
+                    $(node).removeClass('btn-default');
+                },
+                "buttons": [{
+                    "extend": "csv",
+                    "text": "<i class='fa fa-database'></i> <span><?php echo $text_dt_export_csv; ?></span>"
+                },
+                {
+                    "extend": "excel",
+                    "text": "<i class='fa fa-file-excel-o'></i> <span><?php echo $text_dt_export_excel; ?></span>"
+                },
+                {
+                    "extend": "pdf",
+                    "text": "<i class='fa fa-file-pdf-o'></i> <span><?php echo $text_dt_export_pdf; ?></span>"
+                }
+                ]
+            },
+            {
+                "extend": "print",
+                "text": "<i class='fa fa-print'></i> <span hidden><?php echo $text_dt_print; ?></span>",
+                "className": 'dt-button',
+                autoPrint: false,
+                exportOptions: {
+                    columns: ':not(:last)',
+                }
+            },
+            ]
+        });
+        table.buttons().container().appendTo($('.tableTools-container'));
+
+        // Style the message box
+        var defaultCopyAction = table.button(1).action();
+        /*table.button(1).action(function (e, dt, button, config) {
+            defaultCopyAction(e, dt, button, config);
+            $('.dt-button-info').addClass('bg.olive text-center text-white');
+        });*/
+
+        var defaultColvisAction = table.button(0).action();
+        /*table.button(0).action(function (e, dt, button, config) {
+            defaultColvisAction(e, dt, button, config);
+
+            if ($('.dt-button-collection > .dropdown-menu').length == 0) {
+                $('.dt-button-collection')
+                    .wrapInner(
+                        '<ul class="dropdown-menu dropdown-light dropdown-caret dropdown-caret" />').find(
+                        ' a').attr('href', '#').wrap("<li />")
+            }
+            $('.dt-button-collection').appendTo('.tableTools-container .dt-buttons')
+        });*/
+
+        setTimeout(function () {
+            $($('.tableTools-container')).find('.dt-button').each(function () {
+                var div = $(this).find(' > div').first();
+                if (div.length == 1) div.tooltip({
+                    container: 'body',
+                    title: div.parent().text()
+                });
+                else $(this).tooltip({
+                    container: 'body',
+                    title: $(this).text()
+                });
+            });
+        }, 500);
+
+        $(document).on('click', '#table_testimonial .dropdown-toggle', function (e) {
+            e.stopImmediatePropagation();
+            e.stopPropagation();
+            e.preventDefault();
+        });
+    });
+</script>
