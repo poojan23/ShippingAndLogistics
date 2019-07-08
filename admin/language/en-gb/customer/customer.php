@@ -13,9 +13,8 @@ $_['text_icon']                 = 'Icon';
 $_['text_icon_list']            = 'Icons List';
 
 # Column
-$_['column_name']               = 'Rotary Customer Of';
+$_['column_name']               = 'Customer Name';
 $_['column_date']               = 'Date';
-$_['column_president']          = 'President';
 $_['column_mobile']             = 'Mobile';
 $_['column_email']              = 'Email';
 $_['column_website']            = 'Website';

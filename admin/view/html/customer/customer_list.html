@@ -58,7 +58,7 @@
                     <a href="<?php echo $add; ?>" data-toggle="tooltip" title="<?php echo $button_add; ?>"
                         class="btn btn-primary btn-bold"><i class="fa fa-plus"></i></a>
                     <button type="button" data-toggle="tooltip" title="<?php echo $button_delete; ?>"
-                        class="btn btn-danger btn-bold" onclick="confirm('<?php echo $text_confirm; ?>') ? $('#form-activity-group').submit() :
+                        class="btn btn-danger btn-bold" onclick="confirm('<?php echo $text_confirm; ?>') ? $('#form-customer-group').submit() :
                         false;"><i class="fa fa-trash-alt"></i></button>
                     <div class="float-right tableTools-container"></div>
                 </div>
@@ -74,15 +74,18 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <form action="<?php echo $delete; ?>" method="POST" enctype="multipart/form-data"
-                            id="form-activity-group">
+                            id="form-customer-group">
                             <div class="table-responsive">
-                                <table id="table_activity" class="table table-bordered table-hover">
+                                <table id="table_customer" class="table table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th style="width: 1px;" class="text-center no-sort"><input type="checkbox"
                                                     onclick="$('input[name*=\'selected\']').trigger('click');" /></th>
                                             <th>
                                                 <?php echo $column_name; ?>
+                                            </th>
+                                            <th>
+                                                <?php echo $column_email; ?>
                                             </th>
                                             
                                             <th class="no-sort">
@@ -91,23 +94,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php if($activities) : ?>
-                                        <?php foreach($activities as $activity) : ?>
+                                        <?php if($customers) : ?>
+                                        <?php foreach($customers as $customer) : ?>
                                         <tr>
                                             <td class="text-center">
-                                                <?php if(in_array($activity['activity_id'], $selected)) : ?>
+                                                <?php if(in_array($customer['customer_id'], $selected)) : ?>
                                                 <input type="checkbox" name="selected[]"
-                                                    value="<?php echo $activity['activity_id']; ?>"
+                                                    value="<?php echo $customer['customer_id']; ?>"
                                                     checked="checked" />
                                                 <?php else : ?>
                                                 <input type="checkbox" name="selected[]"
-                                                    value="<?php echo $activity['activity_id']; ?>" />
+                                                    value="<?php echo $customer['customer_id']; ?>" />
                                                 <?php endif; ?>
                                             </td>
                                             <td class="text-left">
-                                                <?php echo $activity['name']; ?>
+                                                <?php echo $customer['name']; ?>
                                             </td>
-                                            <td class="text-left"><a href="<?php echo $activity['edit']; ?>"
+                                            <td class="text-left">
+                                                <?php echo $customer['email']; ?>
+                                            </td>
+                                            <td class="text-left"><a href="<?php echo $customer['edit']; ?>"
                                                     data-toggle="tooltip" title="<?php echo $button_edit; ?>"
                                                     class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a></td>
                                         </tr>
@@ -138,7 +144,7 @@
 <?php echo $footer; ?>
 <script type="text/javascript">
     $(function () {
-        var table = $('#table_activity').DataTable({
+        var table = $('#table_customer').DataTable({
             "order": [
                 [1, 'asc']
             ],
@@ -243,7 +249,7 @@
             });
         }, 500);
 
-        $(document).on('click', '#table_activity .dropdown-toggle', function (e) {
+        $(document).on('click', '#table_customer .dropdown-toggle', function (e) {
             e.stopImmediatePropagation();
             e.stopPropagation();
             e.preventDefault();

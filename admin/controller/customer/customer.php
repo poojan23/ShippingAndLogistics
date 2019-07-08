@@ -112,15 +112,8 @@ class ControllerCustomerCustomer extends PT_Controller {
         foreach ($results as $result) {
             $data['customers'][] = array(
                 'customer_id' => $result['customer_id'],
-                'date' => $result['date'],
-                'name' => $result['customer_name'],
-                'president' => $result['president'],
-                'secretary' => $result['district_secretary'],
-                'password' => $result['password'],
-                'website' => $result['website'],
-                'mobile' => $result['mobile'],
+                'name' => $result['name'],
                 'email' => $result['email'],
-                'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
                 'edit' => $this->url->link('customer/customer/edit', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $result['customer_id'])
             );
         }
@@ -173,23 +166,11 @@ class ControllerCustomerCustomer extends PT_Controller {
         } else {
             $data['warning_err'] = '';
         }
-        
-        if (isset($this->error['name'])) {
-            $data['name_err'] = $this->error['name'];
-        } else {
-            $data['name_err'] = '';
-        }
 
         if (isset($this->error['email'])) {
             $data['email_err'] = $this->error['email'];
         } else {
             $data['email_err'] = '';
-        }
-
-        if (isset($this->error['name'])) {
-            $data['name_err'] = $this->error['name'];
-        } else {
-            $data['name_err'] = '';
         }
 
         if (isset($this->error['password'])) {
@@ -239,26 +220,19 @@ class ControllerCustomerCustomer extends PT_Controller {
         if (isset($this->request->post['name'])) {
             $data['name'] = $this->request->post['name'];
         } elseif (!empty($customer_info)) {
-            $data['name'] = $customer_info['customer_name'];
+            $data['name'] = $customer_info['name'];
         } else {
             $data['name'] = '';
         }
 
-        if (isset($this->request->post['austin_governor_id'])) {
-            $data['user_id'] = $this->request->post['austin_governor_id'];
+        if (isset($this->request->post['area_id'])) {
+            $data['area_id'] = $this->request->post['area_id'];
         } elseif (!empty($customer_info)) {
-            $data['user_id'] = $customer_info['austin_governor_id'];
+            $data['area_id'] = $customer_info['area_id'];
         } else {
-            $data['user_id'] = '';
+            $data['area_id'] = '';
         }
 
-        if (isset($this->request->post['parent_id'])) {
-            $data['parent_id'] = $this->request->post['parent_id'];
-        } elseif (!empty($customer_info)) {
-            $data['parent_id'] = $customer_info['parent_id'];
-        } else {
-            $data['parent_id'] = 0;
-        }
 
         if (isset($this->request->post['customer_id'])) {
             $data['customer_id'] = $this->request->post['customer_id'];
@@ -268,88 +242,6 @@ class ControllerCustomerCustomer extends PT_Controller {
             $data['customer_id'] = '';
         }
         
-        if (isset($this->request->post['customer_group_id'])) {
-            $data['customer_group_id'] = $this->request->post['customer_group_id'];
-        } elseif (!empty($customer_info)) {
-            $data['customer_group_id'] = $customer_info['customer_group_id'];
-        } else {
-            $data['customer_group_id'] = '';
-        }
-        
-
-        $this->load->model('customer/customer_group');
-
-        $data['customer_groups'] = $this->model_customer_customer_group->getCustomerGroups();
-//        $this->load->model('customer/customer');
-//
-//        $data['customers'] = $this->model_customer_customer->getCustomers();
-//
-//        $this->load->model('user/user');
-//
-//        $user_info = $this->model_user_user->getUser($this->user->getId());
-//
-//        if ($user_info) {
-//            $user_group = 'Assit Governor';
-//        }
-//
-//        $this->load->model('user/user_group');
-//
-//        $group_id = $this->model_user_user_group->getUserGroupId($user_group);
-//
-//        $data['austin_governors'] = array();
-//
-//        foreach ($group_id as $result) {
-//
-//            $results = $this->model_user_user->getUserByUserGroupId($result['user_group_id']);
-//
-//            foreach ($results as $result) {
-//                $data['austin_governors'][] = array(
-//                    'user_id' => $result['user_id'],
-//                    'name' => $result['name']
-//                );
-//            }
-//        }
-
-        if (isset($this->request->post['secretary'])) {
-            $data['secretary'] = $this->request->post['secretary'];
-        } elseif (!empty($customer_info)) {
-            $data['secretary'] = $customer_info['district_secretary'];
-        } else {
-            $data['secretary'] = '';
-        }
-
-        if (isset($this->request->post['date'])) {
-            $data['date'] = $this->request->post['date'];
-        } elseif (!empty($customer_info)) {
-            $data['date'] = $customer_info['date'];
-        } else {
-            $data['date'] = '';
-        }
-
-        if (isset($this->request->post['president'])) {
-            $data['president'] = $this->request->post['president'];
-        } elseif (!empty($customer_info)) {
-            $data['president'] = $customer_info['president'];
-        } else {
-            $data['president'] = '';
-        }
-
-        if (isset($this->request->post['president'])) {
-            $data['president'] = $this->request->post['president'];
-        } elseif (!empty($customer_info)) {
-            $data['president'] = $customer_info['president'];
-        } else {
-            $data['president'] = '';
-        }
-
-        if (isset($this->request->post['mobile'])) {
-            $data['mobile'] = $this->request->post['mobile'];
-        } elseif (!empty($customer_info)) {
-            $data['mobile'] = $customer_info['mobile'];
-        } else {
-            $data['mobile'] = '';
-        }
-
         if (isset($this->request->post['email'])) {
             $data['email'] = $this->request->post['email'];
         } elseif (!empty($customer_info)) {
@@ -357,38 +249,24 @@ class ControllerCustomerCustomer extends PT_Controller {
         } else {
             $data['email'] = '';
         }
-
-        if (isset($this->request->post['website'])) {
-            $data['website'] = $this->request->post['website'];
+        
+        if (isset($this->request->post['mobile'])) {
+            $data['mobile'] = $this->request->post['mobile'];
         } elseif (!empty($customer_info)) {
-            $data['website'] = $customer_info['website'];
+            $data['mobile'] = $customer_info['mobile'];
         } else {
-            $data['website'] = '';
+            $data['mobile'] = '';
         }
+        
+        $this->load->model('customer/customer_group');
+
+        $data['customer_groups'] = $this->model_customer_customer_group->getCustomerGroups();
 
         if (isset($this->request->post['password'])) {
             $data['password'] = $this->request->post['password'];
         } else {
             $data['password'] = '';
         }
-//
-//        $this->load->model('tool/image');
-//
-//        if (isset($this->request->post['image'])) {
-//            $data['image'] = $this->request->post['image'];
-//        } elseif (!empty($customer_info)) {
-//            $data['image'] = $customer_info['image'];
-//        } else {
-//            $data['image'] = '';
-//        }
-//
-//        $data['placeholder'] = $this->model_tool_image->resize('no-image.png', 100, 100);
-//
-//        if (is_file(DIR_IMAGE . html_entity_decode($data['image'], ENT_QUOTES, 'UTF-8'))) {
-//            $data['thumb'] = $this->model_tool_image->resize(html_entity_decode($data['image'], ENT_QUOTES, 'UTF-8'), 100, 100);
-//        } else {
-//            $data['thumb'] = $data['placeholder'];
-//        }
 
         if (isset($this->request->post['status'])) {
             $data['status'] = $this->request->post['status'];
@@ -410,16 +288,8 @@ class ControllerCustomerCustomer extends PT_Controller {
             $this->error['warning'] = $this->language->get('error_permission');
         }
 
-        if ((utf8_strlen(trim($this->request->post['name'])) < 1) || (utf8_strlen(trim($this->request->post['name'])) > 32)) {
+        if ((utf8_strlen(trim($this->request->post['customer_group_id'])) == 0)) {
             $this->error['name'] = $this->language->get('error_name');
-        }
-
-        if ((utf8_strlen(trim($this->request->post['secretary'])) < 1) || (utf8_strlen(trim($this->request->post['secretary'])) > 32)) {
-            $this->error['secretary'] = $this->language->get('error_secretary');
-        }
-
-        if ((utf8_strlen(trim($this->request->post['president'])) < 1) || (utf8_strlen(trim($this->request->post['president'])) > 32)) {
-            $this->error['president'] = $this->language->get('error_president');
         }
 
 
@@ -438,9 +308,6 @@ class ControllerCustomerCustomer extends PT_Controller {
             }
         }
 
-        if ((utf8_strlen(trim($this->request->post['website'])) < 1) || (utf8_strlen(trim($this->request->post['website'])) > 32)) {
-            $this->error['website'] = $this->language->get('error_website');
-        }
         return !$this->error;
     }
 

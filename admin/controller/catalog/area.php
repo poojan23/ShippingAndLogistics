@@ -260,8 +260,6 @@ class ControllerCatalogArea extends PT_Controller {
 
         $results = $this->model_catalog_area->getAreasByCustomerId($customer_group_id);
 
-        $area = array();
-
         foreach ($results as $result) {
             if ($result['area_id']) {
                 $area_id = $result['area_id'];
@@ -270,18 +268,13 @@ class ControllerCatalogArea extends PT_Controller {
             }
 
             $results = $this->model_catalog_area->getAreasByAreaId($area_id);
-
+          
             foreach ($results as $result) {
-                $nestedData['area'] = $result['area'];
-
-                $area[] = $nestedData;
+                $json[] = array('area' => $result['area'],
+                                'area_group_id' => $result['area_group_id']);
             }
         }
-
-        $json = array(
-            'data' => $area
-        );
-        
+       
         $this->response->addHeader('Content-Type : application/json');
         $this->response->setOutput(json_encode($json));
     }

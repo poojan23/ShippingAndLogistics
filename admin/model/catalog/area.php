@@ -152,7 +152,7 @@ class ModelCatalogArea extends PT_Model
     }
     
     public function getAreasByAreaId($area_id) {
-        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "area_group WHERE area_id = '" . $area_id . "'");
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "area_group WHERE area_id = '" . $area_id . "' group by area");
 
         return $query->rows;
     }

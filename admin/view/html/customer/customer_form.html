@@ -81,9 +81,12 @@
 
                                 <div class="col-sm-10">
                                     <select name="customer_group_id"  id="customer_group_id" class="form-control" id="input-austin-governor">
+                                        <option value="0" selected="selected">
+                                            Select Customer
+                                        </option>
                                         <?php foreach($customer_groups as $customer_group) : ?>
                                         <?php if($customer_group['customer_group_id'] == $customer_group_id) : ?>
-                                        <option value="<?php echo $customer_group['customer_group_id']; ?>" selected="selected">
+                                        <option value="<?php echo $customer_group['customer_group_id']; ?>">
                                             <?php echo $customer_group['short_form']; ?>
                                         </option>
                                         <?php else : ?>
@@ -185,12 +188,10 @@
 <script type="text/javascript">
     $('select[name=\'customer_group_id\']').on('change', function () {
         var $this = $(this).val();
-
         $.ajax({
-            url: 'index.php?url=catalog/area/getAreasByCustomerId&user_token=' + getURLVar('user_token'),
+            url: 'index.php?url=catalog/area/getAreasByCustomerId&user_token=' + getURLVar('user_token')+'&customer_group_id=' + $this,
             dataType: 'json',
             type: 'POST',
-            data: 'customer_group_id=' + $this,
             beforeSend: function () {
             },
             complete: function () {
@@ -198,14 +199,14 @@
             success: function (data) {
                 console.log(data);
                 var bind = '';
-                bind += "<option value='0'>Select Area</option>";
+                bind += "<option value='0' selected='selected'>Select Area</option>";
                 for (var i = 0; i < data.length; i++)
                 {
                     var area = data[i].area;
-                    alert(area);
-//                    bind += '<option value="' + area + '">' + area + '</option>';
+                    var area_group_id = data[i].area_group_id;
+                     
 //                    if (area == '<?php echo $area; ?>') {
-//                        bind += '<option value="' + area + '" selected="selected">' + area + '</option>';
+                        bind += '<option value="' + area_group_id + '" >' + area + '</option>';
 //                    } else {
 //                        bind += '<option value="' + area + '">' + area + '</option>';
 //                    }
