@@ -156,4 +156,5 @@ class ModelCatalogArea extends PT_Model
 
         return $query->rows;
     }
+ 
 }
