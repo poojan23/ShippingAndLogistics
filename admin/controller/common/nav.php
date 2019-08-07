@@ -64,7 +64,7 @@ class ControllerCommonNav extends PT_Controller
                 );
             }
 
-            # Activity
+            # Customer
             $customer = array();
             
             if ($this->user->hasPermission('access', 'customer/customer')) {
@@ -90,6 +90,35 @@ class ControllerCommonNav extends PT_Controller
                     'name'      => $this->language->get('text_customer'),
                     'href'      => '',
                     'children'  => $customer
+                );
+            }
+            
+            # Report
+            $report = array();
+            
+            if ($this->user->hasPermission('access', 'report/custom_report')) {
+                $report[] = array(
+                    'name'      => $this->language->get('text_custom_report'),
+                    'href'      => $this->url->link('report/custom_report', 'user_token=' . $this->session->data['user_token']),
+                    'children'  => array()
+                );
+            }
+            
+            if ($this->user->hasPermission('access', 'report/import_report')) {
+                $report[] = array(
+                    'name'      => $this->language->get('text_import_report'),
+                    'href'      => $this->url->link('report/import_report', 'user_token=' . $this->session->data['user_token']),
+                    'children'  => array()
+                );
+            }
+    
+            if ($report) {
+                $data['menus'][] = array(
+                    'id'        => 'menu-design',
+                    'icon'      => 'fa-desktop',
+                    'name'      => $this->language->get('text_import_report'),
+                    'href'      => '',
+                    'children'  => $report
                 );
             }
             

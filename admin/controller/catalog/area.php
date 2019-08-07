@@ -270,12 +270,14 @@ class ControllerCatalogArea extends PT_Controller {
             $results = $this->model_catalog_area->getAreasByAreaId($area_id);
           
             foreach ($results as $result) {
-                $json[] = array('area' => $result['area'],
-                                'area_group_id' => $result['area_group_id']);
+                $json[] = array(
+                    'area'          => $result['area'],
+                    'area_group_id' => $result['area_group_id']
+                );
             }
         }
-       
-        $this->response->addHeader('Content-Type : application/json');
+        
+        $this->response->addHeader('Content-Type: application/json');
         $this->response->setOutput(json_encode($json));
     }
 

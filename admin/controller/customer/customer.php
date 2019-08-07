@@ -258,6 +258,14 @@ class ControllerCustomerCustomer extends PT_Controller {
             $data['mobile'] = '';
         }
         
+        if (isset($this->request->post['customer_group_id'])) {
+            $data['customer_group_id'] = $this->request->post['customer_group_id'];
+        } elseif (!empty($customer_info)) {
+            $data['customer_group_id'] = $customer_info['customer_group_id'];
+        } else {
+            $data['customer_group_id'] = '';
+        }
+        
         $this->load->model('customer/customer_group');
 
         $data['customer_groups'] = $this->model_customer_customer_group->getCustomerGroups();

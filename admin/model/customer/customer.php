@@ -6,7 +6,7 @@ class ModelCustomerCustomer extends PT_Model
     {
         $customer_name = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "customer_group WHERE customer_group_id = '" . (int)$data['customer_group_id'] . "'");
         
-       $query = $this->db->query("INSERT INTO " . DB_PREFIX . "customer SET  name = '" . $this->db->escape((string)$customer_name->row['short_form']) . "',area_id = '" . (int)$data['Area'] . "',mobile = '" . $this->db->escape((string)$data['mobile']) . "',email = '" . $this->db->escape((string)$data['email']) . "', password = '" . $this->db->escape(password_hash(html_entity_decode($data['password'], ENT_QUOTES, 'UTF-8'), PASSWORD_DEFAULT)) . "',status = '" . (isset($data['status']) ? (int)$data['status'] : 0) . "', date_modified = NOW(), date_added = NOW()");
+       $query = $this->db->query("INSERT INTO " . DB_PREFIX . "customer SET  customer_group_id = '" . (int)$data['customer_group_id'] . "',name = '" . $this->db->escape((string)$customer_name->row['short_form']) . "',area_id = '" . (int)$data['Area'] . "',mobile = '" . $this->db->escape((string)$data['mobile']) . "',email = '" . $this->db->escape((string)$data['email']) . "', password = '" . $this->db->escape(password_hash(html_entity_decode($data['password'], ENT_QUOTES, 'UTF-8'), PASSWORD_DEFAULT)) . "',status = '" . (isset($data['status']) ? (int)$data['status'] : 0) . "', date_modified = NOW(), date_added = NOW()");
 
         return $query;
     }
