@@ -1,0 +1,31 @@
+/* ====================== */
+/*         404 Page       */
+/* ====================== */
+
+.page_not_found {
+    padding:  0  0 120px 0;
+    .not_found_content {
+        img {
+            width: 100%;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: 600;
+            margin-top: 45px;
+            text-align: center;
+            background: $linear;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        h3 {
+            text-transform: uppercase;
+            text-align: center;
+            color: #444;
+            margin-bottom: 5px;
+        }
+    }
+}
+
+/* =========================== */
+/*         End 404 Page        */
+/* =========================== */

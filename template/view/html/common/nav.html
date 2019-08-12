@@ -44,12 +44,14 @@
                         <li>
                             <a href="<?php echo $home; ?>"><?php echo $text_home; ?></a>
                         </li>
-                        <?php foreach($information as $info) : ?>
+                        <?php foreach($information_groups as $information_group) : ?>
                         <li class="sub-menu-parent">
-                            <a href="<?php echo $info['href']; ?>"><?php echo $info['name']; ?></a>
-                            <?php if($info['children']) : ?>
+                            <a href="<?php echo $information_group['href']; ?>">
+                                <?php echo $information_group['title']; ?>
+                            </a>
+                            <?php if($information_group['children']) : ?>
                             <ul class="sub-menu drop1">
-                                <?php foreach($info['children'] as $child): ?>
+                                <?php foreach($information_group['children'] as $child) : ?>
                                 <li><a href="<?php echo $child['href']; ?>"><?php echo $child['title']; ?></a></li>
                                 <?php endforeach; ?>
                             </ul>
@@ -66,10 +68,6 @@
                                 <li><a href="<?php echo $club; ?>"><i
                                             class="fa fa-user-circle header-fa"></i>&nbsp;<?php echo $text_club; ?></a>
                                 </li>
-                                <!-- <li><a href="https://my.rotary.org/en/user/login?destination=user/profile/edit"
-                                        target="_blank"><i
-                                            class="fa fa-user-circle header-fa"></i>&nbsp;<?php echo $text_member; ?></a>
-                                </li> -->
                             </ul>
                         </li>
                         <li>
@@ -143,8 +141,12 @@
         <nav class="nav open">
             <ul>
                 <li><a href="<?php echo $home; ?>"><?php echo $text_home; ?></a></li>
-                <?php foreach($information as $info) : ?>
-                <li><a href="<?php echo $info['href']; ?>"><?php echo $info['name']; ?></a></li>
+                <?php foreach($information_groups as $information_group) : ?>
+                <li class="sub-menu-parent">
+                    <a href="<?php echo $information_group['href']; ?>">
+                        <?php echo $information_group['title']; ?>
+                    </a>
+                </li>
                 <?php endforeach; ?>
                 <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
                 <li><a href="<?php echo $admin; ?>"><?php echo $text_admin; ?></a></li>

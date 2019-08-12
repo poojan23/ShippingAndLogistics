@@ -3,7 +3,7 @@
 <div id="page-content-wrapper">
     <div class="page-content">
         <div class="container">
-           <div class="banner-img-08 banner-img-size"></div>
+            <div class="banner-img-08 banner-img-size"></div>
             <div class="page-breadcum" id="content">
                 <?php for($i = 0; $i < count($breadcrumbs); $i++) : ?>
                 <?php if($i != (count($breadcrumbs) - 1)) : ?>
@@ -20,48 +20,129 @@
                 <?php endfor; ?>
             </div>
             <div class="about-desc-section">
-        <div class="about-desc-content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="col-md-3 mt-20">
-                        <div class="desktop-drop">
-                            <ul id="page-menu">
-                                <li><a href="#">Overview</a></li> 
-<!--                            <li><a href="#" class="active-menu">About District 3141</a></li> 
-                                <li><a href="#">Core Team 3141</a></li>
-                                <li><a href="#">Club 3141</a></li>
-                                <li><a href="#">Membership</a></li> 
-                                <li><a href="#">District Governors<i class="fa fa-chevron-right fa-page-icon"></i></a>
-                                    <ul>
-                                        <li><a href="#">District Governor</a></li>
-                                        <li><a href="#">District Governor Elect</a></li>
-                                        <li><a href="#">District Governor Nominee</a></li>
-                                        <li><a href="#">Past District Governors</a></li>
+                <div class="about-desc-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 mt-20">
+                                <div class="desktop-drop">
+                                    <ul id="page-menu">
+                                        <?php foreach($information_groups as $information_group) : ?>
+                                        <li>
+                                            <?php if($information_group['href']) : ?>
+                                            <?php if($information_group['information_id'] == $information_id) : ?>
+                                            <a href="<?php echo $information_group['href']; ?>" class="active-menu">
+                                                <?php echo $information_group['title']; ?>
+                                            </a>
+                                            <?php else : ?>
+                                            <a href="<?php echo $information_group['href']; ?>">
+                                                <?php echo $information_group['title']; ?>
+                                            </a>
+                                            <?php endif; ?>
+                                            <?php else : ?>
+                                            <?php if($information_group['children'][0]['parent_id'] = $parts) : ?>
+                                            <a href="javascript:;" class="active-menu">
+                                                <?php echo $information_group['title']; ?> <i
+                                                    class="fa fa-chevron-left fa-page-icon"
+                                                    style="margin-top: 4px;"></i>
+                                            </a>
+                                            <?php else : ?>
+                                            <a href="javascript:;">
+                                                <?php echo $information_group['title']; ?> <i
+                                                    class="fa fa-chevron-left fa-page-icon"
+                                                    style="margin-top: 4px;"></i>
+                                            </a>
+                                            <?php endif; ?>
+                                            <?php endif; ?>
+                                            <?php if($information_group['children']) : ?>
+                                            <ul>
+                                                <?php foreach($information_group['children'] as $child) : ?>
+                                                <li>
+                                                    <?php if($child['information_id'] == $information_id) : ?>
+                                                    <a href="<?php echo $child['href']; ?>" class="active-sub-menu">
+                                                        <?php echo $child['title']; ?>
+                                                    </a>
+                                                    <?php else : ?>
+                                                    <a href="<?php echo $child['href']; ?>">
+                                                        <?php echo $child['title']; ?>
+                                                    </a>
+                                                    <?php endif; ?>
+                                                </li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                            <?php endif; ?>
+                                        </li>
+                                        <?php endforeach; ?>
                                     </ul>
-                                </li>
-                                <li><a href="<?php echo $base_url;?>/district3141/dg-citation-criteria.php#content">DG's Citation Criteria</a></li>
-                                <li><a href="<?php echo $base_url;?>/district3141/inner-wheel-representative.php#content">Inner Wheel Representative</a></li>
-                                <li><a href="<?php echo $base_url;?>/district3141/district-rotaract.php#content">Dist Rotaract Representative</a></li>
-                                <li><a href="<?php echo $base_url;?>/district3141/rotary-centres.php#content">Rotary Centers</a></li>-->
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-9 mt-20">
-                        <div class="about-page-content">
-                            <div class="page-title">
-                                <?php foreach($information_info as $info): ?>
-                                    <?php echo $info['name']; ?>
-                                <?php endforeach; ?>
+                                </div>
+                                <div id="mobile-menu">
+                                    <a href="javascript:;" class="bars" data-original-title="" title=""><i
+                                            class="fa fa-bars mobile-bars"></i> Menu</a>
+                                    <div class="mobile-drop">
+                                        <ul id="page-menu">
+                                            <?php foreach($information_groups as $information_group) : ?>
+                                            <li>
+                                                <?php if($information_group['href']) : ?>
+                                                <?php if($information_group['information_id'] == $information_id) : ?>
+                                                <a href="<?php echo $information_group['href']; ?>" class="active-menu">
+                                                    <?php echo $information_group['title']; ?>
+                                                </a>
+                                                <?php else : ?>
+                                                <a href="<?php echo $information_group['href']; ?>">
+                                                    <?php echo $information_group['title']; ?>
+                                                </a>
+                                                <?php endif; ?>
+                                                <?php else : ?>
+                                                <?php if($information_group['children'][0]['parent_id'] = $parts) : ?>
+                                                <a href="javascript:;" class="active-menu">
+                                                    <?php echo $information_group['title']; ?> <i
+                                                        class="fa fa-chevron-left fa-page-icon"
+                                                        style="margin-top: 4px;"></i>
+                                                </a>
+                                                <?php else : ?>
+                                                <a href="javascript:;">
+                                                    <?php echo $information_group['title']; ?> <i
+                                                        class="fa fa-chevron-left fa-page-icon"
+                                                        style="margin-top: 4px;"></i>
+                                                </a>
+                                                <?php endif; ?>
+                                                <?php endif; ?>
+                                                <?php if($information_group['children']) : ?>
+                                                <ul>
+                                                    <?php foreach($information_group['children'] as $child) : ?>
+                                                    <li>
+                                                        <?php if($child['information_id'] == $information_id) : ?>
+                                                        <a href="<?php echo $child['href']; ?>" class="active-sub-menu">
+                                                            <?php echo $child['title']; ?>
+                                                        </a>
+                                                        <?php else : ?>
+                                                        <a href="<?php echo $child['href']; ?>">
+                                                            <?php echo $child['title']; ?>
+                                                        </a>
+                                                        <?php endif; ?>
+                                                    </li>
+                                                    <?php endforeach; ?>
+                                                </ul>
+                                                <?php endif; ?>
+                                            </li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="about-page-content-text">
-                                 <?php foreach($information_info as $info): ?>
-                                <?php echo $info['description']; ?>
-                                <?php endforeach; ?>
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12  mt-20">
+                                <div class="about-page-content">
+                                    <?php foreach($informations as $information): ?>
+                                    <div class="page-title">
+                                        <?php echo $information['name']; ?>
+                                    </div>
+                                    <div class="about-page-content-text">
+                                        <?php echo $information['description']; ?>
+                                    </div>
+                                    <?php endforeach; ?>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-<?php echo $footer; ?>
+            <?php echo $footer; ?>

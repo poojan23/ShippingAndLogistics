@@ -1,0 +1,1532 @@
+<?php echo $header; ?>
+<style>
+    table.table.table-bordered input {
+        width: 77px;
+    }
+
+    .btn-sav {
+        border: 1px solid #17468f !important;
+        background-color: #17468f;
+        color: #fff;
+        float: none !important;
+        transition: all 0.2s ease-in-out;
+        margin-top: 24px;
+        margin-bottom: 0;
+    }
+
+    .btn-sav:hover,
+    .btn-sav:focus,
+    .btn-sav:active,
+    .btn-sav:visited {
+        border: 1px solid #17468f !important;
+        background-color: #17468f;
+        color: #fff;
+    }
+
+    .points-box {
+        box-shadow: 1px 1px 1px 1px #eee;
+        padding: 14px;
+        font-weight: 700;
+        color: #f7a81b;
+    }
+
+    .radio,
+    .checkbox {
+        position: relative;
+        display: block;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .citation-table tbody {
+        width: 100%;
+        height: 600px;
+        display: block;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .citation-table thead {
+        display: block;
+        background-color: #17468f;
+        color: #fff;
+    }
+
+    .citation-table thead tr {
+        display: inline-flex;
+        width: 100%;
+    }
+
+    .citation-table thead tr th {
+        display: block;
+        width: 24%;
+    }
+
+    .citation-table tbody::-webkit-scrollbar {
+        width: 10px;
+        background-color: #fff;
+        border: 1px solid #eee;
+    }
+
+    .citation-table tbody::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: #FFF;
+        background-image: -webkit-gradient(linear, 40% 0%, 75% 84%, from(#17468f), to(#17468f), color-stop(.6, #17468f));
+    }
+</style>
+<?php echo $nav; ?>
+
+<div id="page-content-wrapper">
+    <div class="page-content">
+        <div class="container">
+            <div class="banner-img-08 banner-img-size"></div>
+            <div class="page-breadcum" id="content">
+                <?php for($i = 0; $i < count($breadcrumbs); $i++) : ?>
+                <?php if($i != (count($breadcrumbs) - 1)) : ?>
+                <?php if($i == 0) : ?>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php else : ?>
+                <i class="fa fa-chevron-right"></i>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php endif; ?>
+                <?php else : ?>
+                <i class="fa fa-chevron-right"></i>
+                <?php echo $breadcrumbs[$i]['text']; ?>
+                <?php endif; ?>
+                <?php endfor; ?>
+            </div>
+            <div class="about-desc-section">
+                <div class="about-desc-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3 mt-20">
+                                <?php echo  $navpage; ?>
+                            </div>
+                            <div class="col-md-9 mt-20">
+                                <div class="about-page-content">
+                                    <div class="page-title">
+                                        <?php echo $heading_title; ?>
+                                        <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title=""
+                                            class="btn btn-login btn-sm btn-bold btn-table" data-original-title="Back"
+                                            style="float: right !important;"><i class="fa fa-reply"></i></a>
+                                    </div>
+                                    <div class="club-page-content">
+                                        <p>THE CRITERIA FOR DG CITATION POINTS CALCULATION WILL BE BASED UPON THIS TABLE
+                                        </p>
+                                        <p>DIST 3141 2019-20 SMART YEAR DG HARJIT SINGH TALWAR</p>
+                                        <p>The Citations will be awarded subject to the completion of minimum number of
+                                            activities as mentioned under each
+                                            assessment area</p>
+                                        <hr class="featurette-divider">
+                                        <p>CATEGORIES</p>
+                                        <div class="box">
+                                            <!-- /.box-header -->
+                                            <div class="box-body">
+                                                <table class="table table-bordered">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>A)</td>
+                                                            <td>PLATINUM</td>
+                                                            <td>CLUB ACHIEVING 90% and above percentile points</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>B)</td>
+                                                            <td>DIAMOND</td>
+                                                            <td>CLUB ACHIEVING 75% TO 89% percentile points</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>C)</td>
+                                                            <td>GOLD</td>
+                                                            <td>CLUBS ACHIEVING 60% TO 75% percentile points</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>D)</td>
+                                                            <td>SILVER</td>
+                                                            <td>CLUBS ACHIEVING 50% TO 59% percentile points</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>E)</td>
+                                                            <td>BRONZE</td>
+                                                            <td>CLUBS ACHIEVING 40% TO 49% percentile points</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <p>CLUBS WILL NEED TO APPLY FOR DGs CITATION IN THE PRESCRIBED FORMAT WHICH WILL
+                                            BE AVAILABLE IN DUE COURSE
+                                            All citations will be awarded subject to the approval of the District
+                                            Scrutiny Team appointed by the DG
+                                            The decision of the team will be final
+                                        </p>
+                                        <div class="alert alert-success alert-dismissible" id="success_citation"
+                                            style="display:none;">
+                                            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                                        </div>
+                                        <hr class="featurette-divider">
+                                        <div class="box">
+                                            <!-- <form action="<?php echo $action; ?>" method="POST"
+                                                enctype="multipart/form-data"> -->
+                                            <input type="hidden" name="club_id" id="club_id"
+                                                value="<?php echo $club_id; ?>">
+                                            <!-- /.box-header -->
+                                            <div class="box-body">
+                                                <table class="table table-bordered citation-table rowCont">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="width:112px;"></th>
+                                                            <th style="width:269px;">Particular</th>
+                                                            <th style="width: 61px;">Points</th>
+                                                            <th style="width: 61px;">Claim</th>
+                                                            <th style="width: 94px;">Project Id</th>
+                                                            <th>Remark</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <!-- first row -->
+                                                        <tr>
+                                                            <td colspan="6">
+                                                                <b><?php echo $citations[0]['category']; ?></b></td>
+                                                            </td>
+                                                        </tr>
+                                                        <!-- second row -->
+                                                        <tr>
+                                                            <td rowspan="15">
+                                                                <b><?php echo $citations[0]['sub_category']; ?></b>
+                                                            </td>
+                                                            <td colspan="5">
+                                                                <b><?php echo $citations[0]['level3']; ?></b> </td>
+                                                        </tr>
+                                                        <!-- third row -->
+                                                        <tr>
+                                                            <td>
+                                                                <?php echo $citations[0]['level4']; ?>
+                                                            </td>
+                                                            <td style="width: 61px;">
+                                                                <?php echo $citations[0]['point']; ?>
+                                                            </td>
+                                                            <td style="width: 61px;">
+                                                                <div class="checkbox checkbox-primary">
+                                                                    <input id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim">
+                                                                    <label for="claim">
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                            <td style="width: 82px;">
+                                                                <input type="text" name="project_id[]" id="project_id"
+                                                                    class="project_id">
+                                                                <input type="hidden" name="dg_id[]" id="dg_id"
+                                                                    value="<?php echo $citations[0]['dg_id']; ?>"
+                                                                    class="dg_id" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1" id="remark"
+                                                                    class="remark"></textarea></td>
+                                                        </tr>
+                                                        <!-- four row -->
+                                                        <tr>
+                                                            <td><?php echo $citations[1]['level4']; ?></td>
+                                                            <td><?php echo $citations[1]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary">
+                                                                    <input id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim">
+                                                                    <label for="claim">
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]" id="project_id"
+                                                                    class="project_id"><input type="hidden"
+                                                                    name="dg_id[]"
+                                                                    value="<?php echo $citations[1]['dg_id']; ?>"
+                                                                    class="dg_id" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"
+                                                                    class="remark"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[2]['level4']; ?></td>
+                                                            <td><?php echo $citations[2]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary">
+                                                                    <input id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim">
+                                                                    <label for="claim">
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]" id="project_id"
+                                                                    class="project_id"><input type="hidden"
+                                                                    name="dg_id[]"
+                                                                    value="<?php echo $citations[2]['dg_id']; ?>"
+                                                                    class="dg_id" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"
+                                                                    class="remark"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5">
+                                                                <b><?php echo $citations[3]['level3']; ?></b> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[3]['level4']; ?></td>
+                                                            <td><?php echo $citations[3]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[3]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[4]['level4']; ?></td>
+                                                            <td><?php echo $citations[4]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[4]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[5]['level4']; ?></td>
+                                                            <td><?php echo $citations[5]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[5]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5">
+                                                                <b><?php echo $citations[6]['sub_category']; ?></b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[6]['level4']; ?></td>
+                                                            <td><?php echo $citations[6]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[6]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[7]['level4']; ?></td>
+                                                            <td><?php echo $citations[7]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[7]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[8]['level4']; ?></td>
+                                                            <td><?php echo $citations[8]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[8]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5">
+                                                                <b><?php echo $citations[9]['sub_category']; ?></b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[9]['level4']; ?></td>
+                                                            <td><?php echo $citations[9]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[9]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[10]['level4']; ?></td>
+                                                            <td><?php echo $citations[10]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[10]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="6">
+                                                                <b><?php echo $citations[11]['category']; ?></b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td rowspan="19"></td>
+                                                            <td colspan="5">
+                                                                <b><?php echo $citations[11]['level3']; ?></b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[11]['level4']; ?></td>
+                                                            <td><?php echo $citations[11]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[11]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[12]['level4']; ?></td>
+                                                            <td><?php echo $citations[12]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[12]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[13]['level4']; ?></td>
+                                                            <td><?php echo $citations[13]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[13]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5">
+                                                                <b><?php echo $citations[14]['level3']; ?></b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[14]['level4']; ?></td>
+                                                            <td><?php echo $citations[14]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[14]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[15]['level4']; ?></td>
+                                                            <td><?php echo $citations[15]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[15]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[16]['level4']; ?></td>
+                                                            <td><?php echo $citations[16]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[16]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5">
+                                                                <b><?php echo $citations[17]['level3']; ?></b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[17]['level4']; ?></td>
+                                                            <td><?php echo $citations[17]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[17]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[18]['level4']; ?></td>
+                                                            <td><?php echo $citations[18]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[18]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5">
+                                                                <b><?php echo $citations[19]['level3']; ?></b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[19]['level4']; ?></td>
+                                                            <td><?php echo $citations[19]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[19]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[20]['level4']; ?></td>
+                                                            <td><?php echo $citations[20]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[20]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[21]['level4']; ?></td>
+                                                            <td><?php echo $citations[21]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[21]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[22]['level4']; ?></td>
+                                                            <td><?php echo $citations[22]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[22]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="5">
+                                                                <b><?php echo $citations[23]['level3']; ?></b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[23]['level4']; ?></td>
+                                                            <td><?php echo $citations[23]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[23]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[24]['level4']; ?></td>
+                                                            <td><?php echo $citations[24]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[24]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="6">
+                                                                <b><?php echo $citations[25]['category']; ?></b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td rowspan="5"></td>
+                                                            <td colspan="5">
+                                                                <b><?php echo $citations[25]['level3']; ?></b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[25]['level4']; ?></td>
+                                                            <td><?php echo $citations[25]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[25]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[26]['level4']; ?></td>
+                                                            <td><?php echo $citations[26]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[26]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[27]['level4']; ?></td>
+                                                            <td><?php echo $citations[27]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[27]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[28]['level4']; ?></td>
+                                                            <td><?php echo $citations[28]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[28]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="6">
+                                                                <b><?php echo $citations[29]['category']; ?></b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td rowspan="4"></td>
+                                                            <td><?php echo $citations[29]['level4']; ?></td>
+                                                            <td><?php echo $citations[29]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[29]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[30]['level4']; ?></td>
+                                                            <td><?php echo $citations[30]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[30]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[31]['level4']; ?></td>
+                                                            <td><?php echo $citations[31]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[31]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><?php echo $citations[32]['level4']; ?></td>
+                                                            <td><?php echo $citations[32]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[32]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="6">
+                                                                <b><?php echo $citations[33]['category']; ?></b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[33]['level4']; ?></td>
+                                                            <td><?php echo $citations[33]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[33]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[34]['level4']; ?></td>
+                                                            <td><?php echo $citations[34]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[34]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td colspan="5">
+                                                                <b><?php echo $citations[35]['sub_category']; ?></b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td colspan="5">
+                                                                <b><?php echo $citations[35]['level3']; ?></b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[35]['level4']; ?></td>
+                                                            <td><?php echo $citations[35]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[35]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[36]['level4']; ?></td>
+                                                            <td><?php echo $citations[36]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[36]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td colspan="5">
+                                                                <b><?php echo $citations[37]['level3']; ?></b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[37]['level4']; ?></td>
+                                                            <td><?php echo $citations[37]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[37]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td colspan="5">
+                                                                <b><?php echo $citations[38]['level3']; ?></b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[38]['level4']; ?></td>
+                                                            <td><?php echo $citations[38]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[38]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[39]['level4']; ?></td>
+                                                            <td><?php echo $citations[39]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[39]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td colspan="5">
+                                                                <b><?php echo $citations[40]['level3']; ?></b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[40]['level4']; ?></td>
+                                                            <td><?php echo $citations[40]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[40]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td colspan="5">
+                                                                <b><?php echo $citations[41]['level3']; ?></b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[41]['level4']; ?></td>
+                                                            <td><?php echo $citations[41]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[41]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[42]['level4']; ?></td>
+                                                            <td><?php echo $citations[42]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[42]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[43]['level4']; ?></td>
+                                                            <td><?php echo $citations[43]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[43]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[44]['level4']; ?></td>
+                                                            <td><?php echo $citations[44]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[44]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[45]['level4']; ?></td>
+                                                            <td><?php echo $citations[45]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[45]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[46]['level4']; ?></td>
+                                                            <td><?php echo $citations[46]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[46]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[47]['level4']; ?></td>
+                                                            <td><?php echo $citations[47]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[47]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[48]['level4']; ?></td>
+                                                            <td><?php echo $citations[48]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[48]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[49]['level4']; ?></td>
+                                                            <td><?php echo $citations[49]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[49]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[50]['level4']; ?></td>
+                                                            <td><?php echo $citations[50]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[50]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="6">
+                                                                <b><?php echo $citations[51]['category']; ?></b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td colspan="5">
+                                                                <b><?php echo $citations[51]['sub_category']; ?></b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[51]['level4']; ?></td>
+                                                            <td><?php echo $citations[51]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[51]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[52]['level4']; ?></td>
+                                                            <td><?php echo $citations[52]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[52]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[53]['level4']; ?></td>
+                                                            <td><?php echo $citations[53]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[53]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[54]['level4']; ?></td>
+                                                            <td><?php echo $citations[54]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[54]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td colspan="5">
+                                                                <b><?php echo $citations[55]['sub_category']; ?></b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[55]['level4']; ?></td>
+                                                            <td><?php echo $citations[55]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[55]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[56]['level4']; ?></td>
+                                                            <td><?php echo $citations[56]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[56]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[57]['level4']; ?></td>
+                                                            <td><?php echo $citations[57]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[57]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[58]['level4']; ?></td>
+                                                            <td><?php echo $citations[58]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[58]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[59]['level4']; ?></td>
+                                                            <td><?php echo $citations[59]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[59]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[60]['level4']; ?></td>
+                                                            <td><?php echo $citations[60]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[60]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[61]['level4']; ?></td>
+                                                            <td><?php echo $citations[61]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[61]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td colspan="5">
+                                                                <b><?php echo $citations[62]['sub_category']; ?></b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[62]['level4']; ?></td>
+                                                            <td><?php echo $citations[62]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[62]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[63]['level4']; ?></td>
+                                                            <td><?php echo $citations[63]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[63]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[64]['level4']; ?></td>
+                                                            <td><?php echo $citations[64]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[64]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[65]['level4']; ?></td>
+                                                            <td><?php echo $citations[65]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[65]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td colspan="5">
+                                                                <b><?php echo $citations[66]['sub_category']; ?></b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[66]['level4']; ?></td>
+                                                            <td><?php echo $citations[66]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[66]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[67]['level4']; ?></td>
+                                                            <td><?php echo $citations[67]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[67]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[68]['level4']; ?></td>
+                                                            <td><?php echo $citations[68]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[68]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[69]['level4']; ?></td>
+                                                            <td><?php echo $citations[69]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[69]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><?php echo $citations[70]['level4']; ?></td>
+                                                            <td><?php echo $citations[70]['point']; ?></td>
+                                                            <td>
+                                                                <div class="checkbox checkbox-primary"> <input
+                                                                        id="claim" name="claim[]" value="1"
+                                                                        type="checkbox" class="claim"> <label
+                                                                        for="claim"> </label> </div>
+                                                            </td>
+                                                            <td><input type="text" name="project_id[]"><input
+                                                                    type="hidden" name="dg_id[]"
+                                                                    value="<?php echo $citations[70]['dg_id']; ?>" />
+                                                            </td>
+                                                            <td><textarea name="remark[]" rows="1"></textarea></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="box-footer clearfix">
+                                                <button type="submit" name="save" class="btn btn-sav"
+                                                    style="float: right !important;"
+                                                    onclick="addCitation()">Save</button>
+                                            </div>
+                                            <!-- </form> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php echo $footer; ?>
+            <script>
+                function addCitation() {
+
+                    var club_id = $('#club_id').val();
+
+                    var dg_id = [];
+                    $.each($("input[name='dg_id[]']"), function () {
+                        dg_id.push($(this).val());
+
+                    });
+
+                    var project_id = [];
+                    $.each($("input[name='project_id[]']"), function () {
+                        project_id.push($(this).val());
+
+                    });
+
+                    var claim = [];
+                    $('.claim:checked').each(function (i, e) {
+                        claim.push($(this).val());
+                    });
+
+                    var remark = [];
+                    $.each($("textarea[name='remark[]']"), function () {
+                        remark.push($(this).val());
+
+                    });
+
+                    if (claim != "" & project_id != "") {
+                        $.ajax({
+                            url: "index.php?url=club/add_citation/add",
+                            type: "POST",
+                            dataType: 'json',
+                            data: {
+                                club_id: club_id,
+                                dg_id: dg_id,
+                                project_id: project_id,
+                                claim: claim,
+                                remark: remark
+                            },
+                            cache: false,
+                            success: function (data) {
+                                console.log(data);
+                                alert(data);
+                                if (data) {
+                                    $('#project_id').find('input:text').val('');
+                                    $("#success_citation").show();
+                                    var prefix_citation = 'Success: Citation Points has been added successfully';
+                                    $('#success_citation').html(prefix_citation);
+
+                                }
+                                else {
+                                    alert("Error occured !");
+                                }
+
+
+                            }
+                        });
+                    }
+                    else {
+                        alert('Please fill all the field !');
+                    }
+                }
+            </script>

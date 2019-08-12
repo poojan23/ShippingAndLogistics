@@ -1,6 +1,6 @@
 @media only screen and (min-device-width : 376px) and (max-device-width : 480px) 
 { 
-       
+    
     .desktop-view{
         display: none !important;
     }
@@ -320,7 +320,7 @@
     .fa-footer-icon {
         width: 42px;
         font-size: 2rem;
-            font-weight: bold !important;
+        font-weight: bold !important;
     }
     .desktop-drop{
         display: none;
@@ -329,11 +329,11 @@
         color: #0033a0;
         text-decoration: underline;
         margin-top: -8px;
-        font-size: 2rem;
+        font-size: 1rem;
         text-transform: uppercase;
         padding: 0px 11px;
     }
-    .banner-title {
+    /* .banner-title {
         display: block;
         position: absolute;
         color: #0068c7;
@@ -345,7 +345,7 @@
         font-size: 2rem;
         text-align: center;
         text-transform: uppercase;
-    }
+    } */
     .about-page-content-text {
         padding: 21px 20px;
         text-align: justify;
@@ -359,69 +359,71 @@
         width: 100%;
     }
     .mt-20 {
-        margin-top: 78px;
-        padding-bottom: 5px;
+        margin-top: 0px;
+        padding-bottom: 20px;
     }
     .about-desc-content {
         width: 100%;
         display: block;
-        padding: 20px 0px 1px;
+        padding: 20px 0px 20px;
         margin-bottom: 0px;
         float: left;
         position: relative;
     }
     .page-breadcum {
-        padding: 20px 12px 28px 27px;
-        font-size: 1.7rem;
-        color: #fff;
-        width: 100%;
-        text-align: right;
-        background-color: rgb(0, 104, 199);
-        text-transform: uppercase;
-        position: absolute;
-        float: left;
-        top: 19%;
+            padding: 10px;
+            font-size: .8em;
+            color: #ffffffe6;
+            width: 100%;
+            text-align: right;
+            background-color: #f7a81b;
+            text-transform: uppercase;
+            position: relative;
+            float: left;
+            z-index: 1;
+            display: block;
     }
     #mobile-menu {
         display: block;
-        padding: 10px;
     }
     .mobile-bars {
-        font-size: 2.5rem;
-        padding: 15px;
-        color: #000;
+        padding: 0px;
+        color: #ffffff;
+        float: right;
+        margin-top: 3px;
     }
     .bars {
-        font-size: 2.5rem;
-        padding: 15px;
-      /*  border: 1px solid #000;
-        background-color: #0033a0;*/
-        color: #000;
+        font-size: 1rem;
+        padding: 7px;
+        color: #fff;
+        background-color: #17468f;
+        display: block;
     }
     .bars:hover {
-        font-size: 2.5rem;
-        padding: 15px;
-        color: #000;
+        font-size: 1rem;
+        padding: 7px;
+        color: #fff;
+        background-color: #17468f;
+        display: block;
     }
 
-
     .desktop-drop {
-            display: none;
+        display: none;
     }
     .mobile-drop {
         display: none;
-        width: 75%;
+        width: 100%;
         padding: 0px;
     }
     #page-menu>li>a {
         display: inline-block;
         position: relative;
-        background-color: #0033a0;
+        background-color: #17468f;
         width: 100%;
         color: #fff;
         margin-top: 5px;
-        padding: 24px;
-        font-size: 2rem;
+        padding: 8px;
+        font-size: .7rem;
     }
     #page-menu>li>ul>li>a {
         display: inline-block;
@@ -429,14 +431,14 @@
         background-color: #f7a800;
         width: 100%;
         color: #fff;
-        padding: 24px;
-        border-bottom: 1px solid #0033a0;
-        font-size: 2rem;
+        padding: 8px;
+        border-bottom: 1px solid #17468f;
+        font-size: .7rem;
     }
     .about-page-content-text {
         padding: 21px 16px;
-        /* text-align: justify; */
-        font-size: 2rem;
+        text-align: justify;
+        font-size: .8rem;
     }
     .digi-p {
         width: 25%;
@@ -460,7 +462,7 @@
     .contact h3 {
         padding: 6px 9px;
         margin: 0px;
-        background-color: #0068c7;
+        background-color: #17468f;
         color: #fff;
         text-transform: uppercase;
         font-size: 1.7rem;
@@ -473,7 +475,7 @@
         width: 100%;
         padding: 10px 0px;
         line-height: 19px;
-        font-size: 1.4rem;
+        font-size: .8rem;
     }
     .contact ul li a {
         color: #000;
@@ -481,6 +483,19 @@
     .contact ul li a:hover {
         color: #000;
         text-decoration: none;
+    }
+    .contact ul li .con-fa {
+    width: 8%;
+    font-size: 13px;
+    color: #17468f;
+    }
+    .contact ul li .marker-fa {
+        width: 8%;
+        display: inline-block;
+        float: left;
+        margin-bottom: 0px;
+        font-size: 17px;
+        color: #17468f;
     }
     .box-ppt h3 {
         font-size: 1.2rem;
@@ -652,5 +667,5 @@
         margin-top: 10px;
         margin-bottom: 0;
         text-align: center;
-    } 
+    }
 }

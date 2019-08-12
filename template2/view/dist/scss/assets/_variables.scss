@@ -1,0 +1,36 @@
+// ========================================= //
+//			Colors Used in Landing Page
+// ========================================= //
+
+$Robins-egg-blue:	#00D5C3;
+$white:				#FFFFFF;
+$tundora:			#444444;
+$seashell:			#F1F0F0;
+$Gallery:           #eceaea;
+$dove-gray:			#666666;
+$big-stone:			#161C35;
+$hint-of-red:		#FAF8F8;
+$cod-gray:			#1A1A1A;
+$black-haze:		#F4F6F6;
+$Alabaster:	        #f9f9f9;
+$mercury:			#e1e1e1;
+$hint-of-red:		#FAF8F8;
+$black:				#000000;
+$mine-shaft:		#202020;
+$shark:				#212529;
+$albi: 				#fcfcfc;
+$matisse:			#2371AE;
+$amethyst:			#BB47D4;
+
+
+// Gradient Color
+
+$basic: 	rgb(35, 113, 174);
+$linear:    linear-gradient(to right, rgba(35, 113, 174, 1) 0%, rgba(187, 71, 212, 1) 100%);
+$filter: 	progid:DXImageTransform.Microsoft.gradient(startColorstr='#2371ae', endColorstr='#bb47d4', GradientType=1);
+
+// Gradient Color When Hover
+
+$basic-hover: 	rgb(35, 113, 174);
+$linear-hover:    linear-gradient(to right, rgba(187, 71, 212, 1) 0%, rgba(35, 113, 174, 1) 100%);
+$filter-hover: 	progid:DXImageTransform.Microsoft.gradient(startColorstr='#bb47d4', endColorstr='#2371ae', GradientType=1);

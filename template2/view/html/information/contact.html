@@ -1,0 +1,53 @@
+<?php echo $header; ?>
+<?php echo $nav; ?>
+<div id="page-content-wrapper">
+    <div class="page-content">
+        <div class="container">
+           <div class="banner-img-08 banner-img-size"></div>
+            <div class="page-breadcum" id="content">
+                <?php for($i = 0; $i < count($breadcrumbs); $i++) : ?>
+                <?php if($i != (count($breadcrumbs) - 1)) : ?>
+                <?php if($i == 0) : ?>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php else : ?>
+                <i class="fa fa-chevron-right"></i>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php endif; ?>
+                <?php else : ?>
+                <i class="fa fa-chevron-right"></i>
+                <?php echo $breadcrumbs[$i]['text']; ?>
+                <?php endif; ?>
+                <?php endfor; ?>
+            </div>
+            <div class="about-desc-section">
+                <div class="about-desc-content">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-6 col-xs-6 mt-20">
+                            <div class="col-md-12">
+                                <div class="page-title">
+                                     Reach Us
+                                </div>
+                                <div class="map">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d941.850579089346!2d72.85791582922248!3d19.221290399187804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b0d34cfb6a89%3A0xfee86b9c3a94f904!2sRajendra+Nagar+Post+Office!5e0!3m2!1sen!2sin!4v1499693115795" width="100%" height="300" frameborder="2" style="border:0" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-6 mt-20">
+                            <div class="about-page-content contact-info">
+                                <div class="contact">
+                                    <div class="page-title">
+                                     Connect Us
+                                    </div>
+                                    <ul>
+                                        <li><i class="fa fa-map-marker marker-fa"></i><?php echo $address;?></li>
+                                        <li><i class="fa fa-envelope con-fa"></i><a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a></li>
+                                        <li><i class="fa fa-globe con-fa"></i><a href="<?php echo $website; ?>" target="_blank"><?php echo $website; ?></a></li>
+                                        <li><i class="fa fa-phone con-fa"></i><a href="mailto:<?php echo $telephone; ?>"><?php echo $telephone; ?></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<?php echo $footer; ?>

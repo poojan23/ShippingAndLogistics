@@ -1,0 +1,48 @@
+/* ============================ */
+/*         How it Works         */
+/* ============================ */
+
+#rt_how_it_works {
+	padding: 120px 0;
+	position: relative;
+	background: #f9f9f9;
+	.overlay {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    right: 0;
+	    bottom: 0;
+	    background-color: rgba(0, 0, 0, 0.2);
+	}
+	.work_description {
+		h3 {
+			margin-top: 0;
+			@media only screen and (max-width: 767px) {
+				font-size: 20px;
+				line-height: 30px;
+				margin-bottom: 25px;
+			}
+		}
+	}
+	h3 {
+		color: $shark;
+	}
+	p {
+		color: $shark;
+	}
+	ul {
+		li {
+			color: $shark;
+		}
+	}
+	img {
+		margin-top: 10px;
+		width: 100%;
+		@media only screen and (max-width: 480px) {
+			width: 100%;
+		}
+	}
+}
+/* ================================= */
+/*         End How it Works          */
+/* ================================= */

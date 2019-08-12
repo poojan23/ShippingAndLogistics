@@ -1,0 +1,256 @@
+/* =============================== */
+/*             Main Slider         */
+/* =============================== */
+
+.item-slider {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    &:before {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        content: "";
+        background-color: rgba(33, 42, 73, 0.4);
+    }
+}
+.carousel {
+    height: 700px;
+    .carousel-caption {
+        bottom: 20%;
+        @media only screen and (max-width:960px) {
+            bottom: 90px;
+        }
+        @media only screen and (max-width: 500px) {
+            bottom: 160px;
+        }
+        @media only screen and (max-width: 450px) {
+            bottom: 175px;
+        }
+        @media only screen and (max-width: 360px) {
+            left: 10%;
+            right: 10%;
+        }
+
+        .site-heading {
+            color: $white;
+            @media only screen and (max-width: 860px) {
+                font-size: 36px;
+            }
+            @media only screen and (max-width: 500px) {
+                font-size: 28px;
+                line-height: 41px;
+            }
+            @media only screen and (max-width: 450px) {
+                font-size: 26px;
+            }
+            @media only screen and (max-width: 420px) {
+                font-size: 22px;
+                line-height: 30px;
+                margin-bottom: 25px;
+            } 
+            .text-highlight {
+              color: $Robins-egg-blue;
+            }
+        }
+    }
+}
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+.item,
+.active,
+.carousel-inner {
+    height: 100%;
+}
+.promo-description {
+    font-weight: 400;
+    line-height: 28px;
+    margin-bottom: 50px;
+    color: #fff;
+    font-size: 18px;
+    @media only screen and (max-width: 500px) {
+        font-size: 16px;
+        line-height: 26px;
+    }
+    @media only screen and (max-width: 420px) {
+        font-size: 14px;
+        line-height: 24px;
+    }
+    @media only screen and (max-width: 330px) {
+        font-size: 12px;
+    }  
+}
+.carousel_button_list li {
+    margin-bottom: 17px;
+    .fa_btn_green {
+        background-color: $Robins-egg-blue;
+        color: $white;
+        text-shadow: none;
+        &:hover {
+            background-color: $white;
+            color: $Robins-egg-blue;
+            border-color: $white;
+            transition: all 0.5s ease;
+            -ms-transition: all 0.5s ease;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+        }
+    }
+    &:before {
+        display: none;
+    }
+    a {
+        img {
+            width: 70px;
+            &:hover {
+                opacity: 0.9;
+            }
+        }
+    }
+}
+.carousel-control {
+    position: absolute;
+    top: 40%;
+    z-index: 5;
+    display: inline-block;
+    box-shadow: none;
+    -ms-box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -o-box-shadow: none;
+    font-size: 58px;
+    img {
+        height: 175px;
+    }
+}
+.carousel-control,
+.carousel-control.right {
+    background-image: none;
+    color:#fff;
+}
+.carousel-control.left {
+    background-image: none;
+    color:#fff;
+}
+.carousel-indicators {
+    bottom: 8%;
+    @media only screen and (max-width: 860px) { 
+        bottom: 3%;    
+    }
+    li {
+        text-indent: -999px;
+        cursor: pointer;
+        border: 1px solid $Robins-egg-blue;
+        border-radius: 5px;
+        display: inline-block;
+        height: 15px;
+        margin-right: 10px !important;
+        width: 5px;
+        padding: 0;
+        &:before {
+            display: none;
+        } 
+    }
+    .active {
+        background: $Robins-egg-blue none repeat scroll 0 0;
+        border-radius: 5px;
+        height: 20px;
+        transition: all 0.5s ease 0s;
+        -ms-transition: all 0.5s ease 0s;
+        -webkit-transition: all 0.5s ease 0s;
+        -moz-transition: all 0.5s ease 0s;
+        -o-transition: all 0.5s ease 0s;
+        width: 5px;
+    }
+}
+.header-subscribe-form {
+    max-width:570px;
+    margin:0 auto;
+    .input-group {
+        @media only screen and (max-width: 480px) {
+            display: block;
+        }
+        input[type="text"] {
+            @media only screen and (max-width: 480px) {
+                border-radius: 5px;
+                margin-bottom: 15px;
+            }      
+        }
+        button.btn-primary {
+            @media only screen and (max-width: 480px) {
+                border-radius: 5px;
+            }      
+        }
+    }
+    input[type="email"] {
+        border: medium none;
+        box-shadow: none;
+        height: 55px;
+        border-top-left-radius: 28px;
+        border-bottom-left-radius: 28px;
+        font-size: 16px;
+        padding-left: 26px;
+        background-color:#fafafa;
+        color:#1a1a1a;
+        border:none;
+        border:3px solid;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -moz-osx-font-smoothing: grayscale;
+        overflow: hidden;
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-property: color, background-color, border-color;
+        transition-property: color, background-color, border-color;
+
+    }
+    input[type="text"] {
+        border: medium none;
+        box-shadow: none;
+        height: 55px;
+        border-top-left-radius: 28px;
+        border-bottom-left-radius: 28px;
+        font-size: 16px;
+        padding-left: 26px;
+        background-color:#F3F3F4;
+        color:#1a1a1a;
+        border:none;
+        border:3px solid $Robins-egg-blue;
+    }
+    button {
+        font-size:19px;
+        height:55px;
+        border-radius:28px;
+        background-color: $Robins-egg-blue;
+        border-color: $Robins-egg-blue;
+        padding: 11px 40px;
+        @media only screen and (max-width: 640px) {
+            padding: 11px 26px;
+            font-size: 16px;
+        }
+        &:hover {
+            background-color: #05b4a5;
+            border-color: #05b4a5;
+            transition: all 0.5s ease;
+            -ms-transition: all 0.5s ease;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+        }
+    }
+}
+
+/* =================================== */
+/*            End Main Slider          */
+/* =================================== */
