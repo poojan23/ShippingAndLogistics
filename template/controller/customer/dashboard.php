@@ -22,7 +22,7 @@ class ControllerCustomerDashboard extends PT_Controller
         $data['area_id'] = $this->customer->getAreaId();
         $data['mobile'] = $this->customer->getMobile();
         $data['email'] = $this->customer->getEmail();
-        print_r($data);
+        // print_r($data);
 
         $this->response->setOutput($this->load->view('customer/dashboard', $data));
     }

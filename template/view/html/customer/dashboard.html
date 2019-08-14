@@ -1,1 +1,234 @@
-<h1>Welcome</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dashboard</title>
+    <meta http-equiv="X-UA-Compatible"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0 IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="template/view/dist/css/dashboard.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="header">
+        <nav class="navbar navbar-default menu-header">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#NavbarCollapse" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="javascript:;"><img class="header-logo"
+                            src="template/view/dist/images/logo.png" alt=""></a>
+                </div>
+                <div class="collapse navbar-collapse" id="NavbarCollapse">
+                    <!-- menu header -->
+                    <ul class="nav navbar-nav main-menu">
+                        <li class="active">
+                            <a href="javascript:;">
+                                <i class="fa fa-dashboard menu-icon"></i>
+                                <span class="menu-text"> Dashboard </span>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-bar-chart menu-icon"></i>
+                                <span class="menu-text"> Reports </span>
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="javascript:;">DSR</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="javascript:;">Other</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <i class="fa fa-map-marker menu-icon"></i>
+                                <span class="menu-text"> Tracking </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="javascript:;">DSR</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="javascript:;">Other</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- user header -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false" style="padding: 23px 15px 15px 15px;">
+                                <img src="template/view/dist/images/user.jpg" class="nav-user-photo" alt="">
+                                <span class="caret" style="margin-top: 15px;"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a href="javascript:;"><small>Welcome,</small> Dileep</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="javascript:;"><i class="fa fa-cog"></i> Setting</a></li>
+                                <li><a href="javascript:;"><i class="fa fa-user"></i> Profile</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="javascript:;"><i class="fa fa-power-off"></i> Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="content">
+        <section class="info">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="box">
+                            <div class="box-title">
+                                Customer Details
+                            </div>
+                            <div class="box-body">
+                                <table class="table table-bordered bg-white mb-0">
+                                    <tr>
+                                        <th style="width: 10px">#</th>
+                                        <th>Task</th>
+                                        <th>Progress</th>
+                                        <th style="width: 40px">Label</th>
+                                    </tr>
+                                    <tr>
+                                        <td>1.</td>
+                                        <td>Update software</td>
+                                        <td>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                                        </div>
+                                        </td>
+                                        <td><span class="badge bg-red">55%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2.</td>
+                                        <td>Clean database</td>
+                                        <td>
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
+                                        </div>
+                                        </td>
+                                        <td><span class="badge bg-yellow">70%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3.</td>
+                                        <td>Cron job running</td>
+                                        <td>
+                                        <div class="progress progress-xs progress-striped active">
+                                            <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
+                                        </div>
+                                        </td>
+                                        <td><span class="badge bg-light-blue">30%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4.</td>
+                                        <td>Fix and squish bugs</td>
+                                        <td>
+                                        <div class="progress progress-xs progress-striped active">
+                                            <div class="progress-bar progress-bar-success" style="width: 90%"></div>
+                                        </div>
+                                        </td>
+                                        <td><span class="badge bg-green">90%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5.</td>
+                                        <td>Fix and squish bugs</td>
+                                        <td>
+                                        <div class="progress progress-xs progress-striped active">
+                                            <div class="progress-bar progress-bar-success" style="width: 90%"></div>
+                                        </div>
+                                        </td>
+                                        <td><span class="badge bg-green">90%</span></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="box-footer clearfix">
+                                <ul class="pagination pagination-sm no-margin pull-right">
+                                    <li><a href="#">&laquo;</a></li>
+                                    <li><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">&raquo;</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="box">
+                            <div class="box-title">
+                                Important Information
+                            </div>
+                            <div class="box-body">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="box">
+                            <div class="box-title">
+                                News
+                            </div>
+                            <div class="box-body">
+                                <div class="blogs_sec LatestBlog">
+                                    <ul>
+                                        <li>
+                                            <div class="icon_box pull-left">
+                                                <div class="top">21</div>
+                                                <div class="bott">Jun</div>
+                                            </div>
+                                            <div class="right_text"><a href="javascript:;">Top 40 Startup Ideas For Your Small Business</a></div>
+                                        </li>
+                                        <li>
+                                            <div class="icon_box pull-left">
+                                                <div class="top">22</div>
+                                                <div class="bott">Jun</div>
+                                            </div>
+                                            <div class="right_text"><a href="javascript:;">Top 40 Startup Ideas For Your Small Business</a></div>
+                                        </li>
+                                        <li>
+                                            <div class="icon_box pull-left">
+                                                <div class="top">23</div>
+                                                <div class="bott">Jun</div>
+                                            </div>
+                                            <div class="right_text"><a href="javascript:;">Top 40 Startup Ideas For Your Small Business</a></div>
+                                        </li>
+                                        <li>
+                                            <div class="icon_box pull-left">
+                                                <div class="top">24</div>
+                                                <div class="bott">Jun</div>
+                                            </div>
+                                            <div class="right_text"><a href="javascript:;">Top 40 Startup Ideas For Your Small Business</a></div>
+                                        </li>
+                                        <li>
+                                            <div class="icon_box pull-left">
+                                                <div class="top">25</div>
+                                                <div class="bott">Jun</div>
+                                            </div>
+                                            <div class="right_text"><a href="javascript:;">Top 40 Startup Ideas For Your Small Business</a></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="footer">
+        <p>© Copyright <a href="#">Shipping & Logistics</a> All Rights Reserved</p>
+    </div>
+</body>
+</html>
