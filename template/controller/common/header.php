@@ -10,9 +10,12 @@ class ControllerCommonHeader extends PT_Controller
         
         $data['title'] = $this->document->getTitle();
 
-        $data['base'] = $this->config->get('config_url');
+        $data['base'] = HTTP_SERVER;
         $data['description'] = $this->document->getDescription();
         $data['keywords'] = $this->document->getKeywords();
+        $data['links'] = $this->document->getLinks();
+        $data['styles'] = $this->document->getStyles();
+        $data['scripts'] = $this->document->getScripts('header');
         $data['lang'] = $this->language->get('code');
         $data['direction'] = $this->language->get('direction');
 

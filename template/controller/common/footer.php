@@ -11,6 +11,7 @@ class ControllerCommonFooter extends PT_Controller
         $this->load->model('tool/crawler');
 
         $data['name'] = $this->config->get('config_name');
+        $data['scripts'] = $this->document->getScripts();
 
         if (is_file(DIR_IMAGE . $this->config->get('config_logo_colour'))) {
             $data['logo_colour'] = $this->config->get('config_url') . 'image/' . $this->config->get('config_logo_colour');
