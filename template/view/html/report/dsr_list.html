@@ -43,13 +43,21 @@
                                 </thead>
                                 <tbody>
                                     <?php if($dsrs) : ?>
+                                    <?php foreach($dsrs as $dsr) : ?>
                                     <tr>
-                                        <?php foreach($dsrs as $dsr) : ?>
+                                        <?php foreach($dsr['value'] as $value) : ?>
                                         <td class="text-left">
-                                            <?php echo $dsr['value']; ?>
+                                            <?php echo $value['igm_no']; ?>
+                                        </td>
+                                        <td class="text-left">
+                                            <?php echo $value['job_no']; ?>
+                                        </td>
+                                        <td class="text-left">
+                                            <?php echo $value['igm_date']; ?>
                                         </td>
                                         <?php endforeach; ?>
                                     </tr>
+                                    <?php endforeach; ?>
                                     <?php else : ?>
                                     <tr>
                                         <td class="text-center" colspan="5">

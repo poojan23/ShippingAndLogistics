@@ -22,8 +22,16 @@ class ModelReportDsr extends PT_Model
     }
 
     public function compareValues($customer_id) {
-        $query = $this->db->query("SELECT * FROM (SELECT `field_name`, `customer_id` FROM `". DB_PREFIX . "column_fields`) a JOIN (SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = '" . DB_DATABASE . "' AND `TABLE_NAME` = '" . DB_PREFIX . "dsr') b ON a.field_name = b.COLUMN_NAME WHERE a.customer_id = '" . (int)$customer_id . "'");
+        $dsr_data = array();
 
-        return $query->rows;
+        $column_compare_query = $this->db->query("SELECT * FROM (SELECT `field_name`, `customer_id`, `sort_order` FROM `". DB_PREFIX . "column_fields`) a JOIN (SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = '" . DB_DATABASE . "' AND `TABLE_NAME` = '" . DB_PREFIX . "dsr') b ON a.field_name = b.COLUMN_NAME WHERE a.customer_id = '" . (int)$customer_id . "' ORDER BY a.sort_order ASC");
+
+        $dsr_query = $this->db->query("SELECT `dsr_id`, `customer_id`, `" . $column_compare_query->row['COLUMN_NAME'] . "` FROM " . DB_PREFIX . "dsr");
+
+        $dsr_data[] = array(
+            'value' => $dsr_query->rows
+        );
+
+        return $dsr_query->rows;
     }
 }

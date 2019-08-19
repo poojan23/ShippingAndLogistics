@@ -72,7 +72,7 @@ $_['model_autoload']       = array();
 $_['helper_autoload']      = array();
 
 // Actions
-$_['action_default']       = 'common/home';
+$_['action_default']       = 'customer/dashboard';
 $_['action_router']        = 'startup/router';
 $_['action_error']         = 'error/not_found';
 $_['action_pre_action']    = array();

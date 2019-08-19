@@ -70,17 +70,17 @@ class ControllerReportDsr extends PT_Controller
         $dsrs = $this->model_report_dsr->getDSR($this->customer->getId());
         //print_r($dsr);
 
-        foreach($custom_fields as $custom_field) {
-            foreach($dsrs as $dsr) {
-                foreach(array_keys($dsr) as $key) {
-                    if($custom_field['field_name'] == $key) {
-                        $data['dsrs'][] = array(
-                            'job_no' => $dsr['job_no']
-                        );
-                    }
-                }
-            }
-        }
+        // foreach($custom_fields as $custom_field) {
+        //     foreach($dsrs as $dsr) {
+        //         foreach(array_keys($dsr) as $key) {
+        //             if($custom_field['field_name'] == $key) {
+        //                 $data['dsrs'][] = array(
+        //                     'job_no' => $dsr['job_no']
+        //                 );
+        //             }
+        //         }
+        //     }
+        // }
 
         // foreach ($dsr as $result) {
         //     $data['dsr'][] = array(
@@ -102,7 +102,24 @@ class ControllerReportDsr extends PT_Controller
             }
         }*/
 
-        $values = $this->model_report_dsr->compareValues($this->customer->getId());
+        $results = $this->model_report_dsr->compareValues($this->customer->getId());
+
+        foreach($results as  $result) {
+            $value_data = array();
+
+            print_r($result);
+            // foreach($result['value'] as $key => $data) {
+            //     print_r($data);
+            //     $value_data[$key] = array(
+            //         'job_no'    => $data['igm_no']
+            //     );
+            // }
+
+            $data['dsrs'][] = array(
+                'key'   => $result['key'],
+                'value' => $value_data
+            );
+        }
         
         /*for($i = 0; $i < count($dsr); $i++) {
             foreach($dsr[$i] as $key => $value) {
@@ -112,7 +129,7 @@ class ControllerReportDsr extends PT_Controller
             }
         }*/
 
-        echo '<pre>'; print_r($values);
+        echo '<pre>'; print_r($data['dsrs']);
         exit;
 
         if (isset($this->request->post['selected'])) {
