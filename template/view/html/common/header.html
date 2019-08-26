@@ -25,39 +25,27 @@
     <!--=========================*
                 Favicon
     *===========================-->
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo $icon; ?>">
+    <link rel="shortcut icon" type="image/x-icon" href="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!--=========================*
-            Bootstrap Css
-    *===========================-->
-    <link href="template/view/dist/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="template/view/dist/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <?php foreach($styles as $style) : ?>
+    <link type="text/css" rel="<?php echo $style['rel']; ?>" href="<?php echo $style['href']; ?>"
+        media="<?php echo $style['media']; ?>">
+    <?php endforeach; ?>
 
-    <!--=========================*
-              Custom CSS
-    *===========================-->
-    <link href="template/view/dist/css/style.css" rel="stylesheet" type="text/css">
-    <!-- <link href="template/view/dist/css/375-media.css" rel="stylesheet" type="text/css"> -->
-    <link href="template/view/dist/css/responsive.css" rel="stylesheet" type="text/css">
-    <!--=========================*
-               Owl CSS
-    *===========================-->
-    <link rel="stylesheet" type="text/css" href="template/view/dist/plugins/owl.carousel/assets/owl.carousel.css" />
-    <link rel="stylesheet" type="text/css"
-        href="template/view/dist/plugins/owl.carousel/assets/owl.theme.default.css" />
-    <link rel="stylesheet" type="text/css" href="template/view/dist/plugins/owl.carousel/assets/owl.theme.green.css" />
+    <?php foreach($links as $link) : ?>
+    <link rel="<?php echo $link['rel']; ?>" href="<?php echo $link['href']; ?>">
+    <?php endforeach; ?>
 
-    <!--=========================*
-               Font icon
-    *===========================-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="template/view/dist/css/dashboard.css">
 
-
-    <!--=========================*
-              datatable CSS
-    *===========================-->
-    <link href="template/view/dist/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" />
-    <link href="template/view/dist/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
 
 </head>

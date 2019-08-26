@@ -1,1 +1,99 @@
-<h1>Welcome</h1>
+<?php echo $header; ?>
+<?php echo $nav; ?>
+    <div class="content">
+        <div class="content-header">
+            <div class="container-fluid">
+            <h2><?php echo $heading_title; ?></h2>
+            <div class="page-breadcum" id="content">
+                <?php for($i = 0; $i < count($breadcrumbs); $i++) : ?>
+                <?php if($i != (count($breadcrumbs) - 1)) : ?>
+                <?php if($i == 0) : ?>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php else : ?>
+                /
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php endif; ?>
+                <?php else : ?>
+                /
+                <?php echo $breadcrumbs[$i]['text']; ?>
+                <?php endif; ?>
+                <?php endfor; ?>
+            </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <section class="info">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="box">
+                            <div class="box-title">
+                                Total Imports
+                            </div>
+                            <div class="box-body">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="box">
+                            <div class="box-title">
+                                Important Information
+                            </div>
+                            <div class="box-body">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="box">
+                            <div class="box-title">
+                                News
+                            </div>
+                            <div class="box-body">
+                                <div class="blogs_sec LatestBlog">
+                                    <ul>
+                                        <li>
+                                            <div class="icon_box pull-left">
+                                                <div class="top">21</div>
+                                                <div class="bott">Jun</div>
+                                            </div>
+                                            <div class="right_text"><a href="javascript:;">Top 40 Startup Ideas For Your Small Business</a></div>
+                                        </li>
+                                        <li>
+                                            <div class="icon_box pull-left">
+                                                <div class="top">22</div>
+                                                <div class="bott">Jun</div>
+                                            </div>
+                                            <div class="right_text"><a href="javascript:;">Top 40 Startup Ideas For Your Small Business</a></div>
+                                        </li>
+                                        <li>
+                                            <div class="icon_box pull-left">
+                                                <div class="top">23</div>
+                                                <div class="bott">Jun</div>
+                                            </div>
+                                            <div class="right_text"><a href="javascript:;">Top 40 Startup Ideas For Your Small Business</a></div>
+                                        </li>
+                                        <li>
+                                            <div class="icon_box pull-left">
+                                                <div class="top">24</div>
+                                                <div class="bott">Jun</div>
+                                            </div>
+                                            <div class="right_text"><a href="javascript:;">Top 40 Startup Ideas For Your Small Business</a></div>
+                                        </li>
+                                        <li>
+                                            <div class="icon_box pull-left">
+                                                <div class="top">25</div>
+                                                <div class="bott">Jun</div>
+                                            </div>
+                                            <div class="right_text"><a href="javascript:;">Top 40 Startup Ideas For Your Small Business</a></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <?php echo $footer; ?>

@@ -2715,7 +2715,7 @@ protected function validateWorksheetNames(&$reader) {
             $cwd = getcwd();
             $dir = version_compare(VERSION, '3.0', '>=') ? 'library/export_import' : 'PHPExcel';
             chdir(DIR_SYSTEM . $dir);
-            require_once( 'E:/xampp/htdocs/ShippingAndLogistics/system/library/export_import/Classes/PHPExcel.php' );
+            require_once(DIR_SYSTEM . 'library/export_import/Classes/PHPExcel.php');
             chdir($cwd);
 
             // Memory Optimization
@@ -5340,6 +5340,7 @@ protected function validateWorksheetNames(&$reader) {
 
     public function getImportReports() {
         $query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "temp_dsr`");
+        
         return $query->rows;
     }
 
@@ -5347,7 +5348,7 @@ protected function validateWorksheetNames(&$reader) {
 
         foreach ($data['dsr'] as $job_nos) {
 
-            $query = $this->db->query("INSERT INTO " . DB_PREFIX . "dsr SET job_no = '" . $this->db->escape($job_nos['job_no']) . "',igm_no ='" . $this->db->escape($job_nos['igm_no']) . "',igm_date ='" . $this->db->escape($job_nos['igm_date']) . "'");
+            $query = $this->db->query("INSERT INTO " . DB_PREFIX . "dsr SET customer_id = '" . (int)$job_nos['customer_id'] . "', job_no = '" . $this->db->escape($job_nos['job_no']) . "', igm_no ='" . $this->db->escape($job_nos['igm_no']) . "', igm_date ='" . $this->db->escape($job_nos['igm_date']) . "', po_no ='" . $this->db->escape($job_nos['po_no']) . "', shipper ='" . $this->db->escape($job_nos['shipper']) . "', be_heading ='" . $this->db->escape($job_nos['be_heading']) . "', no_of_package ='" . $this->db->escape($job_nos['no_of_package']) . "', unit ='" . $this->db->escape($job_nos['unit']) . "', net_wt ='" . $this->db->escape($job_nos['net_wt']) . "', mode ='" . $this->db->escape($job_nos['mode']) . "', org_eta_date ='" . $this->db->escape($job_nos['org_eta_date']) . "', shipping_line_date ='" . $this->db->escape($job_nos['shipping_line_date']) . "', tentative_eta_date ='" . $this->db->escape($job_nos['tentative_eta_date']) . "', expected_date ='" . $this->db->escape($job_nos['expected_date']) . "', invoice_no ='" . $this->db->escape($job_nos['invoice_no']) . "', invoice_date ='" . $this->db->escape($job_nos['invoice_date']) . "', mawb_no ='" . $this->db->escape($job_nos['mawb_no']) . "', mawb_date ='" . $this->db->escape($job_nos['mawb_date']) . "', be_no ='" . $this->db->escape($job_nos['be_no']) . "', be_date ='" . $this->db->escape($job_nos['be_date']) . "', hawb_no ='" . $this->db->escape($job_nos['hawb_no']) . "', hawb_date ='" . $this->db->escape($job_nos['hawb_date']) . "', airline ='" . $this->db->escape($job_nos['airline']) . "', n_document_date ='" . $this->db->escape($job_nos['n_document_date']) . "', org_doc_date ='" . $this->db->escape($job_nos['org_doc_date']) . "', duty_inform_date ='" . $this->db->escape($job_nos['duty_inform_date']) . "', duty_received_date ='" . $this->db->escape($job_nos['duty_received_date']) . "', duty_paid_date ='" . $this->db->escape($job_nos['duty_paid_date']) . "', total_duty ='" . $this->db->escape($job_nos['total_duty']) . "', container_cleared_date ='" . $this->db->escape($job_nos['container_cleared_date']) . "', detention_amt ='" . $this->db->escape($job_nos['detention_amt']) . "', customer_remark ='" . $this->db->escape($job_nos['customer_remark']) . "', delivery_location_remark ='" . $this->db->escape($job_nos['delivery_location_remark']) . "', container_no ='" . $this->db->escape($job_nos['container_no']) . "', free_period_shipping_date ='" . $this->db->escape($job_nos['free_period_shipping_date']) . "', expected_free_dt_date ='" . $this->db->escape($job_nos['expected_free_dt_date']) . "', expected_free_dt_remark ='" . $this->db->escape($job_nos['expected_free_dt_remark']) . "'");
         }
 
 

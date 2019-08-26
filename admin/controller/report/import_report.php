@@ -144,6 +144,7 @@ class ControllerReportImportReport extends PT_Controller {
 
         $this->response->setOutput($this->load->view('report/import_report_form', $data));
     }
+    
     protected function getList() {
         $this->document->addStyle("view/dist/plugins/DataTables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css");
         $this->document->addStyle("view/dist/plugins/DataTables/Buttons-1.5.6/css/buttons.bootstrap4.min.css");
@@ -261,34 +262,11 @@ class ControllerReportImportReport extends PT_Controller {
 
         $data['cancel'] = $this->url->link('report/import_report', 'user_token=' . $this->session->data['user_token']);
         $data['import'] = $this->url->link('report/import_report/upload', 'user_token=' . $this->session->data['user_token']);
+        
         if (isset($this->request->get['customer_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
             $import_report = $this->model_report_import_report->getImportReport($this->request->get['customer_id']);
         }
 
-//        if (isset($this->request->post['job_no'])) {
-//            $data['job_no'] = $this->request->post['job_no'];
-//        } elseif (!empty($import_report)) {
-//            $data['job_no'] = $import_report['job_no'];
-//        } else {
-//            $data['job_no'] = '';
-//        }
-//
-//        if (isset($this->request->post['igm_no'])) {
-//            $data['igm_no'] = $this->request->post['igm_no'];
-//        } elseif (!empty($import_report)) {
-//            $data['igm_no'] = $import_report['igm_no'];
-//        } else {
-//            $data['igm_no'] = '';
-//        }
-//
-//
-//        if (isset($this->request->post['igm_date'])) {
-//            $data['igm_date'] = $this->request->post['igm_date'];
-//        } elseif (!empty($import_report)) {
-//            $data['igm_date'] = $import_report['igm_date'];
-//        } else {
-//            $data['igm_date'] = '';
-//        }
         if (isset($this->request->post['dsr'])) {
             $data['dsr'] = $this->request->post['dsr'];
         } elseif (!empty($import_report)) {
@@ -296,6 +274,7 @@ class ControllerReportImportReport extends PT_Controller {
         } else {
             $data['dsr'] = '';
         }
+
          if (isset($this->request->post['customer_id'])) {
             $data['customer_id'] = $this->request->post['customer_id'];
         } elseif (!empty($import_report)) {
@@ -303,13 +282,7 @@ class ControllerReportImportReport extends PT_Controller {
         } else {
             $data['customer_id'] = '';
         }
-        if (isset($this->request->post['customer_group_id'])) {
-            $data['customer_group_id'] = $this->request->post['customer_group_id'];
-        } elseif (!empty($import_report)) {
-            $data['customer_group_id'] = $import_report['customer_group_id'];
-        } else {
-            $data['customer_group_id'] = '';
-        }
+
         $data['add'] = $this->url->link('report/import_report/add', 'user_token=' . $this->session->data['user_token']);
         $data['delete'] = $this->url->link('report/import_report/delete', 'user_token=' . $this->session->data['user_token']);
         $data['dsrs'] = array();
@@ -318,16 +291,52 @@ class ControllerReportImportReport extends PT_Controller {
        
         foreach ($results as $result) {
             $data['dsrs'][] = array(
-                'igm_date' => $result['igm_date'],
-                'job_no' => $result['job_no'],
-                'igm_no' => $result['igm_no'],
-                'approve' => $this->url->link('report/import_report/add', 'user_token=' . $this->session->data['user_token']),
-                'reject' => $this->url->link('report/import_report/delete', 'user_token=' . $this->session->data['user_token'])
+                'customer_id'               => $result['customer_id'],
+                'job_no'                    => $result['job_no'],
+                'igm_no'                    => $result['igm_no'],
+                'igm_date'                  => $result['igm_date'],
+                'po_no'                     => $result['po_no'],
+                'shipper'                   => $result['shipper'],
+                'be_heading'                => $result['be_heading'],
+                'no_of_package'             => $result['no_of_package'],
+                'unit'                      => $result['unit'],
+                'net_wt'                    => $result['net_wt'],
+                'mode'                      => $result['mode'],
+                'org_eta_date'              => $result['org_eta_date'],
+                'shipping_line_date'        => $result['shipping_line_date'],
+                'tentative_eta_date'        => $result['tentative_eta_date'],
+                'expected_date'             => $result['expected_date'],
+                'invoice_no'                => $result['invoice_no'],
+                'invoice_date'              => $result['invoice_date'],
+                'mawb_no'                   => $result['mawb_no'],
+                'mawb_date'                 => $result['mawb_date'],
+                'hawb_no'                   => $result['hawb_no'],
+                'hawb_date'                 => $result['hawb_date'],
+                'be_no'                     => $result['be_no'],
+                'be_date'                   => $result['be_date'],
+                'airline'                   => $result['airline'],
+                'n_document_date'           => $result['n_document_date'],
+                'org_doc_date'              => $result['org_doc_date'],
+                'duty_inform_date'          => $result['duty_inform_date'],
+                'duty_received_date'        => $result['duty_received_date'],
+                'duty_paid_date'            => $result['duty_paid_date'],
+                'total_duty'                => $result['total_duty'],
+                'container_cleared_date'    => $result['container_cleared_date'],
+                'detention_amt'             => $result['detention_amt'],
+                'customer_remark'           => $result['customer_remark'],
+                'delivery_location_remark'  => $result['delivery_location_remark'],
+                'container_no'              => $result['container_no'],
+                'free_period_shipping_date' => $result['free_period_shipping_date'],
+                'expected_free_dt_date'     => $result['expected_free_dt_date'],
+                'expected_free_dt_remark'   => $result['expected_free_dt_remark'],
+                'approve'                   => $this->url->link('report/import_report/add', 'user_token=' . $this->session->data['user_token']),
+                'reject'                    => $this->url->link('report/import_report/delete', 'user_token=' . $this->session->data['user_token'])
             );
         }
-        $this->load->model('customer/customer_group');
+        
+        $this->load->model('customer/customer');
 
-        $data['customer_groups'] = $this->model_customer_customer_group->getCustomerGroups();
+        $data['customers'] = $this->model_customer_customer->getCustomers();
         $data['header'] = $this->load->controller('common/header');
         $data['nav'] = $this->load->controller('common/nav');
         $data['footer'] = $this->load->controller('common/footer');
@@ -340,7 +349,7 @@ class ControllerReportImportReport extends PT_Controller {
             $this->error['warning'] = $this->language->get('error_permission');
         }
 
-        if ((utf8_strlen(trim($this->request->post['customer_group_id'])) == 0)) {
+        if ((utf8_strlen(trim($this->request->post['customer_id'])) == 0)) {
             $this->error['name'] = $this->language->get('error_name');
         }
 
@@ -408,17 +417,19 @@ class ControllerReportImportReport extends PT_Controller {
   
 	public function upload() {
         $this->load->language('report/import_report');
-        $this->document->setTitle($this->language->get('heading_title'));
-        $this->load->model('customer/customer_group');
 
-        $data['customer_groups'] = $this->model_customer_customer_group->getCustomerGroups();
+        $this->document->setTitle($this->language->get('heading_title'));
+        
+        $this->load->model('customer/customer');
+
+        $data['customers'] = $this->model_customer_customer->getCustomers();
         
         $this->load->model('report/import_report');
       if (($this->request->server['REQUEST_METHOD'] == 'POST') && ($this->validateUploadForm())) {
             if ((isset($this->request->files['upload'])) && (is_uploaded_file($this->request->files['upload']['tmp_name']))) {
                 $file = $this->request->files['upload']['tmp_name'];
 //				$incremental = ($this->request->post['incremental']) ? true : false;
-                if ($this->model_report_import_report->upload($file,$this->request->post['customer_group_id']) == true) {
+                if ($this->model_report_import_report->upload($file,$this->request->post['customer_id']) == true) {
                     $this->session->data['success'] = $this->language->get('text_success');
                     $this->response->redirect($this->url->link('report/import_report', 'user_token=' . $this->session->data['user_token']));
                 } else {

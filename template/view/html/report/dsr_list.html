@@ -1,0 +1,182 @@
+<?php echo $header; ?>
+<?php echo $nav; ?>
+<div class="content">
+    <div class="content-header">
+        <div class="container-fluid">
+            <h2><?php echo $heading_title; ?></h2>
+            <div class="page-breadcum" id="content">
+                <?php for($i = 0; $i < count($breadcrumbs); $i++) : ?>
+                <?php if($i != (count($breadcrumbs) - 1)) : ?>
+                <?php if($i == 0) : ?>
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php else : ?>
+                /
+                <a href="<?php echo $breadcrumbs[$i]['href']; ?>"><?php echo $breadcrumbs[$i]['text']; ?></a>
+                <?php endif; ?>
+                <?php else : ?>
+                /
+                <?php echo $breadcrumbs[$i]['text']; ?>
+                <?php endif; ?>
+                <?php endfor; ?>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <section class="info">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="clearfix">
+                        <div class="pull-right tableTools-container"></div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <form action="<?php echo $delete; ?>" method="POST" enctype="multipart/form-data"
+                        id="form-customer-group">
+                        <div class="table-responsive">
+                            <table id="table_customer" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <?php foreach($fields as $field) : ?>
+                                        <th><?php echo $field['name']; ?></th>
+                                        <?php endforeach; ?>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php if($dsrs) : ?>
+                                    <?php foreach($dsrs as $dsr) : ?>
+                                    <tr>
+                                        <?php foreach($dsr['value'] as $value) : ?>
+                                        <td class="text-left">
+                                            <?php echo $value['igm_no']; ?>
+                                        </td>
+                                        <td class="text-left">
+                                            <?php echo $value['job_no']; ?>
+                                        </td>
+                                        <td class="text-left">
+                                            <?php echo $value['igm_date']; ?>
+                                        </td>
+                                        <?php endforeach; ?>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                    <?php else : ?>
+                                    <tr>
+                                        <td class="text-center" colspan="5">
+                                            <?php echo $text_no_results; ?>
+                                        </td>
+                                    </tr>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<?php echo $footer; ?>
+<script type="text/javascript">
+    $(function () {
+        var table = $('#table_customer').DataTable({
+            "order": [
+                [1, 'asc']
+            ],
+            "language": {
+                "paginate": {
+                    'previous': '«',
+                    'next': '»'
+                }
+            },
+            "columnDefs": [{
+                "targets": "no-sort",
+                "orderable": false,
+            }],
+        });
+
+        $.fn.dataTable.Buttons.defaults.dom.container.className =
+            'dt-buttons btn-overlap btn-group btn-overlap';
+
+        new $.fn.dataTable.Buttons(table, {
+            buttons: [{
+                "extend": "copy",
+                "text": "<i class='fa fa-copy'></i> <span hidden><?php echo $text_dt_copy; ?></span>",
+                "className": "dt-button btn-info",
+                "init": function (api, node, config) {
+                    $(node).removeClass('btn-default');
+                },
+            },
+            {
+                "extend": "csv",
+                "text": "<i class='fa fa-database'></i> <span hidden><?php echo $text_dt_export_csv; ?></span>",
+                "className": "dt-button btn-primary",
+                "init": function (api, node, config) {
+                    $(node).removeClass('btn-default');
+                }
+            },
+            {
+                "extend": "excel",
+                "text": "<i class='fa fa-file-excel-o'></i> <span hidden><?php echo $text_dt_export_excel; ?></span>",
+                "className": "dt-button btn-success",
+                "init": function (api, node, config) {
+                    $(node).removeClass('btn-default');
+                }
+            },
+            {
+                "extend": "pdf",
+                "text": "<i class='fa fa-file-pdf-o'></i> <span hidden><?php echo $text_dt_export_pdf; ?></span>",
+                "className": "dt-button btn-danger",
+                "init": function (api, node, config) {
+                    $(node).removeClass('btn-default');
+                }
+            },
+            {
+                "extend": "print",
+                "text": "<i class='fa fa-print'></i> <span hidden><?php echo $text_dt_print; ?></span>",
+                "className": 'dt-button',
+                autoPrint: false
+            },
+            ]
+        });
+        table.buttons().container().appendTo($('.tableTools-container'));
+
+        // Style the message box
+        var defaultCopyAction = table.button(1).action();
+        /*table.button(1).action(function (e, dt, button, config) {
+            defaultCopyAction(e, dt, button, config);
+            $('.dt-button-info').addClass('bg.olive text-center text-white');
+        });*/
+
+        var defaultColvisAction = table.button(0).action();
+        /*table.button(0).action(function (e, dt, button, config) {
+            defaultColvisAction(e, dt, button, config);
+ 
+            if ($('.dt-button-collection > .dropdown-menu').length == 0) {
+                $('.dt-button-collection')
+                    .wrapInner(
+                        '<ul class="dropdown-menu dropdown-light dropdown-caret dropdown-caret" />').find(
+                        ' a').attr('href', '#').wrap("<li />")
+            }
+            $('.dt-button-collection').appendTo('.tableTools-container .dt-buttons')
+        });*/
+
+        setTimeout(function () {
+            $($('.tableTools-container')).find('.dt-button').each(function () {
+                var div = $(this).find(' > div').first();
+                if (div.length == 1) div.tooltip({
+                    container: 'body',
+                    title: div.parent().text()
+                });
+                else $(this).tooltip({
+                    container: 'body',
+                    title: $(this).text()
+                });
+            });
+        }, 500);
+
+        $(document).on('click', '#table_customer .dropdown-toggle', function (e) {
+            e.stopImmediatePropagation();
+            e.stopPropagation();
+            e.preventDefault();
+        });
+    });
+</script>
