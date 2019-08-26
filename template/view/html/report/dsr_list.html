@@ -42,20 +42,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php if($dsrs) : ?>
-                                    <?php foreach($dsrs as $dsr) : ?>
+                                    <?php if($array_new) : ?>
+                                    <?php foreach($array_new as $dsr) : ?>
                                     <tr>
-                                        <?php foreach($dsr['value'] as $value) : ?>
+                                        <?php for($i = 0; $i < count($dsr); $i++) : ?>
                                         <td class="text-left">
-                                            <?php echo $value['igm_no']; ?>
+                                            <?php echo $dsr[$i]; ?>
+                                        </td>
+                                        <?php endfor; ?>
+<!--                                        <td class="text-left">
+                                            <?php echo $dsr; ?>
                                         </td>
                                         <td class="text-left">
-                                            <?php echo $value['job_no']; ?>
-                                        </td>
-                                        <td class="text-left">
-                                            <?php echo $value['igm_date']; ?>
-                                        </td>
-                                        <?php endforeach; ?>
+                                            <?php echo $dsr; ?>
+                                        </td>-->
+                                        
                                     </tr>
                                     <?php endforeach; ?>
                                     <?php else : ?>

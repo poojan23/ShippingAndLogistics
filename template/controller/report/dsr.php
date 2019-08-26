@@ -1,11 +1,10 @@
 <?php
 
-class ControllerReportDsr extends PT_Controller
-{
+class ControllerReportDsr extends PT_Controller {
+
     private $error = array();
 
-    public function index()
-    {
+    public function index() {
         $this->load->language('report/dsr');
 
         $this->document->setTitle($this->language->get('heading_title'));
@@ -60,98 +59,50 @@ class ControllerReportDsr extends PT_Controller
 
         $custom_fields = $this->model_report_dsr->getCustomFields($this->customer->getId());
 
-        foreach($custom_fields as $result) {
+        foreach ($custom_fields as $result) {
             $fields[] = $result['field_name'];
-            
+
             $data['fields'][] = array(
-                'key'   => $result['field_name'],
-                'name'  => (!empty($result['name']) ? $result['name'] : ucwords(str_replace('_', ' ', $result['field_name'])))
+                'key' => $result['field_name'],
+                'name' => (!empty($result['name']) ? $result['name'] : ucwords(str_replace('_', ' ', $result['field_name'])))
             );
         }
-        
+
         $data['dsrs'] = array();
 
         $value = array();
 
         $dsrs = $this->model_report_dsr->getDSR($this->customer->getId());
-        //print_r($dsr);
 
-        foreach($dsrs as $dsr) {
-            for($i = 0; $i < count($fields); $i++) {
-                $value[] = array('value' => $dsr[$fields[$i]]);
-            }
-        }
-
-        foreach($value as $result) {
-            //print_r($result);
-        }
-
-        // foreach($custom_fields as $custom_field) {
-        //     foreach($dsrs as $dsr) {
-        //         foreach(array_keys($dsr) as $key) {
-        //             if($custom_field['field_name'] == $key) {
-        //                 $data['dsrs'][] = array(
-        //                     'job_no' => $dsr['job_no']
-        //                 );
-        //             }
-        //         }
-        //     }
-        // }
-
-        // foreach ($dsr as $result) {
-        //     $data['dsr'][] = array(
-        //         'key'       => array_keys($result),
-        //         'dsr_id'    => $result['dsr_id'],
-        //         'job_no'    => $result['job_no'],
-        //     );
-        // }
-
-        /*foreach($custom_fields as $custom_field) {
-            //echo '<pre>'; print_r($custom_field);
-            for($i = 0; $i < count($dsr); $i++) {
-                if(array_key_exists($custom_field['field_name'], $dsr[$i])) {
-                    foreach(array_keys($dsr[$i]) as $key) {
-                        //print_r($key);
-                        //$data['dsr'][$custom_field['field_name']] = $key;
-                    }
-                }
-            }
-        }*/
-
-        $compare = array();
-
-        $results= $this->model_report_dsr->compareValues($this->customer->getId());
-        
-        foreach($results as $result) {
-            $compare[] = $result['COLUMN_NAME'];
-
+        foreach ($dsrs as $dsr) {
             
-            // foreach($result['value'] as $key => $data) {
-            //     print_r($data);
-            //     $value_data[$key] = array(
-            //         'job_no'    => $data['igm_no']
-            //     );
-            // }
-
-            // $data['dsrs'][] = array(
-            //     'key'   => $result['key'],
-            //     'value' => $value_data
-            // );
         }
 
-        print_r($value); exit;
-        
-        /*for($i = 0; $i < count($dsr); $i++) {
-            foreach($dsr[$i] as $key => $value) {
-                if($custom_fields[$i]['field_name'] == $key) {
-                    print_r($custom_fields[$i]['field_name'] . ' - ' . $value);
+
+        $custom_fields = array();
+
+        $results = $this->model_report_dsr->compareValues($this->customer->getId());
+
+        foreach ($results as $result) {
+            $custom_fields[] = $result['COLUMN_NAME'];
+        }
+
+        $data['array_new'] = [];
+
+        for ($i = 0; $i < count($dsrs); $i++) {
+            for ($j = 0; $j < count($custom_fields); $j++) {
+                if (array_key_exists($custom_fields[$j], $dsrs[$i])) {
+                    $data['array_new'][$i][] = $dsrs[$i][$custom_fields[$j]];
                 }
             }
-        }*/
+        }
 
-       
-        //  print_r($data['dsrs']);
-        // exit;
+//        echo "<pre>";
+//
+////        print_r($data['fields']);
+//        print_r($data['array_new']);
+//        exit;
+
 
         if (isset($this->request->post['selected'])) {
             $data['selected'] = (array) $this->request->post['selected'];
@@ -170,6 +121,6 @@ class ControllerReportDsr extends PT_Controller
         $data['footer'] = $this->load->controller('common/footer');
 
         $this->response->setOutput($this->load->view('report/dsr_list', $data));
-
     }
+
 }
