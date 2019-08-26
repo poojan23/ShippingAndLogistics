@@ -56,9 +56,13 @@ class ControllerReportDsr extends PT_Controller
 
         $data['fields'] = array();
 
+        $fields = array();
+
         $custom_fields = $this->model_report_dsr->getCustomFields($this->customer->getId());
 
         foreach($custom_fields as $result) {
+            $fields[] = $result['field_name'];
+            
             $data['fields'][] = array(
                 'key'   => $result['field_name'],
                 'name'  => (!empty($result['name']) ? $result['name'] : ucwords(str_replace('_', ' ', $result['field_name'])))
@@ -67,8 +71,20 @@ class ControllerReportDsr extends PT_Controller
         
         $data['dsrs'] = array();
 
+        $value = array();
+
         $dsrs = $this->model_report_dsr->getDSR($this->customer->getId());
         //print_r($dsr);
+
+        foreach($dsrs as $dsr) {
+            for($i = 0; $i < count($fields); $i++) {
+                $value[] = array('value' => $dsr[$fields[$i]]);
+            }
+        }
+
+        foreach($value as $result) {
+            //print_r($result);
+        }
 
         // foreach($custom_fields as $custom_field) {
         //     foreach($dsrs as $dsr) {
@@ -102,12 +118,14 @@ class ControllerReportDsr extends PT_Controller
             }
         }*/
 
-        $results = $this->model_report_dsr->compareValues($this->customer->getId());
+        $compare = array();
 
-        foreach($results as  $result) {
-            $value_data = array();
+        $results= $this->model_report_dsr->compareValues($this->customer->getId());
+        
+        foreach($results as $result) {
+            $compare[] = $result['COLUMN_NAME'];
 
-            print_r($result);
+            
             // foreach($result['value'] as $key => $data) {
             //     print_r($data);
             //     $value_data[$key] = array(
@@ -115,11 +133,13 @@ class ControllerReportDsr extends PT_Controller
             //     );
             // }
 
-            $data['dsrs'][] = array(
-                'key'   => $result['key'],
-                'value' => $value_data
-            );
+            // $data['dsrs'][] = array(
+            //     'key'   => $result['key'],
+            //     'value' => $value_data
+            // );
         }
+
+        print_r($value); exit;
         
         /*for($i = 0; $i < count($dsr); $i++) {
             foreach($dsr[$i] as $key => $value) {
@@ -129,8 +149,9 @@ class ControllerReportDsr extends PT_Controller
             }
         }*/
 
-        echo '<pre>'; print_r($data['dsrs']);
-        exit;
+       
+        //  print_r($data['dsrs']);
+        // exit;
 
         if (isset($this->request->post['selected'])) {
             $data['selected'] = (array) $this->request->post['selected'];
