@@ -19,7 +19,9 @@
 
                         <input class="form-field animation a3" type="email" name="email"  id="email" placeholder="<?php echo $entry_email; ?>" value="<?php echo $email; ?>">
                         <input class="form-field animation a4" type="password" name="password" id="pwd" placeholder="<?php echo $entry_password; ?>">
-                        <p class="animation a5"><a href="#">Forgot Password</a></p>
+                        <?php if(isset($forgotten)) : ?>
+                        <p class="animation a5"><a href="<?php echo $forgotten; ?>">Forgot Password</a></p>
+                        <?php endif; ?>
                         <button type="submit" class="animation a6"><?php echo $button_login; ?></button>
                     </div>
                 </form>

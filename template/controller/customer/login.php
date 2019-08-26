@@ -76,7 +76,7 @@ class ControllerCustomerLogin extends PT_Controller
         }
 
         if ($this->config->get('config_password')) {
-            $data['forgotten'] = $this->url->link('user/forgotten');
+            $data['forgotten'] = $this->url->link('customer/forgotten');
         } else {
             $data['forgotten'] = '';
         }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!-- Code By Webdevtrick ( https://webdevtrick.com ) -->
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <title>Animated Login Page | Webdevtrick.com</title>
+        <link href="template/view/dist/css/custom.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="left-section">
+                <div class="header">
+                    <h1 class="animation a1">Forgot Password</h1>
+                </div>
+                <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
+                    <div class="form">
+
+                        <input class="form-field animation a3" type="email" name="email"  id="email" placeholder="Email Address" value="<?php echo $email; ?>">
+                        <button type="submit" class="animation a6">Reset</button>
+                    </div>
+                </form>
+
+            </div>
+            <div class="right-section"></div>
+        </div>
+
+    </body>
+</html>
