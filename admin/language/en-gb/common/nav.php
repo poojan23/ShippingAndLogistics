@@ -79,5 +79,5 @@ $_['text_activity_group']       = 'Activity Group';
 $_['text_store']                = 'Store';
 $_['text_area']                 = 'Area';
 $_['text_import_report']        = 'Import Report';
-$_['text_custom_report']        = 'Custom Report';
+$_['text_custom_report']        = 'Custom Fields';
 

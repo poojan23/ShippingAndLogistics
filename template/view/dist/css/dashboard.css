@@ -254,3 +254,6 @@ ol, ul, ul.QLinks {
 .content-header .page-breadcum {
     float: right;
 }
+.tableTools-container {
+    margin: 5px 0;
+}

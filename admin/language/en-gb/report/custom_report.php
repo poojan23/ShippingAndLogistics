@@ -1,6 +1,6 @@
 <?php
  # Heading
-$_['heading_title']         = 'Custom Report';
+$_['heading_title']         = 'Custom Fields';
 
 # Text
 $_['text_success']          = 'Success: You have added/modified user groups!';

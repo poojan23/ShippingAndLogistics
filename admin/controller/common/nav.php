@@ -82,6 +82,15 @@ class ControllerCommonNav extends PT_Controller
                     'children'  => array()
                 );
             }
+            
+                        
+            if ($this->user->hasPermission('access', 'report/custom_report')) {
+                $customer[] = array(
+                    'name'      => $this->language->get('text_custom_report'),
+                    'href'      => $this->url->link('report/custom_report', 'user_token=' . $this->session->data['user_token']),
+                    'children'  => array()
+                );
+            }
    
             if ($customer) {
                 $data['menus'][] = array(
@@ -95,14 +104,6 @@ class ControllerCommonNav extends PT_Controller
             
             # Report
             $report = array();
-            
-            if ($this->user->hasPermission('access', 'report/custom_report')) {
-                $report[] = array(
-                    'name'      => $this->language->get('text_custom_report'),
-                    'href'      => $this->url->link('report/custom_report', 'user_token=' . $this->session->data['user_token']),
-                    'children'  => array()
-                );
-            }
             
             if ($this->user->hasPermission('access', 'report/import_report')) {
                 $report[] = array(

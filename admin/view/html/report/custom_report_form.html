@@ -129,6 +129,40 @@
                                                                     <option value="job_no">Job No.</option>
                                                                     <option value="igm_no">Img No.</option>
                                                                     <option value="igm_date">Img Date</option>
+                                                                    <option value="po_no">PO No.</option>
+                                                                    <option value="shipper">Shipper</option>
+                                                                    <option value="be_heading">BE Heading</option>
+                                                                    <option value="no_of_package">No. Of Package</option>
+                                                                    <option value="unit">Unit</option>
+                                                                    <option value="net_wt">Net Weight</option>
+                                                                    <option value="mode">Mode</option>
+                                                                    <option value="org_eta_date">Org Eta Date</option>
+                                                                    <option value="shipping_line_date">Shipping Line Date</option>
+                                                                    <option value="tentative_eta_date">Tentative Eta Date</option>
+                                                                    <option value="expected_date">Expected Date</option>
+                                                                    <option value="invoice_no">Invoice No.</option>
+                                                                    <option value="invoice_date">Invoice Date</option>
+                                                                    <option value="mawb_no">Mawb No.</option>
+                                                                    <option value="mawb_date">Mawb Date</option>
+                                                                    <option value="hawb_no">Hawb No.</option>
+                                                                    <option value="hawb_date">Hawb Date</option>
+                                                                    <option value="be_no">BE No.</option>
+                                                                    <option value="be_date">BE Date</option>
+                                                                    <option value="airline">Airline</option>
+                                                                    <option value="n_document_date">N Document Date</option>
+                                                                    <option value="org_doc_date">Org Document Date</option>
+                                                                    <option value="duty_inform_date">Duty Inform Date</option>
+                                                                    <option value="duty_received_date">Duty Received Date</option>
+                                                                    <option value="duty_paid_date">Duty Paid Date</option>
+                                                                    <option value="total_duty">Total Duty</option>
+                                                                    <option value="container_cleared_date">Container Cleared Date</option>
+                                                                    <option value="detention_amt">Detention Amount</option>
+                                                                    <option value="customer_remark">Customer Remark</option>
+                                                                    <option value="delivery_location_remark">Delivery Location Remark</option>
+                                                                    <option value="container_no">Container No.</option>
+                                                                    <option value="free_period_shipping_date">Free Period Shipping Date</option>
+                                                                    <option value="expected_free_dt_date">Expected Free Dt Date</option>
+                                                                    <option value="expected_free_dt_remark">Expected Free Dt Remark</option>
                                                                 </select>
                                                             </td>
                                                             <td class="text-left">
@@ -179,7 +213,47 @@
 
     function addArea() {
         html = '<tr id="area-row' + field_row + '">';
-        html += '<td class="text-left"><select name="field[' + field_row + '][field_name]" class="form-control" id="input-gender_time"><option value="job_no">Job No.</option><option value="igm_no">Igm No</option><option value="igm_date">Igm Date</option></select></td>';
+        html += '<td class="text-left">\n\
+                <select name="field[' + field_row + '][field_name]" class="form-control" id="input-gender_time">\n\
+                <option value="job_no">Job No.</option>\n\
+                <option value="igm_no">Igm No</option>\n\
+                <option value="igm_date">Igm Date</option>\n\
+                <option value="po_no">PO No.</option>\n\
+                <option value="shipper">Shipper</option>\n\
+                <option value="be_heading">BE Heading</option>\n\
+                <option value="no_of_package">No. Of Package</option>\n\
+                <option value="unit">Unit</option>\n\
+                <option value="net_wt">Net Weight</option>\n\
+                <option value="mode">Mode</option>\n\
+                <option value="org_eta_date">Org Eta Date</option>\n\
+                <option value="shipping_line_date">Shipping Line Date</option>\n\
+                <option value="tentative_eta_date">Tentative Eta Date</option>\n\
+                <option value="expected_date">Expected Date</option>\n\
+                <option value="invoice_no">Invoice No.</option>\n\
+                <option value="invoice_date">Invoice Date</option>\n\
+                <option value="mawb_no">Mawb No.</option>\n\
+                <option value="mawb_date">Mawb Date</option>\n\
+                <option value="hawb_no">Hawb No.</option>\n\
+                <option value="hawb_date">Hawb Date</option>\n\
+                <option value="be_no">BE No.</option>\n\
+                <option value="be_date">BE Date</option>\n\
+                <option value="airline">Airline</option>\n\
+                <option value="n_document_date">N Document Date</option>\n\
+                <option value="org_doc_date">Org Document Date</option>\n\
+                <option value="duty_inform_date">Duty Inform Date</option>\n\
+                <option value="duty_received_date">Duty Received Date</option>\n\
+                <option value="duty_paid_date">Duty Paid Date</option>\n\
+                <option value="total_duty">Total Duty</option>\n\
+                <option value="container_cleared_date">Container Cleared Date</option>\n\
+                <option value="detention_amt">Detention Amount</option>\n\
+                <option value="customer_remark">Customer Remark</option>\n\
+                <option value="delivery_location_remark">Delivery Location Remark</option>\n\
+                <option value="container_no">Container No.</option>\n\
+                <option value="free_period_shipping_date">Free Period Shipping Date</option>\n\
+                <option value="expected_free_dt_date">Expected Free Dt Date</option>\n\
+                <option value="expected_free_dt_remark">Expected Free Dt Remark</option>\n\
+                </select>\n\
+                </td>';
         html += '<td class="text-left"><input type="text" name="field[' + field_row + '][name]" value="" placeholder="<?php echo $entry_custom_name; ?>" class="form-control" /></td>';
         html += '<td class="text-left"><input type="text" name="field[' + field_row + '][sort_order]" value="0" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>';
         html += '<td class="text-right"><button type="button" onclick="$(\'#area-row' + field_row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
