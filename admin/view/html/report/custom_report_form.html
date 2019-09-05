@@ -126,6 +126,10 @@
                                                         <tr id="area-row<?php echo $field_row; ?>">
                                                             <td class="text-left">
                                                                 <select name="field[<?php echo $field_row; ?>][field_name]" class="form-control" id="input-sport-group">
+                                                                    <?php if(isset($field['field_name'])) : ?>
+                                                                    <option value="<?php echo $field['field_name']; ?>" selected="selected">
+                                                                        <?php echo $field['name']; ?>
+                                                                    </option>
                                                                     <option value="job_no">Job No.</option>
                                                                     <option value="igm_no">Img No.</option>
                                                                     <option value="igm_date">Img Date</option>
@@ -163,6 +167,7 @@
                                                                     <option value="free_period_shipping_date">Free Period Shipping Date</option>
                                                                     <option value="expected_free_dt_date">Expected Free Dt Date</option>
                                                                     <option value="expected_free_dt_remark">Expected Free Dt Remark</option>
+                                                                    <?php endif; ?>
                                                                 </select>
                                                             </td>
                                                             <td class="text-left">

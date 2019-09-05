@@ -191,7 +191,7 @@ class ControllerReportCustomReport extends PT_Controller {
         if (isset($this->request->get['column_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
             $custom_report = $this->model_report_custom_report->getCustomReport($this->request->get['customer_id']);
         }
-        
+//        print_r($custom_report);exit;
         $data['user_token'] = $this->session->data['user_token'];
 
 //        if (isset($this->request->post['customer_id'])) {

@@ -216,7 +216,6 @@ class ControllerCustomerCustomer extends PT_Controller {
         if (isset($this->request->get['customer_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
             $customer_info = $this->model_customer_customer->getCustomer($this->request->get['customer_id']);
         }
-
         if (isset($this->request->post['name'])) {
             $data['name'] = $this->request->post['name'];
         } elseif (!empty($customer_info)) {
@@ -232,8 +231,11 @@ class ControllerCustomerCustomer extends PT_Controller {
         } else {
             $data['area_id'] = '';
         }
-
-
+//         $this->load->model('catalog/area');
+//      
+//        $data['area'] = $this->model_catalog_area->getAreaGroupById($customer_info['area_id']);
+       
+        
         if (isset($this->request->post['customer_id'])) {
             $data['customer_id'] = $this->request->post['customer_id'];
         } elseif (!empty($customer_info)) {
