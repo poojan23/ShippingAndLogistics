@@ -9,30 +9,29 @@ class ModelReportCustomReport extends PT_Model
             }
    
 
-        return $area_id;
+        return $column_id;
     }
 
-    public function editArea($area_id, $data) {
-        $this->db->query("UPDATE " . DB_PREFIX . "area SET customer_group_id = '" . (int)($data['customer_group_id']) . "', status = '" . (int) $data['status'] . "' WHERE area_id = '" . (int) $area_id . "'");
+    public function editCustomReport($column_id, $data) {
 
-        $this->db->query("DELETE FROM " . DB_PREFIX . "area_group WHERE area_id = '" . (int) $area_id . "'");
-
-        foreach ($data['area'] as $areass) {
-            $this->db->query("INSERT INTO " . DB_PREFIX . "area_group SET area_id = '" . (int) $area_id . "',area = '" . $this->db->escape($areass['area']) . "', sort_order = '" . (int) $areass['sort_order'] . "'");
-        }
+        $this->db->query("DELETE FROM " . DB_PREFIX . "column_fields WHERE customer_id = '" . (int) $data['customer_id'] . "'");
+        
+            foreach ($data['field'] as $fields) {
+                $this->db->query("INSERT INTO " . DB_PREFIX . "column_fields SET customer_id = '" . (int) $data['customer_id'] . "', field_name = '" . $this->db->escape($fields['field_name']) . "', name = '" . $this->db->escape($fields['name']) . "',sort_order = '" . (int) $fields['sort_order'] . "'");
+            }
         
     }
 
-    public function deleteArea($area_id) {
-        $this->db->query("DELETE FROM " . DB_PREFIX . "area WHERE area_id = '" . (int)$area_id . "'");
-        $this->db->query("DELETE FROM " . DB_PREFIX . "area_group WHERE area_id = '" . (int)$area_id . "'");
+    public function deleteArea($column_id) {
+        $this->db->query("DELETE FROM " . DB_PREFIX . "area WHERE column_id = '" . (int)$column_id . "'");
+        $this->db->query("DELETE FROM " . DB_PREFIX . "area_group WHERE column_id = '" . (int)$column_id . "'");
     }
 
-    public function getArea($area_id) {
+    public function getArea($column_id) {
         $query = $this->db->query("SELECT  a.*,ag.area,cg.* FROM " . DB_PREFIX . "area a "
-                . " LEFT  JOIN " . DB_PREFIX . "area_group ag on a.area_id = ag.area_id "
+                . " LEFT  JOIN " . DB_PREFIX . "area_group ag on a.column_id = ag.column_id "
                 . " LEFT  JOIN " . DB_PREFIX . "customer_group cg on a.customer_group_id = cg.customer_group_id"
-                . " WHERE a.area_id = '" . (int)$area_id . "'");
+                . " WHERE a.column_id = '" . (int)$column_id . "'");
 
         return $query->row;
     }
@@ -60,10 +59,10 @@ class ModelReportCustomReport extends PT_Model
         return $field_data;
     }
     
-    public function getAreaTime($area_id) {
+    public function getAreaTime($column_id) {
         $area_time_data = array();
 
-        $area_time_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "area_time WHERE area_id = '" . (int)$area_id . "' ORDER BY sort_order ASC");
+        $area_time_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "area_time WHERE column_id = '" . (int)$column_id . "' ORDER BY sort_order ASC");
         
         foreach($area_time_query->rows as $area_time) {
             $area_time_data[] = array(
@@ -77,10 +76,10 @@ class ModelReportCustomReport extends PT_Model
         return $area_time_data;
     }
     
-    public function getAreaCoaching($area_id) {
+    public function getAreaCoaching($column_id) {
         $area_coach_data = array();
 
-        $area_coach_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "area_coach WHERE area_id = '" . (int)$area_id . "' ORDER BY sort_order ASC");
+        $area_coach_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "area_coach WHERE column_id = '" . (int)$column_id . "' ORDER BY sort_order ASC");
         
         foreach($area_coach_query->rows as $area_coach) {
             $area_coach_data[] = array(
@@ -148,8 +147,8 @@ class ModelReportCustomReport extends PT_Model
         return $query->rows;
     }
     
-    public function getAreasByAreaId($area_id) {
-        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "area_group WHERE area_id = '" . $area_id . "' group by area");
+    public function getAreasByAreaId($column_id) {
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "area_group WHERE column_id = '" . $column_id . "' group by area");
 
         return $query->rows;
     }

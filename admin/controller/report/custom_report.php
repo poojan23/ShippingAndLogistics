@@ -42,7 +42,7 @@ class ControllerReportCustomReport extends PT_Controller {
 
         if (($this->request->server['REQUEST_METHOD'] == 'POST')) {
 //            print_r($this->request->post);exit;
-            $this->model_report_custom_report->editCustomReport($this->request->get['area_id'], $this->request->post);
+            $this->model_report_custom_report->editCustomReport($this->request->get['column_id'], $this->request->post);
 
             $this->session->data['success'] = $this->language->get('text_success');
 
@@ -60,8 +60,8 @@ class ControllerReportCustomReport extends PT_Controller {
         $this->load->model('report/custom_report');
 
         if (isset($this->request->post['selected'])) {
-            foreach ($this->request->post['selected'] as $area_id) {
-                $this->model_report_custom_report->deleteCustomReport($area_id);
+            foreach ($this->request->post['selected'] as $column_id) {
+                $this->model_report_custom_report->deleteCustomReport($column_id);
             }
 
             $this->session->data['success'] = $this->language->get('text_success');
@@ -152,7 +152,7 @@ class ControllerReportCustomReport extends PT_Controller {
         $this->document->addScript("view/dist/plugins/ckeditor/adapters/jquery.js");
         $this->document->addScript("view/dist/plugins/iCheck/icheck.min.js");
 
-        $data['text_form'] = !isset($this->request->get['area_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
+        $data['text_form'] = !isset($this->request->get['column_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
 
         if (isset($this->error['warning'])) {
             $data['warning_err'] = $this->error['warning'];
@@ -172,17 +172,17 @@ class ControllerReportCustomReport extends PT_Controller {
             'href' => $this->url->link('report/custom_report', 'user_token=' . $this->session->data['user_token'])
         );
 
-        if (!isset($this->request->get['area_id'])) {
+        if (!isset($this->request->get['column_id'])) {
             $data['action'] = $this->url->link('report/custom_report/add', 'user_token=' . $this->session->data['user_token']);
             $data['breadcrumbs'][] = array(
                 'text' => $this->language->get('text_add'),
                 'href' => $this->url->link('report/custom_report/add', 'user_token=' . $this->session->data['user_token'])
             );
         } else {
-            $data['action'] = $this->url->link('report/custom_report/edit', 'user_token=' . $this->session->data['user_token'] . '&area_id=' . $this->request->get['area_id']);
+            $data['action'] = $this->url->link('report/custom_report/edit', 'user_token=' . $this->session->data['user_token'] . '&column_id=' . $this->request->get['column_id']);
             $data['breadcrumbs'][] = array(
                 'text' => $this->language->get('text_edit'),
-                'href' => $this->url->link('report/custom_report/edit', 'user_token=' . $this->session->data['user_token'] . '&area_id=' . $this->request->get['area_id'])
+                'href' => $this->url->link('report/custom_report/edit', 'user_token=' . $this->session->data['user_token'] . '&column_id=' . $this->request->get['column_id'])
             );
         }
 
@@ -262,13 +262,13 @@ class ControllerReportCustomReport extends PT_Controller {
         $results = $this->model_report_custom_report->getCustomReportsByCustomerId($customer_group_id);
 
         foreach ($results as $result) {
-            if ($result['area_id']) {
-                $area_id = $result['area_id'];
+            if ($result['column_id']) {
+                $column_id = $result['column_id'];
             } else {
-                $area_id = 0;
+                $column_id = 0;
             }
 
-            $results = $this->model_report_custom_report->getCustomReportsByCustomReportId($area_id);
+            $results = $this->model_report_custom_report->getCustomReportsByCustomReportId($column_id);
           
             foreach ($results as $result) {
                 $json[] = array(
@@ -334,7 +334,7 @@ class ControllerReportCustomReport extends PT_Controller {
 
             foreach ($results as $result) {
                 $json[] = [
-                    'area_id' => $result['area_id'],
+                    'column_id' => $result['column_id'],
                     'area' => strip_tags(html_entity_decode($result['area'], ENT_QUOTES, 'UTF-8'))
                 ];
             }

@@ -39,7 +39,7 @@ class ControllerCustomerCustomer extends PT_Controller {
 
         $this->load->model('customer/customer');
 
-        if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+        if (($this->request->server['REQUEST_METHOD'] == 'POST')) {
             $this->model_customer_customer->editCustomer($this->request->get['customer_id'], $this->request->post);
 
             $this->session->data['success'] = $this->language->get('text_success');
