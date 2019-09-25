@@ -51,6 +51,7 @@ class ModelReportCustomReport extends PT_Model
         foreach($field_query->rows as $field) {
             $field_data[] = array(
                 'field_name'         => $field['field_name'],
+                'customer_id'         => $field['customer_id'],
                 'name'               => $field['name'],
                 'sort_order'         => $field['sort_order']
             );

@@ -40,9 +40,8 @@ class ControllerReportCustomReport extends PT_Controller {
 
         $this->load->model('report/custom_report');
 
-        if (($this->request->server['REQUEST_METHOD'] == 'POST')) {
-//            print_r($this->request->post);exit;
-            $this->model_report_custom_report->editCustomReport($this->request->get['column_id'], $this->request->post);
+       if (($this->request->server['REQUEST_METHOD'] == 'POST')) {
+            $this->model_report_custom_report->editCustomReport($this->request->get['customer_id'], $this->request->post);
 
             $this->session->data['success'] = $this->language->get('text_success');
 
@@ -172,17 +171,17 @@ class ControllerReportCustomReport extends PT_Controller {
             'href' => $this->url->link('report/custom_report', 'user_token=' . $this->session->data['user_token'])
         );
 
-        if (!isset($this->request->get['column_id'])) {
+        if (!isset($this->request->get['customer_id'])) {
             $data['action'] = $this->url->link('report/custom_report/add', 'user_token=' . $this->session->data['user_token']);
             $data['breadcrumbs'][] = array(
                 'text' => $this->language->get('text_add'),
                 'href' => $this->url->link('report/custom_report/add', 'user_token=' . $this->session->data['user_token'])
             );
         } else {
-            $data['action'] = $this->url->link('report/custom_report/edit', 'user_token=' . $this->session->data['user_token'] . '&column_id=' . $this->request->get['column_id']);
+            $data['action'] = $this->url->link('report/custom_report/edit', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $this->request->get['customer_id']);
             $data['breadcrumbs'][] = array(
                 'text' => $this->language->get('text_edit'),
-                'href' => $this->url->link('report/custom_report/edit', 'user_token=' . $this->session->data['user_token'] . '&column_id=' . $this->request->get['column_id'])
+                'href' => $this->url->link('report/custom_report/edit', 'user_token=' . $this->session->data['user_token'] . '&customer_id=' . $this->request->get['customer_id'])
             );
         }
 
@@ -191,7 +190,7 @@ class ControllerReportCustomReport extends PT_Controller {
         if (isset($this->request->get['column_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
             $custom_report = $this->model_report_custom_report->getCustomReport($this->request->get['customer_id']);
         }
-//        print_r($custom_report);exit;
+        
         $data['user_token'] = $this->session->data['user_token'];
 
 //        if (isset($this->request->post['customer_id'])) {
@@ -201,6 +200,7 @@ class ControllerReportCustomReport extends PT_Controller {
 //        } else {
 //            $data['customer_id'] = '';
 //        }
+//        print_r($custom_report['customer_id']);exit;
 //        
 //        if (isset($this->request->post['field_name'])) {
 //            $data['field_name'] = $this->request->post['field_name'];
