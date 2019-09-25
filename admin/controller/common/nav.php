@@ -95,7 +95,7 @@ class ControllerCommonNav extends PT_Controller
             if ($customer) {
                 $data['menus'][] = array(
                     'id'        => 'menu-design',
-                    'icon'      => 'fa-desktop',
+                    'icon'      => 'fa-users',
                     'name'      => $this->language->get('text_customer'),
                     'href'      => '',
                     'children'  => $customer
@@ -116,7 +116,7 @@ class ControllerCommonNav extends PT_Controller
             if ($report) {
                 $data['menus'][] = array(
                     'id'        => 'menu-design',
-                    'icon'      => 'fa-desktop',
+                    'icon'      => 'fa-file',
                     'name'      => $this->language->get('text_import_report'),
                     'href'      => '',
                     'children'  => $report
