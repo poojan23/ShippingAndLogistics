@@ -1,0 +1,172 @@
+<?php echo $header; ?>
+<?php echo $nav; ?>
+<div id="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1><?php echo $heading_title; ?></h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <?php for($i = 0; $i < count($breadcrumbs); $i++) : ?>
+                        <?php if($i != (count($breadcrumbs) - 1)) : ?>
+                        <?php if($i == 0) : ?>
+                        <li class="breadcrumb-item">
+                            <i class="nav-icon fa fa-home"></i>
+                            <a href="<?php echo $breadcrumbs[$i]['href']; ?>">
+                                <?php echo $breadcrumbs[$i]['text']; ?>
+                            </a>
+                        </li>
+                        <?php else : ?>
+                        <li class="breadcrumb-item">
+                            <a href="<?php echo $breadcrumbs[$i]['href']; ?>">
+                                <?php echo $breadcrumbs[$i]['text']; ?>
+                            </a>
+                        </li>
+                        <?php endif; ?>
+                        <?php else : ?>
+                        <li class="breadcrumb-item active"><?php echo $breadcrumbs[$i]['text']; ?></li>
+                        <?php endif; ?>
+                        <?php endfor; ?>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+
+
+
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+<!--                <?php if ($warning_err) : ?>
+                <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i>
+                    <?php echo $warning_err; ?>
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                </div>
+                <?php endif; ?>
+                <?php if ($success) : ?>
+                <div class="alert alert-success alert-dismissible"><i class="fa fa-exclamation-circle"></i>
+                    <?php echo $success; ?>
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                </div>
+                <?php endif; ?>-->
+
+                <div class="clearfix">
+                    <a href="<?php echo $add; ?>" data-toggle="tooltip" title="<?php echo $button_add; ?>"
+                       class="btn btn-primary btn-bold"><i class="fa fa-plus"></i></a>
+                    <button type="button" data-toggle="tooltip" title="<?php echo $button_delete; ?>"
+                            class="btn btn-danger btn-bold" onclick="confirm('<?php echo $text_confirm; ?>') ? $('#form-gallery-group').submit() :
+                                            false;"><i class="fa fa-trash-alt"></i></button>
+                    <div class="float-right tableTools-container"></div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fa fa-list-ul"></i>
+                            <?php echo $text_title; ?>
+                        </h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-importexport" class="form-horizontal">
+                            <div class="table-responsive">
+                                <table id="table_gallery" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>CSV Headings</th>
+                                            <th>Map to</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach($headercsv as $key=> $headings){ ?>
+                                        <tr>
+                                            <td><?php echo $headings; ?></td>
+                                            <td>
+
+                                                <select class="form-control" name="mapto[<?php echo $key; ?>]" data-src="<?php echo $headings; ?>" >
+                                                    <option data-src="<?php echo $headings; ?>" value="0">Select options</option>
+                                                    <?php foreach($table_structure as $tabledata){ ?>
+
+                                                    <option data-src="<?php echo $headings; ?>" value="<?php echo $tabledata['Field']; ?>"><?php echo $tabledata['Field']; ?></option>
+
+                                                    <?php } ?>
+                                                </select>
+
+                                            </td>
+                                        </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <input type="hidden" name="uploadedFileName" value="<?php echo $uploadedFileName; ?>">
+                            <div class="form-group">
+                                <input type="button" id="maptocsv" class="btn btn-info" name="maptocsv" value="Map To Headings">
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+
+    <div id="openNotMap" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Mapped List</h4>
+                </div>
+                <div class="modal-body" id="notmaplist">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Map</button>
+                    <button type="button" id="removerow" class="btn btn-warning">Skip Not Mapped</button>
+                    <button type="button" id="savedata" name="maptocsv" class="btn btn-success"><i class="fa fa-save"> Save Data</i></button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+<?php echo $footer; ?>
+
+<script>
+    $("#removerow").click(function () {
+        $(".removerows").remove();
+    });
+    $("#savedata").click(function () {
+        $("#form-importexport").submit();
+    });
+    $("#maptocsv").click(function () {
+        var data = $("select option:selected");
+        var html = "";
+        html += "<table class='table-bordered'><thead><tr><th>Csv Heading </th><th>Map to csv</th></tr></thead><tbody>";
+        $(data).each(function () {
+            if ($(this).val() == 0) {
+                html += "<tr class='removerows'>";
+            } else {
+                html += "<tr>";
+            }
+            html += "<td>" + $(this).attr('data-src') + "</td><td>" + $(this).val() + "</td></tr>";
+        });
+        html += "</tbody></table>";
+        $("#openlist").click();
+        $("#notmaplist").html(html);
+    });
+
+</script>
+

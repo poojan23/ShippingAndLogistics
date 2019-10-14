@@ -22,6 +22,7 @@ class ControllerReportImportReport extends PT_Controller {
         $this->load->model('report/import_report');
 
         if (($this->request->server['REQUEST_METHOD'] == 'POST')) {
+
             $this->model_report_import_report->addImportReport($this->request->post);
 
             $this->session->data['success'] = $this->language->get('text_success');
@@ -40,6 +41,7 @@ class ControllerReportImportReport extends PT_Controller {
         $this->load->model('report/import_report');
 
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+           
             $this->model_report_import_report->editImportReport($this->request->get['customer_id'], $this->request->post);
 
             $this->session->data['success'] = $this->language->get('text_success');
@@ -59,12 +61,12 @@ class ControllerReportImportReport extends PT_Controller {
 
 //        if (isset($this->request->post['selected'])) {
 //            foreach ($this->request->post['selected'] as $customer_id) {
-                $this->model_report_import_report->deleteImportReport();
+        $this->model_report_import_report->deleteImportReport();
 //            }
 
-            $this->session->data['success'] = $this->language->get('text_success');
+        $this->session->data['success'] = $this->language->get('text_success');
 
-            $this->response->redirect($this->url->link('report/import_report', 'user_token=' . $this->session->data['user_token']));
+        $this->response->redirect($this->url->link('report/import_report', 'user_token=' . $this->session->data['user_token']));
 //        }
 
         $this->getList();
@@ -107,7 +109,7 @@ class ControllerReportImportReport extends PT_Controller {
         $data['dsrs'] = array();
 
         $results = $this->model_report_import_report->getImportReports();
-       
+
         foreach ($results as $result) {
             $data['dsrs'][] = array(
                 'igm_date' => $result['igm_date'],
@@ -144,7 +146,7 @@ class ControllerReportImportReport extends PT_Controller {
 
         $this->response->setOutput($this->load->view('report/import_report_form', $data));
     }
-    
+
     protected function getList() {
         $this->document->addStyle("view/dist/plugins/DataTables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css");
         $this->document->addStyle("view/dist/plugins/DataTables/Buttons-1.5.6/css/buttons.bootstrap4.min.css");
@@ -182,7 +184,7 @@ class ControllerReportImportReport extends PT_Controller {
         $data['dsrs'] = array();
 
         $results = $this->model_report_import_report->getImportReports();
-       
+
         foreach ($results as $result) {
             $data['dsrs'][] = array(
                 'igm_date' => $result['igm_date'],
@@ -247,7 +249,7 @@ class ControllerReportImportReport extends PT_Controller {
         );
 
         if (!isset($this->request->get['customer_id'])) {
-            $data['action'] = $this->url->link('report/import_report/add', 'user_token=' . $this->session->data['user_token']);
+            $data['action'] = $this->url->link('report/import_report/uploadcsv', 'user_token=' . $this->session->data['user_token']);
             $data['breadcrumbs'][] = array(
                 'text' => $this->language->get('text_add'),
                 'href' => $this->url->link('report/import_report/add', 'user_token=' . $this->session->data['user_token'])
@@ -262,7 +264,7 @@ class ControllerReportImportReport extends PT_Controller {
 
         $data['cancel'] = $this->url->link('report/import_report', 'user_token=' . $this->session->data['user_token']);
         $data['import'] = $this->url->link('report/import_report/upload', 'user_token=' . $this->session->data['user_token']);
-        
+
         if (isset($this->request->get['customer_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
             $import_report = $this->model_report_import_report->getImportReport($this->request->get['customer_id']);
         }
@@ -275,7 +277,7 @@ class ControllerReportImportReport extends PT_Controller {
             $data['dsr'] = '';
         }
 
-         if (isset($this->request->post['customer_id'])) {
+        if (isset($this->request->post['customer_id'])) {
             $data['customer_id'] = $this->request->post['customer_id'];
         } elseif (!empty($import_report)) {
             $data['customer_id'] = $import_report['customer_id'];
@@ -288,52 +290,52 @@ class ControllerReportImportReport extends PT_Controller {
         $data['dsrs'] = array();
 
         $results = $this->model_report_import_report->getImportReports();
-       
+
         foreach ($results as $result) {
             $data['dsrs'][] = array(
-                'customer_id'               => $result['customer_id'],
-                'job_no'                    => $result['job_no'],
-                'igm_no'                    => $result['igm_no'],
-                'igm_date'                  => $result['igm_date'],
-                'po_no'                     => $result['po_no'],
-                'shipper'                   => $result['shipper'],
-                'be_heading'                => $result['be_heading'],
-                'no_of_package'             => $result['no_of_package'],
-                'unit'                      => $result['unit'],
-                'net_wt'                    => $result['net_wt'],
-                'mode'                      => $result['mode'],
-                'org_eta_date'              => $result['org_eta_date'],
-                'shipping_line_date'        => $result['shipping_line_date'],
-                'tentative_eta_date'        => $result['tentative_eta_date'],
-                'expected_date'             => $result['expected_date'],
-                'invoice_no'                => $result['invoice_no'],
-                'invoice_date'              => $result['invoice_date'],
-                'mawb_no'                   => $result['mawb_no'],
-                'mawb_date'                 => $result['mawb_date'],
-                'hawb_no'                   => $result['hawb_no'],
-                'hawb_date'                 => $result['hawb_date'],
-                'be_no'                     => $result['be_no'],
-                'be_date'                   => $result['be_date'],
-                'airline'                   => $result['airline'],
-                'n_document_date'           => $result['n_document_date'],
-                'org_doc_date'              => $result['org_doc_date'],
-                'duty_inform_date'          => $result['duty_inform_date'],
-                'duty_received_date'        => $result['duty_received_date'],
-                'duty_paid_date'            => $result['duty_paid_date'],
-                'total_duty'                => $result['total_duty'],
-                'container_cleared_date'    => $result['container_cleared_date'],
-                'detention_amt'             => $result['detention_amt'],
-                'customer_remark'           => $result['customer_remark'],
-                'delivery_location_remark'  => $result['delivery_location_remark'],
-                'container_no'              => $result['container_no'],
+                'customer_id' => $result['customer_id'],
+                'job_no' => $result['job_no'],
+                'igm_no' => $result['igm_no'],
+                'igm_date' => $result['igm_date'],
+                'po_no' => $result['po_no'],
+                'shipper' => $result['shipper'],
+                'be_heading' => $result['be_heading'],
+                'no_of_package' => $result['no_of_package'],
+                'unit' => $result['unit'],
+                'net_wt' => $result['net_wt'],
+                'mode' => $result['mode'],
+                'org_eta_date' => $result['org_eta_date'],
+                'shipping_line_date' => $result['shipping_line_date'],
+                'tentative_eta_date' => $result['tentative_eta_date'],
+                'expected_date' => $result['expected_date'],
+                'invoice_no' => $result['invoice_no'],
+                'invoice_date' => $result['invoice_date'],
+                'mawb_no' => $result['mawb_no'],
+                'mawb_date' => $result['mawb_date'],
+                'hawb_no' => $result['hawb_no'],
+                'hawb_date' => $result['hawb_date'],
+                'be_no' => $result['be_no'],
+                'be_date' => $result['be_date'],
+                'airline' => $result['airline'],
+                'n_document_date' => $result['n_document_date'],
+                'org_doc_date' => $result['org_doc_date'],
+                'duty_inform_date' => $result['duty_inform_date'],
+                'duty_received_date' => $result['duty_received_date'],
+                'duty_paid_date' => $result['duty_paid_date'],
+                'total_duty' => $result['total_duty'],
+                'container_cleared_date' => $result['container_cleared_date'],
+                'detention_amt' => $result['detention_amt'],
+                'customer_remark' => $result['customer_remark'],
+                'delivery_location_remark' => $result['delivery_location_remark'],
+                'container_no' => $result['container_no'],
                 'free_period_shipping_date' => $result['free_period_shipping_date'],
-                'expected_free_dt_date'     => $result['expected_free_dt_date'],
-                'expected_free_dt_remark'   => $result['expected_free_dt_remark'],
-                'approve'                   => $this->url->link('report/import_report/add', 'user_token=' . $this->session->data['user_token']),
-                'reject'                    => $this->url->link('report/import_report/delete', 'user_token=' . $this->session->data['user_token'])
+                'expected_free_dt_date' => $result['expected_free_dt_date'],
+                'expected_free_dt_remark' => $result['expected_free_dt_remark'],
+                'approve' => $this->url->link('report/import_report/add', 'user_token=' . $this->session->data['user_token']),
+                'reject' => $this->url->link('report/import_report/delete', 'user_token=' . $this->session->data['user_token'])
             );
         }
-        
+
         $this->load->model('customer/customer');
 
         $data['customers'] = $this->model_customer_customer->getCustomers();
@@ -414,22 +416,21 @@ class ControllerReportImportReport extends PT_Controller {
         $this->response->setOutput(json_encode($json));
     }
 
-  
-	public function upload() {
+    public function upload() {
         $this->load->language('report/import_report');
 
         $this->document->setTitle($this->language->get('heading_title'));
-        
+
         $this->load->model('customer/customer');
 
         $data['customers'] = $this->model_customer_customer->getCustomers();
-        
+
         $this->load->model('report/import_report');
-      if (($this->request->server['REQUEST_METHOD'] == 'POST') && ($this->validateUploadForm())) {
+        if (($this->request->server['REQUEST_METHOD'] == 'POST') && ($this->validateUploadForm())) {
             if ((isset($this->request->files['upload'])) && (is_uploaded_file($this->request->files['upload']['tmp_name']))) {
                 $file = $this->request->files['upload']['tmp_name'];
 //				$incremental = ($this->request->post['incremental']) ? true : false;
-                if ($this->model_report_import_report->upload($file,$this->request->post['customer_id']) == true) {
+                if ($this->model_report_import_report->upload($file, $this->request->post['customer_id']) == true) {
                     $this->session->data['success'] = $this->language->get('text_success');
                     $this->response->redirect($this->url->link('report/import_report', 'user_token=' . $this->session->data['user_token']));
                 } else {
@@ -440,28 +441,147 @@ class ControllerReportImportReport extends PT_Controller {
 
         $this->getList1();
     }
-	protected function validateUploadForm() {
-		if (!isset($this->request->files['upload']['name'])) {
-			if (isset($this->error['warning'])) {
-				$this->error['warning'] .= "<br /\n" . $this->language->get( 'error_upload_name' );
-			} else {
-				$this->error['warning'] = $this->language->get( 'error_upload_name' );
-			}
-		} else {
-			$ext = strtolower(pathinfo($this->request->files['upload']['name'], PATHINFO_EXTENSION));
-			if (($ext != 'xls') && ($ext != 'xlsx') && ($ext != 'ods')) {
-				if (isset($this->error['warning'])) {
-					$this->error['warning'] .= "<br /\n" . $this->language->get( 'error_upload_ext' );
-				} else {
-					$this->error['warning'] = $this->language->get( 'error_upload_ext' );
-				}
-			}
-		}
 
-		if (!$this->error) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+    protected function validateUploadForm() {
+        if (!isset($this->request->files['upload']['name'])) {
+            if (isset($this->error['warning'])) {
+                $this->error['warning'] .= "<br /\n" . $this->language->get('error_upload_name');
+            } else {
+                $this->error['warning'] = $this->language->get('error_upload_name');
+            }
+        } else {
+            $ext = strtolower(pathinfo($this->request->files['upload']['name'], PATHINFO_EXTENSION));
+            if (($ext != 'xls') && ($ext != 'xlsx') && ($ext != 'ods')) {
+                if (isset($this->error['warning'])) {
+                    $this->error['warning'] .= "<br /\n" . $this->language->get('error_upload_ext');
+                } else {
+                    $this->error['warning'] = $this->language->get('error_upload_ext');
+                }
+            }
+        }
+
+        if (!$this->error) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function uploadcsv() {
+
+        $this->document->setTitle($this->language->get('heading_title'));
+
+        $this->load->model('setting/setting');
+
+        $data['heading_title'] = $this->language->get('heading_title');
+
+        $data['text_edit'] = $this->language->get('text_edit');
+        $data['text_enabled'] = $this->language->get('text_enabled');
+        $data['text_disabled'] = $this->language->get('text_disabled');
+
+        $data['entry_status'] = $this->language->get('entry_status');
+
+        $data['button_save'] = $this->language->get('button_save');
+        $data['button_cancel'] = $this->language->get('button_cancel');
+
+        if (isset($this->error['warning'])) {
+            $data['error_warning'] = $this->error['warning'];
+        } else {
+            $data['error_warning'] = '';
+        }
+
+        $data['breadcrumbs'] = array();
+
+        $data['breadcrumbs'][] = array(
+            'text' => $this->language->get('text_home'),
+            'href' => $this->url->link('common/dashboard', 'user_token=' . $this->session->data['user_token'], true)
+        );
+
+        $data['breadcrumbs'][] = array(
+            'text' => $this->language->get('text_module'),
+            'href' => $this->url->link('extension/module', 'user_token=' . $this->session->data['user_token'], true)
+        );
+
+        $data['breadcrumbs'][] = array(
+            'text' => $this->language->get('heading_title'),
+            'href' => $this->url->link('module/importexport', 'user_token=' . $this->session->data['user_token'], true)
+        );
+
+        $data['action'] = $this->url->link('module/importexport/mapToCsv', 'user_token=' . $this->session->data['user_token'], true);
+
+        $data['cancel'] = $this->url->link('extension/module', 'user_token=' . $this->session->data['user_token'], true);
+
+
+        $data['products'] = array();
+
+        $tmp_name = $_FILES["uploadcsvfile"]["tmp_name"];
+
+        $name = basename($_FILES["uploadcsvfile"]["name"]);
+        $file_ext = strtolower(end(explode('.', $_FILES['uploadcsvfile']['name'])));
+        $randfilename = "upload" . "." . $file_ext;
+
+        move_uploaded_file($tmp_name, $randfilename);
+
+        $csv = array_map('str_getcsv', file(DIR_APPLICATION . 'upload.csv'));
+        $array = $fields = array();
+        $i = 0;
+        $handle = @fopen(DIR_APPLICATION . "upload.csv", "r");
+        if ($handle) {
+            while (($row = fgetcsv($handle, 4096)) !== false) {
+                if (empty($fields)) {
+                    $fields = $row;
+                    continue;
+                }
+
+                $row = array_filter(array_map('trim', $row));
+
+                foreach ($row as $k => $value) {
+                    $array[$i][$fields[$k]] = $value;
+                }
+                $i++;
+            }
+            if (!feof($handle)) {
+                echo "Error: unexpected fgets() fail\n";
+            }
+            fclose($handle);
+        }
+//        print_r($array);exit;
+        if (isset($this->request->post['customer_id'])) {
+            $data['customer_id'] = $this->request->post['customer_id'];
+        } else {
+            $data['customer_id'] = 0;
+        }
+
+        for ($f = 0; $f < count($array); $f++) {
+//            echo "INSERT INTO " . DB_PREFIX . "temp_dsr SET customer_id = '" . (int) $data['customer_id'] . "', job_no = '" . $this->db->escape($array[$f]['job_no']) . "', igm_no ='" . $this->db->escape($array[$f]['igm_no']) . "', igm_date ='" . $this->db->escape($array[$f]['igm_date']) . "', po_no ='" . $this->db->escape($array[$f]['po_no']) . "', shipper ='" . $this->db->escape($array[$f]['shipper']) . "', be_heading ='" . $this->db->escape($array[$f]['be_heading']) . "', no_of_package ='" . $this->db->escape($array[$f]['no_of_package']) . "', unit ='" . $this->db->escape($array[$f]['unit']) . "', net_wt ='" . $this->db->escape($array[$f]['net_wt']) . "', mode ='" . $this->db->escape($array[$f]['mode']) . "', org_eta_date ='" . $this->db->escape($array[$f]['org_eta_date']) . "', shipping_line_date ='" . $this->db->escape($array[$f]['shipping_line_date']) . "', tentative_eta_date ='" . $this->db->escape($array[$f]['tentative_eta_date']) . "', expected_date ='" . $this->db->escape($array[$f]['expected_date']) . "', invoice_no ='" . $this->db->escape($array[$f]['invoice_no']) . "', invoice_date ='" . $this->db->escape($array[$f]['invoice_date']) . "', mawb_no ='" . $this->db->escape($array[$f]['mawb_no']) . "', mawb_date ='" . $this->db->escape($array[$f]['mawb_date']) . "', be_no ='" . $this->db->escape($array[$f]['be_no']) . "', be_date ='" . $this->db->escape($array[$f]['be_date']) . "', hawb_no ='" . $this->db->escape($array[$f]['hawb_no']) . "', hawb_date ='" . $this->db->escape($array[$f]['hawb_date']) . "', airline ='" . $this->db->escape($array[$f]['airline']) . "', n_document_date ='" . $this->db->escape($array[$f]['n_document_date']) . "', org_doc_date ='" . $this->db->escape($array[$f]['org_doc_date']) . "', duty_inform_date ='" . $this->db->escape($array[$f]['duty_inform_date']) . "', duty_received_date ='" . $this->db->escape($array[$f]['duty_received_date']) . "', duty_paid_date ='" . $this->db->escape($array[$f]['duty_paid_date']) . "', total_duty ='" . $this->db->escape($array[$f]['total_duty']) . "', container_cleared_date ='" . $this->db->escape($array[$f]['container_cleared_date']) . "', detention_amt ='" . $this->db->escape($array[$f]['detention_amt']) . "', customer_remark ='" . $this->db->escape($array[$f]['customer_remark']) . "', delivery_location_remark ='" . $this->db->escape($array[$f]['delivery_location_remark']) . "', container_no ='" . $this->db->escape($array[$f]['container_no']) . "', free_period_shipping_date ='" . $this->db->escape($array[$f]['free_period_shipping_date']) . "', expected_free_dt_date ='" . $this->db->escape($array[$f]['expected_free_dt_date']) . "', expected_free_dt_remark ='" . $this->db->escape($array[$f]['expected_free_dt_remark']) . "'";exit;
+
+            $query = $this->db->query("INSERT INTO " . DB_PREFIX . "temp_dsr SET customer_id = '" . (int) $data['customer_id'] . "', job_no = '" . $this->db->escape($array[$f]['job_no']) . "', igm_no ='" . $this->db->escape($array[$f]['igm_no']) . "', igm_date ='" . $this->db->escape($array[$f]['igm_date']) . "', po_no ='" . $this->db->escape($array[$f]['po_no']) . "', shipper ='" . $this->db->escape($array[$f]['shipper']) . "', be_heading ='" . $this->db->escape($array[$f]['be_heading']) . "', no_of_package ='" . $this->db->escape($array[$f]['no_of_package']) . "', unit ='" . $this->db->escape($array[$f]['unit']) . "', net_wt ='" . $this->db->escape($array[$f]['net_wt']) . "', mode ='" . $this->db->escape($array[$f]['mode']) . "', org_eta_date ='" . $this->db->escape($array[$f]['org_eta_date']) . "', shipping_line_date ='" . $this->db->escape($array[$f]['shipping_line_date']) . "', tentative_eta_date ='" . $this->db->escape($array[$f]['tentative_eta_date']) . "', expected_date ='" . $this->db->escape($array[$f]['expected_date']) . "', invoice_no ='" . $this->db->escape($array[$f]['invoice_no']) . "', invoice_date ='" . $this->db->escape($array[$f]['invoice_date']) . "', mawb_no ='" . $this->db->escape($array[$f]['mawb_no']) . "', mawb_date ='" . $this->db->escape($array[$f]['mawb_date']) . "', be_no ='" . $this->db->escape($array[$f]['be_no']) . "', be_date ='" . $this->db->escape($array[$f]['be_date']) . "', hawb_no ='" . $this->db->escape($array[$f]['hawb_no']) . "', hawb_date ='" . $this->db->escape($array[$f]['hawb_date']) . "', airline ='" . $this->db->escape($array[$f]['airline']) . "', n_document_date ='" . $this->db->escape($array[$f]['n_document_date']) . "', org_doc_date ='" . $this->db->escape($array[$f]['org_doc_date']) . "', duty_inform_date ='" . $this->db->escape($array[$f]['duty_inform_date']) . "', duty_received_date ='" . $this->db->escape($array[$f]['duty_received_date']) . "', duty_paid_date ='" . $this->db->escape($array[$f]['duty_paid_date']) . "', total_duty ='" . $this->db->escape($array[$f]['total_duty']) . "', container_cleared_date ='" . $this->db->escape($array[$f]['container_cleared_date']) . "', detention_amt ='" . $this->db->escape($array[$f]['detention_amt']) . "', customer_remark ='" . $this->db->escape($array[$f]['customer_remark']) . "', delivery_location_remark ='" . $this->db->escape($array[$f]['delivery_location_remark']) . "', container_no ='" . $this->db->escape($array[$f]['container_no']) . "', free_period_shipping_date ='" . $this->db->escape($array[$f]['free_period_shipping_date']) . "', expected_free_dt_date ='" . $this->db->escape($array[$f]['expected_free_dt_date']) . "', expected_free_dt_remark ='" . $this->db->escape($array[$f]['expected_free_dt_remark']) . "'");
+        }
+        $data['add'] = $this->url->link('report/import_report/add', 'user_token=' . $this->session->data['user_token']);
+        $data['delete'] = $this->url->link('report/import_report/delete', 'user_token=' . $this->session->data['user_token']);
+        $data['dsrs'] = array();
+
+        $this->load->model('report/import_report');
+
+        $results = $this->model_report_import_report->getImportReports();
+
+        foreach ($results as $result) {
+            $data['dsrs'][] = array(
+                'igm_date' => $result['igm_date'],
+                'job_no' => $result['job_no'],
+                'igm_no' => $result['igm_no'],
+                'approve' => $this->url->link('report/import_report/add', 'user_token=' . $this->session->data['user_token']),
+                'reject' => $this->url->link('report/import_report/delete', 'user_token=' . $this->session->data['user_token'])
+            );
+        }
+
+        $data['header'] = $this->load->controller('common/header');
+        $data['nav'] = $this->load->controller('common/nav');
+        $data['footer'] = $this->load->controller('common/footer');
+
+//        $this->response->setOutput($this->load->view('report/import_report_form', $data));
+
+	$this->response->redirect($this->url->link('report/import_report', 'user_token=' . $this->session->data['user_token'], true));
+    }
+
 }

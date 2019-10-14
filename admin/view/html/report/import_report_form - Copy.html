@@ -1,0 +1,489 @@
+<?php echo $header; ?>
+<?php echo $nav; ?>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1><?php echo $heading_title; ?></h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <?php for($i = 0; $i < count($breadcrumbs); $i++) : ?>
+                        <?php if($i != (count($breadcrumbs) - 1)) : ?>
+                        <?php if($i == 0) : ?>
+                        <li class="breadcrumb-item">
+                            <i class="nav-icon fa fa-home"></i>
+                            <a href="<?php echo $breadcrumbs[$i]['href']; ?>">
+                                <?php echo $breadcrumbs[$i]['text']; ?>
+                            </a>
+                        </li>
+                        <?php else : ?>
+                        <li class="breadcrumb-item">
+                            <a href="<?php echo $breadcrumbs[$i]['href']; ?>">
+                                <?php echo $breadcrumbs[$i]['text']; ?>
+                            </a>
+                        </li>
+                        <?php endif; ?>
+                        <?php else : ?>
+                        <li class="breadcrumb-item active"><?php echo $breadcrumbs[$i]['text']; ?></li>
+                        <?php endif; ?>
+                        <?php endfor; ?>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <?php if ($warning_err) : ?>
+                <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i>
+                    <?php echo $warning_err; ?>
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                </div>
+                <?php endif; ?>
+
+
+            </div>
+            <!-- right column -->
+            <div class="col-12">
+                <!-- Horizontal Form -->
+                <div class="card card-info card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fa fa-pencil"></i>
+                            <!--<?php echo $text_form; ?>-->
+                        </h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form action="<?php echo $import; ?>" method="POST" id="import" enctype="multipart/form-data"
+                        class="form-horizontal">
+                        <div class="card-body">
+                            <fieldset>
+                                <div class="form-group row">
+                                    <label for="input-gallery-group" class="col-sm-2 col-form-label">
+                                        <?php echo $entry_name; ?></label>
+
+                                    <div class="col-sm-10">
+                                        <select name="customer_id" id="customer_id" class="form-control"
+                                            onChange="check(this);">
+                                            <option value="0" selected="selected">
+                                                Select Customer
+                                            </option>
+                                            <?php foreach($customers as $customer) : ?>
+                                            <?php if($customer['customer_id'] == $customer_id) : ?>
+                                            <option value="<?php echo $customer['customer_id']; ?>">
+                                                <?php echo $customer['name']; ?>
+                                            </option>
+                                            <?php else : ?>
+                                            <option value="<?php echo $customer['customer_id']; ?>">
+                                                <?php echo $customer['name']; ?>
+                                            </option>
+                                            <?php endif; ?>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="form-group row required">
+                                    <label for="input-filename"
+                                        class="col-sm-2 col-form-label"><?php echo $entry_filename; ?></label>
+
+                                    <div class="col-sm-10">
+                                        <div class="input-group">
+                                            <input type="file" name="upload" id="upload" disabled="disabled" /><a
+                                                onclick="uploadData();"
+                                                class="btn btn-primary"><span><?php echo $button_import; ?></span></a>
+                                            <!--                                            <input type="text" name="filename" value="" placeholder="<?php echo $entry_filename; ?>" id="input-filename" class="form-control" />
+                                                                                        <span class="input-group-btn">
+                                                                                            <button type="button" id="button-upload" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary">
+                                                                                                <i class="fa fa-upload"></i> Upload
+                                                                                            </button>
+                                                                                        </span>-->
+                                        </div>
+                                        <!--                                        <?php if(isset($filename_err)) : ?>
+                                                                                <span class="invalid-tooltip"><?php echo $filename_err; ?></span>
+                                                                                <?php endif; ?>-->
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                    </form>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="widget-box transparent">
+                                <div class="widget-header widget-header-flat">
+                                    <h4 class="widget-title lighter">
+
+                                        Inserted Report
+                                    </h4>
+                                </div>
+
+                                <div class="widget-body">
+                                    <form action="<?php echo $add;?>" method="POST" enctype="multipart/form-data"
+                                        id="form-dsr" class="form-horizontal">
+                                        <div class="widget-main no-padding">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered table-striped">
+                                                    <thead class="thin-border-bottom">
+                                                        <tr>
+                                                            <th><?php echo $column_job_no; ?></th>
+                                                            <th><?php echo $column_igm_no; ?></th>
+                                                            <th><?php echo $column_igm_date; ?></th>
+                                                            <th><?php echo $column_po_no; ?></th>
+                                                            <th><?php echo $column_shipper; ?></th>
+                                                            <th><?php echo $column_be_heading; ?></th>
+                                                            <th><?php echo $column_no_of_package; ?></th>
+                                                            <th><?php echo $column_unit; ?></th>
+                                                            <th><?php echo $column_net_wt; ?></th>
+                                                            <th><?php echo $column_mode; ?></th>
+                                                            <th><?php echo $column_org_eta_date; ?></th>
+                                                            <th><?php echo $column_shipping_line_date; ?></th>
+                                                            <th><?php echo $column_tentative_eta_date; ?></th>
+                                                            <th><?php echo $column_expected_date; ?></th>
+                                                            <th><?php echo $column_invoice_no; ?></th>
+                                                            <th><?php echo $column_invoice_date; ?></th>
+                                                            <th><?php echo $column_mawb_no; ?></th>
+                                                            <th><?php echo $column_mawb_date; ?></th>
+                                                            <th><?php echo $column_hawb_no; ?></th>
+                                                            <th><?php echo $column_hawb_date; ?></th>
+                                                            <th><?php echo $column_be_no; ?></th>
+                                                            <th><?php echo $column_be_date; ?></th>
+                                                            <th><?php echo $column_airline; ?></th>
+                                                            <th><?php echo $column_n_document_date; ?></th>
+                                                            <th><?php echo $column_org_doc_date; ?></th>
+                                                            <th><?php echo $column_duty_inform_date; ?></th>
+                                                            <th><?php echo $column_duty_received_date; ?></th>
+                                                            <th><?php echo $column_duty_paid_date; ?></th>
+                                                            <th><?php echo $column_total_duty; ?></th>
+                                                            <th><?php echo $column_container_cleared_date; ?></th>
+                                                            <th><?php echo $column_detention_amt; ?></th>
+                                                            <th><?php echo $column_customer_remark; ?></th>
+                                                            <th><?php echo $column_delivery_location_remark; ?></th>
+                                                            <th><?php echo $column_container_no; ?></th>
+                                                            <th><?php echo $column_free_period_shipping_date; ?></th>
+                                                            <th><?php echo $column_expected_free_dt_date; ?></th>
+                                                            <th><?php echo $column_expected_free_dt_remark; ?></th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody>
+                                                        <?php if($dsrs) : ?>
+                                                        <?php $area_row = 0; ?>
+                                                        <?php foreach($dsrs as $dsr) : ?>
+                                                        <input type="hidden"
+                                                            name="dsr[<?php echo $area_row; ?>][customer_id]"
+                                                            value="<?php echo $dsr['customer_id'] ?>" />
+                                                        <tr>
+                                                            <td class="text-left"><?php echo $dsr['job_no']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][job_no]"
+                                                                    value="<?php echo $dsr['job_no']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['igm_no']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][igm_no]"
+                                                                    value="<?php echo $dsr['igm_no']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['igm_date']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][igm_date]"
+                                                                    value="<?php echo $dsr['igm_date']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['po_no']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][po_no]"
+                                                                    value="<?php echo $dsr['po_no']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['shipper']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][shipper]"
+                                                                    value="<?php echo $dsr['shipper']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['be_heading']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][be_heading]"
+                                                                    value="<?php echo $dsr['be_heading']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['no_of_package']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][no_of_package]"
+                                                                    value="<?php echo $dsr['no_of_package']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['unit']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][unit]"
+                                                                    value="<?php echo $dsr['unit']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['net_wt']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][net_wt]"
+                                                                    value="<?php echo $dsr['net_wt']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['mode']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][mode]"
+                                                                    value="<?php echo $dsr['mode']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['org_eta_date']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][org_eta_date]"
+                                                                    value="<?php echo $dsr['org_eta_date']; ?>" />
+                                                            </td>
+                                                            <td class="text-left">
+                                                                <?php echo $dsr['shipping_line_date']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][shipping_line_date]"
+                                                                    value="<?php echo $dsr['shipping_line_date']; ?>" />
+                                                            </td>
+                                                            <td class="text-left">
+                                                                <?php echo $dsr['tentative_eta_date']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][tentative_eta_date]"
+                                                                    value="<?php echo $dsr['tentative_eta_date']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['expected_date']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][expected_date]"
+                                                                    value="<?php echo $dsr['expected_date']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['invoice_no']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][invoice_no]"
+                                                                    value="<?php echo $dsr['invoice_no']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['invoice_date']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][invoice_date]"
+                                                                    value="<?php echo $dsr['invoice_date']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['mawb_no']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][mawb_no]"
+                                                                    value="<?php echo $dsr['mawb_no']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['mawb_date']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][mawb_date]"
+                                                                    value="<?php echo $dsr['mawb_date']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['hawb_no']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][hawb_no]"
+                                                                    value="<?php echo $dsr['hawb_no']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['hawb_date']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][hawb_date]"
+                                                                    value="<?php echo $dsr['hawb_date']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['be_no']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][be_no]"
+                                                                    value="<?php echo $dsr['be_no']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['be_date']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][be_date]"
+                                                                    value="<?php echo $dsr['be_date']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['airline']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][airline]"
+                                                                    value="<?php echo $dsr['airline']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['n_document_date']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][n_document_date]"
+                                                                    value="<?php echo $dsr['n_document_date']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['org_doc_date']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][org_doc_date]"
+                                                                    value="<?php echo $dsr['org_doc_date']; ?>" />
+                                                            </td>
+                                                            <td class="text-left">
+                                                                <?php echo $dsr['duty_inform_date']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][duty_inform_date]"
+                                                                    value="<?php echo $dsr['duty_inform_date']; ?>" />
+                                                            </td>
+                                                            <td class="text-left">
+                                                                <?php echo $dsr['duty_received_date']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][duty_received_date]"
+                                                                    value="<?php echo $dsr['duty_received_date']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['duty_paid_date']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][duty_paid_date]"
+                                                                    value="<?php echo $dsr['duty_paid_date']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['total_duty']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][total_duty]"
+                                                                    value="<?php echo $dsr['total_duty']; ?>" />
+                                                            </td>
+                                                            <td class="text-left">
+                                                                <?php echo $dsr['container_cleared_date']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][container_cleared_date]"
+                                                                    value="<?php echo $dsr['container_cleared_date']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['detention_amt']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][detention_amt]"
+                                                                    value="<?php echo $dsr['detention_amt']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['customer_remark']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][customer_remark]"
+                                                                    value="<?php echo $dsr['customer_remark']; ?>" />
+                                                            </td>
+                                                            <td class="text-left">
+                                                                <?php echo $dsr['delivery_location_remark']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][delivery_location_remark]"
+                                                                    value="<?php echo $dsr['delivery_location_remark']; ?>" />
+                                                            </td>
+                                                            <td class="text-left"><?php echo $dsr['container_no']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][container_no]"
+                                                                    value="<?php echo $dsr['container_no']; ?>" />
+                                                            </td>
+                                                            <td class="text-left">
+                                                                <?php echo $dsr['free_period_shipping_date']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][free_period_shipping_date]"
+                                                                    value="<?php echo $dsr['free_period_shipping_date']; ?>" />
+                                                            </td>
+                                                            <td class="text-left">
+                                                                <?php echo $dsr['expected_free_dt_date']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][expected_free_dt_date]"
+                                                                    value="<?php echo $dsr['expected_free_dt_date']; ?>" />
+                                                            </td>
+                                                            <td class="text-left">
+                                                                <?php echo $dsr['expected_free_dt_remark']; ?>
+                                                                <input type="hidden"
+                                                                    name="dsr[<?php echo $area_row; ?>][expected_free_dt_remark]"
+                                                                    value="<?php echo $dsr['expected_free_dt_remark']; ?>" />
+                                                            </td>
+                                                        </tr>
+                                                        <?php $area_row = $area_row + 1; ?>
+                                                        <?php endforeach; ?>
+
+                                                        <?php else : ?>
+                                                        <tr>
+                                                            <td class="text-center" colspan="37">
+                                                                <?php echo $text_no_results; ?>
+                                                            </td>
+                                                        </tr>
+                                                        <?php endif; ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div><!-- /.widget-main -->
+                                    </form>
+                                </div><!-- /.widget-body -->
+                            </div><!-- /.widget-box -->
+                            <div class="clearfix">
+                                <div class="tableTools-container" style="text-align: center;">
+                                    <button type="submit" form="form-dsr" data-toggle="tooltip"
+                                        title="<?php echo $button_save; ?>" class="btn btn-primary btn-bold"><i
+                                            class="fa fa-save"></i></button>
+                                    <a href="<?php echo $delete; ?>" data-toggle="tooltip"
+                                        title="<?php echo $button_cancel; ?>" class="btn btn-default btn-bold"><i
+                                            class="fa fa-reply"></i></a>
+
+                                </div>
+                            </div>
+                        </div><!-- /.col -->
+
+                    </div>
+                    <!--                    
+                                        <form action="<?php echo $import;?>" method="post" enctype="multipart/form-data" id="import" class="form-horizontal">
+                                           
+                                                                            
+                                        </form>-->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<?php echo $footer; ?>
+<script type="text/javascript">
+    function check(elem) {
+        document.getElementById('upload').disabled = !elem.selectedIndex;
+        document.getElementById('aupload').disabled = !elem.selectedIndex;
+    }
+    function uploadData() {
+
+        $('#import').submit();
+
+    }
+    $('#button-upload').on('click', function () {
+        $('#form-upload').remove();
+
+        $('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>');
+
+        $('#form-upload input[name=\'file\']').trigger('click');
+
+        if (typeof timer != 'undefined') {
+            clearInterval(timer);
+        }
+
+        timer = setInterval(function () {
+            if ($('#form-upload input[name=\'file\']').val() != '') {
+                clearInterval(timer);
+
+                $.ajax({
+                    url: 'index.php?url=report/import_report/upload&user_token=3464b3e31cc428c479f64d0e6318cfc2; ?>',
+                    type: 'post',
+                    dataType: 'json',
+                    data: new FormData($('#form-upload')[0]),
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function () {
+                        $('#button-upload').button('loading');
+                    },
+                    complete: function () {
+                        $('#button-upload').button('reset');
+                    },
+                    success: function (json) {
+                        //                        if (json['error']) {
+                        //                            alert(json['error']);
+                        //                        }
+                        //    
+                        //                        if (json['success']) {
+                        //                            alert(json['success']);
+                        //    
+                        //                            $('input[name=\'filename\']').val(json['filename']);
+                        //                            $('input[name=\'mask\']').val(json['mask']);
+                        //                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                    }
+                });
+            }
+        }, 500);
+    });
+</script>
+<script type="text/javascript">
+    $('#language a:first').tab('show');
+</script>

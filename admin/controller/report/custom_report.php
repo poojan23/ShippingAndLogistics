@@ -41,6 +41,8 @@ class ControllerReportCustomReport extends PT_Controller {
         $this->load->model('report/custom_report');
 
        if (($this->request->server['REQUEST_METHOD'] == 'POST')) {
+//           echo "<pre>";
+//            print_r($this->request->post);exit;
             $this->model_report_custom_report->editCustomReport($this->request->get['customer_id'], $this->request->post);
 
             $this->session->data['success'] = $this->language->get('text_success');

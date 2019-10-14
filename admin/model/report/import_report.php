@@ -88,8 +88,6 @@ class ModelReportImportReport extends PT_Model {
         return 'kg';
     }
 
-
-
     // function for reading additional cells in class extensions
     protected function moreProductSEOKeywordCells($i, &$j, &$worksheet, &$product_seo_keyword) {
         return;
@@ -206,11 +204,11 @@ class ModelReportImportReport extends PT_Model {
         $dsr_id = $dsrinfo['dsr_id'];
         $job_no = $dsrinfo['job_no'];
         $igm_no = $dsrinfo['igm_no'];
-        
+
         $igm_date1 = $dsrinfo['igm_date'];
         $UNIX_igm_date = ($igm_date1 - 25569) * 86400;
-        $igm_date= gmdate("d-m-Y", $UNIX_igm_date);
-        
+        $igm_date = gmdate("d-m-Y", $UNIX_igm_date);
+
         $po_no = $dsrinfo['po_no'];
         $shipper = $dsrinfo['shipper'];
         $be_heading = $dsrinfo['be_heading'];
@@ -218,88 +216,88 @@ class ModelReportImportReport extends PT_Model {
         $unit = $dsrinfo['unit'];
         $net_wt = $dsrinfo['net_wt'];
         $mode = $dsrinfo['mode'];
-        
+
         $org_eta_date1 = $dsrinfo['org_eta_date'];
         $UNIX_org_eta_date = ($org_eta_date1 - 25569) * 86400;
-        $org_eta_date= gmdate("d-m-Y", $UNIX_org_eta_date);
-        
+        $org_eta_date = gmdate("d-m-Y", $UNIX_org_eta_date);
+
         $shipping_line_date1 = $dsrinfo['shipping_line_date'];
         $UNIX_shipping_line_date = ($shipping_line_date1 - 25569) * 86400;
-        $shipping_line_date= gmdate("d-m-Y", $UNIX_shipping_line_date);
-        
+        $shipping_line_date = gmdate("d-m-Y", $UNIX_shipping_line_date);
+
         $tentative_eta_date1 = $dsrinfo['tentative_eta_date'];
         $UNIX_tentative_eta_date = ($tentative_eta_date1 - 25569) * 86400;
-        $tentative_eta_date= gmdate("d-m-Y", $UNIX_tentative_eta_date);
-        
+        $tentative_eta_date = gmdate("d-m-Y", $UNIX_tentative_eta_date);
+
         $expected_date1 = $dsrinfo['expected_date'];
         $UNIX_expected_date = ($expected_date1 - 25569) * 86400;
-        $expected_date= gmdate("d-m-Y", $UNIX_expected_date);
-        
+        $expected_date = gmdate("d-m-Y", $UNIX_expected_date);
+
         $invoice_no = $dsrinfo['invoice_no'];
-        
+
         $invoice_date1 = $dsrinfo['invoice_date'];
         $UNIX_invoice_date = ($invoice_date1 - 25569) * 86400;
-        $invoice_date= gmdate("d-m-Y", $UNIX_invoice_date);
-        
+        $invoice_date = gmdate("d-m-Y", $UNIX_invoice_date);
+
         $mawb_no = $dsrinfo['mawb_no'];
-        
+
         $mawb_date1 = $dsrinfo['mawb_date'];
         $UNIX_mawb_date = ($mawb_date1 - 25569) * 86400;
-        $mawb_date= gmdate("d-m-Y", $UNIX_mawb_date);
-        
+        $mawb_date = gmdate("d-m-Y", $UNIX_mawb_date);
+
         $hawb_no = $dsrinfo['hawb_no'];
-        
+
         $hawb_date1 = $dsrinfo['hawb_date'];
         $UNIX_hawb_date = ($hawb_date1 - 25569) * 86400;
-        $hawb_date= gmdate("d-m-Y", $UNIX_hawb_date);
-        
+        $hawb_date = gmdate("d-m-Y", $UNIX_hawb_date);
+
         $be_no = $dsrinfo['be_no'];
-        
+
         $be_date1 = $dsrinfo['be_date'];
         $UNIX_be_date = ($be_date1 - 25569) * 86400;
-        $be_date= gmdate("d-m-Y", $UNIX_be_date);
-        
+        $be_date = gmdate("d-m-Y", $UNIX_be_date);
+
         $airline = $dsrinfo['airline'];
-        
+
         $n_document_date1 = $dsrinfo['n_document_date'];
         $UNIX_n_document_date = ($n_document_date1 - 25569) * 86400;
-        $n_document_date= gmdate("d-m-Y", $UNIX_n_document_date);
-        
+        $n_document_date = gmdate("d-m-Y", $UNIX_n_document_date);
+
         $org_doc_date1 = $dsrinfo['org_doc_date'];
         $UNIX_org_doc_date = ($org_doc_date1 - 25569) * 86400;
-        $org_doc_date= gmdate("d-m-Y", $UNIX_org_doc_date);
-        
+        $org_doc_date = gmdate("d-m-Y", $UNIX_org_doc_date);
+
         $duty_inform_date1 = $dsrinfo['duty_inform_date'];
         $UNIX_duty_inform_date = ($duty_inform_date1 - 25569) * 86400;
-        $duty_inform_date= gmdate("d-m-Y", $UNIX_duty_inform_date);
-        
+        $duty_inform_date = gmdate("d-m-Y", $UNIX_duty_inform_date);
+
         $duty_received_date1 = $dsrinfo['duty_received_date'];
         $UNIX_duty_received_date = ($duty_received_date1 - 25569) * 86400;
-        $duty_received_date= gmdate("d-m-Y", $UNIX_duty_received_date);
-        
+        $duty_received_date = gmdate("d-m-Y", $UNIX_duty_received_date);
+
         $duty_paid_date1 = $dsrinfo['duty_paid_date'];
         $UNIX_duty_paid_date = ($duty_paid_date1 - 25569) * 86400;
-        $duty_paid_date= gmdate("d-m-Y", $UNIX_duty_paid_date);
-        
+        $duty_paid_date = gmdate("d-m-Y", $UNIX_duty_paid_date);
+
         $total_duty = $dsrinfo['total_duty'];
-        
+
         $container_cleared_date1 = $dsrinfo['container_cleared_date'];
         $UNIX_container_cleared_date = ($container_cleared_date1 - 25569) * 86400;
-        $container_cleared_date= gmdate("d-m-Y", $UNIX_container_cleared_date);
-        
+        $container_cleared_date = gmdate("d-m-Y", $UNIX_container_cleared_date);
+
         $detention_amt = $dsrinfo['detention_amt'];
         $customer_remark = $dsrinfo['customer_remark'];
         $delivery_location_remark = $dsrinfo['delivery_location_remark'];
         $container_no = $dsrinfo['container_no'];
-        
+
         $free_period_shipping_date1 = $dsrinfo['free_period_shipping_date'];
         $UNIX_free_period_shipping_date = ($free_period_shipping_date1 - 25569) * 86400;
-        $free_period_shipping_date= gmdate("d-m-Y", $UNIX_free_period_shipping_date);
-        
+        $free_period_shipping_date = gmdate("d-m-Y", $UNIX_free_period_shipping_date);
+
         $expected_free_dt_date1 = $dsrinfo['expected_free_dt_date'];
         $UNIX_expected_free_dt_date = ($expected_free_dt_date1 - 25569) * 86400;
-        $expected_free_dt_date= gmdate("d-m-Y", $UNIX_expected_free_dt_date);
-        
+        $expected_free_dt_date = gmdate("d-m-Y", $UNIX_expected_free_dt_date);
+
         $expected_free_dt_remark = $dsrinfo['expected_free_dt_remark'];
         $customer_id = $dsrinfo['customer_id'];
 
@@ -343,9 +341,6 @@ class ModelReportImportReport extends PT_Model {
 //			$this->db->query( $sql );
 //		}
 //	}
-
-
-
     // function for reading additional cells in class extensions
     protected function moreDsrInfoCells($i, &$j, &$worksheet, &$dsrinfo) {
         return;
@@ -478,7 +473,6 @@ class ModelReportImportReport extends PT_Model {
             $this->storeDsrInfoIntoDatabase($dsrinfo, $languages);
         }
     }
-
 
     protected function getCell(&$worksheet, $row, $col, $default_val = '') {
         $col -= 1; // we use 1-based, PHPExcel uses 0-based column index
@@ -837,18 +831,18 @@ class ModelReportImportReport extends PT_Model {
         $expected_multilingual = array("name");
         return $this->validateHeading($data, $expected_heading, $expected_multilingual);
     }
-    
+
     protected function validateDsrInfo(&$reader) {
         $data = $reader->getSheetByName('dsr');
         if ($data == null) {
             return true;
         }
 //        $expected_heading = array("attribute_group_id", "sort_order", "name");
-        $expected_heading = array("dsr_id","job_no", "igm_no", "igm_date", "po_no", "shipper", "be_heading", "no_of_package", "unit", "net_wt", "mode",
-                        "org_eta_date", "shipping_line_date", "tentative_eta_date", "expected_date", "invoice_no", "invoice_date", "mawb_no", "mawb_date",
-                        "hawb_no", "hawb_date", "be_no", "be_date", "airline", "n_document_date", "org_doc_date", "duty_inform_date", "duty_received_date", "duty_paid_date",
-                        "total_duty", "container_cleared_date", "detention_amt", "customer_remark", "delivery_location_remark", "container_no", "free_period_shipping_date",
-                        "expected_free_dt_date", "expected_free_dt_remark");
+        $expected_heading = array("dsr_id", "job_no", "igm_no", "igm_date", "po_no", "shipper", "be_heading", "no_of_package", "unit", "net_wt", "mode",
+            "org_eta_date", "shipping_line_date", "tentative_eta_date", "expected_date", "invoice_no", "invoice_date", "mawb_no", "mawb_date",
+            "hawb_no", "hawb_date", "be_no", "be_date", "airline", "n_document_date", "org_doc_date", "duty_inform_date", "duty_received_date", "duty_paid_date",
+            "total_duty", "container_cleared_date", "detention_amt", "customer_remark", "delivery_location_remark", "container_no", "free_period_shipping_date",
+            "expected_free_dt_date", "expected_free_dt_remark");
         $expected_multilingual = array("name");
         return $this->validateHeading($data, $expected_heading, $expected_multilingual);
     }
@@ -2300,7 +2294,7 @@ class ModelReportImportReport extends PT_Model {
 //        }
 //        return true;
 //    }
-protected function validateWorksheetNames(&$reader) {
+    protected function validateWorksheetNames(&$reader) {
         $allowed_worksheets = array(
             'dsr'
         );
@@ -2317,6 +2311,7 @@ protected function validateWorksheetNames(&$reader) {
         }
         return true;
     }
+
     protected function validateUpload(&$reader) {
         $ok = true;
         $languages = $this->getLanguages();
@@ -2416,7 +2411,6 @@ protected function validateWorksheetNames(&$reader) {
 //            $this->log->write($this->language->get('error_addresses_header'));
 //            $ok = false;
 //        }
-
         // certain worksheets rely on the existence of other worksheets
 //        $names = $reader->getSheetNames();
 //        $exist_categories = false;
@@ -2735,8 +2729,8 @@ protected function validateWorksheetNames(&$reader) {
             if (!$this->validateIncrementalOnly($reader, $incremental)) {
                 return false;
             }
-            if (!$this->validateUpload( $reader )) {
-                    return false;
+            if (!$this->validateUpload($reader)) {
+                return false;
             }
             $this->clearCache();
             $this->session->data['export_import_nochange'] = 0;
@@ -5336,23 +5330,26 @@ protected function validateWorksheetNames(&$reader) {
         }
     }
 
-
-
     public function getImportReports() {
         $query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "temp_dsr`");
-        
+
         return $query->rows;
     }
 
     public function addImportReport($data) {
-
-        foreach ($data['dsr'] as $job_nos) {
-
-            $query = $this->db->query("INSERT INTO " . DB_PREFIX . "dsr SET customer_id = '" . (int)$job_nos['customer_id'] . "', job_no = '" . $this->db->escape($job_nos['job_no']) . "', igm_no ='" . $this->db->escape($job_nos['igm_no']) . "', igm_date ='" . $this->db->escape($job_nos['igm_date']) . "', po_no ='" . $this->db->escape($job_nos['po_no']) . "', shipper ='" . $this->db->escape($job_nos['shipper']) . "', be_heading ='" . $this->db->escape($job_nos['be_heading']) . "', no_of_package ='" . $this->db->escape($job_nos['no_of_package']) . "', unit ='" . $this->db->escape($job_nos['unit']) . "', net_wt ='" . $this->db->escape($job_nos['net_wt']) . "', mode ='" . $this->db->escape($job_nos['mode']) . "', org_eta_date ='" . $this->db->escape($job_nos['org_eta_date']) . "', shipping_line_date ='" . $this->db->escape($job_nos['shipping_line_date']) . "', tentative_eta_date ='" . $this->db->escape($job_nos['tentative_eta_date']) . "', expected_date ='" . $this->db->escape($job_nos['expected_date']) . "', invoice_no ='" . $this->db->escape($job_nos['invoice_no']) . "', invoice_date ='" . $this->db->escape($job_nos['invoice_date']) . "', mawb_no ='" . $this->db->escape($job_nos['mawb_no']) . "', mawb_date ='" . $this->db->escape($job_nos['mawb_date']) . "', be_no ='" . $this->db->escape($job_nos['be_no']) . "', be_date ='" . $this->db->escape($job_nos['be_date']) . "', hawb_no ='" . $this->db->escape($job_nos['hawb_no']) . "', hawb_date ='" . $this->db->escape($job_nos['hawb_date']) . "', airline ='" . $this->db->escape($job_nos['airline']) . "', n_document_date ='" . $this->db->escape($job_nos['n_document_date']) . "', org_doc_date ='" . $this->db->escape($job_nos['org_doc_date']) . "', duty_inform_date ='" . $this->db->escape($job_nos['duty_inform_date']) . "', duty_received_date ='" . $this->db->escape($job_nos['duty_received_date']) . "', duty_paid_date ='" . $this->db->escape($job_nos['duty_paid_date']) . "', total_duty ='" . $this->db->escape($job_nos['total_duty']) . "', container_cleared_date ='" . $this->db->escape($job_nos['container_cleared_date']) . "', detention_amt ='" . $this->db->escape($job_nos['detention_amt']) . "', customer_remark ='" . $this->db->escape($job_nos['customer_remark']) . "', delivery_location_remark ='" . $this->db->escape($job_nos['delivery_location_remark']) . "', container_no ='" . $this->db->escape($job_nos['container_no']) . "', free_period_shipping_date ='" . $this->db->escape($job_nos['free_period_shipping_date']) . "', expected_free_dt_date ='" . $this->db->escape($job_nos['expected_free_dt_date']) . "', expected_free_dt_remark ='" . $this->db->escape($job_nos['expected_free_dt_remark']) . "'");
+        if (isset($data['dsr'])) {
+            foreach ($data['dsr'] as $job_nos) {
+//                $query = $this->db->query("INSERT INTO " . DB_PREFIX . "dsr SELECT job_no,igm_no,igm_date,po_no,shipper,be_heading,no_of_package,"
+//                        . "unit,net_wt,mode,org_eta_date,shipping_line_date,tentative_eta_date,expected_date,invoice_no,invoice_date,mawb_no,mawb_date,"
+//                        . "hawb_no,hawb_date,be_no,be_date,airline,n_document_date,org_doc_date,duty_inform_date,duty_received_date,duty_paid_date,total_duty,container_cleared_date,"
+//                        . "detention_amt,customer_remark,delivery_location_remark,container_no,free_period_shipping_date,expected_free_dt_date,expected_free_dt_remark,customer_id"
+//                        . " FROM  " . DB_PREFIX . "temp_dsr WHERE  customer_id = '" . (int) $job_nos['customer_id'] . "'");
+//                $query = $this->db->query("INSERT INTO " . DB_PREFIX . "dsr SET customer_id = '" . (int) $job_nos['customer_id'] . "', job_no = '" . $this->db->escape($job_nos['job_no']) . "', igm_no ='" . $this->db->escape($job_nos['igm_no']) . "', igm_date ='" . $this->db->escape($job_nos['igm_date']) . "', po_no ='" . $this->db->escape($job_nos['po_no']) . "', shipper ='" . $this->db->escape($job_nos['shipper']) . "', be_heading ='" . $this->db->escape($job_nos['be_heading']) . "', no_of_package ='" . $this->db->escape($job_nos['no_of_package']) . "', unit ='" . $this->db->escape($job_nos['unit']) . "', net_wt ='" . $this->db->escape($job_nos['net_wt']) . "', mode ='" . $this->db->escape($job_nos['mode']) . "', org_eta_date ='" . $this->db->escape($job_nos['org_eta_date']) . "', shipping_line_date ='" . $this->db->escape($job_nos['shipping_line_date']) . "', tentative_eta_date ='" . $this->db->escape($job_nos['tentative_eta_date']) . "', expected_date ='" . $this->db->escape($job_nos['expected_date']) . "', invoice_no ='" . $this->db->escape($job_nos['invoice_no']) . "', invoice_date ='" . $this->db->escape($job_nos['invoice_date']) . "', mawb_no ='" . $this->db->escape($job_nos['mawb_no']) . "', mawb_date ='" . $this->db->escape($job_nos['mawb_date']) . "', be_no ='" . $this->db->escape($job_nos['be_no']) . "', be_date ='" . $this->db->escape($job_nos['be_date']) . "', hawb_no ='" . $this->db->escape($job_nos['hawb_no']) . "', hawb_date ='" . $this->db->escape($job_nos['hawb_date']) . "', airline ='" . $this->db->escape($job_nos['airline']) . "', n_document_date ='" . $this->db->escape($job_nos['n_document_date']) . "', org_doc_date ='" . $this->db->escape($job_nos['org_doc_date']) . "', duty_inform_date ='" . $this->db->escape($job_nos['duty_inform_date']) . "', duty_received_date ='" . $this->db->escape($job_nos['duty_received_date']) . "', duty_paid_date ='" . $this->db->escape($job_nos['duty_paid_date']) . "', total_duty ='" . $this->db->escape($job_nos['total_duty']) . "', container_cleared_date ='" . $this->db->escape($job_nos['container_cleared_date']) . "', detention_amt ='" . $this->db->escape($job_nos['detention_amt']) . "', customer_remark ='" . $this->db->escape($job_nos['customer_remark']) . "', delivery_location_remark ='" . $this->db->escape($job_nos['delivery_location_remark']) . "', container_no ='" . $this->db->escape($job_nos['container_no']) . "', free_period_shipping_date ='" . $this->db->escape($job_nos['free_period_shipping_date']) . "', expected_free_dt_date ='" . $this->db->escape($job_nos['expected_free_dt_date']) . "', expected_free_dt_remark ='" . $this->db->escape($job_nos['expected_free_dt_remark']) . "'");
+                $query = $this->db->query("INSERT INTO " . DB_PREFIX . "dsr SELECT * FROM  " . DB_PREFIX . "temp_dsr WHERE  customer_id = '" . (int) $job_nos['customer_id'] . "'");
+            }
+//          
+            $this->db->query("DELETE FROM " . DB_PREFIX . "temp_dsr");
         }
-
-
-        $this->db->query("DELETE FROM " . DB_PREFIX . "temp_dsr");
         return $query;
     }
 
