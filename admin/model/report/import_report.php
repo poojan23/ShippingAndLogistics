@@ -5336,7 +5336,7 @@ class ModelReportImportReport extends PT_Model {
         return $query->rows;
     }
 
-    public function addImportReport($data) {
+       public function addImportReport($data) {
         if (isset($data['dsr'])) {
             foreach ($data['dsr'] as $job_nos) {
 //                $query = $this->db->query("INSERT INTO " . DB_PREFIX . "dsr SELECT (job_no,igm_no,igm_date,po_no,shipper,be_heading,no_of_package,"
@@ -5346,6 +5346,7 @@ class ModelReportImportReport extends PT_Model {
 //                        . " FROM  " . DB_PREFIX . "temp_dsr WHERE  customer_id = '" . (int) $job_nos['customer_id'] . "'");
 ////                $query = $this->db->query("INSERT INTO " . DB_PREFIX . "dsr SET customer_id = '" . (int) $job_nos['customer_id'] . "', job_no = '" . $this->db->escape($job_nos['job_no']) . "', igm_no ='" . $this->db->escape($job_nos['igm_no']) . "', igm_date ='" . $this->db->escape($job_nos['igm_date']) . "', po_no ='" . $this->db->escape($job_nos['po_no']) . "', shipper ='" . $this->db->escape($job_nos['shipper']) . "', be_heading ='" . $this->db->escape($job_nos['be_heading']) . "', no_of_package ='" . $this->db->escape($job_nos['no_of_package']) . "', unit ='" . $this->db->escape($job_nos['unit']) . "', net_wt ='" . $this->db->escape($job_nos['net_wt']) . "', mode ='" . $this->db->escape($job_nos['mode']) . "', org_eta_date ='" . $this->db->escape($job_nos['org_eta_date']) . "', shipping_line_date ='" . $this->db->escape($job_nos['shipping_line_date']) . "', tentative_eta_date ='" . $this->db->escape($job_nos['tentative_eta_date']) . "', expected_date ='" . $this->db->escape($job_nos['expected_date']) . "', invoice_no ='" . $this->db->escape($job_nos['invoice_no']) . "', invoice_date ='" . $this->db->escape($job_nos['invoice_date']) . "', mawb_no ='" . $this->db->escape($job_nos['mawb_no']) . "', mawb_date ='" . $this->db->escape($job_nos['mawb_date']) . "', be_no ='" . $this->db->escape($job_nos['be_no']) . "', be_date ='" . $this->db->escape($job_nos['be_date']) . "', hawb_no ='" . $this->db->escape($job_nos['hawb_no']) . "', hawb_date ='" . $this->db->escape($job_nos['hawb_date']) . "', airline ='" . $this->db->escape($job_nos['airline']) . "', n_document_date ='" . $this->db->escape($job_nos['n_document_date']) . "', org_doc_date ='" . $this->db->escape($job_nos['org_doc_date']) . "', duty_inform_date ='" . $this->db->escape($job_nos['duty_inform_date']) . "', duty_received_date ='" . $this->db->escape($job_nos['duty_received_date']) . "', duty_paid_date ='" . $this->db->escape($job_nos['duty_paid_date']) . "', total_duty ='" . $this->db->escape($job_nos['total_duty']) . "', container_cleared_date ='" . $this->db->escape($job_nos['container_cleared_date']) . "', detention_amt ='" . $this->db->escape($job_nos['detention_amt']) . "', customer_remark ='" . $this->db->escape($job_nos['customer_remark']) . "', delivery_location_remark ='" . $this->db->escape($job_nos['delivery_location_remark']) . "', container_no ='" . $this->db->escape($job_nos['container_no']) . "', free_period_shipping_date ='" . $this->db->escape($job_nos['free_period_shipping_date']) . "', expected_free_dt_date ='" . $this->db->escape($job_nos['expected_free_dt_date']) . "', expected_free_dt_remark ='" . $this->db->escape($job_nos['expected_free_dt_remark']) . "'");
                 $query = $this->db->query("INSERT INTO " . DB_PREFIX . "dsr SELECT * FROM  " . DB_PREFIX . "temp_dsr WHERE  customer_id = '" . (int) $job_nos['customer_id'] . "'");
+                  
 //           
 //          
 
@@ -5362,12 +5363,18 @@ class ModelReportImportReport extends PT_Model {
 //                    $this->db->query("INSERT INTO " . DB_PREFIX . "dsr SET customer_id = '" . (int) $value['customer_id'] . "', job_no = '" . $this->db->escape($value['job_no']) . "', igm_no ='" . $this->db->escape($value['igm_no']) . "', igm_date ='" . $this->db->escape($value['igm_date']) . "', po_no ='" . $this->db->escape($value['po_no']) . "', shipper ='" . $this->db->escape($value['shipper']) . "', be_heading ='" . $this->db->escape($value['be_heading']) . "', no_of_package ='" . $this->db->escape($value['no_of_package']) . "', unit ='" . $this->db->escape($value['unit']) . "', net_wt ='" . $this->db->escape($value['net_wt']) . "', mode ='" . $this->db->escape($value['mode']) . "', org_eta_date ='" . $this->db->escape($value['org_eta_date']) . "', shipping_line_date ='" . $this->db->escape($value['shipping_line_date']) . "', tentative_eta_date ='" . $this->db->escape($value['tentative_eta_date']) . "', expected_date ='" . $this->db->escape($value['expected_date']) . "', invoice_no ='" . $this->db->escape($value['invoice_no']) . "', invoice_date ='" . $this->db->escape($value['invoice_date']) . "', mawb_no ='" . $this->db->escape($value['mawb_no']) . "', mawb_date ='" . $this->db->escape($value['mawb_date']) . "', be_no ='" . $this->db->escape($value['be_no']) . "', be_date ='" . $this->db->escape($value['be_date']) . "', hawb_no ='" . $this->db->escape($value['hawb_no']) . "', hawb_date ='" . $this->db->escape($value['hawb_date']) . "', airline ='" . $this->db->escape($value['airline']) . "', n_document_date ='" . $this->db->escape($value['n_document_date']) . "', org_doc_date ='" . $this->db->escape($value['org_doc_date']) . "', duty_inform_date ='" . $this->db->escape($value['duty_inform_date']) . "', duty_received_date ='" . $this->db->escape($value['duty_received_date']) . "', duty_paid_date ='" . $this->db->escape($value['duty_paid_date']) . "', total_duty ='" . $this->db->escape($value['total_duty']) . "', container_cleared_date ='" . $this->db->escape($value['container_cleared_date']) . "', detention_amt ='" . $this->db->escape($value['detention_amt']) . "', customer_remark ='" . $this->db->escape($value['customer_remark']) . "', delivery_location_remark ='" . $this->db->escape($value['delivery_location_remark']) . "', container_no ='" . $this->db->escape($value['container_no']) . "', free_period_shipping_date ='" . $this->db->escape($value['free_period_shipping_date']) . "', expected_free_dt_date ='" . $this->db->escape($value['expected_free_dt_date']) . "', expected_free_dt_remark ='" . $this->db->escape($value['expected_free_dt_remark']) . "'");
 //                }
             }
-            $this->db->query("DELETE FROM " . DB_PREFIX . "temp_dsr");
+          
+//            $this->db->query("DELETE FROM " . DB_PREFIX . "temp_dsr");
         }
         return $query;
     }
-
+    
+    public function truncateTable($table) {
+        $this->db->query("DELETE FROM `" . $table . "`");
+    }
+    
     public function deleteImportReport() {
+        
         $this->db->query("DELETE FROM " . DB_PREFIX . "temp_dsr");
     }
 

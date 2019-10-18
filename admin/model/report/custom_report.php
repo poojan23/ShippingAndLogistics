@@ -57,183 +57,177 @@ class ModelReportCustomReport extends PT_Model {
                     ),
                     "7" => Array
                         (
-                        "field_name" => 'unit',
-                        "name" => 'Unit',
+                        "field_name" => 'net_wt',
+                        "name" => ' Net Weight',
                         "sort_order" => 8
                     ),
                     "8" => Array
                         (
-                        "field_name" => 'net_wt',
-                        "name" => ' Net Weight',
+                        "field_name" => 'mode',
+                        "name" => 'Mode',
                         "sort_order" => 9
                     ),
                     "9" => Array
                         (
-                        "field_name" => 'mode',
-                        "name" => 'Mode',
+                        "field_name" => 'org_eta_date',
+                        "name" => 'Org Eta Date',
                         "sort_order" => 10
                     ),
                     "10" => Array
                         (
-                        "field_name" => 'org_eta_date',
-                        "name" => 'Org Eta Date',
+                        "field_name" => 'shipping_line_date',
+                        "name" => 'Shipping Line Date',
                         "sort_order" => 11
                     ),
                     "11" => Array
                         (
-                        "field_name" => 'shipping_line_date',
-                        "name" => 'Shipping Line Date',
+                        "field_name" => 'tentative_eta_date',
+                        "name" => 'Tentative Eta Date',
                         "sort_order" => 12
                     ),
                     "12" => Array
                         (
-                        "field_name" => 'tentative_eta_date',
-                        "name" => 'Tentative Eta Date',
+                        "field_name" => 'expected_date',
+                        "name" => 'Expected Date',
                         "sort_order" => 13
                     ),
                     "13" => Array
                         (
-                        "field_name" => 'expected_date',
-                        "name" => 'Expected Date',
+                        "field_name" => 'invoice_no',
+                        "name" => 'Invoice No.',
                         "sort_order" => 14
                     ),
                     "14" => Array
                         (
-                        "field_name" => 'invoice_no',
-                        "name" => 'Invoice No.',
+                        "field_name" => 'invoice_date',
+                        "name" => 'Invoice Date',
                         "sort_order" => 15
                     ),
                     "15" => Array
                         (
-                        "field_name" => 'invoice_date',
-                        "name" => 'Invoice Date',
+                        "field_name" => 'mawb_no',
+                        "name" => 'Mawb No.',
                         "sort_order" => 16
                     ),
                     "16" => Array
                         (
-                        "field_name" => 'mawb_no',
-                        "name" => 'Mawb No.',
+                        "field_name" => 'mawb_date',
+                        "name" => 'Mawb Date',
                         "sort_order" => 17
                     ),
                     "17" => Array
                         (
-                        "field_name" => 'mawb_date',
-                        "name" => 'Mawb Date',
+                        "field_name" => 'hawb_no',
+                        "name" => 'Hawb No.',
                         "sort_order" => 18
                     ),
                     "18" => Array
                         (
-                        "field_name" => 'hawb_no',
-                        "name" => 'Hawb No.',
+                        "field_name" => 'hawb_date',
+                        "name" => 'Hawb Date',
                         "sort_order" => 19
                     ),
                     "19" => Array
                         (
-                        "field_name" => 'hawb_date',
-                        "name" => 'Hawb Date',
+                        "field_name" => 'be_no',
+                        "name" => 'BE No.',
                         "sort_order" => 20
                     ),
                     "20" => Array
                         (
-                        "field_name" => 'be_no',
-                        "name" => 'BE No.',
+                        "field_name" => 'be_date',
+                        "name" => 'BE Date',
                         "sort_order" => 21
                     ),
                     "21" => Array
                         (
-                        "field_name" => 'be_date',
-                        "name" => 'BE Date',
+                        "field_name" => 'airline',
+                        "name" => 'Airline',
                         "sort_order" => 22
                     ),
                     "22" => Array
                         (
-                        "field_name" => 'airline',
-                        "name" => 'Airline',
+                        "field_name" => 'n_document_date',
+                        "name" => 'N Document Date',
                         "sort_order" => 23
                     ),
                     "23" => Array
                         (
-                        "field_name" => 'n_document_date',
-                        "name" => 'N Document Date',
+                        "field_name" => 'org_doc_date',
+                        "name" => 'Org Document Date',
                         "sort_order" => 24
                     ),
                     "24" => Array
                         (
-                        "field_name" => 'org_doc_date',
-                        "name" => 'Org Document Date',
+                        "field_name" => 'duty_inform_date',
+                        "name" => 'Duty Inform Date',
                         "sort_order" => 25
                     ),
                     "25" => Array
                         (
-                        "field_name" => 'duty_inform_date',
-                        "name" => 'Duty Inform Date',
+                        "field_name" => 'duty_received_date',
+                        "name" => 'Duty Received Date',
                         "sort_order" => 26
                     ),
                     "26" => Array
                         (
-                        "field_name" => 'duty_received_date',
-                        "name" => 'Duty Received Date',
+                        "field_name" => 'duty_paid_date',
+                        "name" => 'Duty Paid Date',
                         "sort_order" => 27
                     ),
                     "27" => Array
                         (
-                        "field_name" => 'duty_paid_date',
-                        "name" => 'Duty Paid Date',
+                        "field_name" => 'total_duty',
+                        "name" => 'Total Duty',
                         "sort_order" => 28
                     ),
                     "28" => Array
                         (
-                        "field_name" => 'total_duty',
-                        "name" => 'Total Duty',
+                        "field_name" => 'container_cleared_date',
+                        "name" => 'Container Cleared Date',
                         "sort_order" => 29
                     ),
                     "29" => Array
                         (
-                        "field_name" => 'container_cleared_date',
-                        "name" => 'Container Cleared Date',
+                        "field_name" => 'detention_amt',
+                        "name" => 'Detention Amount',
                         "sort_order" => 30
                     ),
                     "30" => Array
                         (
-                        "field_name" => 'detention_amt',
-                        "name" => 'Detention Amount',
+                        "field_name" => 'customer_remark',
+                        "name" => 'Customer Remark',
                         "sort_order" => 31
                     ),
                     "31" => Array
                         (
-                        "field_name" => 'customer_remark',
-                        "name" => 'Customer Remark',
+                        "field_name" => 'delivery_location_remark',
+                        "name" => 'Delivery Location Remark',
                         "sort_order" => 32
                     ),
                     "32" => Array
                         (
-                        "field_name" => 'delivery_location_remark',
-                        "name" => 'Delivery Location Remark',
+                        "field_name" => 'container_no',
+                        "name" => 'Container No',
                         "sort_order" => 33
                     ),
                     "33" => Array
                         (
-                        "field_name" => 'container_no',
-                        "name" => 'Container No',
+                        "field_name" => 'free_period_shipping_date',
+                        "name" => 'Free Period Shipping Date',
                         "sort_order" => 34
                     ),
                     "34" => Array
                         (
-                        "field_name" => 'free_period_shipping_date',
-                        "name" => 'Free Period Shipping Date',
+                        "field_name" => 'expected_free_dt_date',
+                        "name" => 'Expected Free Dt Date',
                         "sort_order" => 35
                     ),
                     "35" => Array
                         (
-                        "field_name" => 'expected_free_dt_date',
-                        "name" => 'Expected Free Dt Date',
-                        "sort_order" => 36
-                    ),
-                    "36" => Array
-                        (
                         "field_name" => 'expected_free_dt_remark',
                         "name" => 'Expected Free Dt Remark',
-                        "sort_order" => 37
+                        "sort_order" => 36
                     )
                 
             );

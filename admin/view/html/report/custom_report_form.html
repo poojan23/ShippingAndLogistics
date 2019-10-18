@@ -82,6 +82,9 @@
 
                                     <div class="col-sm-10">
                                         <select name="customer_id" class="form-control" id="input-sport-group">
+                                            <option value="">
+                                                Select Customer
+                                            </option>
                                             <?php foreach($customers as $customer) : ?>
                                             <?php if($customer['customer_id'] == $customer_id) : ?>
                                             <option value="<?php echo $customer['customer_id']; ?>" selected="selected">
@@ -137,7 +140,6 @@
                                                                     <option value="shipper">Shipper</option>
                                                                     <option value="be_heading">BE Heading</option>
                                                                     <option value="no_of_package">No. Of Package</option>
-                                                                    <option value="unit">Unit</option>
                                                                     <option value="net_wt">Net Weight</option>
                                                                     <option value="mode">Mode</option>
                                                                     <option value="org_eta_date">Org Eta Date</option>
@@ -227,7 +229,6 @@
                 <option value="shipper">Shipper</option>\n\
                 <option value="be_heading">BE Heading</option>\n\
                 <option value="no_of_package">No. Of Package</option>\n\
-                <option value="unit">Unit</option>\n\
                 <option value="net_wt">Net Weight</option>\n\
                 <option value="mode">Mode</option>\n\
                 <option value="org_eta_date">Org Eta Date</option>\n\

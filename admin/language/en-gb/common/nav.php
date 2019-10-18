@@ -82,4 +82,5 @@ $_['text_import_report']        = 'Import Report';
 $_['text_import_report']        = 'Import Report';
 $_['text_import']               = 'Import CSV';
 $_['text_custom_report']        = 'Custom Fields';
+$_['text_manual_report']        = 'Manual Report';
 

@@ -136,7 +136,6 @@
                                                             <th><?php echo $column_shipper; ?></th>
                                                             <th><?php echo $column_be_heading; ?></th>
                                                             <th><?php echo $column_no_of_package; ?></th>
-                                                            <th><?php echo $column_unit; ?></th>
                                                             <th><?php echo $column_net_wt; ?></th>
                                                             <th><?php echo $column_mode; ?></th>
                                                             <th><?php echo $column_org_eta_date; ?></th>
@@ -211,11 +210,6 @@
                                                             <input type="hidden"
                                                                    name="dsr[<?php echo $area_row; ?>][no_of_package]"
                                                                    value="<?php echo $dsr['no_of_package']; ?>" />
-                                                        </td>
-                                                        <td class="text-left"><?php echo $dsr['unit']; ?>
-                                                            <input type="hidden"
-                                                                   name="dsr[<?php echo $area_row; ?>][unit]"
-                                                                   value="<?php echo $dsr['unit']; ?>" />
                                                         </td>
                                                         <td class="text-left"><?php echo $dsr['net_wt']; ?>
                                                             <input type="hidden"

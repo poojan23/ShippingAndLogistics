@@ -112,6 +112,14 @@ class ControllerCommonNav extends PT_Controller
                     'children'  => array()
                 );
             }
+            
+            if ($this->user->hasPermission('access', 'report/manual_report')) {
+                $report[] = array(
+                    'name'      => $this->language->get('text_manual_report'),
+                    'href'      => $this->url->link('report/manual_report', 'user_token=' . $this->session->data['user_token']),
+                    'children'  => array()
+                );
+            }
     
             if ($report) {
                 $data['menus'][] = array(
