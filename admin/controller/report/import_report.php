@@ -22,9 +22,9 @@ class ControllerReportImportReport extends PT_Controller {
         $this->load->model('report/import_report');
 
         if (($this->request->server['REQUEST_METHOD'] == 'POST')) {
-            //$this->model_report_import_report->addImportReport($this->request->post);
+            $this->model_report_import_report->addImportReport($this->request->post);
             
-            $this->model_report_import_report->truncateTable(DB_PREFIX . "temp_dsr");
+//            $this->model_report_import_report->truncateTable(DB_PREFIX . "temp_dsr");
 
             $this->session->data['success'] = $this->language->get('text_success');
 
@@ -265,6 +265,7 @@ class ControllerReportImportReport extends PT_Controller {
 
         $data['cancel'] = $this->url->link('report/import_report', 'user_token=' . $this->session->data['user_token']);
         $data['import'] = $this->url->link('report/import_report/upload', 'user_token=' . $this->session->data['user_token']);
+        $data['add_report'] = $this->url->link('report/manual_report/add', 'user_token=' . $this->session->data['user_token']);
 
         if (isset($this->request->get['customer_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
             $import_report = $this->model_report_import_report->getImportReport($this->request->get['customer_id']);

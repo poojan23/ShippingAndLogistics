@@ -26,7 +26,7 @@ class ControllerReportManualReport extends PT_Controller {
 
             $this->session->data['success'] = $this->language->get('text_success');
 
-            $this->response->redirect($this->url->link('report/manual_report', 'user_token=' . $this->session->data['user_token']));
+            $this->response->redirect($this->url->link('report/import_report', 'user_token=' . $this->session->data['user_token']));
         }
 
         $this->getForm();

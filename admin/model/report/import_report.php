@@ -5364,7 +5364,7 @@ class ModelReportImportReport extends PT_Model {
 //                }
             }
           
-//            $this->db->query("DELETE FROM " . DB_PREFIX . "temp_dsr");
+            $this->db->query("DELETE FROM " . DB_PREFIX . "temp_dsr");
         }
         return $query;
     }
